@@ -80,14 +80,12 @@ L'objet au centre
 🧠 Concept
 Organiser une mission avec contraintes fortes et ressources limitées.
 🎮 Gameplay
-
 10 tâches
 Contraintes : temps / budget / ressources
 Décision collective sur la priorisation
 ⏱️ Durée
 15–20 min
 🎯 Objectifs
-
 Priorisation
 Organisation
 Stratégie

@@ -2,17 +2,6 @@
 
 > Dernière mise à jour : 12/05/2026
 > Objectif lancement MVP : fin juin / début juillet 2026
-> Référence tâches terminées : `docs/done.md`
-
----
-
-## Mode d'emploi
-
-- `Maintenant` = ce qui débloque directement la bascule MVP.
-- `Avant go-live` = indispensable avant ouverture réelle.
-- `Prompts VS Code` = banque de formulation technique, séparée des tâches projet.
-
----
 
 ## Top priorities
 
@@ -254,19 +243,7 @@
 - [ ] Documenter les patterns d'erreur attendus (ApiError)
 - [ ] Créer un guide de contribution backend + frontend
 
+- le facilitateur/manager peut lancer plusieurs session en parallèle. les données de chanque session doivent être indepedante.
 
-- Que veut dire cette erreur "07lhk_q6pmm3r.js:1 QuotaExceededError: Failed to execute 'setItem' on 'Storage': Setting the value of 'selectedChallenges' exceeded the quota.
-064lr-fclj_.l.js:1 Global Next error boundary caught an error: QuotaExceededError: Failed to execute 'setItem' on 'Storage': Setting the value of 'selectedChallenges' exceeded the quota.
-    at 0w~40y-xvxx12.js:1:34594
-    at iv (07lhk_q6pmm3r.js:1:102969)
-    at up (07lhk_q6pmm3r.js:1:127008)
-    at ud (07lhk_q6pmm3r.js:1:126670)
-    at up (07lhk_q6pmm3r.js:1:126988)
-    at ud (07lhk_q6pmm3r.js:1:126670)
-    at up (07lhk_q6pmm3r.js:1:127955)
-    at ud (07lhk_q6pmm3r.js:1:126670)
-    at up (07lhk_q6pmm3r.js:1:127053)
-    at ud (07lhk_q6pmm3r.js:1:126670)"
-- ajouter le chat au niveau du challenge "salle secrète"
-- tout les challenges ne démarre qu'une fois le facilitateur/manager démarre le chrono
-- Corrige cette erreur "07lhk_q6pmm3r.js:1 The specified value "NaN" cannot be parsed, or is out of range." je pense qu'on peut la corrige en prenant la durée total des différents challenges séléctioné dans la session
+
+Travaille dans le bon repo, vérifie le diff, lance la validation locale adaptée, corrige toute erreur, puis commit et push uniquement les changements pertinents. Après le push, vérifie que le déploiement est vert et que la page cible reflète bien le changement. Si le build échoue, arrête-toi et corrige avant de pousser.

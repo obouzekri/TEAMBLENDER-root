@@ -1,0 +1,123 @@
+# TEAMSPARK — DONE
+
+> Genere depuis todo.md le 2026-05-11
+
+## Actions terminees
+
+- [x] Documenter le workflow concret futur (dev, test, commit, deploy) - voir `docs/process/WORKFLOW_OPERATIONNEL_FUTUR.md`
+- [x] Auditer les donnees par environnement (dev / preview / production) - automation `catalog:audit:env` en place ; rapport 10/05/2026: production ok(2u/0s/6c), preview ok(1u/0s/6c), dev ok(1u/0s/6c) ; checklist de cloture: `backend/docs/ENV_AUDIT_CLOSURE_CHECKLIST.md`
+- [x] Definir une checklist release obligatoire avant push sur main (backend + frontend) - voir `RELEASE_CHECKLIST_PRE_MAIN.md`
+- [x] Exiger message de commit structure (scope, impact, rollback) pour tout changement deploiement/env - voir `COMMIT_MESSAGE_DEPLOY_ENV_STANDARD.md`
+- [x] Ajouter une regle PR: validation obligatoire en preview Vercel avant merge - voir `PR_PREVIEW_VALIDATION_RULE.md` + `.github/pull_request_template.md`
+- [x] Ajouter une regle PR: verification logs Railway (build + runtime) pour toute modif backend critique - voir `PR_RAILWAY_LOGS_VALIDATION_RULE.md` + `.github/pull_request_template.md`
+- [x] Documenter un flow unique: branche feature -> PR -> preview valide -> merge -> prod - voir `FEATURE_TO_PROD_FLOW.md`
+- [x] Creer une matrice officielle des variables par environnement (dev / preview / production) - voir `ENVIRONMENT_VARIABLES_MATRIX.md` (valeurs dev/preview Railway et vars/secrets GitHub encore a finaliser)
+- [x] Lister les variables critiques bloquantes (JWT_SECRET, DATABASE_URL, NEXT_PUBLIC_API_BASE, ADMIN_RESET_PASSWORD) - voir `CRITICAL_BLOCKING_VARIABLES.md`
+- [x] Ajouter une verification automatique pre-release des variables critiques (script check-env) - voir `backend/scripts/check_env_critical.js` + `backend/package.json` (`npm run check:env`)
+- [x] Definir une convention de nommage des variables et des services Railway/Vercel - voir `NAMING_CONVENTION_RAILWAY_VERCEL.md`
+- [x] Eviter les valeurs vides en production (controle explicite + alerte) - voir `backend/scripts/check_env_critical.js` + `backend/package.json` (`npm run check:env:prod`)
+- [x] Ajouter un template PR avec checklist: tests locaux, preview verifiee, captures, risques, plan rollback - voir `.github/pull_request_template.md`
+- [x] Ajouter un template commit pour changements de config/deploiement - voir `.gitmessage-deploy-env.txt` + `COMMIT_MESSAGE_DEPLOY_ENV_STANDARD.md`
+- [x] Imposer une passe smoke test preview (login, home, session builder, route API test) - voir `PREVIEW_SMOKE_PASS_RULE.md` + `.github/pull_request_template.md` + `frontend-next/package.json` + `backend/package.json`
+- [x] Ajouter un gate de merge: au moins 1 reviewer + checklist process complete - voir `MERGE_GATE_RULE.md` + `.github/pull_request_template.md`
+- [x] Ajouter une procedure de hotfix (branche, validation minimale, communication) - voir `HOTFIX_PROCEDURE.md`
+- [x] Automatiser un smoke test post-deploiement (GET /api/test, OPTIONS /api/auth/login, POST /api/auth/login) via `backend/scripts/smoke_postdeploy_api.js`
+- [x] Ajouter une verification frontend production automatisee (login et redirection vers /home) via `frontend-next/scripts/smoke-login-redirect.mjs`
+- [x] Ajouter un monitoring simple des erreurs 5xx sur Railway (alerte minimale) via `backend/scripts/monitor_api_5xx.js` + workflow `backend/.github/workflows/railway-5xx-monitor.yml`
+- [x] Documenter une procedure rollback claire (frontend + backend) - voir `ROLLBACK_FRONTEND_BACKEND_RUNBOOK.md`
+- [x] Planifier une revue hebdo de fiabilite deploiement (incidents, causes, actions) via workflow `backend/.github/workflows/weekly-reliability-review.yml` + template `RELIABILITY_WEEKLY_REVIEW_TEMPLATE.md`
+- [x] Seed/backfill le catalogue challenges sur preview - 10/05/2026
+- [x] Seed/backfill le catalogue challenges sur dev - 10/05/2026
+- [x] Corriger definitivement la migration legacy des roles Users (cas `manager`/`hr`) - commit e3b4a25, pg_enum check idempotent
+- [x] Relancer un deploiement preview complet et confirmer statut `SUCCESS` + logs propres - 10/05/2026
+- [x] Relancer `catalog:audit:env` et archiver le rapport avec les 3 environnements en statut OK - 10/05/2026 13:28
+- [x] Ajouter un seuil d'acceptation explicite pour go-live (preview/dev/prod avec catalogue challenges non vide ; seuil operationnel TEAMSPARK: 6 challenges minimum)
+- [x] Lancer le smoke test manager + participant apres seed (login, session-builder, participant) sur frontend-next local contre backend preview
+- [x] Configurer les secrets/variables GitHub Actions requis dans backend / frontend-next / frontend pour le release gate et les workflows CI
+- [x] Definir une source de verite unique pour le catalogue challenges: **table Challenges (DB) = catalogue officiel**
+- [x] Formaliser la regle d'architecture: registre fichier = source d'execution uniquement (pas source catalogue)
+- [x] Rediger un runbook operationnel "backfill minimal" (sans implementation) - voir BACKFILL_MINIMAL_RUNBOOK.md
+- [x] Verifier la coherence entre endpoint `GET /api/challenges` et contenu reel de la table Challenges (API prod validee apres backfill: 6 challenges actifs exposes)
+- [x] Identifier et archiver les scripts obsoletes qui ecrivent dans Experience au lieu de Challenges
+- [x] Realiser un backfill minimal de la table Challenges a partir des engines existants (6 engines), puis formaliser le script officiel (execution prod via API OK)
+- [x] Ajouter un smoke test automatisable du session-builder (catalogue visible cote frontend) via `frontend-next/scripts/smoke-session-builder-catalog.mjs`
+- [x] Documenter un runbook migration data local -> Railway (export, import, verification)
+- [x] Ajouter une checklist de verification post-migration: auth admin OK, challenges visibles, creation session OK
+- [x] Ajouter une procedure de restauration des donnees catalogue challenges (backup/restore)
+- [x] Auditer `.env` du backend — aucun secret hardcodé
+- [x] Créer `.env.example` documenté
+- [x] Choisir l'hébergement : frontend Vercel, backend + DB (Railway ou Render)
+- [x] Documenter officiellement: `frontend` = legacy en maintenance corrective minimale
+- [x] Documenter officiellement: `frontend-next` = cible produit pour les nouvelles évolutions
+- [x] Interdire les nouvelles features produit dans legacy (sauf patch critique)
+- [x] Définir un plan de retrait progressif de `frontend` (jalons + critères)
+- [x] Toute nouvelle feature démarre dans `frontend-next`
+- [x] Si endpoint manquant: implémentation backend d'abord, puis intégration Next
+- [x] Définir template de ticket: scope fonctionnel, impact realtime, critères QA
+- [x] Exiger validation locale minimale avant merge (build + scénario utilisateur principal)
+- [x] Ajouter une cadence hebdo de revue migration (avancement, risques, arbitrages)
+- [x] **Modification mot de passe (admin)** — Erreur `Failed to execute 'json' on 'Response': Unexpected end of JSON input`
+- [x] **Création d'utilisateur (admin)** — Le nouvel utilisateur n'apparaît pas immédiatement ; comptes `Testxxxx@mail.com` parasites à supprimer
+- [x] **Formulaire de session** — Le bloc "durée" chevauche le bloc "date"
+- [x] **Responsive mobile** — 375px complèt : session-builder (filterActions, itemActions, header statusSection) + session-live (meta inline → classes CSS, hero-actions pleine largeur, challenge list) + breakpoints 480px globals
+- [x] Valider parity fonctionnelle complète avec le frontend legacy (checklist écran par écran) — **15/15 routes migrées**, admin Next V2 complète (create/edit/delete users/sessions/challenges + validations + recherche + ergonomie globale)
+- [x] **Panel admin** (`/admin`) — V2 complète (create/edit/delete users/sessions/challenges + recherche + validations + ergonomie globale)
+- [x] **Standardiser `getApiUrl`** — audit complet : 100% des appels `fetch()` passent par `getApiUrl()`, dead code `LEGACY_BASE` retiré de `lib/auth.js`, `lib/legacy.js` (URLs legacy, non API) intentionnel
+- [x] Audit des scripts npm pour retirer commandes obsolètes
+- [x] Standardiser les variables d'environnement entre backend et frontend-next (`.env.example`)
+- [x] Supprimer du suivi git tout artefact build résiduel s'il en reste
+- [x] Vérifier et compléter `.gitignore` de `frontend-next` (build/cache)
+- [x] Définir la stratégie de bascule : runbook + go/no-go + rollback définis dans README
+- [x] Frontend Next.js initialisé et build OK
+- [x] Route dynamique challenges en place (`/challenges/[engineKey]`)
+- [x] Intégration realtime challenge côté Next pour les moteurs live
+- [x] Faire une passe QA complète parcours manager sur Next (login, session builder, lancement, challenge live) — 6 engines validés en session recette 188
+- [x] Faire une passe QA complète parcours participant sur Next (join, interaction, score/résultat) — débloqué, page `/participant` Next.js autonome + polling 5s
+- [x] Ouvrir une liste des écarts legacy vs Next — routes migrees, ecarts restants documentes par criticite
+- [x] Corriger les écarts bloquants avant bascule progressive — bloquants adressés (double nav, 404, statuts, liens legacy)
+- [x] Auth manager Next: login OK (`/login` -> `/home`)
+- [x] Home manager Next: accès OK
+- [x] Session builder Next: accès OK (bug `allChallenges is not defined` corrigé)
+- [x] Routes challenge Next testées avec `sessionId` valide
+- [x] Vérifier que la route challenge respecte strictement `engineKey` de l'URL (mismatch runtime géré côté Next)
+- [x] Corriger la redirection participant pour éviter la dépendance à une page legacy non servie
+- [x] Refaire la recette complète participant (login -> session -> interaction -> résultat)
+- [x] Remplacer les derniers liens legacy visibles dans les écrans manager restants
+- [x] Ajouter un scénario de non-régression minimal automatisé (smoke test login manager + session builder)
+- [x] escape_room_v1 — PASS
+- [x] phrase_collaborative_v1 — PASS
+- [x] copuzzle_live_v1 — PASS
+- [x] labyrinthe_live_v1 — PASS
+- [x] icebreaker_v1 — PASS
+- [x] local_page_v1 — PASS (fallback Next sans redirection auto vers legacy)
+- [x] / (landing publique)
+- [x] /login (login.html)
+- [x] /signup (signup.html)
+- [x] /home (home.html)
+- [x] /session-builder (session_view.html)
+- [x] /challenges/[engineKey] (tous les engines)
+- [x] /participant (participant-dashboard.html)
+- [x] /session-live/[sessionId] (facilitator-session.html)
+- [x] /session-results/[sessionId] (session_results.html)
+- [x] /contact (contact.html)
+- [x] /mentions-legales (mentions-legales.html)
+- [x] /politique-confidentialite (politique-confidentialite.html)
+- [x] /admin (admin.html) — V1
+- [x] Home manager : stats live (en cours / à configurer / terminées) + liens contextuels
+- [x] Labels de statut en français partout (home, session-live, session-results)
+- [x] Participant : état "En attente du facilitateur", nom du challenge, polling 5s
+- [x] Session-live : double AppNav corrigé (prop `noNav`)
+- [x] Footer : liens légaux migrés vers routes Next.js (plus de 404)
+- [x] Session-results : page complète manager + participant (stats, résultats par challenge)
+- [x] **Landing page** (`/`) — page publique livree (CTA, exemples challenges, chiffres cles, logos, temoignages)
+- [x] **Page 404 personnalisée** — `app/not-found.js` livrée avec CTA de navigation
+- [x] **Smoke tests E2E** — manager + participant exécutables via `npm run test:smoke` (runs locaux PASS)
+- [x] **Variables d'environnement** — `.env.local.example` enrichi (app + smoke)
+- [x] **Session live : participant count** — fallback `assigned_participants` / `participants` / `members` appliqué
+- [x] **Suppression de session** — bouton ajouté dans /home avec confirmation + appel `DELETE /api/sessions/:id`
+- [x] **Gestion d'erreur globale** — `app/error.js` ajoute avec recovery (`reset`) + CTA de secours
+- [x] **Supprimer dead code** — `app/api/legacy/resolve/route.js` supprime (aucun appel source actif)
+- [x] **Documenter les commandes locales** — section ajoutee dans `README.md` (backend, frontend-next, URLs, checklist debug)
+- [x] Landing page V1 (exemples challenges, chiffres clés, témoignages, logos clients)
+- [x] Déployer `frontend-next` sur Vercel avec les variables d'env de production (`vercel.json` créé, `.env.production.example` documenté, `next.config.mjs` nettoyé — projet Vercel créé, `NEXT_PUBLIC_API_BASE` prod configurée, go/no-go validé)
+- [x] Ajouter un check de release bloquant: "catalogue challenges non vide" avant go-live (workflow CI backend ajouté + script `catalog:check:api` validé; secrets/vars GitHub verrouillés sur tous les environnements cibles)

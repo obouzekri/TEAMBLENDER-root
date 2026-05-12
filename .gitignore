@@ -1,0 +1,45 @@
+# Global .gitignore
+
+# Sub-repos (each has its own git history — ignore to avoid nested repo conflicts)
+backend/
+frontend-next/
+archive/
+safety-backups/
+frontend/
+
+# Runtime
+.venv/
+
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Env files
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# VSCode
+.vscode/
+
+# Coverage
+coverage/
+
+# Others
+*.swp
+*.swo

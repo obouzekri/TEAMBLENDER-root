@@ -1,0 +1,9 @@
+<type>(<scope>): <short summary>
+
+impact:
+- <user/system impact>
+- <main risk>
+
+rollback:
+- <rollback action>
+- <post-rollback verification>

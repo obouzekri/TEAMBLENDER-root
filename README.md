@@ -1,4 +1,4 @@
-﻿# TEAMSPARK - Monorepo
+﻿# TeamBlender - Monorepo
 
 Plateforme professionnelle de team-building pour managers et RH.
 

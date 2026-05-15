@@ -1,4 +1,4 @@
-﻿# TEAMSPARK - Index documentation
+﻿# TeamBlender - Index documentation
 
 Ce dossier centralise la documentation operationnelle, produit et release.
 

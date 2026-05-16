@@ -1,9 +1,9 @@
-﻿# TEAMSPARK — TODO Master
+# TEAMSPARK — TODO Master
 
-> Dernière mise à jour : 12/05/2026
+> Dernière mise à jour : 16/05/2026
 > Objectif lancement MVP : fin juin / début juillet 2026
 
-## Top priorities
+## Priorités immédiates
 
 - [ ] Boucler un flow complet : create session -> launch -> participant join -> play -> results
 - [ ] Garantir une synchro temps réel fiable entre manager et participants
@@ -11,30 +11,23 @@
 - [ ] Créer un mode quick session en moins de 2 clics
 - [ ] Atteindre au moins 8 challenges fonctionnels avec scoring de base
 
----
-
 ## Maintenant
 
 ### Infra & légal go-live
 
 #### Legacy off (frontend archive)
-- [ ] Valider la checklist `docs/checklists/LEGACY_FRONTEND_OFF_CHECKLIST.md` et confirmer `legacy OFF by default`
+- [ ] Finaliser la checklist `docs/checklists/LEGACY_FRONTEND_OFF_CHECKLIST.md` : base archive et docs en place, reste la validation opérationnelle et les garde-fous de déploiement
 
 #### Identité & domaine
-- [ ] Finaliser le logo de la plateforme
-- [ ] Acheter un domaine (OVH ou Namecheap)
 - [ ] Créer un compte Brevo (SMTP) et tester l'envoi email
 
 #### Légal & RGPD
 - [ ] Compléter les placeholders dans les pages légales
-- [x] Vérifier que la suppression utilisateur supprime bien les données (`delete-user.js`)
 - [ ] Ajouter une bannière cookies si de l'analytics est activé
 
 ### Temps réel & synchronisation
 - [ ] Fixer une cible de synchronisation < 500 ms
 - [ ] Documenter un fallback polling si Socket.io est indisponible
-
----
 
 ## Avant go-live
 
@@ -43,7 +36,6 @@
 
 ### Fonctionnalités coeur
 - [ ] Créer une session depuis un template ou une suggestion
-- [x] Afficher la description du challenge pendant la configuration de session
 - [ ] Implémenter la gestion des mots de passe (réinitialisation email)
 - [ ] Implémenter les notifications email (confirmation, invitation)
 
@@ -52,20 +44,11 @@
 - [ ] Ajouter une section logos clients / partenaires
 - [ ] Ajouter une section témoignages
 
----
-
-## Backlog d'idées produit
-
-> Idées de nouveaux challenges : `docs/product/challenge-ideas-backlog.md`
-
----
-
-## Prompts VS Code
+## Technique
 
 ### Backend
 
 #### Structure & clean architecture
-- [x] Créer une ApiError class pour standardiser les erreurs métier
 - [ ] (POST-MVP) Refactoriser l'app Express pour déplacer toute la logique métier vers les services
 - [ ] (POST-MVP) Créer une service layer pour le cycle de vie des sessions
 - [ ] (POST-MVP) Ajouter un middleware centralisé de gestion d'erreurs avec bons statuts HTTP
@@ -74,25 +57,17 @@
 #### Temps réel & synchronisation
 - [ ] Créer endpoint `/sessions/:id/state` (Backend)
   - GET retourne: `{ status, active_challenge_id, current_challenge, position_in_sequence, total_challenges }`
-  - Acceptance: Manager avance → endpoint retourne nouvelle valeur immédiatement
+  - Acceptance: Manager avance -> endpoint retourne nouvelle valeur immédiatement
   - Doc: voir `docs/architecture/SESSION_CHALLENGE_FLOW.md`
 - [ ] Broadcaster changement d'état via Socket.io (Backend)
   - Event: `session:challenge-advanced` quand active_challenge_id change
   - Payload: `{ active_challenge_id, position, name }`
   - Acceptance: Tous les clients connectés reçoivent < 500ms
   - Dépendance: endpoint `/sessions/:id/state` doit exister
-- [ ] Socket manager avec auto-reconnect (Frontend)
-  - Manager: auto-reconnect, buffering d'events, heartbeat
-  - Écoute: `session:launched`, `session:challenge-advanced`
-  - Acceptance: Disconnection → automatic reconnect < 3s
-- [ ] Fallback polling quand Socket échoue (Frontend)
-  - Si Socket disconnect > 3s: poll `/sessions/:id/state` toutes les 5s
-  - Si reconnect: stop polling
-  - Acceptance: Offline → back online → state in sync < 10s
 - [ ] Garantir backend source de vérité
   - Jamais de cache client sans reconciliation
   - À chaque changement d'état: frontend re-fetch depuis backend
-  - Acceptance: Client invalide cache → force refresh → state ok
+  - Acceptance: Client invalide cache -> force refresh -> state ok
 
 #### Résilience réseau
 - [ ] Ajouter une logique de retry pour les opérations API critiques
@@ -163,9 +138,21 @@
 ### Product / business features
 
 #### Pricing & gating
-- [ ] Implémenter du feature gating selon le plan d'abonnement
-- [ ] Restreindre le nombre de participants pour les utilisateurs free
-- [ ] Limiter les challenges disponibles sur le plan free
+- [x] Définir les plans proposés à la création utilisateur
+- [x] Définir le plan par défaut si aucun choix n'est fait
+- [x] Définir les règles de validation du plan sélectionné
+- [x] Définir l'impact du plan choisi sur le feature gating
+- [x] Définir le moment où le choix du plan est présenté à l'utilisateur
+- [x] Définir le libellé affiché pour chaque plan
+- [x] Définir la règle de secours si le plan est absent ou corrompu
+- [x] Définir les cas où le plan peut être changé après création
+- [x] Définir les critères de vérification pour valider le comportement attendu
+- [x] Définir les contenus visibles pour chaque plan
+- [x] Définir les limites fonctionnelles du plan free
+- [x] Définir les limites fonctionnelles des plans payants
+- [x] Définir les messages visibles quand une fonctionnalité est verrouillée
+- [x] Définir les règles de changement de plan après création
+- [x] Définir les cas limites de plan manquant ou invalide
 
 #### Insights
 - [ ] Créer un service de calcul du taux de participation
@@ -201,8 +188,6 @@
 - [ ] Vérifier que le catalogue de challenges n'est pas vide
 - [ ] Valider les variables d'environnement critiques
 
----
-
 ## Post-MVP / Refactorisation
 
 > Items d'architecture et de clean code à traiter après le lancement MVP.
@@ -211,12 +196,8 @@
 ### Backend refactorisation
 
 #### Structure & clean architecture
-- [ ] Refactoriser l'app Express pour déplacer toute la logique métier vers les services
-- [ ] Créer une service layer pour le cycle de vie des sessions
-- [ ] Ajouter un middleware centralisé de gestion d'erreurs avec bons statuts HTTP (converter toutes les erreurs au format ApiError)
-- [ ] Ajouter un middleware `requestId` pour tracer les logs
 - [ ] Ajouter des tests unitaires Jest pour chaque service critique
-- [ ] (POST-MVP) Ajouter `Session.phase` pour workflow multi-étapes (icebreaker → logique → cohésion → debrief)
+- [ ] (POST-MVP) Ajouter `Session.phase` pour workflow multi-étapes (icebreaker -> logique -> cohésion -> debrief)
   - Audit 2026-05-12: `phase` n'existe pas en DB, n'impacte pas MVP
   - `status` + `active_challenge_id` suffisent pour flow MVP
 
@@ -243,7 +224,6 @@
 - [ ] Documenter les patterns d'erreur attendus (ApiError)
 - [ ] Créer un guide de contribution backend + frontend
 
-- le facilitateur/manager peut lancer plusieurs session en parallèle. les données de chanque session doivent être indepedante.
+## Notes produit
 
-
-Travaille dans le bon repo, vérifie le diff, lance la validation locale adaptée, corrige toute erreur, puis commit et push uniquement les changements pertinents. Après le push, vérifie que le déploiement est vert et que la page cible reflète bien le changement. Si le build échoue, arrête-toi et corrige avant de pousser.
+- Le facilitateur/manager peut lancer plusieurs sessions en parallèle. Les données de chaque session doivent rester indépendantes.

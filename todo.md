@@ -1,22 +1,25 @@
 # TEAMSPARK — TODO Master
 
-> Dernière mise à jour : 16/05/2026
+> Dernière mise à jour : 17/05/2026
 > Objectif lancement MVP : fin juin / début juillet 2026
+> Hors MVP : voir `Post-MVP.md`
 
-## Maintenant
-#### Legacy off (frontend archive)
-- [ ] Finaliser la checklist `docs/checklists/LEGACY_FRONTEND_OFF_CHECKLIST.md` : base archive et docs en place, reste la validation opérationnelle et les garde-fous de déploiement
+## 1) Priorité immédiate (MVP)
 
-#### Identité & domaine
+### Ops, conformité, identité
+- [ ] Finaliser la checklist `docs/checklists/LEGACY_FRONTEND_OFF_CHECKLIST.md` (legacy frontend archive)
 - [ ] Créer un compte Brevo (SMTP) et tester l'envoi email
-
-#### Légal & RGPD
 - [ ] Compléter les placeholders dans les pages légales
 - [ ] Ajouter une bannière cookies si de l'analytics est activé
 
-### Temps réel & synchronisation
+### Fiabilité temps réel
+- [ ] Créer un socket manager avec auto-reconnect
+- [ ] Forcer une resynchronisation backend à la reconnexion
 
-## Avant go-live
+### État synchronisation
+- [x] Garantir que le frontend se resynchronise toujours avec l'état backend
+
+## 2) Avant go-live
 
 ### Catalogue & qualité
 - [ ] Atteindre 20 challenges fonctionnels et testés
@@ -31,15 +34,14 @@
 - [ ] Ajouter une section logos clients / partenaires
 - [ ] Ajouter une section témoignages
 
-## Technique
+### Adoption
+- [ ] Ajouter des templates de session prédéfinis
+- [ ] Créer une création de session en un clic
+- [ ] Ajouter un onboarding first-time user
+
+## 3) Technique MVP
 
 ### Backend
-
-#### Structure & clean architecture
-- [ ] (POST-MVP) Refactoriser l'app Express pour déplacer toute la logique métier vers les services
-- [ ] (POST-MVP) Créer une service layer pour le cycle de vie des sessions
-- [ ] (POST-MVP) Ajouter un middleware centralisé de gestion d'erreurs avec bons statuts HTTP
-- [ ] (POST-MVP) Ajouter un middleware `requestId` pour tracer les logs
 
 #### Performance
 - [ ] Optimiser les événements socket pour réduire les émissions inutiles
@@ -54,69 +56,41 @@
 
 ### Frontend Next
 
-#### State & architecture
-- [x] Garantir que le frontend se resynchronise toujours avec l'état backend
-
-#### Temps réel
-- [ ] Créer un socket manager avec auto-reconnect
-- [ ] Forcer une resynchronisation backend à la reconnexion
-
 #### Flow manager
 - [ ] Ajouter un mode "quick session" avec challenges prédéfinis
 - [ ] Créer un dashboard de statut de session pour le manager
 
-### Product / business features
+## 4) Process release
 
-#### Adoption
-- [ ] Ajouter des templates de session prédéfinis
-- [ ] Créer une création de session en un clic
-- [ ] Ajouter un onboarding first-time user
-
-### Workflow
-
-#### Git / PR
+### Git / PR
 - [ ] Garantir que les branches partent de `develop` avant démarrage si cette convention est retenue
 - [ ] Générer des messages de commit avec sections scope / impact / rollback
 - [ ] Valider la preview avant merge de PR
 
-#### Pre-release
+### Pre-release
 - [ ] Lancer un build complet et détecter les erreurs
 - [ ] Vérifier que le catalogue de challenges n'est pas vide
 - [ ] Valider les variables d'environnement critiques
 
-## Notes produit
+## 5) Backlog idées à cadrer
 
-- Le facilitateur/manager peut lancer plusieurs sessions en parallèle. Les données de chaque session doivent rester indépendantes.
+### Contraintes produit
+- [ ] Le facilitateur/manager peut lancer plusieurs sessions en parallèle. Les données de chaque session doivent rester indépendantes.
 
-### phrase acrocheuse
-- Contrairement aux ateliers classiques…”
-“Sans formateur, sans préparation”
-- UI du produit (dashboard, session live)
-Schéma du workflow (avant / pendant / après)
-GIF ou simulation
+### Positionnement & marketing
+- [ ] Clarifier la phrase d'accroche : "Contrairement aux ateliers classiques..." / "Sans formateur, sans préparation"
+- [ ] Préparer visuels de vente : UI produit (dashboard, session live), schéma workflow (avant/pendant/après), GIF ou simulation
 
+### Copuzzle
+- [ ] Finaliser la spec image Copuzzle : 5x5, 240px par pièce, JPEG, idéal < 300 KB (max 500 KB), 1200x1200 px, matrice colonnes=lignes
+- [ ] Aligner les libellés "Activer le time" et "Activer le chat" avec leurs checkboxes dans le formulaire de configuration Copuzzle
 
+### Salle secrète
+- [ ] Ajouter un niveau de difficulté pour l'énigme "salle secrète" ou créer "Salle secrète 2"
+- [ ] Décider si garder la phrase "Les énigmes sont gérées depuis l'administration du challenge."
+- [ ] Corriger le chrono qui n'avance pas côté participants
+- [ ] Ajouter un message de succès quand l'énigme est réussie
 
-La taille de la photo sur copuzzle :
-5x5 → 240px par pièce ✅
-< 300 KB (idéal)
-max 500 KB
-JPEG
- 1200 × 1200 px (carré)
- définir qu'une matrice collone=ligne
-
-
-
-dans le formulaire de configuration de copuzzle le premier, aligner le text Activer le time avec la box.  et aligner également le text activer le chat avec sa checkbox;
-
-Ajoute le niveau de diffuculté pour l'enigme "salle secrète" ou créer un nouveau challenge "Salle secrète 2" plus difficile
-
-à voir à garder ou pas "Les énigmes sont gérées depuis l'administration du challenge." dans salle secrète
-
-LE Chrono n'avance pas pour les participants dans le challenge salle secrète
-
-un petit message pour dire que l'énigme réussit dans salle secrète
-
-Ajouter mot de passe oubliéer
-
-l'admin n'a pas besoin d'approuver un utilisateur nouvellement créer
+### Auth & gestion utilisateurs
+- [ ] Ajouter mot de passe oublié
+- [ ] Supprimer l'approbation admin obligatoire pour un utilisateur nouvellement créé

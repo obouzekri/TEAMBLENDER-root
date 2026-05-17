@@ -123,9 +123,9 @@
 - [x] Simuler plusieurs participants qui rejoignent simultanément
 
 #### Debug tools
-- [ ] Ajouter des logs sur les changements d'état de session
-- [ ] Créer un debug mode montrant l'état temps réel
-- [ ] Logger les événements socket pour le troubleshooting
+- [x] Ajouter des logs sur les changements d'état de session
+- [x] Créer un debug mode montrant l'état temps réel
+- [x] Logger les événements socket pour le troubleshooting
 
 ### Workflow
 

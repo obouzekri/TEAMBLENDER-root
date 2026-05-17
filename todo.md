@@ -103,8 +103,8 @@
 #### Catalogue
 
 #### Runtime
-- [ ] Charger dynamiquement le moteur actif selon `engine_key`
-- [ ] Garantir un reset propre de l'état challenge entre deux sessions
+- [x] Charger dynamiquement le moteur actif selon `engine_key`
+- [x] Garantir un reset propre de l'état challenge entre deux sessions
 
 ### Product / business features
 

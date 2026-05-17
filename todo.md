@@ -3,17 +3,7 @@
 > Dernière mise à jour : 16/05/2026
 > Objectif lancement MVP : fin juin / début juillet 2026
 
-## Priorités immédiates
-
-- [ ] Boucler un flow complet : create session -> launch -> participant join -> play -> results
-- [ ] Garantir une synchro temps réel fiable entre manager et participants
-- [ ] Créer un mode quick session en moins de 2 clics
-- [ ] Atteindre au moins 8 challenges fonctionnels avec scoring de base
-
 ## Maintenant
-
-### Infra & légal go-live
-
 #### Legacy off (frontend archive)
 - [ ] Finaliser la checklist `docs/checklists/LEGACY_FRONTEND_OFF_CHECKLIST.md` : base archive et docs en place, reste la validation opérationnelle et les garde-fous de déploiement
 
@@ -25,8 +15,6 @@
 - [ ] Ajouter une bannière cookies si de l'analytics est activé
 
 ### Temps réel & synchronisation
-- [ ] Fixer une cible de synchronisation < 500 ms
-- [ ] Documenter un fallback polling si Socket.io est indisponible
 
 ## Avant go-live
 
@@ -53,10 +41,6 @@
 - [ ] (POST-MVP) Ajouter un middleware centralisé de gestion d'erreurs avec bons statuts HTTP
 - [ ] (POST-MVP) Ajouter un middleware `requestId` pour tracer les logs
 
-#### Temps réel & synchronisation
-
-#### Résilience réseau
-
 #### Performance
 - [ ] Optimiser les événements socket pour réduire les émissions inutiles
 - [ ] Batcher les mises à jour participants au lieu d'émettre par action
@@ -71,9 +55,7 @@
 ### Frontend Next
 
 #### State & architecture
-- [ ] Créer un state manager centralisé pour l'état de session
-- [ ] Garantir que le frontend se resynchronise toujours avec l'état backend
-- [ ] Refactoriser les appels API dans un client unique
+- [x] Garantir que le frontend se resynchronise toujours avec l'état backend
 
 #### Temps réel
 - [ ] Créer un socket manager avec auto-reconnect
@@ -83,38 +65,12 @@
 - [ ] Ajouter un mode "quick session" avec challenges prédéfinis
 - [ ] Créer un dashboard de statut de session pour le manager
 
-#### Flow participant
-
-#### UX / UI
-- [x] Garantir une seule action primaire par écran
-- [x] Ajouter un feedback visuel sur toutes les actions asynchrones
-- [x] Ajouter un indicateur d'état de connexion (connecté / reconnexion)
-
-#### Synchronisation
-- [ ] Garantir que l'UI reflète l'état backend après chaque interaction
-
-### Challenges
-
-#### Engine system
-
-#### Catalogue
-
-#### Runtime
-
 ### Product / business features
-
-#### Insights
 
 #### Adoption
 - [ ] Ajouter des templates de session prédéfinis
 - [ ] Créer une création de session en un clic
 - [ ] Ajouter un onboarding first-time user
-
-### QA & debug
-
-#### Tests
-
-#### Debug tools
 
 ### Workflow
 
@@ -127,45 +83,6 @@
 - [ ] Lancer un build complet et détecter les erreurs
 - [ ] Vérifier que le catalogue de challenges n'est pas vide
 - [ ] Valider les variables d'environnement critiques
-
-## Post-MVP / Refactorisation
-
-> Items d'architecture et de clean code à traiter après le lancement MVP.
-> Priorité : stabilité produit > qualité code
-
-### Backend refactorisation
-
-#### Résilience réseau avancée
-- [ ] (POST-MVP) Ajouter un support `Idempotency-Key` sur les mutations critiques (POST `/sessions`, PATCH `flow/complete-active`) pour permettre un retry sûr côté client sans risque de double-exécution
-
-#### Structure & clean architecture
-- [ ] Ajouter des tests unitaires Jest pour chaque service critique
-- [ ] (POST-MVP) Ajouter `Session.phase` pour workflow multi-étapes (icebreaker -> logique -> cohésion -> debrief)
-  - Audit 2026-05-12: `phase` n'existe pas en DB, n'impacte pas MVP
-  - `status` + `active_challenge_id` suffisent pour flow MVP
-
-#### Sécurité avancée
-- [ ] Ajouter du rate limiting sur l'API Express
-- [ ] Valider tous les payloads entrants avec des schémas Joi
-- [ ] Ajouter de l'audit logging pour les actions sensibles (création/suppression/modification données sensibles)
-
-#### Observabilité
-- [ ] Mettre en place un système de logging structuré (Winston ou Pino)
-- [ ] Ajouter des métriques de performance (APM)
-- [ ] Dashboard de monitoring Backend + DB
-
-### Frontend refactorisation
-
-#### State management
-- [ ] Créer un state manager centralisé pour l'état de session
-- [ ] Refactoriser les appels API dans un client unique
-- [ ] Ajouter des tests d'intégration pour les flows critiques
-
-### Documentation technique
-
-- [ ] Documenter l'architecture interne backend (flows métier)
-- [ ] Documenter les patterns d'erreur attendus (ApiError)
-- [ ] Créer un guide de contribution backend + frontend
 
 ## Notes produit
 

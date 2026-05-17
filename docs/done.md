@@ -188,3 +188,18 @@
 - [x] Ajouter des logs sur les changements d'état de session
 - [x] Créer un debug mode montrant l'état temps réel
 - [x] Logger les événements socket pour le troubleshooting
+
+## Transfert depuis todo.md (UX + synchronisation) — 2026-05-17
+
+- [x] Garantir une seule action primaire par écran
+- [x] Ajouter un feedback visuel sur toutes les actions asynchrones
+- [x] Ajouter un indicateur d'état de connexion (connecté / reconnexion)
+- [x] Garantir que l'UI reflète l'état backend après chaque interaction
+
+## Transfert depuis todo.md (temps réel renforcé) — 2026-05-17
+
+- [x] Fixer une cible de synchronisation < 500 ms
+- [x] Documenter un fallback polling si Socket.io est indisponible
+
+## Report en Post-MVP — 2026-05-17
+

@@ -84,4 +84,13 @@
 - [ ] Supprimer l'approbation admin obligatoire pour un utilisateur nouvellement créé
 
 ### Mobile
-- [] check UX/UI au niveau de responsive mobile
+- [ ] Check UX/UI au niveau du responsive mobile
+- [ ] Lancer une passe QA visuelle guidee mobile (390x844 et 844x390) sur tous les challenges
+
+### Challenge Mission critique
+
+### Mettre un plateau chacun son rôle: type monopoly
+
+### penser à un challenge detective
+
+### ajouter les modules de paiement

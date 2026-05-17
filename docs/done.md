@@ -122,6 +122,10 @@
 - [x] Déployer `frontend-next` sur Vercel avec les variables d'env de production (`vercel.json` créé, `.env.production.example` documenté, `next.config.mjs` nettoyé — projet Vercel créé, `NEXT_PUBLIC_API_BASE` prod configurée, go/no-go validé)
 - [x] Ajouter un check de release bloquant: "catalogue challenges non vide" avant go-live (workflow CI backend ajouté + script `catalog:check:api` validé; secrets/vars GitHub verrouillés sur tous les environnements cibles)
 
+## Résilience réseau — 2026-05-17
+
+- [x] Retry GET dans `fetchAPI()` — `withRetry()` (3 tentatives, backoff exponentiel 1s→8s) appliqué automatiquement sur GET/HEAD ; POST/PATCH/PUT exclus (non idempotents, risque de double-exécution) ; couvre `fetchSessionState()`, `loadSession()`, chargement participant, runtime-challenge
+
 ## Temps réel & synchronisation — 2026-05-17
 
 - [x] Créer endpoint `/sessions/:id/state` (Backend) — GET retourne `{ status, active_challenge_id, current_challenge, position_in_sequence, total_challenges }` ; acceptance: Manager avance -> endpoint retourne nouvelle valeur immédiatement ; voir `docs/architecture/SESSION_CHALLENGE_FLOW.md`
@@ -137,6 +141,16 @@
 
 - [x] UI participant mise à jour automatiquement sur changement de session — chaîne réactive: `useSessionState` (socket + polling) → `active_challenge_id` change → `fetchRuntime()` → `challengeLink` → `router.push()` auto-redirect ; messages contextuels selon `flowMode` (`En attente du facilitateur` / `Passage automatique en préparation`)
 - [x] États de chargement et feedback sur toutes les interactions — `joining` (écran + bouton) ; `joiningSessionId` (bouton `Connexion...` désactivé) ; `!ready` (loading guard) ; `runtimeError` (message d’erreur) ; `loadingSessions` (spinner ajouté pour la liste des sessions assignées)
+
+## Insights & métriques de session — 2026-05-17
+
+- [x] Générer une vue simple de résumé de session — page `session-results/[sessionId]` avec stats (participants actifs, challenges joués, tentatives, complétées, score moyen) + détail par challenge
+- [x] Afficher des métriques d'engagement après session — score moyen, tentatives, complétées, durée par participant ; endpoint `GET /sessions/:id/results`
+- [x] Créer un service de calcul du taux de participation — `ChallengeResultService.getParticipationRate()` : participants_actifs / participants_invités (via `ParticipantSession`) × 100 ; endpoint `GET /challenge-results/sessions/:id/participation-rate` ; affiché dans la grille de stats de la page résultats
+
+## Challenges — 2026-05-17
+
+- [x] Charger les challenges dynamiquement depuis le backend — `fetchWithRetry(getApiUrl('/challenges'))` dans `SessionBuilder.js` ; header JWT inclus ; normalisation de la réponse (`data`, `data.challenges`, `data.data`) ; fallback mock opt-in via `ENABLE_CHALLENGES_MOCK_DATA` ; gestion 401 avec logout automatique
 
 ## Pricing & gating — 2026-05-17
 

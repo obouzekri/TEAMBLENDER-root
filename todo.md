@@ -56,10 +56,6 @@
 #### Temps réel & synchronisation
 
 #### Résilience réseau
-- [x] Ajouter une logique de retry pour les opérations API critiques
-  - `fetchAPI()` : retry automatique (3 tentatives, backoff 1s→8s) sur GET/HEAD uniquement
-  - POST/PATCH/PUT exclus volontairement — non idempotents, risque de double-exécution
-  - Couvre: `fetchSessionState()`, `loadSession()`, chargement participant, runtime-challenge
 
 #### Performance
 - [ ] Optimiser les événements socket pour réduire les émissions inutiles
@@ -105,9 +101,6 @@
 - [ ] Ajouter un registry qui mappe `engine_key` vers l'implémentation
 
 #### Catalogue
-- [ ] Charger les challenges dynamiquement depuis le backend
-- [ ] Ajouter des filtres par type, durée, difficulté
-- [ ] Limiter les challenges visibles selon le plan utilisateur
 
 #### Runtime
 - [ ] Charger dynamiquement le moteur actif selon `engine_key`
@@ -116,9 +109,6 @@
 ### Product / business features
 
 #### Insights
-- [ ] Créer un service de calcul du taux de participation
-- [ ] Afficher des métriques d'engagement après session
-- [ ] Générer une vue simple de résumé de session
 
 #### Adoption
 - [ ] Ajouter des templates de session prédéfinis

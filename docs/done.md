@@ -169,3 +169,22 @@
 - [x] Définir les messages visibles quand une fonctionnalité est verrouillée
 - [x] Définir les règles de changement de plan après création
 - [x] Définir les cas limites de plan manquant ou invalide
+
+## Transfert depuis todo.md — 2026-05-17
+
+### Challenges
+
+- [x] Implémenter une interface standard de challenge (`init`, `run`, `getResults`)
+- [x] Garantir que tous les challenges suivent le même contrat
+- [x] Ajouter un registry qui mappe `engine_key` vers l'implémentation
+- [x] Charger dynamiquement le moteur actif selon `engine_key`
+- [x] Garantir un reset propre de l'état challenge entre deux sessions
+
+### QA & debug
+
+- [x] Créer des smoke tests pour login, home, création de session
+- [x] Tester le flow complet : create -> launch -> participate -> results
+- [x] Simuler plusieurs participants qui rejoignent simultanément
+- [x] Ajouter des logs sur les changements d'état de session
+- [x] Créer un debug mode montrant l'état temps réel
+- [x] Logger les événements socket pour le troubleshooting

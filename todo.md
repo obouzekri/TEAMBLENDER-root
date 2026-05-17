@@ -12,13 +12,6 @@
 - [ ] Compléter les placeholders dans les pages légales
 - [ ] Ajouter une bannière cookies si de l'analytics est activé
 
-### Fiabilité temps réel
-- [ ] Créer un socket manager avec auto-reconnect
-- [ ] Forcer une resynchronisation backend à la reconnexion
-
-### État synchronisation
-- [x] Garantir que le frontend se resynchronise toujours avec l'état backend
-
 ## 2) Avant go-live
 
 ### Catalogue & qualité
@@ -33,11 +26,6 @@
 - [ ] Ajouter les chiffres clés de la plateforme (nb challenges, nb utilisateurs)
 - [ ] Ajouter une section logos clients / partenaires
 - [ ] Ajouter une section témoignages
-
-### Adoption
-- [ ] Ajouter des templates de session prédéfinis
-- [ ] Créer une création de session en un clic
-- [ ] Ajouter un onboarding first-time user
 
 ## 3) Technique MVP
 
@@ -94,3 +82,6 @@
 ### Auth & gestion utilisateurs
 - [ ] Ajouter mot de passe oublié
 - [ ] Supprimer l'approbation admin obligatoire pour un utilisateur nouvellement créé
+
+### Mobile
+- [] check UX/UI au niveau de responsive mobile

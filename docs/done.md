@@ -201,5 +201,14 @@
 - [x] Fixer une cible de synchronisation < 500 ms
 - [x] Documenter un fallback polling si Socket.io est indisponible
 
+## Transfert depuis todo.md (mise à jour) — 2026-05-17
+
+- [x] Garantir que le frontend se resynchronise toujours avec l'état backend
+
+## Transfert depuis todo.md (fiabilité temps réel) — 2026-05-17
+
+- [x] Créer un socket manager avec auto-reconnect
+- [x] Forcer une resynchronisation backend à la reconnexion
+
 ## Report en Post-MVP — 2026-05-17
 

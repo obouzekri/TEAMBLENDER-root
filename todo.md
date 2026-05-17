@@ -86,9 +86,9 @@
 #### Flow participant
 
 #### UX / UI
-- [ ] Garantir une seule action primaire par écran
-- [ ] Ajouter un feedback visuel sur toutes les actions asynchrones
-- [ ] Ajouter un indicateur d'état de connexion (connecté / reconnexion)
+- [x] Garantir une seule action primaire par écran
+- [x] Ajouter un feedback visuel sur toutes les actions asynchrones
+- [x] Ajouter un indicateur d'état de connexion (connecté / reconnexion)
 
 #### Synchronisation
 - [ ] Garantir que l'UI reflète l'état backend après chaque interaction

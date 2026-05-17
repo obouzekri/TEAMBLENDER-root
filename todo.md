@@ -96,9 +96,9 @@
 ### Challenges
 
 #### Engine system
-- [ ] Implémenter une interface standard de challenge (`init`, `run`, `getResults`)
-- [ ] Garantir que tous les challenges suivent le même contrat
-- [ ] Ajouter un registry qui mappe `engine_key` vers l'implémentation
+- [x] Implémenter une interface standard de challenge (`init`, `run`, `getResults`)
+- [x] Garantir que tous les challenges suivent le même contrat
+- [x] Ajouter un registry qui mappe `engine_key` vers l'implémentation
 
 #### Catalogue
 

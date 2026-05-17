@@ -72,11 +72,6 @@
 - [ ] Valider tous les payloads entrants avec des schémas Joi
 - [ ] Ajouter de l'audit logging pour les actions sensibles
 
-#### QA / scripts
-- [ ] Ajouter un endpoint healthcheck retournant état DB + serveur
-- [ ] Créer un script pour vérifier les variables d'environnement avant démarrage
-- [ ] Ajouter des tests Jest pour le cycle de vie de session et le flow challenge
-
 ### Frontend Next
 
 #### State & architecture
@@ -93,8 +88,6 @@
 - [ ] Créer un dashboard de statut de session pour le manager
 
 #### Flow participant
-- [ ] Garantir que l'UI participant se mette à jour automatiquement sur changement de session
-- [ ] Ajouter des états de chargement et feedback sur toutes les interactions
 
 #### UX / UI
 - [ ] Garantir une seule action primaire par écran

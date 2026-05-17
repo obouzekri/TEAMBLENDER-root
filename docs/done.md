@@ -129,6 +129,14 @@
 - [x] Garantir backend source de vérité — `useSessionState.js`: `session:challenge-advanced` déclenche `fetchSessionState()` (re-fetch complet) ; re-fetch forcé à chaque (re)connexion socket ; fallback polling 5s si socket absent > 3s ; `ChallengeWrapper.js`: re-fetch complet sur event socket
 - [x] Fallback polling si socket échoue — `useSessionState.js`: après 3s de déconnexion, `setInterval` toutes les 5s sur `fetchSessionState()` ; stoppé automatiquement à la reconnexion ; couvert pour tous les consommateurs (`SessionLiveClient`, `ChallengeRouteClient`, `session-live/page.js`)
 - [x] État de session rechargeable à tout moment — `useSessionState.js`: `useEffect` on mount déclenchant `fetchSessionState()` indépendamment du socket ; `refetch` exposé pour usage manuel ; retry GET via `withRetry()` ; endpoint `/sessions/:id/state` retourne l'état complet
+- [x] Endpoint healthcheck avec état DB — `GET /health` et `GET /api/health` retournent `{ status, db }` ; DB ping via `sequelize.authenticate()` ; HTTP 503 si DB inaccessible ; tests mis à jour (`health.test.js`)
+- [x] Script vérification variables d'env — `backend/scripts/check_env_critical.js` + `npm run check:env` / `check:env:prod` (déjà en place, doublon supprimé du todo)
+- [x] Tests Jest cycle de vie de session et flow challenge — couvert par `session_state_endpoint.test.js`, `session_challenge_advanced_sla.test.js`, `session_runtime_challenge.test.js`, `session_create_payload_compat.test.js`
+
+## Flow participant — 2026-05-17
+
+- [x] UI participant mise à jour automatiquement sur changement de session — chaîne réactive: `useSessionState` (socket + polling) → `active_challenge_id` change → `fetchRuntime()` → `challengeLink` → `router.push()` auto-redirect ; messages contextuels selon `flowMode` (`En attente du facilitateur` / `Passage automatique en préparation`)
+- [x] États de chargement et feedback sur toutes les interactions — `joining` (écran + bouton) ; `joiningSessionId` (bouton `Connexion...` désactivé) ; `!ready` (loading guard) ; `runtimeError` (message d’erreur) ; `loadingSessions` (spinner ajouté pour la liste des sessions assignées)
 
 ## Pricing & gating — 2026-05-17
 

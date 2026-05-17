@@ -7,7 +7,6 @@
 
 - [ ] Boucler un flow complet : create session -> launch -> participant join -> play -> results
 - [ ] Garantir une synchro temps réel fiable entre manager et participants
-- [ ] Ajouter un fallback polling pour la résilience
 - [ ] Créer un mode quick session en moins de 2 clics
 - [ ] Atteindre au moins 8 challenges fonctionnels avec scoring de base
 
@@ -55,24 +54,12 @@
 - [ ] (POST-MVP) Ajouter un middleware `requestId` pour tracer les logs
 
 #### Temps réel & synchronisation
-- [ ] Créer endpoint `/sessions/:id/state` (Backend)
-  - GET retourne: `{ status, active_challenge_id, current_challenge, position_in_sequence, total_challenges }`
-  - Acceptance: Manager avance -> endpoint retourne nouvelle valeur immédiatement
-  - Doc: voir `docs/architecture/SESSION_CHALLENGE_FLOW.md`
-- [ ] Broadcaster changement d'état via Socket.io (Backend)
-  - Event: `session:challenge-advanced` quand active_challenge_id change
-  - Payload: `{ active_challenge_id, position, name }`
-  - Acceptance: Tous les clients connectés reçoivent < 500ms
-  - Dépendance: endpoint `/sessions/:id/state` doit exister
-- [ ] Garantir backend source de vérité
-  - Jamais de cache client sans reconciliation
-  - À chaque changement d'état: frontend re-fetch depuis backend
-  - Acceptance: Client invalide cache -> force refresh -> state ok
 
 #### Résilience réseau
-- [ ] Ajouter une logique de retry pour les opérations API critiques
-- [ ] Créer un fallback polling quand la connexion socket échoue
-- [ ] Garantir qu'un état de session puisse être rechargé complètement à tout moment
+- [x] Ajouter une logique de retry pour les opérations API critiques
+  - `fetchAPI()` : retry automatique (3 tentatives, backoff 1s→8s) sur GET/HEAD uniquement
+  - POST/PATCH/PUT exclus volontairement — non idempotents, risque de double-exécution
+  - Couvre: `fetchSessionState()`, `loadSession()`, chargement participant, runtime-challenge
 
 #### Performance
 - [ ] Optimiser les événements socket pour réduire les émissions inutiles
@@ -99,7 +86,6 @@
 
 #### Temps réel
 - [ ] Créer un socket manager avec auto-reconnect
-- [ ] Ajouter un fallback polling si le socket échoue
 - [ ] Forcer une resynchronisation backend à la reconnexion
 
 #### Flow manager
@@ -116,7 +102,6 @@
 - [ ] Ajouter un indicateur d'état de connexion (connecté / reconnexion)
 
 #### Synchronisation
-- [ ] Forcer un rechargement de l'état de session toutes les X secondes en fallback
 - [ ] Garantir que l'UI reflète l'état backend après chaque interaction
 
 ### Challenges
@@ -136,23 +121,6 @@
 - [ ] Garantir un reset propre de l'état challenge entre deux sessions
 
 ### Product / business features
-
-#### Pricing & gating
-- [x] Définir les plans proposés à la création utilisateur
-- [x] Définir le plan par défaut si aucun choix n'est fait
-- [x] Définir les règles de validation du plan sélectionné
-- [x] Définir l'impact du plan choisi sur le feature gating
-- [x] Définir le moment où le choix du plan est présenté à l'utilisateur
-- [x] Définir le libellé affiché pour chaque plan
-- [x] Définir la règle de secours si le plan est absent ou corrompu
-- [x] Définir les cas où le plan peut être changé après création
-- [x] Définir les critères de vérification pour valider le comportement attendu
-- [x] Définir les contenus visibles pour chaque plan
-- [x] Définir les limites fonctionnelles du plan free
-- [x] Définir les limites fonctionnelles des plans payants
-- [x] Définir les messages visibles quand une fonctionnalité est verrouillée
-- [x] Définir les règles de changement de plan après création
-- [x] Définir les cas limites de plan manquant ou invalide
 
 #### Insights
 - [ ] Créer un service de calcul du taux de participation
@@ -195,6 +163,9 @@
 
 ### Backend refactorisation
 
+#### Résilience réseau avancée
+- [ ] (POST-MVP) Ajouter un support `Idempotency-Key` sur les mutations critiques (POST `/sessions`, PATCH `flow/complete-active`) pour permettre un retry sûr côté client sans risque de double-exécution
+
 #### Structure & clean architecture
 - [ ] Ajouter des tests unitaires Jest pour chaque service critique
 - [ ] (POST-MVP) Ajouter `Session.phase` pour workflow multi-étapes (icebreaker -> logique -> cohésion -> debrief)
@@ -227,3 +198,36 @@
 ## Notes produit
 
 - Le facilitateur/manager peut lancer plusieurs sessions en parallèle. Les données de chaque session doivent rester indépendantes.
+
+### phrase acrocheuse
+- Contrairement aux ateliers classiques…”
+“Sans formateur, sans préparation”
+- UI du produit (dashboard, session live)
+Schéma du workflow (avant / pendant / après)
+GIF ou simulation
+
+
+
+La taille de la photo sur copuzzle :
+5x5 → 240px par pièce ✅
+< 300 KB (idéal)
+max 500 KB
+JPEG
+ 1200 × 1200 px (carré)
+ définir qu'une matrice collone=ligne
+
+
+
+dans le formulaire de configuration de copuzzle le premier, aligner le text Activer le time avec la box.  et aligner également le text activer le chat avec sa checkbox;
+
+Ajoute le niveau de diffuculté pour l'enigme "salle secrète" ou créer un nouveau challenge "Salle secrète 2" plus difficile
+
+à voir à garder ou pas "Les énigmes sont gérées depuis l'administration du challenge." dans salle secrète
+
+LE Chrono n'avance pas pour les participants dans le challenge salle secrète
+
+un petit message pour dire que l'énigme réussit dans salle secrète
+
+Ajouter mot de passe oubliéer
+
+l'admin n'a pas besoin d'approuver un utilisateur nouvellement créer

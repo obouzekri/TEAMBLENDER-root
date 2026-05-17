@@ -121,3 +121,29 @@
 - [x] Landing page V1 (exemples challenges, chiffres clés, témoignages, logos clients)
 - [x] Déployer `frontend-next` sur Vercel avec les variables d'env de production (`vercel.json` créé, `.env.production.example` documenté, `next.config.mjs` nettoyé — projet Vercel créé, `NEXT_PUBLIC_API_BASE` prod configurée, go/no-go validé)
 - [x] Ajouter un check de release bloquant: "catalogue challenges non vide" avant go-live (workflow CI backend ajouté + script `catalog:check:api` validé; secrets/vars GitHub verrouillés sur tous les environnements cibles)
+
+## Temps réel & synchronisation — 2026-05-17
+
+- [x] Créer endpoint `/sessions/:id/state` (Backend) — GET retourne `{ status, active_challenge_id, current_challenge, position_in_sequence, total_challenges }` ; acceptance: Manager avance -> endpoint retourne nouvelle valeur immédiatement ; voir `docs/architecture/SESSION_CHALLENGE_FLOW.md`
+- [x] Broadcaster changement d'état via Socket.io (Backend) — event `session:challenge-advanced` ; payload `{ active_challenge_id, position, name }` aligné (`socketio-events.js`) ; SLA < 500ms couvert par `tests/session_challenge_advanced_sla.test.js` (107ms / 86ms mesurés)
+- [x] Garantir backend source de vérité — `useSessionState.js`: `session:challenge-advanced` déclenche `fetchSessionState()` (re-fetch complet) ; re-fetch forcé à chaque (re)connexion socket ; fallback polling 5s si socket absent > 3s ; `ChallengeWrapper.js`: re-fetch complet sur event socket
+- [x] Fallback polling si socket échoue — `useSessionState.js`: après 3s de déconnexion, `setInterval` toutes les 5s sur `fetchSessionState()` ; stoppé automatiquement à la reconnexion ; couvert pour tous les consommateurs (`SessionLiveClient`, `ChallengeRouteClient`, `session-live/page.js`)
+- [x] État de session rechargeable à tout moment — `useSessionState.js`: `useEffect` on mount déclenchant `fetchSessionState()` indépendamment du socket ; `refetch` exposé pour usage manuel ; retry GET via `withRetry()` ; endpoint `/sessions/:id/state` retourne l'état complet
+
+## Pricing & gating — 2026-05-17
+
+- [x] Définir les plans proposés à la création utilisateur
+- [x] Définir le plan par défaut si aucun choix n'est fait
+- [x] Définir les règles de validation du plan sélectionné
+- [x] Définir l'impact du plan choisi sur le feature gating
+- [x] Définir le moment où le choix du plan est présenté à l'utilisateur
+- [x] Définir le libellé affiché pour chaque plan
+- [x] Définir la règle de secours si le plan est absent ou corrompu
+- [x] Définir les cas où le plan peut être changé après création
+- [x] Définir les critères de vérification pour valider le comportement attendu
+- [x] Définir les contenus visibles pour chaque plan
+- [x] Définir les limites fonctionnelles du plan free
+- [x] Définir les limites fonctionnelles des plans payants
+- [x] Définir les messages visibles quand une fonctionnalité est verrouillée
+- [x] Définir les règles de changement de plan après création
+- [x] Définir les cas limites de plan manquant ou invalide

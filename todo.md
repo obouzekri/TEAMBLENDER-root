@@ -118,9 +118,9 @@
 ### QA & debug
 
 #### Tests
-- [ ] Créer des smoke tests pour login, home, création de session
-- [ ] Tester le flow complet : create -> launch -> participate -> results
-- [ ] Simuler plusieurs participants qui rejoignent simultanément
+- [x] Créer des smoke tests pour login, home, création de session
+- [x] Tester le flow complet : create -> launch -> participate -> results
+- [x] Simuler plusieurs participants qui rejoignent simultanément
 
 #### Debug tools
 - [ ] Ajouter des logs sur les changements d'état de session

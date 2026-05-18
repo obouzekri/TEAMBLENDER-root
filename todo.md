@@ -103,8 +103,8 @@
 - [ ] Ajouter un message de succès quand l'énigme est réussie
 
 ### Auth & gestion utilisateurs
-- [ ] Ajouter mot de passe oublié
-- [ ] Supprimer l'approbation admin obligatoire pour un utilisateur nouvellement créé
+- [x] Ajouter mot de passe oublié
+- [x] Supprimer l'approbation admin obligatoire pour un utilisateur nouvellement créé
 
 ### Mobile
 - [ ] Check UX/UI au niveau du responsive mobile
@@ -122,10 +122,3 @@
 
 ### supprimer les branches hors scope
 
-Migrations BD : 2h
-Auth service (register, verify, reset) : 4h
-Endpoints (3 routes) : 2h
-Email templates (3 templates) : 1.5h
-Frontend pages (verify, reset) : 3h
-Testing & edge cases : 2h
-Brevo domain validation : 1h

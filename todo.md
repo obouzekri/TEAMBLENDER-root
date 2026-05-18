@@ -6,9 +6,32 @@
 
 ## 1) Priorité immédiate (MVP)
 
+### Checklist go-live exécutable (backend + Brevo)
+- [ ] 1. Santé API locale
+	- Commande: cd backend ; npm run check:env
+	- PASS si: aucune variable critique manquante
+	- Dernier résultat: FAIL (variables critiques manquantes: JWT_SECRET, DATABASE_URL, NEXT_PUBLIC_API_BASE, ADMIN_RESET_PASSWORD)
+- [x] 2. Test SMTP transactionnel
+	- Commande: cd backend ; npm run smtp:test -- --to admin@teamblender.io
+	- PASS si: accepted=1 et response commence par 250
+	- Dernier résultat: PASS (accepted=1, réponse 250)
+- [x] 3. Monitor domaine Brevo (mode équilibré)
+	- Commande: cd backend ; npm run monitor:brevo:domain
+	- PASS si: ok=true
+	- Dernier résultat: PASS (ok=true)
+- [x] 4. Gate stricte (API + DNS)
+	- Commande: cd backend ; npm run monitor:brevo:domain:strict
+	- PASS si: ok=true
+	- Note: si environnement réseau avec proxy TLS interne, exécuter avec BREVO_MONITOR_ALLOW_INSECURE_TLS=true
+	- Dernier résultat: PASS avec BREVO_MONITOR_ALLOW_INSECURE_TLS=true
+- [ ] 5. Vérification post-check
+	- Action: confirmer dans Brevo que teamblender.io est Authenticated
+	- PASS si: statut Authenticated visible + dernier email de test reçu
+	- Dernier résultat: statut Authenticated confirmé par API Brevo, réception inbox à confirmer manuellement
+
 ### Ops, conformité, identité
 - [ ] Finaliser la checklist `docs/checklists/LEGACY_FRONTEND_OFF_CHECKLIST.md` (legacy frontend archive)
-- [ ] Créer un compte Brevo (SMTP) et tester l'envoi email
+- [x] Créer un compte Brevo (SMTP) et tester l'envoi email
 - [ ] Compléter les placeholders dans les pages légales
 - [ ] Ajouter une bannière cookies si de l'analytics est activé
 
@@ -94,3 +117,7 @@
 ### penser à un challenge detective
 
 ### ajouter les modules de paiement
+
+### voir les différents branches et comprendre
+
+### supprimer les branches hors scope

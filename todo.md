@@ -42,8 +42,8 @@
 
 ### Fonctionnalités coeur
 - [ ] Créer une session depuis un template ou une suggestion
-- [ ] Implémenter la gestion des mots de passe (réinitialisation email)
-- [ ] Implémenter les notifications email (confirmation, invitation)
+- [x] Implémenter la gestion des mots de passe (réinitialisation email)
+- [x] Implémenter les notifications email (confirmation, invitation)
 
 ### Landing page publique
 - [ ] Ajouter les chiffres clés de la plateforme (nb challenges, nb utilisateurs)
@@ -60,9 +60,9 @@
 - [ ] Éviter les écritures DB à chaque interaction mineure
 
 #### Sécurité
-- [ ] Ajouter du rate limiting sur l'API Express
+- [x] Ajouter du rate limiting sur l'API Express
 - [ ] Garantir que toutes les routes protégées exigent une authentification JWT
-- [ ] Valider tous les payloads entrants avec des schémas Joi
+- [x] Valider tous les payloads entrants avec des schémas Joi
 - [ ] Ajouter de l'audit logging pour les actions sensibles
 
 ### Frontend Next
@@ -121,3 +121,11 @@
 ### voir les différents branches et comprendre
 
 ### supprimer les branches hors scope
+
+Migrations BD : 2h
+Auth service (register, verify, reset) : 4h
+Endpoints (3 routes) : 2h
+Email templates (3 templates) : 1.5h
+Frontend pages (verify, reset) : 3h
+Testing & edge cases : 2h
+Brevo domain validation : 1h

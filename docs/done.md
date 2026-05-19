@@ -2,6 +2,19 @@
 
 > Genere depuis todo.md le 2026-05-11
 
+## Transfert depuis todo.md — 2026-05-19
+
+- [x] Test SMTP transactionnel — `backend ; npm run smtp:test -- --to admin@teamblender.io` ; PASS accepted=1, réponse 250
+- [x] Monitor domaine Brevo (mode équilibré) — PASS `ok=true`
+- [x] Gate stricte (API + DNS) — PASS `ok=true` avec `BREVO_MONITOR_ALLOW_INSECURE_TLS=true`
+- [x] Créer un compte Brevo (SMTP) et tester l'envoi email
+- [x] Implémenter la gestion des mots de passe (réinitialisation email)
+- [x] Implémenter les notifications email (confirmation, invitation)
+- [x] Ajouter du rate limiting sur l'API Express
+- [x] Valider tous les payloads entrants avec des schémas Joi
+- [x] Ajouter mot de passe oublié
+- [x] Supprimer l'approbation admin obligatoire pour un utilisateur nouvellement créé
+
 ## Actions terminees
 
 - [x] Documenter le workflow concret futur (dev, test, commit, deploy) - voir `docs/process/WORKFLOW_OPERATIONNEL_FUTUR.md`

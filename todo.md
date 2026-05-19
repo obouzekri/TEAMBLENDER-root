@@ -11,19 +11,6 @@
 	- Commande: cd backend ; npm run check:env
 	- PASS si: aucune variable critique manquante
 	- Dernier résultat: FAIL (variables critiques manquantes: JWT_SECRET, DATABASE_URL, NEXT_PUBLIC_API_BASE, ADMIN_RESET_PASSWORD)
-- [x] 2. Test SMTP transactionnel
-	- Commande: cd backend ; npm run smtp:test -- --to admin@teamblender.io
-	- PASS si: accepted=1 et response commence par 250
-	- Dernier résultat: PASS (accepted=1, réponse 250)
-- [x] 3. Monitor domaine Brevo (mode équilibré)
-	- Commande: cd backend ; npm run monitor:brevo:domain
-	- PASS si: ok=true
-	- Dernier résultat: PASS (ok=true)
-- [x] 4. Gate stricte (API + DNS)
-	- Commande: cd backend ; npm run monitor:brevo:domain:strict
-	- PASS si: ok=true
-	- Note: si environnement réseau avec proxy TLS interne, exécuter avec BREVO_MONITOR_ALLOW_INSECURE_TLS=true
-	- Dernier résultat: PASS avec BREVO_MONITOR_ALLOW_INSECURE_TLS=true
 - [ ] 5. Vérification post-check
 	- Action: confirmer dans Brevo que teamblender.io est Authenticated
 	- PASS si: statut Authenticated visible + dernier email de test reçu
@@ -31,7 +18,6 @@
 
 ### Ops, conformité, identité
 - [ ] Finaliser la checklist `docs/checklists/LEGACY_FRONTEND_OFF_CHECKLIST.md` (legacy frontend archive)
-- [x] Créer un compte Brevo (SMTP) et tester l'envoi email
 - [ ] Compléter les placeholders dans les pages légales
 - [ ] Ajouter une bannière cookies si de l'analytics est activé
 
@@ -42,8 +28,6 @@
 
 ### Fonctionnalités coeur
 - [ ] Créer une session depuis un template ou une suggestion
-- [x] Implémenter la gestion des mots de passe (réinitialisation email)
-- [x] Implémenter les notifications email (confirmation, invitation)
 
 ### Landing page publique
 - [ ] Ajouter les chiffres clés de la plateforme (nb challenges, nb utilisateurs)
@@ -60,9 +44,7 @@
 - [ ] Éviter les écritures DB à chaque interaction mineure
 
 #### Sécurité
-- [x] Ajouter du rate limiting sur l'API Express
 - [ ] Garantir que toutes les routes protégées exigent une authentification JWT
-- [x] Valider tous les payloads entrants avec des schémas Joi
 - [ ] Ajouter de l'audit logging pour les actions sensibles
 
 ### Frontend Next
@@ -103,9 +85,6 @@
 - [ ] Ajouter un message de succès quand l'énigme est réussie
 
 ### Auth & gestion utilisateurs
-- [x] Ajouter mot de passe oublié
-- [x] Supprimer l'approbation admin obligatoire pour un utilisateur nouvellement créé
-
 ### Mobile
 - [ ] Check UX/UI au niveau du responsive mobile
 - [ ] Lancer une passe QA visuelle guidee mobile (390x844 et 844x390) sur tous les challenges
@@ -118,9 +97,9 @@
 
 ### ajouter les modules de paiement
 
-### voir les différents branches et comprendre
 
-### supprimer les branches hors scope
+
+
 
 
 

@@ -2,7 +2,7 @@
 
 Plateforme professionnelle de team-building pour managers et RH.
 
-> Statut: MVP en stabilisation
+> Statut: MVP en stabilisation, documentation synchronisee avec l'etat produit actuel
 > Nom produit de reference: TeamBlender
 
 ## Quick links
@@ -145,3 +145,10 @@ References principales:
 - Roadmap active: `todo.md`
 - Backlog post-MVP: `docs/product/POST_MVP.md`
 - Historique des taches terminees: `docs/done.md`
+
+## 10) Etat produit actuel
+
+- `frontend-next/` reste la cible produit pour les evolutions en cours.
+- `archive/frontend/` reste une archive legacy figee, accessible explicitement seulement.
+- Les elements termines sont archives dans `docs/done.md` pour garder `todo.md` centree sur le travail restant.
+- Les derniers ajustements visibles cote produit concernent surtout la coherence documentaire et la stabilisation des parcours manager, admin et participant.

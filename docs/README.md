@@ -2,6 +2,8 @@
 
 Ce dossier centralise la documentation de reference du projet: produit, architecture, processus, runbooks et historique.
 
+L'etat courant du produit est reflechi ici via les liens vers `../todo.md` et `done.md`, avec `frontend-next/` comme cible produit et `archive/frontend/` comme legacy fige.
+
 ## Quick links
 
 - Workflow principal: `process/FEATURE_TO_PROD_FLOW.md`

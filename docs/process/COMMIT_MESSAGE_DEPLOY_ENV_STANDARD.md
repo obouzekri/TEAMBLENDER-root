@@ -1,4 +1,4 @@
-# TEAMSPARK - Standard message de commit (deploiement / environnement)
+# TeamBlender - Standard message de commit (deploiement / environnement)
 
 Derniere mise a jour: 2026-05-10
 

@@ -1,4 +1,4 @@
-# Snapshot BD TEAMSPARK
+# Snapshot BD TeamBlender
 
 Date du snapshot: 2026-05-09
 Source: PostgreSQL local (DB=postgres, host=localhost:5432)
@@ -45,8 +45,8 @@ Mode: lecture seule (aucune modification)
 ## Users (15 total)
 
 - 107 | admin@admin.com | role admin | approval approved
-- 108 | obouzekri@teamspark.com | role user | approval approved
-- 216 | aseghir@teamspark.com | role user | approval approved
+- 108 | obouzekri@TeamBlender.com | role user | approval approved
+- 216 | aseghir@TeamBlender.com | role user | approval approved
 - 220 | test1778249403261@mail.com | role user | approval pending
 - 221 | testcase1778249403609@mail.com | role user | approval pending
 - 226 | test1778282836535@mail.com | role user | approval pending
@@ -84,9 +84,9 @@ Exemples:
 ### Participants (16)
 
 Exemples:
-- id 182 | Smoke Participant | smoke.participant.1778323054065@teamspark.local | approval approved
-- id 80 | iyad bouzekri | ibouzekri@teamspark.com | approval approved
-- id 81 | lamyae benhlima | lbenhlima@teamspark.com | approval approved
+- id 182 | Smoke Participant | smoke.participant.1778323054065@TeamBlender.local | approval approved
+- id 80 | iyad bouzekri | ibouzekri@TeamBlender.com | approval approved
+- id 81 | lamyae benhlima | lbenhlima@TeamBlender.com | approval approved
 
 ### SessionChallenges (11)
 

@@ -1,4 +1,4 @@
-# TEAMSPARK — DONE
+# TeamBlender — DONE
 
 > Genere depuis todo.md le 2026-05-11
 
@@ -31,7 +31,7 @@
 - [x] Corriger definitivement la migration legacy des roles Users (cas `manager`/`hr`) - commit e3b4a25, pg_enum check idempotent
 - [x] Relancer un deploiement preview complet et confirmer statut `SUCCESS` + logs propres - 10/05/2026
 - [x] Relancer `catalog:audit:env` et archiver le rapport avec les 3 environnements en statut OK - 10/05/2026 13:28
-- [x] Ajouter un seuil d'acceptation explicite pour go-live (preview/dev/prod avec catalogue challenges non vide ; seuil operationnel TEAMSPARK: 6 challenges minimum)
+- [x] Ajouter un seuil d'acceptation explicite pour go-live (preview/dev/prod avec catalogue challenges non vide ; seuil operationnel TeamBlender: 6 challenges minimum)
 - [x] Lancer le smoke test manager + participant apres seed (login, session-builder, participant) sur frontend-next local contre backend preview
 - [x] Configurer les secrets/variables GitHub Actions requis dans backend / frontend-next / frontend pour le release gate et les workflows CI
 - [x] Definir une source de verite unique pour le catalogue challenges: **table Challenges (DB) = catalogue officiel**

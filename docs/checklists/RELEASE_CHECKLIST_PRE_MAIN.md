@@ -1,4 +1,4 @@
-# TEAMSPARK - Checklist release obligatoire avant push sur main
+# TeamBlender - Checklist release obligatoire avant push sur main
 
 Derniere mise a jour: 2026-05-10
 

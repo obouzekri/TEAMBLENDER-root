@@ -1,4 +1,4 @@
-# TEAMSPARK - Regle PR: verification logs Railway obligatoire
+# TeamBlender - Regle PR: verification logs Railway obligatoire
 
 Derniere mise a jour: 2026-05-10
 

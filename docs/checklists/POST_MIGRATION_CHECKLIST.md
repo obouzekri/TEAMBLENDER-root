@@ -1,4 +1,4 @@
-# TEAMSPARK - Checklist verification post-migration
+# TeamBlender - Checklist verification post-migration
 
 Date: 2026-05-10
 

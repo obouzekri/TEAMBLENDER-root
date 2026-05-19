@@ -2,8 +2,8 @@
 
 Plateforme professionnelle de team-building pour managers et RH.
 
-> Statut: MVP en preparation
-> Objectif de lancement: fin juin / debut juillet 2026
+> Statut: MVP en stabilisation
+> Nom produit de reference: TeamBlender
 
 ## Quick links
 
@@ -11,6 +11,7 @@ Plateforme professionnelle de team-building pour managers et RH.
 - Backend API: `backend/README.md`
 - Frontend Next: `frontend-next/README.md`
 - Roadmap active: `todo.md`
+- Backlog post-MVP: `docs/product/POST_MVP.md`
 - Taches terminees: `docs/done.md`
 
 ## 1) Vue d'ensemble
@@ -23,7 +24,7 @@ Ce repository central regroupe:
 
 ## 2) Promesse de valeur
 
-TEAMSPARK renforce la cohesion d'equipe sans logistique lourde.
+TeamBlender renforce la cohesion d'equipe sans logistique lourde.
 
 Valeur livree pour managers et RH:
 - Animer des sessions efficaces en moins d'une heure, du lancement au debrief.
@@ -53,7 +54,7 @@ Indicateurs cibles pour piloter la valeur delivree:
 - Toute nouvelle fonctionnalite demarre dans `frontend-next/`.
 - Si un endpoint manque: implementation backend d'abord, puis integration frontend-next.
 
-## 4) Structure des README (consolidee)
+## 5) Structure des README (consolidee)
 
 | README | Role |
 |---|---|
@@ -66,7 +67,7 @@ Indicateurs cibles pour piloter la valeur delivree:
 
 ### Convention de nommage
 
-- Chaque README indique son scope dans son titre (`TEAMSPARK - <Scope>`).
+- Chaque README indique son scope dans son titre (`TeamBlender - <Scope>` ou equivalent explicite).
 - Les README de reference globale restent nommes `README.md` dans leur dossier.
 - Les guides specifiques non index restent dans un fichier explicite (ex: `readme_creer_nouveau_challenge.md`).
 
@@ -142,4 +143,5 @@ References principales:
 
 - Documentation centralisee: `docs/README.md`
 - Roadmap active: `todo.md`
+- Backlog post-MVP: `docs/product/POST_MVP.md`
 - Historique des taches terminees: `docs/done.md`

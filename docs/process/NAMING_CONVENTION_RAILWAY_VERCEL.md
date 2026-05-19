@@ -1,4 +1,4 @@
-# TEAMSPARK - Convention de nommage Railway / Vercel
+# TeamBlender - Convention de nommage Railway / Vercel
 
 Derniere mise a jour: 2026-05-10
 
@@ -43,27 +43,27 @@ Exemples interdits:
 
 Format recommande:
 
-- backend API: `teamspark-backend-<env>`
-- database: `teamspark-db-<env>`
+- backend API: `TeamBlender-backend-<env>`
+- database: `TeamBlender-db-<env>`
 
 Exemples:
 
-- `teamspark-backend-production`
-- `teamspark-backend-preview`
-- `teamspark-backend-dev`
-- `teamspark-db-production`
+- `TeamBlender-backend-production`
+- `TeamBlender-backend-preview`
+- `TeamBlender-backend-dev`
+- `TeamBlender-db-production`
 
 ## 4) Convention de nommage des projets Vercel
 
 Format recommande:
 
-- frontend next: `teamspark-frontend-next-<env>`
+- frontend next: `TeamBlender-frontend-next-<env>`
 
 Exemples:
 
-- `teamspark-frontend-next-production`
-- `teamspark-frontend-next-preview`
-- `teamspark-frontend-next-dev`
+- `TeamBlender-frontend-next-production`
+- `TeamBlender-frontend-next-preview`
+- `TeamBlender-frontend-next-dev`
 
 ## 5) Convention GitHub Actions (vars/secrets)
 

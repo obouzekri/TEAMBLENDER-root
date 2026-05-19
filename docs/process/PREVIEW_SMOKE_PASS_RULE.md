@@ -1,4 +1,4 @@
-# TEAMSPARK - Regle passe smoke test preview
+# TeamBlender - Regle passe smoke test preview
 
 Derniere mise a jour: 2026-05-10
 

@@ -6,7 +6,7 @@
 
 ## Vue d'ensemble
 
-**"Salle secrète"** est une expérience d'escape room immersive et coopérative intégrée à TEAMSPARK. Les équipes travaillent ensemble pour résoudre 5 énigmes visuelles et interactives en 20 minutes.
+**"Salle secrète"** est une expérience d'escape room immersive et coopérative intégrée à TeamBlender. Les équipes travaillent ensemble pour résoudre 5 énigmes visuelles et interactives en 20 minutes.
 
 - **Type**: Défi coopératif en temps réel
 - **Participants**: 3-10 personnes
@@ -341,4 +341,4 @@ Pour questions/bugs:
 **Version**: 1.0.0  
 **Status**: ✅ Production-Ready  
 **Last updated**: May 6, 2026  
-**Author**: TEAMSPARK Dev Team
+**Author**: TeamBlender Dev Team

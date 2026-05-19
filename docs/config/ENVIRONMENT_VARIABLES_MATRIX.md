@@ -1,4 +1,4 @@
-# TEAMSPARK - Matrice officielle des variables par environnement
+# TeamBlender - Matrice officielle des variables par environnement
 
 Derniere mise a jour: 2026-05-10
 

@@ -1,4 +1,4 @@
-# TEAMSPARK - Procedure rollback frontend + backend
+# TeamBlender - Procedure rollback frontend + backend
 
 Date: 2026-05-10
 

@@ -1,4 +1,4 @@
-# TEAMSPARK - Checklist Legacy Frontend Off
+# TeamBlender - Checklist Legacy Frontend Off
 
 Objectif: garantir que le frontend legacy archive reste non utilise par defaut, tout en restant accessible uniquement sur demande explicite.
 

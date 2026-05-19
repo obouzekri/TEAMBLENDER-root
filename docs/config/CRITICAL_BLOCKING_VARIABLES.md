@@ -1,4 +1,4 @@
-# TEAMSPARK - Variables critiques bloquantes
+# TeamBlender - Variables critiques bloquantes
 
 Derniere mise a jour: 2026-05-10
 

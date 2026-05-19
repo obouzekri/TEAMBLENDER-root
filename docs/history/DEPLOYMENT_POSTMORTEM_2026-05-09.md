@@ -1,4 +1,4 @@
-# TEAMSPARK - Note de stabilisation deploiement
+# TeamBlender - Note de stabilisation deploiement
 
 Date: 09/05/2026
 Perimetre: backend Railway + frontend Vercel (production)
@@ -40,7 +40,7 @@ Cause:
 
 Resolution:
 - Mise a jour de NEXT_PUBLIC_API_BASE vers:
-  https://teamspark-backend-qxe5-production.up.railway.app/api
+  https://TeamBlender-backend-qxe5-production.up.railway.app/api
 - Redeploiement frontend production et validation du flux login.
 
 Prevention:

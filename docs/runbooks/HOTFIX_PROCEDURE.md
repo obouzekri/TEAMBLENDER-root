@@ -1,4 +1,4 @@
-# TEAMSPARK - Procedure hotfix
+# TeamBlender - Procedure hotfix
 
 Derniere mise a jour: 2026-05-10
 

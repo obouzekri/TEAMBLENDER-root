@@ -1,4 +1,4 @@
-# TEAMSPARK - Workflow operationnel futur
+# TeamBlender - Workflow operationnel futur
 
 ## Objectif
 Avoir un process simple, repetable et securise pour:
@@ -52,8 +52,8 @@ Regle simple:
 
 ## Etape A - Creer une branche
 Depuis le repo concerne:
-- backend: `TEAMSPARK-backend`
-- frontend: `TEAMSPARK-frontend-next`
+- backend: `TeamBlender-backend`
+- frontend: `TeamBlender-frontend-next`
 
 Convention suggeree:
 - `feature/<domaine>-<sujet>-YYYYMMDD`
@@ -114,8 +114,8 @@ Checklist pre-commit:
 
 ## Etape F - Deploiement preview
 Backend Railway:
-- verifier deploiement: `railway deployment list --environment preview --service TEAMSPARK-backend-Qxe5 --json`
-- verifier logs: `railway logs --environment preview --service TEAMSPARK-backend-Qxe5 --latest`
+- verifier deploiement: `railway deployment list --environment preview --service TeamBlender-backend-Qxe5 --json`
+- verifier logs: `railway logs --environment preview --service TeamBlender-backend-Qxe5 --latest`
 - verifier sante: `GET /api/health` = 200
 
 Frontend preview:
@@ -216,7 +216,7 @@ Si tu touches auth/sessions/challenges:
 
 ---
 
-## 7) Definition of done (DoD) TEAMSPARK
+## 7) Definition of done (DoD) TeamBlender
 Une tache est "done" seulement si:
 - code merge sur la bonne branche
 - tests critiques verts
@@ -253,9 +253,9 @@ Copier-coller:
 ## B. Checklist jour de release preview
 1. Verifier que la PR est mergee sur main.
 2. Verifier le deploiement Railway preview:
-  - railway deployment list --environment preview --service TEAMSPARK-backend-Qxe5 --json
+  - railway deployment list --environment preview --service TeamBlender-backend-Qxe5 --json
 3. Verifier les logs preview:
-  - railway logs --environment preview --service TEAMSPARK-backend-Qxe5 --latest
+  - railway logs --environment preview --service TeamBlender-backend-Qxe5 --latest
 4. Verifier endpoint sante backend:
   - GET /api/health doit repondre 200
 5. Verifier frontend preview Vercel sur parcours critique:

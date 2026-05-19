@@ -1,4 +1,4 @@
-# TEAMSPARK - Procedure restauration catalogue challenges
+# TeamBlender - Procedure restauration catalogue challenges
 
 Date: 2026-05-10
 

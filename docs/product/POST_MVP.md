@@ -1,4 +1,4 @@
-# TEAMSPARK — POST-MVP
+# TeamBlender — POST-MVP
 
 > Items d'architecture et de clean code à traiter après le lancement MVP.
 > Priorité : stabilité produit > qualité code

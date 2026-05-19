@@ -1,4 +1,4 @@
-# TEAMSPARK - Gate de merge
+# TeamBlender - Gate de merge
 
 Derniere mise a jour: 2026-05-10
 

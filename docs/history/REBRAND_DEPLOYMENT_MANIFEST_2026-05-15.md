@@ -1,15 +1,18 @@
-# 📋 TeamBlender Rebrand - FINAL DEPLOYMENT MANIFEST
+# TeamBlender - Rebrand Deployment Manifest (Archive)
 
-**Project:** TeamBlender (formerly TEAMSPARK)  
+> Archive historique du rebrand TeamBlender -> TeamBlender realise le 2026-05-15.
+> Document conserve pour traçabilite; les procedures actives sont dans `docs/README.md`, `docs/runbooks/` et `docs/checklists/`.
+
+**Project:** TeamBlender (formerly TeamBlender)  
 **Rebrand Date:** 2026-05-15  
-**Status:** ✅ PRODUCTION READY  
-**Sign-off:** Awaiting confirmation
+**Status:** Archived historical record  
+**Sign-off:** Completed
 
 ---
 
 ## 🎯 MISSION COMPLETE
 
-Transform TEAMSPARK → TeamBlender across entire platform with **zero regressions**.
+Transform TeamBlender → TeamBlender across entire platform with **zero regressions**.
 
 ✅ **Result:** 100% complete | 14 commits | 0 breaking changes
 
@@ -36,7 +39,7 @@ Transform TEAMSPARK → TeamBlender across entire platform with **zero regressio
 
 ## 🚀 GIT DEPLOYMENT TRAIL
 
-### Frontend-Next (TEAMSPARK-frontend-next)
+### Frontend-Next (TeamBlender-frontend-next)
 ```
 eb469a2 Remove "Espace public" label
 0e68a79 LOT 1: Rebrand visible text to TeamBlender (17 files)
@@ -47,7 +50,7 @@ eaa525d LOT 4: Harmonize README + smoke test domain
 63747d2 docs: Add comprehensive Go-Live checklist ⭐
 ```
 
-### Backend (TEAMSPARK-backend)
+### Backend (TeamBlender-backend)
 ```
 d4bd9ac LOT 1+2: README, Swagger, landing blocks
 81cb211 LOT 3: Config DB names (dev/test)
@@ -74,7 +77,7 @@ ca5afea LOT 7: Production config + legacy cleanup
 - Support links: All updated
 
 ### ✅ Infrastructure Changes  
-- Database names: teamspark → teamblender
+- Database names: TeamBlender → teamblender
 - Railway services: teamblender-backend-qxe5-*
 - Vercel config: teamblender-frontend-next
 - API scripts: All 9 updated with new URLs
@@ -82,7 +85,7 @@ ca5afea LOT 7: Production config + legacy cleanup
 
 ### ✅ Preserved for Compatibility
 - Routes: All unchanged (/login, /session, /challenges)
-- Storage keys: teamspark_* preserved
+- Storage keys: TeamBlender_* preserved
 - API endpoints: 100% compatible
 - Event namespaces: Unchanged
 - Database schema: Untouched
@@ -141,7 +144,7 @@ git push origin main
 - Routes unchanged: `/login` still works
 - API format identical: Response schema preserved
 - Database schema: No migrations needed
-- Storage: localStorage keys `teamspark_*` untouched
+- Storage: localStorage keys `TeamBlender_*` untouched
 - Events: Socket.io namespaces preserved
 
 ---
@@ -172,14 +175,14 @@ git push origin main
 
 ## 💾 DATABASE MIGRATION PATH
 
-If coming from old TEAMSPARK database:
+If coming from old TeamBlender database:
 
 ```sql
 -- Step 1: Create new database
 CREATE DATABASE teamblender;
 
 -- Step 2: Migrate data (standard PostgreSQL dump/restore)
-pg_dump teamspark | psql teamblender
+pg_dump TeamBlender | psql teamblender
 
 -- Step 3: Update connection string in config
 DB_NAME=teamblender
@@ -251,4 +254,4 @@ Commit SHA for reference: `63747d2` (frontend) + `1ef0781` (backend)
 
 ---
 
-*Generated: 2026-05-15 | Rebrand Project: TEAMSPARK → TeamBlender*
+*Generated: 2026-05-15 | Rebrand Project: TeamBlender → TeamBlender*

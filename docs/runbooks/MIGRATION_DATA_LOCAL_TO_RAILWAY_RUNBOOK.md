@@ -1,4 +1,4 @@
-# TEAMSPARK - Runbook migration data local -> Railway
+# TeamBlender - Runbook migration data local -> Railway
 
 Date: 2026-05-10  
 Scope: migration des donnees applicatives local vers Railway (backend + Postgres)

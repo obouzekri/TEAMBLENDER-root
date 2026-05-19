@@ -1,4 +1,4 @@
-# TEAMSPARK - Charte graphique actuelle
+# TeamBlender - Charte graphique actuelle
 
 ## 1) Perimetre de reference
 

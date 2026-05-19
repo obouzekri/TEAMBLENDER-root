@@ -1,4 +1,4 @@
-# TEAMSPARK - GitHub release gate setup
+# TeamBlender - GitHub release gate setup
 
 Objectif: rendre le gate de release et les workflows CI utilisables en production sur GitHub Actions.
 
@@ -9,9 +9,9 @@ Objectif: rendre le gate de release et les workflows CI utilisables en productio
 
 ## Variables GitHub recommandees
 
-- `CATALOG_API_BASE` = `https://teamspark-backend-qxe5-production.up.railway.app/api`
+- `CATALOG_API_BASE` = `https://TeamBlender-backend-qxe5-production.up.railway.app/api`
 - `CATALOG_ADMIN_EMAIL` = `admin@admin.com`
-- `NEXT_PUBLIC_API_BASE` = `https://teamspark-backend-qxe5-preview.up.railway.app/api` pour les PR preview, puis valeur production au moment du go-live
+- `NEXT_PUBLIC_API_BASE` = `https://TeamBlender-backend-qxe5-preview.up.railway.app/api` pour les PR preview, puis valeur production au moment du go-live
 
 ## Actions a faire dans GitHub
 

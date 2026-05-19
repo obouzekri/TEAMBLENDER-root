@@ -1,4 +1,4 @@
-# TEAMSPARK - Flow unique: feature -> PR -> preview -> merge -> prod
+# TeamBlender - Flow unique: feature -> PR -> preview -> merge -> prod
 
 Derniere mise a jour: 2026-05-10
 

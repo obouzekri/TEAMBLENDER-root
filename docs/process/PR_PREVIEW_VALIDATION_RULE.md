@@ -1,4 +1,4 @@
-# TEAMSPARK - Regle PR: preview Vercel obligatoire avant merge
+# TeamBlender - Regle PR: preview Vercel obligatoire avant merge
 
 Derniere mise a jour: 2026-05-10
 

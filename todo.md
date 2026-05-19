@@ -122,3 +122,14 @@
 
 ### supprimer les branches hors scope
 
+### Actions a recuperer depuis ancienne branche frontend
+- [ ] Session Builder: evaluer et reprendre la proposition de flow creation en ecran unique (sans etape dupliquee)
+- [ ] Session Builder: comparer la refonte du panneau participants (hierarchie visuelle, lisibilite, CTA) avec la version actuelle
+- [ ] Session Builder: revoir les ajustements de layout/CSS globaux lies a la creation de session pour ne garder que les gains UX sans regression
+- [ ] Session Builder: auditer les ajustements de header et de styles participants proposes dans la branche archivee
+- [ ] Manager Home: verifier les retouches UI associees a la branche pour decider ce qui doit etre reintegre proprement
+
+
+
+
+Faire un passe sur les accents et les apostrophe

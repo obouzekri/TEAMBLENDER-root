@@ -74,9 +74,7 @@
 - [ ] Clarifier la phrase d'accroche : "Contrairement aux ateliers classiques..." / "Sans formateur, sans préparation"
 - [ ] Préparer visuels de vente : UI produit (dashboard, session live), schéma workflow (avant/pendant/après), GIF ou simulation
 
-### Copuzzle
-- [ ] Finaliser la spec image Copuzzle : 5x5, 240px par pièce, JPEG, idéal < 300 KB (max 500 KB), 1200x1200 px, matrice colonnes=lignes
-- [ ] Aligner les libellés "Activer le time" et "Activer le chat" avec leurs checkboxes dans le formulaire de configuration Copuzzle
+
 
 ### Salle secrète
 - [ ] Ajouter un niveau de difficulté pour l'énigme "salle secrète" ou créer "Salle secrète 2"
@@ -100,8 +98,13 @@
 
 
 
+### Copuzzle
+- [x] Finaliser la spec image Copuzzle : grille 5x5, 240 px par pièce, JPEG, idéal < 300 KB (max 500 KB), 1200x1200 px.
+- [x] Si utile, afficher la spécification de l'image dans un libellé d'aide (i).
+- [x] Dans le formulaire de matrice, remplacer "colonnes" et "lignes" par un seul champ "taille de matrice".
+- [x] Aligner les libellés "Activer le time" et "Activer le chat" avec leurs checkboxes dans le formulaire de configuration Copuzzle
 
-
+Les tags au niveau de l'espace manager  session builder au niveau des challenges
 
 
 

@@ -2,6 +2,34 @@
 
 > Genere depuis todo.md le 2026-05-11
 
+## Transfert depuis todo.md — 2026-05-20
+
+### Challenge "Vrai ou Mensonge" V1 — Implémentation complète
+
+- [x] JIRA-BE-EPIC-VM-01 — Orchestration backend : machine d'états, round-robin N×3 tours, catalogue fixe, vote individuel, révélation, scoring V1, timeouts, pause/reprise poser disconnect
+- [x] JIRA-BE-VM-01 — État initial `waiting_start` → `selecting_statement` au démarrage, fin en `finished` après N×3 tours
+- [x] JIRA-BE-VM-02 — Ordre round-robin déterministe, chaque participant 3 fois poseur, total = N×3 tours
+- [x] JIRA-BE-VM-03 — Sélection phrase depuis catalogue fixe uniquement, interdiction réutilisation par poseur, zéro saisie libre
+- [x] JIRA-BE-VM-04 — Votes individuels idempotents, modifiables avant révélation, poseur exclu du vote
+- [x] JIRA-BE-VM-05 — Révélation exclusive poseur, verrouillage des votes, timestamp `revealed_at`
+- [x] JIRA-BE-VM-06 — Scoring V1 : vote correct +1, incorrect/absent +0, poseur +0 ; classement final stable avec détection ex-aequo
+- [x] JIRA-BE-VM-07 — Timeouts : sélection auto-fallback, vote non-bloquant, disconnect votant non-bloquant, pause/reprise poser
+- [x] JIRA-FE-EPIC-VM-01 — Composant React `VraiOuMensongeChallenge` couvrant tous les états, actions par rôle, aucun champ libre
+- [x] JIRA-FE-VM-01 — Écran lobby : liste participants, règles courtes, bouton démarrer selon rôle
+- [x] JIRA-FE-VM-02 — Écran poseur sélection : grille catalogue uniquement, confirmation après sélection, aucun champ texte libre
+- [x] JIRA-FE-VM-03 — Écran votants : phrase + identité poseur, Vrai/Mensonge, vote modifiable avant révélation
+- [x] JIRA-FE-VM-04 — Écran poseur révélation : sélection vérité réelle, bouton Révéler irréversible
+- [x] JIRA-FE-VM-05 — Écran résultat tour : vérité affichée, points du tour, score cumulé, transition
+- [x] JIRA-FE-VM-06 — Écran classement final : tous participants, ex-aequo affichés, CTA retour session
+- [x] JIRA-FE-VM-07 — Gestion déconnexion/reconnexion : UI d'attente, reprise d'état sans corruption
+- [x] JIRA-QA-EPIC-VM-01 + VM-01/02 — Tests automatisés Jest backend 8/8 PASS, utilitaires frontend PASS
+- [x] Engine `vrai_ou_mensonge_v1` enregistré dans registry, catalog backfill DB : 12 challenges actifs (`catalog:check` OK)
+- [x] Commits poussés — backend `32237f2`, frontend-next `4233899`, root `d5da0d6` (20/05/2026)
+
+### Pre-release
+
+- [x] Vérifier que le catalogue de challenges n'est pas vide — `catalog:check` : 12 actifs, seuil 8 minimum OK (20/05/2026)
+
 ## Transfert depuis todo.md — 2026-05-19
 
 - [x] Test SMTP transactionnel — `backend ; npm run smtp:test -- --to admin@teamblender.io` ; PASS accepted=1, réponse 250

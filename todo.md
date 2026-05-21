@@ -142,9 +142,10 @@ Derniers lots backend deja pousses (progression continue) :
 - [ ] Mieux presenter formulaire de creation de participants
 
 ### Paiement (mode envisage)
-- [ ] Ne pas bloquer a l'inscription
+- [x] Decision: GO developpement + implementation (21/05/2026)
+- [ ] Ne pas bloquer a l'inscription (enlever du formulaire d'inscription)
 - [ ] Definir paywall progressif apres activation rapide
-	- Exemples de verrou : nombre de missions, nombre de participants, export/scoring
+	- Exemples de verrou : nombre de sessions = 2, nombre de participants = 4.
 - [ ] Definir message de conversion Pro
 - [ ] Implementer paiement Stripe simple et rapide
 

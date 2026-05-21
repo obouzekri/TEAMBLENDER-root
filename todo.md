@@ -123,15 +123,18 @@ Derniers lots backend deja pousses (progression continue) :
 - [ ] Aligner design chrono manager/facilitateur sur phrase mystere
 
 ### Mission critique
-- [ ] Corriger le texte vert cote facilitateur
-- [ ] Compacter layout cote participants (container, colonnes, cards, timeline, chrono)
+- [x] Corriger le texte vert cote facilitateur
+- [x] Compacter layout cote participants (container, colonnes, cards, timeline, chrono)
 
 ### Vrai ou Mensonge
-- [ ] Ameliorer UI pour alignement visuel avec les autres challenges
+- [x] Ameliorer UI pour alignement visuel avec les autres challenges
 
 ### Copuzzle
-- [ ] Ajouter image par defaut + personnalisation
-- [ ] Permettre choix image admin ou import image custom
+- [x] au niveau de la création/modification du challenge au niveau admin permettre  de rajouter des images  
+
+- [x] configuration challenge: Permettre choix des images par defaut + personnalisation
+
+- [x] si aucune configuration par le manager, configuration par défaut contenant une image par défaut, matrice 4, timer actif sur 20 min, chat actif
 
 ## 6) Auth, onboarding et paiement
 
@@ -148,6 +151,8 @@ Derniers lots backend deja pousses (progression continue) :
 	- Exemples de verrou : nombre de sessions = 2, nombre de participants = 4.
 - [ ] Definir message de conversion Pro
 - [ ] Implementer paiement Stripe simple et rapide
+- [] ajouter au niveau de l'admin une page pour le suivi des paiement et au niveau des utilisateurs ..
+- [] ajouter au niveau de paramétre du compte la page manager la partie paiement 
 
 ## 7) Backlog idees a cadrer
 

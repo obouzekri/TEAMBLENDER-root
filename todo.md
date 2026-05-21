@@ -1,211 +1,190 @@
-# TeamBlender — TODO Master
+# TeamBlender - TODO Master
 
-> Dernière mise à jour : 21/05/2026
-> Objectif lancement MVP : fin juin / début juillet 2026
-> Hors MVP : voir `docs/product/POST_MVP.md`
+> Derniere mise a jour : 21/05/2026
+> Objectif lancement MVP : fin juin / debut juillet 2026
+> Hors MVP : docs/product/POST_MVP.md
 
-## 1) Priorité immédiate (MVP)
+## 1) Priorite immediate - Go-live MVP
 
-### Checklist go-live exécutable (backend + Brevo)
-- [ ] 1. Santé API locale
-	- Commande: cd backend ; npm run check:env
-	- PASS si: aucune variable critique manquante
-	- Dernier résultat: FAIL (variables critiques manquantes: JWT_SECRET, DATABASE_URL, NEXT_PUBLIC_API_BASE, ADMIN_RESET_PASSWORD)
-- [ ] 5. Vérification post-check
-	- Action: confirmer dans Brevo que teamblender.io est Authenticated
-	- PASS si: statut Authenticated visible + dernier email de test reçu
-	- Dernier résultat: statut Authenticated confirmé par API Brevo, réception inbox à confirmer manuellement
+### Blocages go-live (a traiter en premier)
+- [ ] Sante API locale
+	- Commande : cd backend ; npm run check:env
+	- PASS si : aucune variable critique manquante
+	- Dernier resultat : FAIL (JWT_SECRET, DATABASE_URL, NEXT_PUBLIC_API_BASE, ADMIN_RESET_PASSWORD)
+- [ ] Verification Brevo post-check
+	- Action : confirmer que teamblender.io est bien Authenticated dans Brevo
+	- PASS si : statut Authenticated visible + dernier email test recu
+	- Dernier resultat : statut Authenticated confirme par API Brevo, reception inbox a confirmer manuellement
 
-### Ops, conformité, identité
-- [ ] Finaliser la checklist `docs/checklists/LEGACY_FRONTEND_OFF_CHECKLIST.md` (legacy frontend archive)
-- [ ] Compléter les placeholders dans les pages légales
-- [ ] Ajouter une bannière cookies si de l'analytics est activé
+### Ops, conformite, legal
+- [ ] Finaliser docs/checklists/LEGACY_FRONTEND_OFF_CHECKLIST.md
+- [ ] Completer les placeholders des pages legales
+- [ ] Ajouter une banniere cookies si analytics active
 
-## 2) Avant go-live
+## 2) Execution technique MVP
 
-### Catalogue & qualité
-- [ ] Atteindre 20 challenges fonctionnels et testés
+### Realtime Socket - chantier principal
+- [ ] Optimiser les evenements socket pour reduire les emissions inutiles
 
-### Fonctionnalités coeur
-- [ ] Créer une session depuis un template ou une suggestion
+#### 2.1 Baseline et mesures
+- [ ] Baseline metriques temps reel (scenario reproductible)
+	- Scenario cible : 1 manager + 3 participants, meme challenge, meme sequence
+	- Evenements suivis : timer.tick, participants.update, session:challenge-advanced, challenge:event
+	- Process : POST /api/diagnostic/realtime-reset -> run before -> checkpoint before -> run after -> checkpoint after -> compare
+	- PASS si : tableau avant/apres complet (volume/min, payload moyen, pic, top events), sans regression fonctionnelle
+	- Dernier resultat : baseline historique capturee, checkpoints memoire a rejouer dans une fenetre unique before/after
+
+#### 2.2 Frontend realtime
+- [ ] Voir historique des actions terminees dans docs/done.md (transfert du 21/05/2026)
+
+#### 2.3 Backend realtime (hygiene broadcasts)
+- [ ] Distinguer room-wide vs emitter-only
+- [ ] Limiter system.message join/rejoin aux transitions visibles
+- [ ] Eviter emissions en cascade pour une meme action
+- [ ] Baisser les emissions room-wide sans perte d'information fonctionnelle
+
+Derniers lots backend deja pousses (progression continue) :
+- a3427e5 - throttle timer ticks in early countdown
+- 1491833 - dedupe timer.state room broadcasts
+- 0be9f29 - dedupe mission state emits per socket
+- a77ef29 - dedupe vom state broadcasts
+- ffa2b8e - dedupe phrase state broadcasts
+- 719e9c5 - dedupe join phrase state broadcast
+
+#### 2.4 Strategie timer temps reel
+- [ ] Definir la source de verite temps cote serveur + contrat d'affichage client
+- [ ] Coalescer/throttler tick global, conserver warning/timeout separes
+- [ ] Valider fluidite manager/participant avec baisse reseau
+
+#### 2.5 Validation et non-regression
+- [ ] Construire checklist QA realtime (join, reconnect, changement challenge, timer, fin)
+- [ ] Comparer mesures avant/apres sur le meme scenario exact
+- [ ] Atteindre reduction cible >= 30% emissions inutiles avec 0 regression bloquante
+
+#### 2.6 Rollout progressif
+- [ ] Prioriser quick wins puis optimisations backend a impact
+- [ ] Documenter contrat socket (qui emet quoi, pour qui, quand)
+- [ ] Valider plan de rollback clair
+
+### Backend - autres points techniques
+- [ ] Batcher davantage les mises a jour participants
+- [ ] Eviter les ecritures DB pour interactions mineures
+
+### Securite
+- [ ] Garantir authentification JWT sur toutes les routes protegees
+- [ ] Ajouter audit logging des actions sensibles
+
+## 3) Produit et fonctionnalites MVP
+
+### Fonctionnalites coeur
+- [ ] Creer une session depuis un template ou une suggestion
+- [ ] Ajouter un mode quick session (manager)
+- [ ] Creer un dashboard de statut de session manager
 
 ### Landing page publique
-- [ ] Ajouter les chiffres clés de la plateforme (nb challenges, nb utilisateurs)
-- [ ] Ajouter une section logos clients / partenaires
-- [ ] Ajouter une section témoignages
+- [ ] Ajouter chiffres cles (nombre challenges, utilisateurs)
+- [ ] Ajouter section logos clients/partenaires
+- [ ] Ajouter section temoignages
 
-## 3) Technique MVP
-
-### Backend
-
-#### Performance
-- [ ] Optimiser les événements socket pour réduire les émissions inutiles
-	- [ ] Baseline métriques temps réel (avant modifs)
-		- Action: mesurer sur une session type reproductible (1 manager + 3 participants, même challenge, même séquence d'actions) sans modifier la mécanique existante
-		- Action: relever pendant la même fenêtre la fréquence des événements émis/reçus par room et par écran critique
-		- Action: suivre les événements bruyants (`timer.tick`, `participants.update`, `session:challenge-advanced`, `challenge:event`) avec leur volume et leur taille de payload
-		- Action: exécuter un run propre via diagnostic (`POST /api/diagnostic/realtime-reset` -> scénario "before" -> `POST /api/diagnostic/realtime-checkpoint/before`), sans modifier le code métier
-		- Action: après optimisations, répéter le même scénario puis capturer `after` et comparer (`POST /api/diagnostic/realtime-checkpoint/after` + `GET /api/diagnostic/realtime-compare?before=before&after=after`)
-		- PASS si: tableau "avant" disponible avec scénario, durée de mesure, nb d'émissions/minute, taille payload moyenne, pic max et top événements les plus fréquents, sans régression fonctionnelle ni changement de comportement observé
-		- Dernier résultat: baseline historique capturée; après redémarrage backend les checkpoints mémoire ont été reset, comparaison historique à rejouer dans une fenêtre unique before/after
-	- [x] Frontend: réduire les émissions et abonnements redondants
-		- Action: définir une source unique de socket côté page manager (éviter connexions multiples concurrentes) sans changer la mécanique métier
-		- Action: supprimer la double émission client de progression challenge quand le backend diffuse déjà l'événement, sans modifier le comportement fonctionnel attendu
-		- Action: lister les listeners dupliqués qui déclenchent plusieurs refetch pour un même événement, sans supprimer de trigger utile
-		- PASS si: 1 seule connexion socket active par écran critique + 1 seul trigger de refresh par événement métier, sans régression visible
-		- Dernier résultat: OK, quick wins livrés et poussés (`a73f2aa`)
-	- [ ] Backend: hygiène des broadcasts room
-		- Action: distinguer les événements utiles au room complet vs uniquement à l'émetteur, sans changer les données reçues par les utilisateurs concernés
-		- Action: limiter les `system.message` de join/rejoin aux transitions réellement visibles pour les utilisateurs, sans retirer un signal nécessaire
-		- Action: éviter les émissions en cascade (`participants.update` successifs pour une même action), en conservant l'état final attendu
-		- PASS si: baisse mesurée des émissions room-wide sans perte d'information fonctionnelle ni changement de mécanique
-		- Dernier résultat: partiel livré (join/rejoin filtré + déduplication `participants.update`), poussé (`58661a4`)
-	- [ ] Stratégie timer temps réel
-		- Action: définir la source de vérité du temps côté serveur et le contrat d'affichage côté clients, sans déplacer la logique métier côté vue
-		- Action: réduire la fréquence de diffusion globale (tick coalescé/throttlé) et envoyer les jalons critiques séparément (warning/timeout), sans changer les seuils ni les transitions
-		- PASS si: chrono perçu fluide côté manager/participants avec moins d'émissions réseau et même comportement fonctionnel
-		- Dernier résultat: partiel livré (garde room vide + anti-duplication `timer.tick`), poussé (`58661a4`)
-	- [ ] Validation & non-régression
-		- Action: construire une checklist QA realtime (join, reconnect, changement de challenge, timer, fin de challenge) couvrant manager et participant
-		- Action: comparer métriques avant/après sur le même scénario, sans changer les entrées de test ni les séquences d'action
-		- PASS si: réduction cible >= 30% des émissions inutiles et 0 régression fonctionnelle bloquante
-	- [ ] Rollout progressif
-		- Action: appliquer d'abord les quick wins frontend, puis les optimisations backend à plus fort impact, en gardant le comportement actuel
-		- Action: documenter les décisions de contrat d'événements socket (qui émet quoi, pour qui, quand) avant toute évolution de mécanique
-		- PASS si: plan de déploiement validé + procédure de rollback claire + aucun changement de contrat non prévu
-- [ ] Batcher les mises à jour participants au lieu d'émettre par action
-- [ ] Éviter les écritures DB à chaque interaction mineure
-
-#### Sécurité
-- [ ] Garantir que toutes les routes protégées exigent une authentification JWT
-- [ ] Ajouter de l'audit logging pour les actions sensibles
-
-### Frontend Next
-
-#### Flow manager
-- [ ] Ajouter un mode "quick session" avec challenges prédéfinis
-- [ ] Créer un dashboard de statut de session pour le manager
+### Catalogue et qualite
+- [ ] Atteindre 20 challenges fonctionnels et testes
 
 ## 4) Process release
 
 ### Git / PR
-- [ ] Garantir que les branches partent de `develop` avant démarrage si cette convention est retenue
-- [ ] Générer des messages de commit avec sections scope / impact / rollback
-- [ ] Valider la preview avant merge de PR
+- [ ] Si convention retenue : garantir depart de branche depuis develop
+- [ ] Standardiser message commit (scope / impact / rollback)
+- [ ] Valider preview avant merge PR
 
 ### Pre-release
-- [ ] Lancer un build complet et détecter les erreurs
-- [x] Vérifier que le catalogue de challenges n'est pas vide — `catalog:check` 12 actifs, OK (20/05/2026)
-- [ ] Valider les variables d'environnement critiques
+- [ ] Lancer build complet et corriger erreurs
+- [ ] Valider variables d'environnement critiques
 
-## 5) Backlog idées à cadrer
+## 5) UX / UI et contenu challenge
 
-### Contraintes produit
-- [ ] Le facilitateur/manager peut lancer plusieurs sessions en parallèle. Les données de chaque session doivent rester indépendantes.
+### General UI/UX
+- [ ] Faire une passe accents et apostrophes
+- [ ] Verifier UX/UI responsive mobile
+- [ ] Lancer QA visuelle mobile guidee (390x844 et 844x390)
 
-### Positionnement & marketing
-- [ ] Clarifier la phrase d'accroche : "Contrairement aux ateliers classiques..." / "Sans formateur, sans préparation"
-- [ ] Préparer visuels de vente : UI produit (dashboard, session live), schéma workflow (avant/pendant/après), GIF ou simulation
+### Phrase collaborative / phrase mystere
+- [ ] Corriger texte formulaire : "Reconstruction collective d une phrase avec informations distribuees"
+- [ ] Supprimer la phrase : "Les options de configuration dependent du type d'activite."
+- [ ] Clarifier configuration templates, faux mots et indices
+- [ ] Revoir couleur texte (bleu + blanc) sur infos timer/slots
+- [ ] Utiliser des phrases tres connues
+- [ ] Corriger la repartition des cases
 
+### Salle secrete
+- [ ] Ajouter niveau de difficulte ou creer "Salle secrete 2"
+- [ ] Decider si la phrase admin des enigmes est conservee
+- [ ] Corriger chrono qui n'avance pas cote participants
+- [ ] Ajouter message de succes en fin d'enigme
+- [ ] Aligner design chrono manager/facilitateur sur phrase mystere
 
+### Mission critique
+- [ ] Corriger le texte vert cote facilitateur
+- [ ] Compacter layout cote participants (container, colonnes, cards, timeline, chrono)
 
-### Salle secrète
-- [ ] Ajouter un niveau de difficulté pour l'énigme "salle secrète" ou créer "Salle secrète 2"
-- [ ] Décider si garder la phrase "Les énigmes sont gérées depuis l'administration du challenge."
-- [ ] Corriger le chrono qui n'avance pas côté participants
-- [ ] Ajouter un message de succès quand l'énigme est réussie
-
-### Auth & gestion utilisateurs
-### Mobile
-- [ ] Check UX/UI au niveau du responsive mobile
-- [ ] Lancer une passe QA visuelle guidee mobile (390x844 et 844x390) sur tous les challenges
-
-### Challenge Mission critique
-
-### Mettre un plateau chacun son rôle: type monopoly
-
-### penser à un challenge detective
-
-### ajouter les modules de paiement
-
-
-
+### Vrai ou Mensonge
+- [ ] Ameliorer UI pour alignement visuel avec les autres challenges
 
 ### Copuzzle
-- [x] Finaliser la spec image Copuzzle : grille 5x5, 240 px par pièce, JPEG, idéal < 300 KB (max 500 KB), 1200x1200 px.
-- [x] Si utile, afficher la spécification de l'image dans un libellé d'aide (i).
-- [x] Dans le formulaire de matrice, remplacer "colonnes" et "lignes" par un seul champ "taille de matrice".
-- [x] Aligner les libellés "Activer le time" et "Activer le chat" avec leurs checkboxes dans le formulaire de configuration Copuzzle
+- [ ] Ajouter image par defaut + personnalisation
+- [ ] Permettre choix image admin ou import image custom
 
+## 6) Auth, onboarding et paiement
 
-Les tags au niveau de l'espace manager  session builder au niveau des challenges
+### Auth et onboarding
+- [ ] Afficher/masquer mot de passe a l'inscription
+- [ ] Renommer "creer session" (login) vers "creer un compte"
+- [ ] Creer des participants au debut de creation de compte
+- [ ] Mieux presenter formulaire de creation de participants
 
+### Paiement (mode envisage)
+- [ ] Ne pas bloquer a l'inscription
+- [ ] Definir paywall progressif apres activation rapide
+	- Exemples de verrou : nombre de missions, nombre de participants, export/scoring
+- [ ] Definir message de conversion Pro
+- [ ] Implementer paiement Stripe simple et rapide
 
+## 7) Backlog idees a cadrer
 
+### Contraintes produit
+- [ ] Supporter plusieurs sessions paralleles par facilitateur avec isolation stricte des donnees
 
-Faire un passe sur les accents et les apostrophe
+### Positionnement / marketing
+- [ ] Clarifier phrase d'accroche ("Contrairement aux ateliers classiques..." / "Sans formateur, sans preparation")
+- [ ] Preparer visuels de vente (dashboard, session live, schema workflow, GIF/demo)
 
+### Idées challenges (parking lot)
+- [ ] Plateau chacun son role (type monopoly)
+- [ ] Challenge detective
+- [ ] Types d'enigmes a explorer :
+	- Elements identiques
+	- Trier les bonbons
+	- Flux robotique
+	- Dessiner une ligne
+	- Blocs puzzle
+	- Mots croises / recherche de mots
+	- Tour de Hanoi
+	- Relier les points
+	- Memoire (fantomes caches)
+	- Liste de courses
+	- Trouver la paire
+	- Passer la balle
+	- Numero de telephone
+	- Code secret
+	- Attention
+	- Scene de crique
+	- Chasse au tresor
+	- Chiffre manquant
+	- Compter les fans
+	- Anagrammes
+	- Trouver l'intrus
+	- Election
 
-Type d'enigme:
-- Elèments identiques
-- Trier les bonbons
-flux robotique
-Dessine une ligne
-blocs puzzle
-Mot croisés
-recherche de mots
-tour de hanoi
-relier les points
-Mémoire:
-- fantôme cachés
-Liste de courses
-trouver la paire
-passer la balle
-Numéro de téléphone
-Code secret
-Attention
-Elements identique
-Scène de crique
-chasse au trèsor
-Chiffre manquant
-Compter les fans
-anagrammes
-Trouver l'intrus
-Election
-
-## 6) Challenge "Vrai ou Mensonge" — IMPLÉMENTÉ ✅ (20/05/2026)
-
-> Tous les tickets Jira (BE, FE, QA) transférés vers `docs/done.md`.
-> Engine `vrai_ou_mensonge_v1` : 8/8 tests Jest PASS, composant React + CSS, catalog backfill OK.
-
-
-
-corriger les accent et apostrophe au niveau du formulaire du challenge  "phrase collaborative" : "Reconstruction collective d une phrase avec informations distribuees."
-supprime cette phrase "Les options de configuration dépendent du type d'activité."
-quelle la configuration des template 
-quelle la configuration de faux mot  et d'indices
-
-Améliore le chrono au niveau du challenge "salle secrète"  au niveau de manager/facilitateur pour qu'il ressemble au chrono actuelle de phrase mystère. 
-
-je pense carrement à mettre le composant (design du chrono) à part et en faire appel à chaque fois ou j'en ai besoin au niveau d'un challenge (l'image en pièce jointe) et le design que je cherche. que pense tu sans rien implémenter.
-Le point clé pour éviter les galères:
-
-Séparer “affichage” et “logique temps”.
-Le composant chrono doit rester surtout visuel, piloté par des entrées claires (durée, temps restant, état, urgence).
-La source de vérité du temps doit rester côté session/challenge (pas dupliquée dans chaque vue), sinon désync manager/participant.
-
-voir mot de passe lors de l'inscription
-modifier créer session pour login vers créer un compte
-
-Module de paiement non pas sur l'inscription 
-Créer des participants au début de la création d'un compte
-formulaire de création de participants à afficher bien 
-sur le filtre affichier les bon paramétres et tags
-enregistrer en bas 
-copuzzle image par défaut, et personnalisation 
-
-reduire la taille des cartes au niveau  du timeline  par phases reduire la taille
-
-La mécanique du jeu vrai ou mensorge me plait mais améliorer UI pour être conforme aux autres challenges
-
-la coleur verte au niveau des texte de la page facilitateur dans le challege "salle secrete"
+### Notes diverses a traiter
+- [ ] Ajouter les bons tags/filtres dans l'espace manager session builder
+- [ ] Informer au moment d'ajout challenge : config par defaut, nb joueurs challenge, nb participants session
+- [ ] Reduire taille des cards timeline par phase

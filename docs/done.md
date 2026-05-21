@@ -2,6 +2,27 @@
 
 > Genere depuis todo.md le 2026-05-11
 
+## Transfert depuis todo.md — 2026-05-21
+
+### Realtime frontend
+
+- [x] Reduire emissions et abonnements redondants
+	- Source unique de socket manager
+	- Suppression de double emission de progression
+	- Nettoyage listeners dupliques
+	- Dernier resultat : quick wins livres et pousses (a73f2aa)
+
+### Pre-release
+
+- [x] Verifier catalogue non vide (catalog:check 12 actifs, OK le 20/05/2026)
+
+### Copuzzle
+
+- [x] Spec image finalisee (5x5, 240px/piece, JPEG, ideal < 300KB, max 500KB, 1200x1200)
+- [x] Aide spec image affichee
+- [x] Champ unique taille de matrice
+- [x] Alignement labels "Activer le time" et "Activer le chat"
+
 ## Transfert depuis todo.md — 2026-05-20
 
 ### Challenge "Vrai ou Mensonge" V1 — Implémentation complète

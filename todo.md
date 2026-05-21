@@ -1,6 +1,6 @@
 # TeamBlender — TODO Master
 
-> Dernière mise à jour : 20/05/2026
+> Dernière mise à jour : 21/05/2026
 > Objectif lancement MVP : fin juin / début juillet 2026
 > Hors MVP : voir `docs/product/POST_MVP.md`
 
@@ -47,20 +47,24 @@
 		- Action: exécuter un run propre via diagnostic (`POST /api/diagnostic/realtime-reset` -> scénario "before" -> `POST /api/diagnostic/realtime-checkpoint/before`), sans modifier le code métier
 		- Action: après optimisations, répéter le même scénario puis capturer `after` et comparer (`POST /api/diagnostic/realtime-checkpoint/after` + `GET /api/diagnostic/realtime-compare?before=before&after=after`)
 		- PASS si: tableau "avant" disponible avec scénario, durée de mesure, nb d'émissions/minute, taille payload moyenne, pic max et top événements les plus fréquents, sans régression fonctionnelle ni changement de comportement observé
-	- [ ] Frontend: réduire les émissions et abonnements redondants
+		- Dernier résultat: baseline historique capturée; après redémarrage backend les checkpoints mémoire ont été reset, comparaison historique à rejouer dans une fenêtre unique before/after
+	- [x] Frontend: réduire les émissions et abonnements redondants
 		- Action: définir une source unique de socket côté page manager (éviter connexions multiples concurrentes) sans changer la mécanique métier
 		- Action: supprimer la double émission client de progression challenge quand le backend diffuse déjà l'événement, sans modifier le comportement fonctionnel attendu
 		- Action: lister les listeners dupliqués qui déclenchent plusieurs refetch pour un même événement, sans supprimer de trigger utile
 		- PASS si: 1 seule connexion socket active par écran critique + 1 seul trigger de refresh par événement métier, sans régression visible
+		- Dernier résultat: OK, quick wins livrés et poussés (`a73f2aa`)
 	- [ ] Backend: hygiène des broadcasts room
 		- Action: distinguer les événements utiles au room complet vs uniquement à l'émetteur, sans changer les données reçues par les utilisateurs concernés
 		- Action: limiter les `system.message` de join/rejoin aux transitions réellement visibles pour les utilisateurs, sans retirer un signal nécessaire
 		- Action: éviter les émissions en cascade (`participants.update` successifs pour une même action), en conservant l'état final attendu
 		- PASS si: baisse mesurée des émissions room-wide sans perte d'information fonctionnelle ni changement de mécanique
+		- Dernier résultat: partiel livré (join/rejoin filtré + déduplication `participants.update`), poussé (`58661a4`)
 	- [ ] Stratégie timer temps réel
 		- Action: définir la source de vérité du temps côté serveur et le contrat d'affichage côté clients, sans déplacer la logique métier côté vue
 		- Action: réduire la fréquence de diffusion globale (tick coalescé/throttlé) et envoyer les jalons critiques séparément (warning/timeout), sans changer les seuils ni les transitions
 		- PASS si: chrono perçu fluide côté manager/participants avec moins d'émissions réseau et même comportement fonctionnel
+		- Dernier résultat: partiel livré (garde room vide + anti-duplication `timer.tick`), poussé (`58661a4`)
 	- [ ] Validation & non-régression
 		- Action: construire une checklist QA realtime (join, reconnect, changement de challenge, timer, fin de challenge) couvrant manager et participant
 		- Action: comparer métriques avant/après sur le même scénario, sans changer les entrées de test ni les séquences d'action
@@ -201,3 +205,7 @@ enregistrer en bas
 copuzzle image par défaut, et personnalisation 
 
 reduire la taille des cartes au niveau  du timeline  par phases reduire la taille
+
+La mécanique du jeu vrai ou mensorge me plait mais améliorer UI pour être conforme aux autres challenges
+
+la coleur verte au niveau des texte de la page facilitateur dans le challege "salle secrete"

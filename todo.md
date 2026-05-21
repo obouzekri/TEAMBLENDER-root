@@ -136,8 +136,8 @@ Derniers lots backend deja pousses (progression continue) :
 ## 6) Auth, onboarding et paiement
 
 ### Auth et onboarding
-- [ ] Afficher/masquer mot de passe a l'inscription
-- [ ] Renommer "creer session" (login) vers "creer un compte"
+- [x] Afficher/masquer mot de passe a l'inscription
+- [x] Renommer "creer session" vers "creer un compte"
 - [ ] Creer des participants au debut de creation de compte
 - [ ] Mieux presenter formulaire de creation de participants
 

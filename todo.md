@@ -57,7 +57,8 @@
 ### Securite
 - [x] Garantir authentification JWT sur toutes les routes protegees
 	- Dernier resultat : PASS sur audit routes Express + patch `/api/landing-content/admin` et `/api/diagnostic/*` + test `protected.test.js` vert (22/05/2026)
-- [ ] Ajouter audit logging des actions sensibles
+- [x] Ajouter audit logging des actions sensibles
+	- Dernier resultat : middleware `auditAction` ajoute + branchement sur mutations sensibles `users`, `sessions`, `participants` ; logs structures `security.audit_action` (trace_id, actor, target, status, duration, body filtre) ; test `session_rbac.test.js` PASS (22/05/2026)
 - [ ] Affiner RBAC route par route (admin / user / participant)
 	- Dernier resultat : routes mutation `sessions` verrouillees pour `admin/user` + ownership retabli sur `active-challenge` et `complete-active` + tests `session_rbac` et `session_state_endpoint` verts (22/05/2026)
 
@@ -159,5 +160,4 @@
 - [ ] Informer au moment d'ajout challenge : config par defaut, nb joueurs challenge, nb participants session
 - [ ] Reduire taille des cards timeline par phase
 
-- Mettre le logo au niveau de footer
-- Mettre le logo au niveau de icône de la page maintenant il y 'a juste l'cône grise de la terre
+

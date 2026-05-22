@@ -6,6 +6,12 @@
 
 ### Backend securite et monitoring
 
+- [x] Ajouter audit logging des actions sensibles
+	- Middleware: `backend/src/middlewares/auditAction.js`
+	- Couverture initiale: routes mutation sensibles `users`, `sessions`, `participants`
+	- Format log: `security.audit_action` (trace_id, action, actor, target, status_code, success, duration_ms, body filtre)
+	- Validation: `backend ; npm test -- session_rbac.test.js --runInBand` PASS
+
 - [x] Verrouiller JWT sur `/api/landing-content/admin`
 	- Middleware route: `auth + rbac(['admin'])`
 	- Fichiers: `backend/src/routes/landing-content.route.js`, `backend/src/controllers/landing-content.controller.js`

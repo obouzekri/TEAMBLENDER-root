@@ -60,7 +60,7 @@
 - [x] Ajouter audit logging des actions sensibles
 	- Dernier resultat : middleware `auditAction` ajoute + branchement sur mutations sensibles `users`, `sessions`, `participants` ; logs structures `security.audit_action` (trace_id, actor, target, status, duration, body filtre) ; test `session_rbac.test.js` PASS (22/05/2026)
 - [ ] Affiner RBAC route par route (admin / user / participant)
-	- Dernier resultat : routes mutation `sessions` verrouillees pour `admin/user` + ownership retabli sur `active-challenge` et `complete-active` + lectures sensibles `sessions` (`GET /sessions`, `GET /sessions/:id`) verrouillees `admin/user` + routes management `participants` verrouillees `admin/user` (liste, detail, update, delete, assign/unassign) + tests `session_rbac` et `participant_rbac` verts (22/05/2026)
+	- Dernier resultat : routes mutation `sessions` verrouillees pour `admin/user` + ownership retabli sur `active-challenge` et `complete-active` + lectures sensibles `sessions` (`GET /sessions`, `GET /sessions/:id`) verrouillees `admin/user` + routes `state/runtime` explicitement bornees `admin/user/participant` + routes management `participants` verrouillees `admin/user` (liste, detail, update, delete, assign/unassign) + tests `session_rbac`, `participant_rbac` et `protected` verts (22/05/2026)
 
 ## 3) Produit et fonctionnalites MVP
 
@@ -163,3 +163,5 @@
 
 - agrandir la taille * 2 du logo au niveau du footer
 - corriger les accents sur la page session builder notamment sur le boutton créer la session
+- au niveau de session builder une fois je click sur un participant pour l'asigné à la session la page asignation comme si elle se recharge ( chargement des participant) mais les données reste bien.
+quand j'essaie de créer la session j'ai ce message "Cannot read properties of null (reading 'max_sessions_per_month')"

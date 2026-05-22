@@ -39,6 +39,9 @@
 - [x] Durcir RBAC sur lectures sensibles des sessions
 	- Routes protegees `admin/user`: `GET /api/sessions`, `GET /api/sessions/:id`
 	- Validation: `backend ; npm test -- session_rbac.test.js --runInBand` PASS
+- [x] Borner explicitement RBAC sur endpoints session state/runtime
+	- Routes bornees `admin/user/participant`: `GET /api/sessions/:id/state`, `GET /api/sessions/:id/runtime-challenge`
+	- Validation: `backend ; npm test -- protected.test.js --runInBand` PASS
 
 ### Backend realtime (hygiene broadcasts)
 

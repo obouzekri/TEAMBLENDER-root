@@ -11,6 +11,10 @@
 	- Commande : cd backend ; npm run check:env
 	- PASS si : aucune variable critique manquante
 	- Dernier resultat : FAIL (JWT_SECRET, DATABASE_URL, NEXT_PUBLIC_API_BASE, ADMIN_RESET_PASSWORD)
+- [x] Monitor leger de sante applicative prod
+	- Commande : cd backend ; npm run monitor:health
+	- Checks : /api/direct-test, /api/test, /api/health, /api/auth/login
+	- Dernier resultat : PASS en prod (22/05/2026)
 - [ ] Verification Brevo post-check
 	- Action : confirmer que teamblender.io est bien Authenticated dans Brevo
 	- PASS si : statut Authenticated visible + dernier email test recu
@@ -51,8 +55,11 @@
 - [ ] Valider plan de rollback clair
 
 ### Securite
-- [ ] Garantir authentification JWT sur toutes les routes protegees
+- [x] Garantir authentification JWT sur toutes les routes protegees
+	- Dernier resultat : PASS sur audit routes Express + patch `/api/landing-content/admin` et `/api/diagnostic/*` + test `protected.test.js` vert (22/05/2026)
 - [ ] Ajouter audit logging des actions sensibles
+- [ ] Affiner RBAC route par route (admin / user / participant)
+	- Dernier resultat : routes mutation `sessions` verrouillees pour `admin/user` + ownership retabli sur `active-challenge` et `complete-active` + tests `session_rbac` et `session_state_endpoint` verts (22/05/2026)
 
 ## 3) Produit et fonctionnalites MVP
 
@@ -152,4 +159,5 @@
 - [ ] Informer au moment d'ajout challenge : config par defaut, nb joueurs challenge, nb participants session
 - [ ] Reduire taille des cards timeline par phase
 
-- réduire la taille des chiffres qui sont dans le chrono
+- Mettre le logo au niveau de footer
+- Mettre le logo au niveau de icône de la page maintenant il y 'a juste l'cône grise de la terre

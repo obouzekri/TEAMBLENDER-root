@@ -4,6 +4,30 @@
 
 ## Transfert depuis todo.md — 2026-05-22
 
+### Backend securite et monitoring
+
+- [x] Verrouiller JWT sur `/api/landing-content/admin`
+	- Middleware route: `auth + rbac(['admin'])`
+	- Fichiers: `backend/src/routes/landing-content.route.js`, `backend/src/controllers/landing-content.controller.js`
+- [x] Verrouiller JWT sur `/api/diagnostic/*`
+	- Protection globale routeur: `auth + rbac(['admin'])`
+	- Fichier: `backend/src/routes/diagnostic.route.js`
+- [x] Ajouter tests de non-regression d'acces anonyme
+	- Validation: `backend ; npm test -- protected.test.js` PASS
+	- Fichier: `backend/tests/protected.test.js`
+- [x] Ajouter un monitor leger de sante applicative
+	- Script: `backend/scripts/monitor_health.js`
+	- NPM: `backend/package.json` -> `npm run monitor:health`
+	- Validation: checks prod OK (`direct-test`, `test`, `health`, `auth/login`)
+- [x] Planifier le monitor sante via GitHub Actions
+	- Workflow: `backend/.github/workflows/railway-health-monitor.yml`
+	- Cadence: toutes les 15 minutes + lancement manuel
+- [x] Durcir RBAC sur les mutations de session
+	- Routes protegees `admin/user`: creation, update, delete, phase, config, active-challenge, complete-active
+	- Ownership retabli dans `setActiveChallenge` et `completeActiveChallenge`
+	- Validation: `backend ; npm test -- session_rbac.test.js` PASS
+	- Non-regression adjacente: `backend ; npm test -- session_state_endpoint.test.js` PASS
+
 ### Backend realtime (hygiene broadcasts)
 
 - [x] Distinguer room-wide vs emitter-only

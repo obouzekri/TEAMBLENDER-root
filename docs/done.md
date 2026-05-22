@@ -2,6 +2,39 @@
 
 > Genere depuis todo.md le 2026-05-11
 
+## Transfert depuis todo.md — 2026-05-22
+
+### Backend realtime (hygiene broadcasts)
+
+- [x] Distinguer room-wide vs emitter-only
+- [x] Limiter system.message join/rejoin aux transitions visibles
+- [x] Eviter emissions en cascade pour une meme action
+- [x] Baisser les emissions room-wide sans perte d'information fonctionnelle
+- [x] Lot pousse: bf42f4e - hygiene challenge broadcasts and reduced cascades
+
+### Backend - autres points techniques
+
+- [x] Batcher davantage les mises a jour participants
+	- Coalescing renforce sur participants.update (delay configurable, max wait, min interval)
+	- Fichier: backend/server.js
+- [x] Eviter les ecritures DB pour interactions mineures
+	- Filtrage des evenements low-value (heartbeat/tick/presence/debug) avant persistence challenge-results
+	- Skip save si metadata/event ne change pas les donnees utiles
+	- Fichier: backend/src/services/challenge-result.service.js
+	- Validation: tests backend cibles PASS (challenge-result, phrase_realtime_events, vrai_ou_mensonge_logic, mission_critique_logic)
+
+Historique des lots deja pousses (progression continue) :
+- [x] a3427e5 - throttle timer ticks in early countdown
+- [x] 1491833 - dedupe timer.state room broadcasts
+- [x] 0be9f29 - dedupe mission state emits per socket
+- [x] a77ef29 - dedupe vom state broadcasts
+- [x] ffa2b8e - dedupe phrase state broadcasts
+- [x] 719e9c5 - dedupe join phrase state broadcast
+
+### Paiement (mode envisage)
+
+- [x] Decision: GO developpement + implementation (21/05/2026)
+
 ## Transfert depuis todo.md — 2026-05-21
 
 ### Realtime frontend

@@ -1,6 +1,6 @@
 # TeamBlender - TODO Master
 
-> Derniere mise a jour : 21/05/2026
+> Derniere mise a jour : 22/05/2026
 > Objectif lancement MVP : fin juin / debut juillet 2026
 > Hors MVP : docs/product/POST_MVP.md
 
@@ -34,22 +34,6 @@
 	- PASS si : tableau avant/apres complet (volume/min, payload moyen, pic, top events), sans regression fonctionnelle
 	- Dernier resultat : baseline historique capturee, checkpoints memoire a rejouer dans une fenetre unique before/after
 
-#### 2.2 Frontend realtime
-- [ ] Voir historique des actions terminees dans docs/done.md (transfert du 21/05/2026)
-
-#### 2.3 Backend realtime (hygiene broadcasts)
-- [ ] Distinguer room-wide vs emitter-only
-- [ ] Limiter system.message join/rejoin aux transitions visibles
-- [ ] Eviter emissions en cascade pour une meme action
-- [ ] Baisser les emissions room-wide sans perte d'information fonctionnelle
-
-Derniers lots backend deja pousses (progression continue) :
-- a3427e5 - throttle timer ticks in early countdown
-- 1491833 - dedupe timer.state room broadcasts
-- 0be9f29 - dedupe mission state emits per socket
-- a77ef29 - dedupe vom state broadcasts
-- ffa2b8e - dedupe phrase state broadcasts
-- 719e9c5 - dedupe join phrase state broadcast
 
 #### 2.4 Strategie timer temps reel
 - [ ] Definir la source de verite temps cote serveur + contrat d'affichage client
@@ -65,10 +49,6 @@ Derniers lots backend deja pousses (progression continue) :
 - [ ] Prioriser quick wins puis optimisations backend a impact
 - [ ] Documenter contrat socket (qui emet quoi, pour qui, quand)
 - [ ] Valider plan de rollback clair
-
-### Backend - autres points techniques
-- [ ] Batcher davantage les mises a jour participants
-- [ ] Eviter les ecritures DB pour interactions mineures
 
 ### Securite
 - [ ] Garantir authentification JWT sur toutes les routes protegees
@@ -107,45 +87,21 @@ Derniers lots backend deja pousses (progression continue) :
 - [ ] Verifier UX/UI responsive mobile
 - [ ] Lancer QA visuelle mobile guidee (390x844 et 844x390)
 
-### Phrase collaborative / phrase mystere
-- [ ] Corriger texte formulaire : "Reconstruction collective d une phrase avec informations distribuees"
-- [ ] Supprimer la phrase : "Les options de configuration dependent du type d'activite."
-- [ ] Clarifier configuration templates, faux mots et indices
-- [ ] Revoir couleur texte (bleu + blanc) sur infos timer/slots
-- [ ] Utiliser des phrases tres connues
-- [ ] Corriger la repartition des cases
+
 
 ### Salle secrete
-- [ ] Ajouter niveau de difficulte ou creer "Salle secrete 2"
-- [ ] Decider si la phrase admin des enigmes est conservee
+
 - [ ] Corriger chrono qui n'avance pas cote participants
 - [ ] Ajouter message de succes en fin d'enigme
-- [ ] Aligner design chrono manager/facilitateur sur phrase mystere
 
-### Mission critique
-- [x] Corriger le texte vert cote facilitateur
-- [x] Compacter layout cote participants (container, colonnes, cards, timeline, chrono)
-
-### Vrai ou Mensonge
-- [x] Ameliorer UI pour alignement visuel avec les autres challenges
-
-### Copuzzle
-- [x] au niveau de la création/modification du challenge au niveau admin permettre  de rajouter des images  
-
-- [x] configuration challenge: Permettre choix des images par defaut + personnalisation
-
-- [x] si aucune configuration par le manager, configuration par défaut contenant une image par défaut, matrice 4, timer actif sur 20 min, chat actif
 
 ## 6) Auth, onboarding et paiement
 
 ### Auth et onboarding
-- [x] Afficher/masquer mot de passe a l'inscription
-- [x] Renommer "creer session" vers "creer un compte"
-- [ ] Creer des participants au debut de creation de compte
+
 - [ ] Mieux presenter formulaire de creation de participants
 
 ### Paiement (mode envisage)
-- [x] Decision: GO developpement + implementation (21/05/2026)
 - [ ] Ne pas bloquer a l'inscription (enlever du formulaire d'inscription)
 - [ ] Definir paywall progressif apres activation rapide
 	- Exemples de verrou : nombre de sessions = 2, nombre de participants = 4.
@@ -196,7 +152,4 @@ Derniers lots backend deja pousses (progression continue) :
 - [ ] Informer au moment d'ajout challenge : config par defaut, nb joueurs challenge, nb participants session
 - [ ] Reduire taille des cards timeline par phase
 
-pour le challenge mission critique
-mettre pour chaque action un chiffre A1, A2, .... a coté de la description  au niveau du backlog exemple  A1: valider le périmotre, A2: fixe la date, ...
-enlève le sous paraphrape avec dependences 
-et au niveau du timeline mettre les blocs Cadrage, preparation, .. d'une manière horizontale et quand on glisse une action il y'a que le A1, A2 qui s'affiche,
+- réduire la taille des chiffres qui sont dans le chrono

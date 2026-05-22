@@ -156,6 +156,7 @@ Derniers lots backend deja pousses (progression continue) :
 
 ## 7) Backlog idees a cadrer
 
+
 ### Contraintes produit
 - [ ] Supporter plusieurs sessions paralleles par facilitateur avec isolation stricte des donnees
 
@@ -194,3 +195,8 @@ Derniers lots backend deja pousses (progression continue) :
 - [ ] Ajouter les bons tags/filtres dans l'espace manager session builder
 - [ ] Informer au moment d'ajout challenge : config par defaut, nb joueurs challenge, nb participants session
 - [ ] Reduire taille des cards timeline par phase
+
+pour le challenge mission critique
+mettre pour chaque action un chiffre A1, A2, .... a coté de la description  au niveau du backlog exemple  A1: valider le périmotre, A2: fixe la date, ...
+enlève le sous paraphrape avec dependences 
+et au niveau du timeline mettre les blocs Cadrage, preparation, .. d'une manière horizontale et quand on glisse une action il y'a que le A1, A2 qui s'affiche,

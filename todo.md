@@ -60,7 +60,7 @@
 - [x] Ajouter audit logging des actions sensibles
 	- Dernier resultat : middleware `auditAction` ajoute + branchement sur mutations sensibles `users`, `sessions`, `participants` ; logs structures `security.audit_action` (trace_id, actor, target, status, duration, body filtre) ; test `session_rbac.test.js` PASS (22/05/2026)
 - [ ] Affiner RBAC route par route (admin / user / participant)
-	- Dernier resultat : routes mutation `sessions` verrouillees pour `admin/user` + ownership retabli sur `active-challenge` et `complete-active` + tests `session_rbac` et `session_state_endpoint` verts (22/05/2026)
+	- Dernier resultat : routes mutation `sessions` verrouillees pour `admin/user` + ownership retabli sur `active-challenge` et `complete-active` + routes management `participants` verrouillees `admin/user` (liste, detail, update, delete, assign/unassign) + tests `session_rbac` et `participant_rbac` verts (22/05/2026)
 
 ## 3) Produit et fonctionnalites MVP
 

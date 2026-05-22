@@ -33,6 +33,9 @@
 	- Ownership retabli dans `setActiveChallenge` et `completeActiveChallenge`
 	- Validation: `backend ; npm test -- session_rbac.test.js` PASS
 	- Non-regression adjacente: `backend ; npm test -- session_state_endpoint.test.js` PASS
+- [x] Durcir RBAC sur routes management participants (passage route-level)
+	- Routes protegees `admin/user`: liste, detail, update, delete, assign/unassign, session-level add/remove/list
+	- Validation: `backend ; npm test -- participant_rbac.test.js --runInBand` PASS
 
 ### Backend realtime (hygiene broadcasts)
 

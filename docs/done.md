@@ -36,6 +36,9 @@
 - [x] Durcir RBAC sur routes management participants (passage route-level)
 	- Routes protegees `admin/user`: liste, detail, update, delete, assign/unassign, session-level add/remove/list
 	- Validation: `backend ; npm test -- participant_rbac.test.js --runInBand` PASS
+- [x] Durcir RBAC sur lectures sensibles des sessions
+	- Routes protegees `admin/user`: `GET /api/sessions`, `GET /api/sessions/:id`
+	- Validation: `backend ; npm test -- session_rbac.test.js --runInBand` PASS
 
 ### Backend realtime (hygiene broadcasts)
 

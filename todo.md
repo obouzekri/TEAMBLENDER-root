@@ -1,24 +1,40 @@
 # TeamBlender - TODO Master
 
-> Derniere mise a jour : 22/05/2026
+> Derniere mise a jour : 23/05/2026
 > Objectif lancement MVP : fin juin / debut juillet 2026
 > Hors MVP : docs/product/POST_MVP.md
+
+## 0) Fait recemment (session en cours)
+
+### Realtime / backend
+- [x] Fix assignment Copuzzle/Phrase base sur participants assignes (source runtime prioritaire)
+- [x] Stabilisation sync realtime (polling de coherence + transport fallback)
+
+### UX challenges (frontend)
+- [x] Phrase mystere: suppression bloc "Vue globale" cote facilitateur
+- [x] Phrase mystere: bouton triangle chrono retabli cote facilitateur
+- [x] Titre timer uniformise en "Chrono" sur tous les challenges
+- [x] Bouton play chrono reduit legerement (style harmonise)
+- [x] Labyrinthe: bloc chrono compact aligne au contenu
+- [x] Tous challenges: bloc Chat place sous bloc Chrono
+- [x] Tous challenges: Chrono et Chat reduisibles/affichables (participant + facilitateur)
+- [x] Passe harmonisation typographie (font-family commune sur challenges + cartes partagees)
 
 ## 1) Priorite immediate - Go-live MVP
 
 ### Blocages go-live (a traiter en premier)
 - [ ] Sante API locale
-	- Commande : cd backend ; npm run check:env
-	- PASS si : aucune variable critique manquante
-	- Dernier resultat : FAIL (JWT_SECRET, DATABASE_URL, NEXT_PUBLIC_API_BASE, ADMIN_RESET_PASSWORD)
+  - Commande: cd backend ; npm run check:env
+  - PASS si: aucune variable critique manquante
+  - Dernier resultat: FAIL (JWT_SECRET, DATABASE_URL, NEXT_PUBLIC_API_BASE, ADMIN_RESET_PASSWORD)
 - [x] Monitor leger de sante applicative prod
-	- Commande : cd backend ; npm run monitor:health
-	- Checks : /api/direct-test, /api/test, /api/health, /api/auth/login
-	- Dernier resultat : PASS en prod (22/05/2026)
+  - Commande: cd backend ; npm run monitor:health
+  - Checks: /api/direct-test, /api/test, /api/health, /api/auth/login
+  - Dernier resultat: PASS en prod (22/05/2026)
 - [ ] Verification Brevo post-check
-	- Action : confirmer que teamblender.io est bien Authenticated dans Brevo
-	- PASS si : statut Authenticated visible + dernier email test recu
-	- Dernier resultat : statut Authenticated confirme par API Brevo, reception inbox a confirmer manuellement
+  - Action: confirmer que teamblender.io est bien Authenticated dans Brevo
+  - PASS si: statut Authenticated visible + dernier email test recu
+  - Dernier resultat: statut Authenticated confirme par API Brevo, reception inbox a confirmer manuellement
 
 ### Ops, conformite, legal
 - [ ] Finaliser docs/checklists/LEGACY_FRONTEND_OFF_CHECKLIST.md
@@ -27,40 +43,14 @@
 
 ## 2) Execution technique MVP
 
-### Realtime Socket - chantier principal
-- [ ] Optimiser les evenements socket pour reduire les emissions inutiles
-
-#### 2.1 Baseline et mesures
-- [ ] Baseline metriques temps reel (scenario reproductible)
-	- Scenario cible : 1 manager + 3 participants, meme challenge, meme sequence
-	- Evenements suivis : timer.tick, participants.update, session:challenge-advanced, challenge:event
-	- Process : POST /api/diagnostic/realtime-reset -> run before -> checkpoint before -> run after -> checkpoint after -> compare
-	- PASS si : tableau avant/apres complet (volume/min, payload moyen, pic, top events), sans regression fonctionnelle
-	- Dernier resultat : baseline historique capturee, checkpoints memoire a rejouer dans une fenetre unique before/after
-
-
-#### 2.4 Strategie timer temps reel
-- [ ] Definir la source de verite temps cote serveur + contrat d'affichage client
-- [ ] Coalescer/throttler tick global, conserver warning/timeout separes
-- [ ] Valider fluidite manager/participant avec baisse reseau
-
-#### 2.5 Validation et non-regression
-- [ ] Construire checklist QA realtime (join, reconnect, changement challenge, timer, fin)
-- [ ] Comparer mesures avant/apres sur le meme scenario exact
-- [ ] Atteindre reduction cible >= 30% emissions inutiles avec 0 regression bloquante
-
-#### 2.6 Rollout progressif
+### Realtime Socket - prochaines actions
 - [ ] Prioriser quick wins puis optimisations backend a impact
 - [ ] Documenter contrat socket (qui emet quoi, pour qui, quand)
 - [ ] Valider plan de rollback clair
 
-### Securite
-- [x] Garantir authentification JWT sur toutes les routes protegees
-	- Dernier resultat : PASS sur audit routes Express + patch `/api/landing-content/admin` et `/api/diagnostic/*` + test `protected.test.js` vert (22/05/2026)
-- [x] Ajouter audit logging des actions sensibles
-	- Dernier resultat : middleware `auditAction` ajoute + branchement sur mutations sensibles `users`, `sessions`, `participants` ; logs structures `security.audit_action` (trace_id, actor, target, status, duration, body filtre) ; test `session_rbac.test.js` PASS (22/05/2026)
-- [ ] Affiner RBAC route par route (admin / user / participant)
-	- Dernier resultat : routes mutation `sessions` verrouillees pour `admin/user` + ownership retabli sur `active-challenge` et `complete-active` + lectures sensibles `sessions` (`GET /sessions`, `GET /sessions/:id`) verrouillees `admin/user` + routes `state/runtime` explicitement bornees `admin/user/participant` + routes management `participants` verrouillees `admin/user` (liste, detail, update, delete, assign/unassign) + tests `session_rbac`, `participant_rbac` et `protected` verts (22/05/2026)
+### QA technique
+- [ ] Lancer build complet frontend + backend et corriger erreurs
+- [ ] Verifier non-regression flow complet manager + participants (join, timer, challenge advance)
 
 ## 3) Produit et fonctionnalites MVP
 
@@ -77,49 +67,40 @@
 ### Catalogue et qualite
 - [ ] Atteindre 20 challenges fonctionnels et testes
 
-## 4) Process release
-
-### Git / PR
-- [ ] Si convention retenue : garantir depart de branche depuis develop
-- [ ] Standardiser message commit (scope / impact / rollback)
-- [ ] Valider preview avant merge PR
-
-### Pre-release
-- [ ] Lancer build complet et corriger erreurs
-- [ ] Valider variables d'environnement critiques
-
-## 5) UX / UI et contenu challenge
+## 4) UX / UI et contenu challenge
 
 ### General UI/UX
 - [ ] Faire une passe accents et apostrophes
 - [ ] Verifier UX/UI responsive mobile
 - [ ] Lancer QA visuelle mobile guidee (390x844 et 844x390)
 
+### Points challenge restants
+- [ ] Phrase mystere: reduire la taille du header participant a 2 lignes max
+- [ ] Ajouter configuration visible "Chat active/desactive" et "Messages rapides actifs/desactives"
+- [ ] Verifier uniformite finale couleur + contraste sur tous les challenges (QA design)
 
-
-### Salle secrete
-
-- [ ] Corriger chrono qui n'avance pas cote participants
-- [ ] Ajouter message de succes en fin d'enigme
-
-
-## 6) Auth, onboarding et paiement
+## 5) Auth, onboarding et paiement
 
 ### Auth et onboarding
-
 - [ ] Mieux presenter formulaire de creation de participants
 
-### Paiement (mode envisage)
-- [ ] Ne pas bloquer a l'inscription (enlever du formulaire d'inscription)
-- [ ] Definir paywall progressif apres activation rapide
-	- Exemples de verrou : nombre de sessions = 2, nombre de participants = 4.
-- [ ] Definir message de conversion Pro
-- [ ] Implementer paiement Stripe simple et rapide
-- [] ajouter au niveau de l'admin une page pour le suivi des paiement et au niveau des utilisateurs ..
-- [] ajouter au niveau de paramétre du compte la page manager la partie paiement 
+### Paiement
+- [ ] Definir paywall progressif final (regles sessions/participants)
+- [ ] Implementer paiement Stripe simple MVP
+- [ ] Ajouter suivi paiements cote admin
+- [ ] Ajouter gestion paiement dans parametres compte utilisateur
+
+## 6) Process release
+
+### Git / PR
+- [ ] Si convention retenue: garantir depart de branche depuis develop
+- [ ] Standardiser message commit (scope / impact / rollback)
+- [ ] Valider preview avant merge PR
+
+### Pre-release
+- [ ] Valider variables d'environnement critiques
 
 ## 7) Backlog idees a cadrer
-
 
 ### Contraintes produit
 - [ ] Supporter plusieurs sessions paralleles par facilitateur avec isolation stricte des donnees
@@ -128,40 +109,39 @@
 - [ ] Clarifier phrase d'accroche ("Contrairement aux ateliers classiques..." / "Sans formateur, sans preparation")
 - [ ] Preparer visuels de vente (dashboard, session live, schema workflow, GIF/demo)
 
-### Idées challenges (parking lot)
+### Idees challenges (parking lot)
 - [ ] Plateau chacun son role (type monopoly)
 - [ ] Challenge detective
-- [ ] Types d'enigmes a explorer :
-	- Elements identiques
-	- Trier les bonbons
-	- Flux robotique
-	- Dessiner une ligne
-	- Blocs puzzle
-	- Mots croises / recherche de mots
-	- Tour de Hanoi
-	- Relier les points
-	- Memoire (fantomes caches)
-	- Liste de courses
-	- Trouver la paire
-	- Passer la balle
-	- Numero de telephone
-	- Code secret
-	- Attention
-	- Scene de crique
-	- Chasse au tresor
-	- Chiffre manquant
-	- Compter les fans
-	- Anagrammes
-	- Trouver l'intrus
-	- Election
-
-### Notes diverses a traiter
-- [ ] Ajouter les bons tags/filtres dans l'espace manager session builder
-- [ ] Informer au moment d'ajout challenge : config par defaut, nb joueurs challenge, nb participants session
-- [ ] Reduire taille des cards timeline par phase
+- [ ] Types d'enigmes a explorer:
+  - Elements identiques
+  - Trier les bonbons
+  - Flux robotique
+  - Dessiner une ligne
+  - Blocs puzzle
+  - Mots croises / recherche de mots
+  - Tour de Hanoi
+  - Relier les points
+  - Memoire (fantomes caches)
+  - Liste de courses
+  - Trouver la paire
+  - Passer la balle
+  - Numero de telephone
+  - Code secret
+  - Attention
+  - Scene de crique
+  - Chasse au tresor
+  - Chiffre manquant
+  - Compter les fans
+  - Anagrammes
+  - Trouver l'intrus
+  - Election
 
 
-- agrandir la taille * 2 du logo au niveau du footer
-- corriger les accents sur la page session builder notamment sur le boutton créer la session
-- au niveau de session builder une fois je click sur un participant pour l'asigné à la session la page asignation comme si elle se recharge ( chargement des participant) mais les données reste bien.
-quand j'essaie de créer la session j'ai ce message "Cannot read properties of null (reading 'max_sessions_per_month')"
+
+
+
+
+
+
+
+

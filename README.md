@@ -69,7 +69,7 @@ Indicateurs cibles pour piloter la valeur delivree:
 
 - Chaque README indique son scope dans son titre (`TeamBlender - <Scope>` ou equivalent explicite).
 - Les README de reference globale restent nommes `README.md` dans leur dossier.
-- Les guides specifiques non index restent dans un fichier explicite (ex: `readme_creer_nouveau_challenge.md`).
+- Les guides specifiques non index restent dans un fichier explicite (en evitant les anciens guides deprecies).
 
 ### Documents source (DOCX)
 
@@ -142,6 +142,7 @@ References principales:
 ## 9) Liens internes
 
 - Documentation centralisee: `docs/README.md`
+- Guide actif creation challenge: `docs/product/CREATE_CHALLENGE_FRONTEND_NEXT.md`
 - Roadmap active: `todo.md`
 - Backlog post-MVP: `docs/product/POST_MVP.md`
 - Historique des taches terminees: `docs/done.md`

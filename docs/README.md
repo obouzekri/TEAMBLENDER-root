@@ -4,6 +4,16 @@ Ce dossier centralise la documentation de reference du projet: produit, architec
 
 L'etat courant du produit est reflechi ici via les liens vers `../todo.md` et `done.md`, avec `frontend-next/` comme cible produit et `archive/frontend/` comme legacy fige.
 
+## Statut documentation (audit 2026-05-23)
+
+- Audit detaille: `history/DOCS_AUDIT_2026-05-23.md`
+- Documents deprecies (a ne plus utiliser comme reference active):
+	- `process/WORKFLOW_OPERATIONNEL_FUTUR.md` (archive: `history/deprecated-docs/process/WORKFLOW_OPERATIONNEL_FUTUR.md`)
+	- `product/readme_creer_nouveau_challenge.md` (archive: `history/deprecated-docs/product/readme_creer_nouveau_challenge.md`)
+	- `product/SALLE_SECRETE_DOCS.md` (archive: `history/deprecated-docs/product/SALLE_SECRETE_DOCS.md`)
+- Reference active pour la livraison: `process/FEATURE_TO_PROD_FLOW.md`
+- Guide actif creation challenge: `product/CREATE_CHALLENGE_FRONTEND_NEXT.md`
+
 ## Quick links
 
 - Workflow principal: `process/FEATURE_TO_PROD_FLOW.md`
@@ -60,6 +70,7 @@ L'etat courant du produit est reflechi ici via les liens vers `../todo.md` et `d
 - `product/POST_MVP.md`
 - `product/challenge-ideas-backlog.md`
 - `product/CHARTE_GRAPHIQUE_ACTUELLE.md`
+- `product/CREATE_CHALLENGE_FRONTEND_NEXT.md`
 
 ### History
 - `history/REBRAND_DEPLOYMENT_MANIFEST_2026-05-15.md`

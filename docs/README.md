@@ -69,6 +69,7 @@ L'etat courant du produit est reflechi ici via les liens vers `../todo.md` et `d
 ### Product
 - `product/POST_MVP.md`
 - `product/challenge-ideas-backlog.md`
+- `product/PIXEL_ARCHITECT_CHALLENGE_SPEC.md`
 - `product/CHARTE_GRAPHIQUE_ACTUELLE.md`
 - `product/CREATE_CHALLENGE_FRONTEND_NEXT.md`
 

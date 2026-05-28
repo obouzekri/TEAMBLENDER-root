@@ -56,6 +56,7 @@ References:
 | BI-034 | Anagrammes | todo parking lot | idee | Recomposition de mots |
 | BI-035 | Trouver l intrus | todo parking lot | idee | Classification |
 | BI-036 | Election | todo parking lot | idee | Decision collective |
+| BI-037 | Pixel Architect | Demande produit 2026-05-28 | a cadrer | Construction 3D collaborative sous contraintes |
 
 ## 3) Piste MVP candidate (a cadrer en premier)
 
@@ -66,6 +67,7 @@ Critere: mecanique simple, implementation digitale rapide, valeur equipe claire.
 - BI-012 - Silence Mode
 - BI-014 - Challenge detective
 - BI-019 - Blocs puzzle
+- BI-037 - Pixel Architect
 - BI-025 - Trouver la paire
 - BI-028 - Code secret
 - BI-031 - Chasse au tresor

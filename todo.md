@@ -6,9 +6,7 @@
 ---
 
 ## Challenges
-
-Au niveau de tout les challenge une fois le challenge terminer le debrif final doit devenir au dessous du challenge ( visible en premier) et en dessous le dernier état du challenge 
-
+ 
 ### Mission Critique
 
 ### Vrai ou Mensonge 
@@ -20,6 +18,8 @@ Au niveau de tout les challenge une fois le challenge terminer le debrif final d
 ### Copuzzle
 
 ### Salle secrète
+
+### Pixel Architect
 
 ## Landing page publique
 - [ ] Ajouter chiffres cles (nombre challenges, utilisateurs)
@@ -56,8 +56,7 @@ Au niveau de tout les challenge une fois le challenge terminer le debrif final d
 
 - Plateforme de développement des soft skills par le jeu
 - Niveau de difficulté (très utile 🔥)
-
+- L'autre participant continue dans labyrinthe et reprend à zoro, peut voir ce que l'autre a fait
+- construire une ville en 3D icograms
 ## Autres problème
 
-
-une fois le compte utilisateur créer et valider le lien, l'onboarding commence par ... pour l'asignation des participant

@@ -7,11 +7,13 @@
 
 ## Challenges
 
+Au niveau de tout les challenge une fois le challenge terminer le debrif final doit devenir au dessous du challenge ( visible en premier) et en dessous le dernier état du challenge 
+
 ### Mission Critique
 
 ### Vrai ou Mensonge 
 
-### Phrase collaborative
+### Phrase Mystère
 
 ### Labyrinthe
 
@@ -21,18 +23,12 @@
 
 ## Landing page publique
 - [ ] Ajouter chiffres cles (nombre challenges, utilisateurs)
-- [ ] Ajouter logos clients/partenaires
-- [ ] Ajouter section temoignages
-
-### Mails
-- [] Vérification des emails pour qu'il n'atterissent pas au SPAM
+- [ ] Ajouter logos clients/partenaires- [ ] Ajouter section temoignages
 
 ## Paiement
 - [ ] Definir paywall progressif (regles sessions/participants)
 - [ ] Definir le moyen de paiement
 
-## Contraintes produit
-- [ ] Supporter plusieurs sessions paralleles par facilitateur avec isolation stricte des donnees
 
 ## Positionnement / marketing
 - [ ] Clarifier phrase d'accroche
@@ -42,8 +38,6 @@
 - [ ] Finaliser docs/checklists/LEGACY_FRONTEND_OFF_CHECKLIST.md
 - [ ] Completer les placeholders des pages legales
 - [ ] Ajouter banniere cookies si analytics active
-
-## Vérification du mail 
 
 ## Fonctionnalites coeur
 - [ ] Creer session depuis template ou suggestion
@@ -66,3 +60,4 @@
 ## Autres problème
 
 
+une fois le compte utilisateur créer et valider le lien, l'onboarding commence par ... pour l'asignation des participant

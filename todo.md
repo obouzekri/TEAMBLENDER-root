@@ -112,23 +112,11 @@
 ## 5.2 Vrai ou Mensonge
 
 ## 5.3 Phrase Mystere
-- [x] Reduire les saut de lignes dans les régles 
-- [x] uniformiser la taille en longueur du boutton "Démarrer" sur la taille des autres boutton "Démarrer" des autres challenge 
-- [x] supprimer cette ligne "Une fois le chrono lancé, le brief se masque et la vue de jeu devient active." 
-- [x] ajouter au niveau des régles que toute l'équipe à deux fois la possibilité de découvrir un mot. et vérifier si la mécanique est appliqué.
-- [x] les phrases par défaut ( template ) dans session builder marche mais la phrase personnalisé non, vérifie et corrige
-- [x] les participants peuvent débloquer l'indice => Découvrer un mot à tout moment  
-- [x] le facilitateur n'a plus besoin de configurer les indices au niveau de session builder. 
-- [x] ne plus afficher les indices au niveau de la vue facilitateur (car c'est plus son rôle)
-- [x] les indices sont débloquer automatiquement à la demande des participants
-- [x] changer le nom "indice" vers "découvrer un mot" 
+
 ## 5.4 Labyrinthe
-- [x] un retour en arrière ne fait pas perdre une vie mais le retour est interdit
-- [x] les participants peuvent choisir à chaque fois qu'il perde une vie un nouveau point de départ, en séléctionnant la case de départ. 
-- [x] faire un mini clignetement/ brille sur les cases de départ 
-- [x] une fois le temps du chrono écouler, ou les vies ont été toute écoulé montrée le debrief en début, et sous le debrief le maze avec les routes possibles
-- [x] est ce que la configuration actuelle du maze prend en compte la configuration du challenge au niveau de session builder.
-- [x] ajouter une miniature du maze avec la solution du labyrtinhe au niveau de la vue du facilitateur sous le chat 
+
+- [x] Agrandir la taille du maze (miniature) au niveau de la vue facilitateur au niveau de la carte solution
+- [x] si impasse (bloqué) reduire une vie et redonner la main pour choisir une case de départ
 
 ---
 

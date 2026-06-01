@@ -30,7 +30,7 @@
 - [ ] [CRITIQUE] Blacklister les tokens a la deconnexion explicite (table revoked_tokens ou Redis).
 - [ ] [CRITIQUE] Rate-limit /api/auth/login : max 5 tentatives / 15min / IP.
 - [ ] [IMPORTANT] Mecanisme de logout de toutes les sessions actives (cas de compromission).
-- [ ] [POST-MVP] 2FA pour les comptes admin/facilitateur.
+- [ ] [POST-MVP] Voir docs/product/POST_MVP.md
 
 ## 1.3 Hardening API
 - [ ] [CRITIQUE] Rate-limiting global routes publiques (100 req/min/IP — express-rate-limit).
@@ -70,7 +70,7 @@
 - [ ] [CRITIQUE] GitHub Actions : build Next.js a chaque push (detection erreurs avant deploy Vercel).
 - [ ] [IMPORTANT] Coverage tests backend > 70% sur les services critiques (auth, sessions, challenges).
 - [ ] [IMPORTANT] Scan securite dependances dans le pipeline CI (npm audit).
-- [ ] [POST-MVP] Tests E2E avec Playwright (parcours facilitateur + participant).
+- [ ] [POST-MVP] Voir docs/product/POST_MVP.md
 
 ## 2.4 Base de donnees
 - [ ] [CRITIQUE] Backups automatiques Railway PostgreSQL (retention >= 7 jours).
@@ -87,34 +87,11 @@
 - [ ] [IMPORTANT] Cache des requetes frequentes cote backend (config session, resultats) avec TTL court.
 - [ ] [IMPORTANT] Pagination sur tous les endpoints liste (/api/sessions, /api/participants, etc.).
 - [ ] [IMPORTANT] Compression gzip/brotli activee sur Express (compression middleware).
-- [ ] [POST-MVP] CDN pour les assets statiques (images puzzles, icons).
-- [ ] [POST-MVP] Verifier que l app est stateless pour le scaling horizontal.
+- [ ] [POST-MVP] Voir docs/product/POST_MVP.md
 
 ---
 
 # 4. UI / UX — STANDARD STARTUP PREMIUM
-
-## 4.1 Design System
-- [ ] [CRITIQUE] Design tokens unifies : finaliser globals.css — toutes les couleurs, espacements, rayons, shadows en variables CSS, aucune valeur en dur dans les composants.
-- [ ] [CRITIQUE] Dark mode : ne pas casser l interface si prefers-color-scheme: dark est actif.
-- [ ] [CRITIQUE] Typographie : Sora + IBM Plex Sans chargees avec font-display: swap et subsets latins uniquement.
-- [ ] [IMPORTANT] Composants UI reutilisables : Button, Input, Badge, Card, Modal, Alert dans components/ui/ avec variants.
-- [ ] [IMPORTANT] Etats vides (empty states) : chaque liste a un etat vide illustre et actionnable.
-- [ ] [IMPORTANT] Etats de chargement : skeleton screens ou spinners coherents (pas de flash de contenu vide).
-- [ ] [IMPORTANT] Micro-animations : transitions subtiles sur interactions cles (hover, modals, feedback boutons).
-- [ ] [POST-MVP] Storybook pour documenter les composants.
-
-## 4.2 Accessibilite (a11y)
-- [ ] [CRITIQUE] Navigation clavier complete : tous les elements interactifs atteignables au Tab, focus visible.
-- [ ] [CRITIQUE] Contraste WCAG AA minimum verifie sur tous les textes.
-- [ ] [IMPORTANT] aria-label sur tous les boutons icones, alt sur toutes les images.
-- [ ] [IMPORTANT] Roles ARIA sur les composants custom (modals, dropdowns, toasts).
-
-## 4.3 Responsive & Mobile
-- [ ] [CRITIQUE] Valider l interface facilitateur sur tablette (usage frequent en salle).
-- [ ] [CRITIQUE] Valider l interface participant sur mobile (smartphone en seance).
-- [ ] [IMPORTANT] Touch targets >= 44px sur tous les elements interactifs.
-- [ ] [IMPORTANT] Tester sur iOS Safari (comportements viewport specifiques).
 
 ## 4.4 Experience Utilisateur Cle
 - [ ] [CRITIQUE] Onboarding facilitateur : flow guide (creer session -> ajouter participants -> lancer challenge) en moins de 3 minutes.
@@ -122,44 +99,26 @@
 - [ ] [CRITIQUE] Feedback toasts : confirmer chaque action utilisateur (sauvegarde, envoi, suppression).
 - [ ] [IMPORTANT] Page 404 personnalisee et utile.
 - [ ] [IMPORTANT] Page erreur 500 personnalisee.
-- [ ] [IMPORTANT] Indicateur de position dans le flow session builder (etapes / breadcrumb).
-- [ ] [POST-MVP] Tableau de bord analytique facilitateur (resultats par session, taux de participation).
+
+- [ ] [POST-MVP] Voir docs/product/POST_MVP.md
 
 ---
 
 # 5. CHALLENGES
 
-> Regle generale : quand la session n est pas encore lancee par le facilitateur, les participants ne peuvent pas rejoindre. A valider sur chaque challenge.
-
 ## 5.1 Mission Critique
-- [ ] [BLOQUANT] Bug : clic sur Demarrer ne declenche rien — investiguer et corriger.
-
+- [ ] au niveau de la configuration de session builder du challenge "Mission critique" aucune configuration n'est requise. supprime le champ actuel dans la configuration
 ## 5.2 Vrai ou Mensonge
-- [ ] [BLOQUANT] Bug : clic sur Demarrer sans effet — corriger.
 
 ## 5.3 Phrase Mystere
-- [ ] [IMPORTANT] Config challenge : selection d une phrase via dropdown (UX coherente).
 
 ## 5.4 Labyrinthe
-- [ ] [IMPORTANT] Permettre a un participant de voir la progression de l autre et reprendre la ou il s est arrete.
 
 ## 5.5 Copuzzle
-- [ ] [CRITIQUE] Config (session builder) : supprimer les 3 images affichees en permanence — afficher uniquement la premiere par defaut, choix via dropdown. Sans regression.
-- [ ] [CRITIQUE] Ajouter un espacement entre l image selectionnee et le champ suivant.
-- [ ] [IMPORTANT] Vue facilitateur : regle afficher/masquer l image du puzzle.
-- [ ] [IMPORTANT] Vue facilitateur : reduire la hauteur de la vue.
-- [ ] [IMPORTANT] Vue participant : reduire les sauts de ligne dans le texte des regles.
 
 ## 5.6 Salle Secrete
-- [ ] [POST-MVP] Definir les regles fonctionnelles et implementer.
 
 ## 5.7 Pixel Architect
-- [ ] [CRITIQUE] Valider que la migration 20260528124500 s execute correctement en Railway dev apres fix 4ad0c3b.
-- [ ] [POST-MVP] Implementer la logique moteur pixel_architect_v1.
-
-## 5.8 Gestion generale des challenges
-- [ ] [CRITIQUE] Interface facilitateur : permettre d ajouter et retirer des challenges dans une session.
-- [ ] [IMPORTANT] Indicateur de statut challenge (actif, termine, en attente) dans la vue facilitateur.
 
 ---
 
@@ -171,8 +130,7 @@
 - [ ] [IMPORTANT] Page pricing claire (comparatif offres, CTA fort).
 - [ ] [IMPORTANT] Portail client Stripe pour gestion autonome des abonnements.
 - [ ] [IMPORTANT] Factures automatiques envoyees par email.
-- [ ] [POST-MVP] Essai gratuit 14 jours sans CB.
-- [ ] [POST-MVP] Gestion des coupons et codes promo.
+- [ ] [POST-MVP] Voir docs/product/POST_MVP.md
 
 ---
 
@@ -183,7 +141,7 @@
 - [ ] [CRITIQUE] Email de confirmation d inscription facilitateur.
 - [ ] [IMPORTANT] Email post-session : resume des resultats envoye au facilitateur.
 - [ ] [IMPORTANT] Email de relance si session creee mais jamais lancee (J+3).
-- [ ] [POST-MVP] Notifications in-app temps reel (cloche, badge).
+- [ ] [POST-MVP] Voir docs/product/POST_MVP.md
 
 ---
 
@@ -194,8 +152,7 @@
 - [ ] [IMPORTANT] Section Ressources (guide du team building efficace, use cases).
 - [ ] [IMPORTANT] Temoignages / logos clients sur la landing page.
 - [ ] [IMPORTANT] Formulaire de demande de demo (CRM ou email).
-- [ ] [POST-MVP] Programme de parrainage facilitateur.
-- [ ] [POST-MVP] Integration analytics privacy-first (Plausible ou PostHog).
+- [ ] [POST-MVP] Voir docs/product/POST_MVP.md
 
 ---
 
@@ -211,22 +168,10 @@
 
 # 10. DETTE TECHNIQUE & NETTOYAGE
 
-- [ ] [CRITIQUE] Archiver ou supprimer le dossier archive/ (code legacy frontend vanilla).
-- [ ] [IMPORTANT] Nettoyer les migrations .disabled (supprimer ou activer proprement).
-- [ ] [IMPORTANT] Standardiser les noms de colonnes DB (choisir entre camelCase et snake_case et uniformiser).
-- [ ] [IMPORTANT] Supprimer les console.log de debug en production.
-- [ ] [IMPORTANT] Ajouter eslint + prettier sur frontend-next et backend avec config partagee.
-- [ ] [POST-MVP] Migrer les requetes Sequelize raw restantes vers les methodes ORM natives.
+- [ ] [POST-MVP] Voir docs/product/POST_MVP.md
 
 ---
 
 # 11. IDEES & ROADMAP POST-MVP
 
-- [ ] [POST-MVP] Plateforme de developpement des soft skills par le jeu (modules progressifs).
-- [ ] [POST-MVP] Niveaux de difficulte par challenge (Facile / Moyen / Difficile).
-- [ ] [POST-MVP] Construire une ville en 3D (icograms).
-- [ ] [POST-MVP] Completer des mots ou des phrases (challenge langue).
-- [ ] [POST-MVP] Tableau de bord analytique RH (suivi competences equipe dans le temps).
-- [ ] [POST-MVP] Mode asynchrone (challenge sans synchronisation temps reel).
-- [ ] [POST-MVP] API publique pour integrations (Slack, Teams, Notion).
-- [ ] [POST-MVP] White-label pour agences RH et cabinets de conseil.
+- [ ] [POST-MVP] Voir docs/product/POST_MVP.md

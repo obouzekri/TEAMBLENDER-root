@@ -3,6 +3,44 @@
 > Items d'architecture et de clean code à traiter après le lancement MVP.
 > Priorité : stabilité produit > qualité code
 
+## Items deplaces depuis todo.md (tags [POST-MVP])
+
+### Securite
+- [ ] 2FA pour les comptes admin/facilitateur
+
+### CI/CD & Qualite
+- [ ] Tests E2E avec Playwright (parcours facilitateur + participant)
+
+### Performance & Scalabilite
+- [ ] CDN pour les assets statiques (images puzzles, icons)
+- [ ] Verifier que l'app est stateless pour le scaling horizontal
+
+### UI / UX
+- [ ] Tableau de bord analytique facilitateur (resultats par session, taux de participation)
+
+### Paiement & Monetisation
+- [ ] Essai gratuit 14 jours sans CB
+- [ ] Gestion des coupons et codes promo
+
+### Email & Notifications
+- [ ] Notifications in-app temps reel (cloche, badge)
+
+### Marketing & Acquisition
+- [ ] Integration analytics privacy-first (Plausible ou PostHog)
+
+### Dette technique
+- [ ] Migrer les requetes Sequelize raw restantes vers les methodes ORM natives
+
+### Idees & Roadmap produit
+- [ ] Plateforme de developpement des soft skills par le jeu (modules progressifs)
+- [ ] Niveaux de difficulte par challenge (Facile / Moyen / Difficile)
+- [ ] Construire une ville en 3D (icograms)
+- [ ] Completer des mots ou des phrases (challenge langue)
+- [ ] Tableau de bord analytique RH (suivi competences equipe dans le temps)
+- [ ] Mode asynchrone (challenge sans synchronisation temps reel)
+- [ ] API publique pour integrations (Slack, Teams, Notion)
+- [ ] White-label pour agences RH et cabinets de conseil
+
 ## Backend refactorisation
 
 ### Résilience réseau avancée

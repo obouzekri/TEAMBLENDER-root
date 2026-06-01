@@ -82,18 +82,14 @@
 
 # 3. PERFORMANCE & SCALABILITE
 
-- [x] [CRITIQUE] Lazy loading des images (next/image avec loading=lazy partout).
-- [x] [CRITIQUE] Analyser les bundles JS (next build --analyze) et reduire les imports inutiles.
-- [x] [IMPORTANT] Cache des requetes frequentes cote backend (config session, resultats) avec TTL court.
-- [x] [IMPORTANT] Pagination sur tous les endpoints liste (/api/sessions, /api/participants, etc.).
-- [x] [IMPORTANT] Compression gzip/brotli activee sur Express (compression middleware).
 
 
 ---
 
 # 4. UI / UX — STANDARD STARTUP PREMIUM
-- [ ] améliore la visibilité des champs si thème sombre au niveau des naviguateur
+
 ## 4.4 Experience Utilisateur Cle
+- [x] améliore la visibilité des champs si thème sombre au niveau des naviguateur
 - [ ] [CRITIQUE] Onboarding facilitateur : flow guide (creer session -> ajouter participants -> lancer challenge).
 - [ ] [CRITIQUE] Messages d erreur lisibles par un humain en prod (pas de stack trace, pas de Internal Server Error brut).
 - [ ] [CRITIQUE] Feedback toasts : confirmer chaque action utilisateur (sauvegarde, envoi, suppression).
@@ -105,19 +101,18 @@
 ---
 
 # 5. CHALLENGES
-"Challenge terminé
-En attente du facilitateur
-Le facilitateur déclenchera le prochain challenge après le débrief." sous l block 
+
 ## 5.1 Mission Critique
-- [ ] au niveau de la configuration de session builder du challenge "Mission critique" aucune configuration n'est requise. supprime les champs actuel dans la configuration
-- 
+ 
 ## 5.2 Vrai ou Mensonge
 
 ## 5.3 Phrase Mystere
 
 ## 5.4 Labyrinthe
 
----
+## 5.5 Mission scrète
+
+## 5.6 Pixel Art
 
 # 6. PAIEMENT & MONETISATION
 
@@ -174,3 +169,4 @@ Le facilitateur déclenchera le prochain challenge après le débrief." sous l b
 - [ ] [POST-MVP] Voir docs/product/POST_MVP.md
 
 
+mode sombre / mode clair

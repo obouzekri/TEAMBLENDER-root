@@ -92,7 +92,7 @@
 ---
 
 # 4. UI / UX — STANDARD STARTUP PREMIUM
-
+- [ ] améliore la visibilité des champs si thème sombre au niveau des naviguateur
 ## 4.4 Experience Utilisateur Cle
 - [ ] [CRITIQUE] Onboarding facilitateur : flow guide (creer session -> ajouter participants -> lancer challenge) en moins de 3 minutes.
 - [ ] [CRITIQUE] Messages d erreur lisibles par un humain en prod (pas de stack trace, pas de Internal Server Error brut).
@@ -108,17 +108,27 @@
 
 ## 5.1 Mission Critique
 - [ ] au niveau de la configuration de session builder du challenge "Mission critique" aucune configuration n'est requise. supprime le champ actuel dans la configuration
+- 
 ## 5.2 Vrai ou Mensonge
 
 ## 5.3 Phrase Mystere
-
+- [x] Reduire les saut de lignes dans les régles 
+- [x] uniformiser la taille en longueur du boutton "Démarrer" sur la taille des autres boutton "Démarrer" des autres challenge 
+- [x] supprimer cette ligne "Une fois le chrono lancé, le brief se masque et la vue de jeu devient active." 
+- [x] ajouter au niveau des régles que toute l'équipe à deux fois la possibilité de découvrir un mot. et vérifier si la mécanique est appliqué.
+- [x] les phrases par défaut ( template ) dans session builder marche mais la phrase personnalisé non, vérifie et corrige
+- [x] les participants peuvent débloquer l'indice => Découvrer un mot à tout moment  
+- [x] le facilitateur n'a plus besoin de configurer les indices au niveau de session builder. 
+- [x] ne plus afficher les indices au niveau de la vue facilitateur (car c'est plus son rôle)
+- [x] les indices sont débloquer automatiquement à la demande des participants
+- [x] changer le nom "indice" vers "découvrer un mot" 
 ## 5.4 Labyrinthe
-
-## 5.5 Copuzzle
-
-## 5.6 Salle Secrete
-
-## 5.7 Pixel Architect
+- [x] un retour en arrière ne fait pas perdre une vie mais le retour est interdit
+- [x] les participants peuvent choisir à chaque fois qu'il perde une vie un nouveau point de départ, en séléctionnant la case de départ. 
+- [x] faire un mini clignetement/ brille sur les cases de départ 
+- [x] une fois le temps du chrono écouler, ou les vies ont été toute écoulé montrée le debrief en début, et sous le debrief le maze avec les routes possibles
+- [x] est ce que la configuration actuelle du maze prend en compte la configuration du challenge au niveau de session builder.
+- [x] ajouter une miniature du maze avec la solution du labyrtinhe au niveau de la vue du facilitateur sous le chat 
 
 ---
 
@@ -175,3 +185,5 @@
 # 11. IDEES & ROADMAP POST-MVP
 
 - [ ] [POST-MVP] Voir docs/product/POST_MVP.md
+
+

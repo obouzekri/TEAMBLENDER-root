@@ -1,18 +1,17 @@
 # TeamBlender - Checklist Legacy Frontend Off
 
-Objectif: garantir que le frontend legacy archive reste non utilise par defaut, tout en restant accessible uniquement sur demande explicite.
+Objectif: garantir que le frontend legacy vanilla reste desactive (retire du repository) et que tous les flux actifs passent par Next.js.
 
 ## 1) Gouvernance
 
-- [x] Le dossier legacy est archive sous `archive/frontend/`.
+- [x] Le dossier legacy vanilla a ete retire du repository.
 - [x] La regle officielle est documentee dans `README.md`.
-- [x] Le mode d'acces explicite est documente dans `frontend-next/README.md`.
+- [x] Les references legacy runtime ont ete retirees de la documentation active.
 
 ## 2) Configuration
 
-- [x] `NEXT_PUBLIC_ENABLE_LEGACY_LINKS=false` par defaut.
-- [x] Les liens legacy ne s'affichent que si `NEXT_PUBLIC_ENABLE_LEGACY_LINKS=true`.
-- [ ] Aucun environnement preview/production n'active `NEXT_PUBLIC_ENABLE_LEGACY_LINKS=true`.
+- [x] Aucun flag runtime legacy n'est necessaire pour les parcours produits.
+- [x] Les variables legacy frontend ont ete retirees de la matrice d'environnement.
 
 ## 3) Application Next
 
@@ -34,10 +33,10 @@ Objectif: garantir que le frontend legacy archive reste non utilise par defaut, 
 
 ## 6) Guardrail final
 
-- [ ] Ajouter une verification CI qui echoue si `NEXT_PUBLIC_ENABLE_LEGACY_LINKS=true` en preview/production.
+- [ ] Ajouter une verification CI qui echoue si une variable `NEXT_PUBLIC_LEGACY_*` est reintroduite.
 - [ ] Ajouter une note de rollback precise dans le runbook release.
 
 ## Decision d'etat
 
 - Legacy frontend status: `OFF by default`
-- Mode de reactivation: `explicite, temporaire, et documente`
+- Mode de reactivation: `restauration explicite via historique Git (hors flux standard)`

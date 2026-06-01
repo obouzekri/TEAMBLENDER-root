@@ -2,7 +2,7 @@
 
 Ce dossier centralise la documentation de reference du projet: produit, architecture, processus, runbooks et historique.
 
-L'etat courant du produit est reflechi ici via les liens vers `../todo.md` et `done.md`, avec `frontend-next/` comme cible produit et `archive/frontend/` comme legacy fige.
+L'etat courant du produit est reflechi ici via les liens vers `../todo.md` et `done.md`, avec `frontend-next/` comme cible produit. Le frontend legacy vanilla a ete retire du repository.
 
 ## Statut documentation (audit 2026-05-23)
 
@@ -83,6 +83,6 @@ L'etat courant du produit est reflechi ici via les liens vers `../todo.md` et `d
 - README global: `../README.md`
 - Backend: `../backend/README.md`
 - Frontend Next: `../frontend-next/README.md`
-- Frontend legacy archive (acces explicite): `../archive/frontend/`
+- Frontend legacy vanilla: retire du repository (consulter l'historique Git si besoin)
 - Roadmap active: `../todo.md`
 - Historique done: `done.md`

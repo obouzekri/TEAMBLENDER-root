@@ -18,7 +18,7 @@ Les participants rejoignent individuellement leurs sessions et sont rediriges au
 Architecture produit actuelle:
 - Frontend cible: Next.js ([frontend-next](frontend-next))
 - Backend API: Node.js/Express + Sequelize ([backend](backend))
-- Legacy archive: [archive/frontend](archive/frontend) (non cible, consultation uniquement)
+- Legacy frontend vanilla retire du repository (historique disponible via Git)
 
 ## 2. Etat global du produit
 

@@ -6,7 +6,7 @@ Cette charte decrit le systeme visuel actuellement implemente dans le frontend c
 
 - Source principale: `frontend-next/app/globals.css`
 - Cible produit: `frontend-next/`
-- Legacy archive: `archive/frontend/` (non source de verite pour les nouvelles evolutions)
+- Legacy frontend vanilla: retire du repository (historique Git uniquement)
 
 ## 2) Identite visuelle
 
@@ -137,6 +137,6 @@ Cette charte decrit le systeme visuel actuellement implemente dans le frontend c
 
 ## 11) Note legacy
 
-- Le dossier `archive/frontend/` contient une ancienne base visuelle (dominante bleu/cyan).
-- Cette base n'est pas la reference pour les nouvelles evolutions produit.
+- L'ancienne base visuelle vanilla a ete retiree du repository.
+- Les eventuels besoins de comparaison doivent passer par l'historique Git.
 - La reference actuelle pour la charte est `frontend-next/`.

@@ -27,9 +27,6 @@ Objectif: centraliser les variables critiques backend, frontend et CI pour dev /
 | Variable | Criticite | Dev | Preview | Production | Notes |
 |---|---|---|---|---|---|
 | NEXT_PUBLIC_API_BASE | Haute | `http://localhost:3000/api` | A definir (URL backend preview) | A configurer avec URL backend prod | Variable front critique |
-| NEXT_PUBLIC_LEGACY_BASE | Moyenne | `http://localhost:3000` | Optionnel | Optionnel | Compatibilite archive legacy uniquement |
-| LEGACY_BASE_CANDIDATES | Basse | Optionnel | Optionnel | Optionnel | Fallbacks legacy (liste), archive uniquement |
-| NEXT_PUBLIC_ENABLE_LEGACY_LINKS | Moyenne | `false` par defaut | `false` par defaut | `false` par defaut | Doit etre active explicitement a `true` pour exposer les liens legacy |
 
 ## 3) CI/CD GitHub Actions (backend)
 

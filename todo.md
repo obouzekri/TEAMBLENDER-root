@@ -82,19 +82,19 @@
 
 # 3. PERFORMANCE & SCALABILITE
 
-- [ ] [CRITIQUE] Lazy loading des images (next/image avec loading=lazy partout).
-- [ ] [CRITIQUE] Analyser les bundles JS (next build --analyze) et reduire les imports inutiles.
-- [ ] [IMPORTANT] Cache des requetes frequentes cote backend (config session, resultats) avec TTL court.
-- [ ] [IMPORTANT] Pagination sur tous les endpoints liste (/api/sessions, /api/participants, etc.).
-- [ ] [IMPORTANT] Compression gzip/brotli activee sur Express (compression middleware).
-- [ ] [POST-MVP] Voir docs/product/POST_MVP.md
+- [x] [CRITIQUE] Lazy loading des images (next/image avec loading=lazy partout).
+- [x] [CRITIQUE] Analyser les bundles JS (next build --analyze) et reduire les imports inutiles.
+- [x] [IMPORTANT] Cache des requetes frequentes cote backend (config session, resultats) avec TTL court.
+- [x] [IMPORTANT] Pagination sur tous les endpoints liste (/api/sessions, /api/participants, etc.).
+- [x] [IMPORTANT] Compression gzip/brotli activee sur Express (compression middleware).
+
 
 ---
 
 # 4. UI / UX — STANDARD STARTUP PREMIUM
 - [ ] améliore la visibilité des champs si thème sombre au niveau des naviguateur
 ## 4.4 Experience Utilisateur Cle
-- [ ] [CRITIQUE] Onboarding facilitateur : flow guide (creer session -> ajouter participants -> lancer challenge) en moins de 3 minutes.
+- [ ] [CRITIQUE] Onboarding facilitateur : flow guide (creer session -> ajouter participants -> lancer challenge).
 - [ ] [CRITIQUE] Messages d erreur lisibles par un humain en prod (pas de stack trace, pas de Internal Server Error brut).
 - [ ] [CRITIQUE] Feedback toasts : confirmer chaque action utilisateur (sauvegarde, envoi, suppression).
 - [ ] [IMPORTANT] Page 404 personnalisee et utile.
@@ -105,18 +105,17 @@
 ---
 
 # 5. CHALLENGES
-
+"Challenge terminé
+En attente du facilitateur
+Le facilitateur déclenchera le prochain challenge après le débrief." sous l block 
 ## 5.1 Mission Critique
-- [ ] au niveau de la configuration de session builder du challenge "Mission critique" aucune configuration n'est requise. supprime le champ actuel dans la configuration
+- [ ] au niveau de la configuration de session builder du challenge "Mission critique" aucune configuration n'est requise. supprime les champs actuel dans la configuration
 - 
 ## 5.2 Vrai ou Mensonge
 
 ## 5.3 Phrase Mystere
 
 ## 5.4 Labyrinthe
-
-- [x] Agrandir la taille du maze (miniature) au niveau de la vue facilitateur au niveau de la carte solution
-- [x] si impasse (bloqué) reduire une vie et redonner la main pour choisir une case de départ
 
 ---
 

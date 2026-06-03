@@ -174,3 +174,21 @@
 
 
 mode sombre / mode clair
+
+
+## Vision produit
+
+TeamBlender vise à devenir la plateforme de référence de team-building digital pour équipes hybrides, en combinant gamification, analytics RH et collaboration temps réel.
+
+
+
+## Vision produit
+
+TeamBlender vise à devenir la plateforme de référence de team-building digital pour équipes hybrides, en combinant gamification, analytics RH et collaboration temps réel.
+
+
+## Limitations actuelles
+
+- Realtime partiellement hybride (polling + socket)
+- Etat runtime non persistant (risque restart)
+- Couverture tests limitée

@@ -101,40 +101,14 @@
 ---
 
 # 5. CHALLENGES
-- [ ] Uniformiser les titres au niveau de tout les challenge
-→ Certains blocs sont en CAPS (CHRONO), d’autres non
-Choisir une convention unique (ex: Title Case)
-- [ ] Mettre au niveau des régles un point pour chaque phrases
+
 ## 5.1 Mission Critique
  
 ## 5.2 Vrai ou Mensonge
 
-- renommer le challenge en "Pari sur moi !"
-- changer les affirmations pour:
-	- Préférences (rapides)
-		- Je préfère: café / thé / jus
-		- Je préfère: montagne / plage / forêt
-		- Je préfère: ville / campagne
-		- Je préfère: films / sorties
-	- Habitudes
-		- Je me couche tard / tôt
-		- Je fais du sport régulièrement
-		- Je commence ma journée avec mon téléphone
-		- Je grignote entre les repas
-	- Compétences / talents
-		- Je maîtrise plus de trois langues
-		- J’ai un talent caché
-	- Personnalité
-		- Je suis plutôt: compétitif / calme / spontané
-	- Petites anecdotes
-		- J’ai déjà oublié de me présenter en réunion importante
-		- J’ai déjà répondu "oui" sans avoir compris
-		- J’ai déjà perdu: téléphone / portefeuille / les deux
-
 ## 5.3 Phrase Mystere
 
 ## 5.4 Labyrinthe
-
 ## 5.5 Mission critique
 
 ## 5.6 Pixel Art

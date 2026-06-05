@@ -133,6 +133,8 @@
 - [ ] [CRITIQUE] GA4 DebugView (`analytcis.google.com` > Admin > DebugView) : verifier `page_view` et `cta_click` remontent en temps reel.
 - [x] [IMPORTANT] Etendre `cta_click` aux autres CTA cles : bouton "Creer une session", bouton "Lancer le challenge", bouton "Se connecter".
 - Statut courant: verification GTM Preview/GA4 DebugView encore manuelle (non validee dans cette passe), alerte malware GTM toujours presente sur les versions publiees.
+- Tentative du 06/06/2026 (agent): GTM accessible et conteneur publie visible, mais mode Preview non validable en session automatisee (interaction instable/bloquee).
+- Tentative du 06/06/2026 (agent): GA4 ouvert, proprieté TeamBlender affiche "Aucune donnée reçue de votre site Web pour l'instant" (ID mesure G-29ZC13R2CM), DebugView non validé.
 
 ### RGPD / Consentement
 - [ ] [CRITIQUE] Banniere cookie conforme RGPD avant activation GTM/GA4 en prod (voir section 1.4).

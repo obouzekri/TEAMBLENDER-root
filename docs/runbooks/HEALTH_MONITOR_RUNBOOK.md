@@ -17,6 +17,12 @@ Objectif: verifier rapidement que le backend expose bien les endpoints critiques
 - `GET /api/health`
 - `POST /api/auth/login`
 
+Alerting operationnel associe:
+
+- `backend/.github/workflows/railway-health-monitor.yml` pour la degradation/downtime apparente via `/api/health`
+- `backend/.github/workflows/railway-5xx-monitor.yml` pour les explosions de 5xx
+- `backend/.github/workflows/railway-memory-monitor.yml` pour la pression memoire Railway
+
 Le monitor echoue si:
 
 - un endpoint retourne un statut non OK,
@@ -65,6 +71,8 @@ Ne pas conserver ce flag par defaut en production.
 Workflow planifie:
 
 - `backend/.github/workflows/railway-health-monitor.yml`
+- `backend/.github/workflows/railway-5xx-monitor.yml`
+- `backend/.github/workflows/railway-memory-monitor.yml`
 
 Cadence:
 

@@ -131,7 +131,8 @@
 ### Verification
 - [ ] [CRITIQUE] GTM Preview : ouvrir le site avec le mode Preview actif, verifier que `gtm.js` est charge et que les tags se declenchent.
 - [ ] [CRITIQUE] GA4 DebugView (`analytcis.google.com` > Admin > DebugView) : verifier `page_view` et `cta_click` remontent en temps reel.
-- [ ] [IMPORTANT] Etendre `cta_click` aux autres CTA cles : bouton "Creer une session", bouton "Lancer le challenge", bouton "Se connecter".
+- [x] [IMPORTANT] Etendre `cta_click` aux autres CTA cles : bouton "Creer une session", bouton "Lancer le challenge", bouton "Se connecter".
+- Statut courant: verification GTM Preview/GA4 DebugView encore manuelle (non validee dans cette passe), alerte malware GTM toujours presente sur les versions publiees.
 
 ### RGPD / Consentement
 - [ ] [CRITIQUE] Banniere cookie conforme RGPD avant activation GTM/GA4 en prod (voir section 1.4).
@@ -176,3 +177,5 @@ TeamBlender vise Ã  devenir la plateforme de rÃ©fÃ©rence de team-building 
 teamblender-backend-qxe5-production.up.railway.app/api/auth/login-participant:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
 
 Challenge: Lab d'innovation 
+
+Multi-utlisateur ( 1 compte RH a plusieurs compte participant)

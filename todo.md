@@ -126,12 +126,7 @@
 ### Variables env
 
 ### Configuration GTM (interface tagmanager.google.com)
-- [ ] [BLOQUANT] Creer variable constante `GA4 Measurement ID` = `G-XXXXXXXXXX`.
-- [ ] [BLOQUANT] Creer tag **GA4 Configuration** (type Google Analytics : GA4) - trigger : All Pages - Measurement ID : variable ci-dessus.
-- [ ] [CRITIQUE] Creer declencheur **Custom Event** sur `cta_click` (correspond au `event` pousse dans `dataLayer`).
-- [ ] [CRITIQUE] Creer tag **GA4 Event** `cta_click` - trigger : declencheur custom ci-dessus - parametres : `cta_name`, `cta_label`, `cta_destination`.
-- [ ] [CRITIQUE] Creer tags GA4 Event pour les autres evenements existants : `page_view`, `web_performance`, `frontend_error`.
-- [ ] [IMPORTANT] Publier le conteneur GTM (version + description) avant mise en production.
+	- Notes d'etat utiles et alerte migrees vers `docs/product/POST_MVP.md` (section "Tracking & Analytics (etat actuel migre)").
 
 ### Verification
 - [ ] [CRITIQUE] GTM Preview : ouvrir le site avec le mode Preview actif, verifier que `gtm.js` est charge et que les tags se declenchent.

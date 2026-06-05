@@ -91,3 +91,9 @@
 - Confirmation facilitateur: email de verification reformule comme confirmation d'inscription + activation compte.
 - Post-session: email resume envoye au facilitateur au passage en `terminee` (manuel ou fin dernier challenge).
 - Relance J+3: implementee via service + scheduler serveur + script manuel `npm run email:reminder:j3`.
+
+### Tracking & Analytics (etat actuel migre)
+- Etat code (2026-06-05): GTM deja injecte via `NEXT_PUBLIC_GTM_ID` et evenements dataLayer deja emis (`cta_click`, `page_view`, `web_performance`, `frontend_error`).
+- Runbook operationnel: `docs/runbooks/GTM_GA4_SETUP_RUNBOOK.md` (noms exacts tags/declencheurs/variables + checks GTM Preview et GA4 DebugView).
+- Etat GTM (2026-06-06): configuration GA4 publiee (version 2) avec 5 balises, 4 declencheurs, 4 variables.
+- Alerte a traiter: GTM signale "logiciel malveillant" sur les balises GA4 publiees (balises mises en veille) ; lever ce blocage avant validation finale analytics.

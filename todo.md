@@ -50,47 +50,42 @@
 
 # 2. INFRASTRUCTURE & DEPLOIEMENT
 
-
-## 2.3 CI/CD & Qualite
+## CI/CD & Qualite
 - [ ] [IMPORTANT] Coverage tests backend > 70% sur les services critiques (auth, sessions, challenges).
+	- Etat actuel (2026-06-05): coverage globale backend `Lines 44.52%`, `Functions 44.66%`, `Statements 43.27%`, `Branches 29.27%` (commande: `npm test -- --coverage`).
+	- Bloquants mesures: 6 suites en echec (auth/email/billing/realtime/qa), donc impossible d'atteindre >70% sans stabiliser ces tests d'abord.
 
-## 2.4 Base de donnees
+## Base de donnees
 - [ ] [CRITIQUE] Backups automatiques Railway PostgreSQL (retention >= 7 jours).
+	- Verification technique: la CLI Railway ne fournit pas de commande native de preuve de retention backup (pas d'API backup exposee via `railway --help`).
+	- Action restante: validation manuelle dans Railway Dashboard (service Postgres > Backups) avec evidence retention >= 7 jours.
 
 ---
 
-# 4. UI / UX - STANDARD STARTUP PREMIUM
+# 3. UI / UX - STANDARD STARTUP PREMIUM
 
-## 4.4 Experience Utilisateur Cle
+## Experience Utilisateur Cle
 - [ ] [CRITIQUE] Onboarding facilitateur : flow guide (creer session -> ajouter participants -> lancer challenge).
 - [ ] [CRITIQUE] Messages d erreur lisibles par un humain en prod (pas de stack trace, pas de Internal Server Error brut).
 - [ ] [CRITIQUE] Feedback toasts : confirmer chaque action utilisateur (sauvegarde, envoi, suppression).
 - [ ] [IMPORTANT] Page 404 personnalisee et utile.
 - [ ] [IMPORTANT] Page erreur 500 personnalisee.
 
-- [ ] [POST-MVP] Voir docs/product/POST_MVP.md
-
 ---
 
-# 5. CHALLENGES
-
+# 4. CHALLENGES
 ## 5.1 Mission Critique
- 
 ## 5.2 Vrai ou Mensonge
-
 ## 5.3 Phrase Mystere
-
 ## 5.4 Labyrinthe
 ## 5.5 Mission critique
-
 ## 5.6 Pixel Art
-
 ## 5.7 Copuzzle
 - [ ] les images ne s'affiche pas toujours au niveau de la session de configuration dans session builder
 - [ ] supprimer "Au lancement, ce brief disparaÃ®t et la vue de jeu devient active."
 - [ ] reduire les sauts de lignes dans les rÃ¨gles
 
-# 6. PAIEMENT & MONETISATION
+# 5. PAIEMENT & MONETISATION
 
 - [ ] [CRITIQUE] Definir les offres (Free / Pro / Enterprise) et leurs limites (sessions, participants, challenges).
 - [ ] [CRITIQUE] Integrer Stripe (Checkout ou Elements) pour paiement mensuel/annuel.
@@ -98,28 +93,31 @@
 - [ ] [IMPORTANT] Page pricing claire (comparatif offres, CTA fort).
 - [ ] [IMPORTANT] Portail client Stripe pour gestion autonome des abonnements.
 - [ ] [IMPORTANT] Factures automatiques envoyees par email.
-- [ ] [POST-MVP] Voir docs/product/POST_MVP.md
 
 ---
 
-# 7. EMAIL & NOTIFICATIONS
+# 6. EMAIL & NOTIFICATIONS
 
 - [ ] [CRITIQUE] Mettre a jour SMTP_FROM_NAME de TEAMSPARK vers TeamBlender dans Railway (dev + prod) et dans .env / .env.example.
 - [ ] [CRITIQUE] Email d invitation participant : design HTML branded TeamBlender, lien de connexion direct.
 - [ ] [CRITIQUE] Email de confirmation d inscription facilitateur.
 - [ ] [IMPORTANT] Email post-session : resume des resultats envoye au facilitateur.
 - [ ] [IMPORTANT] Email de relance si session creee mais jamais lancee (J+3).
+	- Etat actuel (2026-06-05): `SMTP_FROM_NAME=TeamBlender` applique sur Railway `production` et `dev` (service backend) + `backend/.env.example` aligne.
+	- Etat actuel (code): template invitation participant passe en HTML brand TeamBlender avec lien direct vers `frontend/login?sessionId=<id>`.
+	- Etat actuel (code): email de verification reformule comme confirmation d'inscription facilitateur + activation compte.
+	- Etat actuel (code): email post-session envoye au facilitateur lors du passage de session en `terminee` (update statut manuel ou fin du dernier challenge).
+	- Etat actuel (code): relance J+3 pour sessions jamais lancees implementee (service + scheduler serveur + script manuel `npm run email:reminder:j3`).
 
 ---
 
-# 8. MARKETING & ACQUISITION
+# 7. MARKETING & ACQUISITION
 
 - [ ] [CRITIQUE] Landing page : proposition de valeur claire, benefices concrets, social proof, CTA principal.
 - [ ] [CRITIQUE] SEO de base : title, meta description, og:image sur toutes les pages publiques.
 - [ ] [IMPORTANT] Section Ressources (guide du team building efficace, use cases).
 - [ ] [IMPORTANT] Temoignages / logos clients sur la landing page.
 - [ ] [IMPORTANT] Formulaire de demande de demo (CRM ou email).
-- [ ] [POST-MVP] Voir docs/product/POST_MVP.md
 
 ---
 
@@ -130,6 +128,7 @@
 - [ ] [CRITIQUE] Politique de confidentialite RGPD conforme.
 - [ ] [IMPORTANT] DPA (Data Processing Agreement) pour les clients entreprise.
 - [ ] [IMPORTANT] Procedure de notification de breach RGPD (72h).
+- [ ] [IMPORTANT] Améliorer UI des pages
 
 ---
 
@@ -161,25 +160,13 @@
 
 # 12. AUTHENTIFICATION & SOCIAL LOGIN
 
-> Etat actuel (04/06/2026) : email/password complet (login, register, reset password, email verify, rate limit, bcrypt, JWT). Manque : OAuth social, avatar, champs provider sur le modele.
-
 ## 12.1 Actions manuelles restantes
 
-- [x] [CRITIQUE] Ajouter les secrets Google OAuth dans les env Railway (dev + prod) : `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`.
-- [x] [CRITIQUE] Enregistrer les redirect URIs OAuth Google dans Google Cloud Console pour les callbacks backend et les origines frontend de prod/dev.
-- [ ] [POST-MVP] Renseigner dans Google OAuth Consent Screen le lien `App privacy policy` (politique de confidentialite).
-- [ ] [POST-MVP] Renseigner dans Google OAuth Consent Screen le lien `App terms of service` (CGU / mentions legales).
-- [ ] [POST-MVP] Ajouter les secrets Microsoft OAuth dans les env Railway (dev + prod) : `MICROSOFT_CLIENT_ID`, `MICROSOFT_CLIENT_SECRET`.
-- [ ] [POST-MVP] Enregistrer les redirect URIs OAuth dans Azure AD pour le mode multi-tenant `common`.
 - [ ] [CRITIQUE] Tester le flow Google OAuth en local avec un compte de test reel.
-- [ ] [POST-MVP] Tester le flow Microsoft OAuth en local avec un compte de test reel.
 - [ ] [IMPORTANT] Verifier que les evenements PostHog `login_oauth` et `signup_oauth` remontent dans GA4 DebugView via GTM.
 
 ---
 
-# 13. IDEES & ROADMAP POST-MVP
-
-mode sombre / mode clair
 
 
 ## Vision produit
@@ -202,4 +189,6 @@ TeamBlender vise Ã  devenir la plateforme de rÃ©fÃ©rence de team-building 
 
 
 
+teamblender-backend-qxe5-production.up.railway.app/api/auth/login-participant:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
 
+Challenge: Lab d'innovation 

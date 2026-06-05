@@ -24,6 +24,7 @@
 
 ### Email & Notifications
 - [ ] Notifications in-app temps reel (cloche, badge)
+- [ ] Valider en environnement reel le rendu des emails post-session et relance J+3, puis ajuster contenu/CTA
 
 ### Marketing & Acquisition
 - [ ] Integration analytics privacy-first (Plausible ou PostHog)
@@ -74,3 +75,12 @@
 - [ ] Documenter l'architecture interne backend (flows métier)
 - [ ] Documenter les patterns d'erreur attendus (ApiError)
 - [ ] Créer un guide de contribution backend + frontend
+
+## Items migres depuis todo.md (2026-06-05)
+
+### OAuth / Social login
+- [ ] Renseigner dans Google OAuth Consent Screen le lien `App privacy policy` (politique de confidentialite)
+- [ ] Renseigner dans Google OAuth Consent Screen le lien `App terms of service` (CGU / mentions legales)
+- [ ] Ajouter les secrets Microsoft OAuth dans les env Railway (dev + prod) : `MICROSOFT_CLIENT_ID`, `MICROSOFT_CLIENT_SECRET`
+- [ ] Enregistrer les redirect URIs OAuth dans Azure AD pour le mode multi-tenant `common`
+- [ ] Tester le flow Microsoft OAuth en local avec un compte de test reel

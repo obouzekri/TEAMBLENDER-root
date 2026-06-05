@@ -84,3 +84,10 @@
 - [ ] Ajouter les secrets Microsoft OAuth dans les env Railway (dev + prod) : `MICROSOFT_CLIENT_ID`, `MICROSOFT_CLIENT_SECRET`
 - [ ] Enregistrer les redirect URIs OAuth dans Azure AD pour le mode multi-tenant `common`
 - [ ] Tester le flow Microsoft OAuth en local avec un compte de test reel
+
+### Email & Notifications (etat actuel migre)
+- SMTP sender aligne: `SMTP_FROM_NAME=TeamBlender` applique sur Railway `production` et `dev` (service backend) + `backend/.env.example` aligne.
+- Invitation participant: template HTML TeamBlender avec lien direct `frontend/login?sessionId=<id>`.
+- Confirmation facilitateur: email de verification reformule comme confirmation d'inscription + activation compte.
+- Post-session: email resume envoye au facilitateur au passage en `terminee` (manuel ou fin dernier challenge).
+- Relance J+3: implementee via service + scheduler serveur + script manuel `npm run email:reminder:j3`.

@@ -98,17 +98,6 @@
 
 # 6. EMAIL & NOTIFICATIONS
 
-- [ ] [CRITIQUE] Mettre a jour SMTP_FROM_NAME de TEAMSPARK vers TeamBlender dans Railway (dev + prod) et dans .env / .env.example.
-- [ ] [CRITIQUE] Email d invitation participant : design HTML branded TeamBlender, lien de connexion direct.
-- [ ] [CRITIQUE] Email de confirmation d inscription facilitateur.
-- [ ] [IMPORTANT] Email post-session : resume des resultats envoye au facilitateur.
-- [ ] [IMPORTANT] Email de relance si session creee mais jamais lancee (J+3).
-	- Etat actuel (2026-06-05): `SMTP_FROM_NAME=TeamBlender` applique sur Railway `production` et `dev` (service backend) + `backend/.env.example` aligne.
-	- Etat actuel (code): template invitation participant passe en HTML brand TeamBlender avec lien direct vers `frontend/login?sessionId=<id>`.
-	- Etat actuel (code): email de verification reformule comme confirmation d'inscription facilitateur + activation compte.
-	- Etat actuel (code): email post-session envoye au facilitateur lors du passage de session en `terminee` (update statut manuel ou fin du dernier challenge).
-	- Etat actuel (code): relance J+3 pour sessions jamais lancees implementee (service + scheduler serveur + script manuel `npm run email:reminder:j3`).
-
 ---
 
 # 7. MARKETING & ACQUISITION

@@ -96,8 +96,6 @@
 
 ---
 
-# 6. EMAIL & NOTIFICATIONS
-
 ---
 
 # 7. MARKETING & ACQUISITION

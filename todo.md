@@ -24,16 +24,16 @@
 ## 1.2 Authentification & Sessions
 
 ## 1.3 Hardening API
-- [ ] [CRITIQUE] Validation stricte des inputs avec joi ou zod sur tous les endpoints.
+- [ ] [CRITIQUE] Etendre la validation stricte des inputs avec Joi/Zod aux endpoints restants.
 - [ ] [IMPORTANT] Sanitisation des uploads fichiers (MIME, taille max, renommage, stockage hors webroot).
-- [ ] [IMPORTANT] Audit des requetes Sequelize raw - tous les parametres passent par :replacements.
+- [ ] [IMPORTANT] Poursuivre l'audit des requetes Sequelize raw - tous les parametres restants doivent passer par `replacements`.
 
 ## 1.4 Donnees & RGPD
-- [ ] [CRITIQUE] Droit a l effacement : DELETE /api/users/:id supprime toutes les donnees associees.
-- [ ] [CRITIQUE] Politique de retention : purger automatiquement les sessions inactives > 12 mois.
-- [ ] [CRITIQUE] Pages mentions legales et politique de confidentialite completes et a jour.
-- [ ] [IMPORTANT] Banniere cookie conforme (si analytics ou tracking ajoutes).
-- [ ] [IMPORTANT] Journal de consentement utilisateur.
+- [x] [CRITIQUE] Droit a l effacement : DELETE /api/users/:id supprime toutes les donnees associees.
+- [ ] [CRITIQUE] Politique de retention : brancher le script de purge des sessions inactives > 12 mois au scheduler Railway (script pret, branchement Railway a faire).
+- [ ] [CRITIQUE] Completer et maintenir a jour les pages mentions legales et politique de confidentialite (infos editeur, hebergeur, contact RGPD).
+- [ ] [IMPORTANT] Banniere cookie conforme avant activation de tout analytics ou tracking en prod.
+- [ ] [IMPORTANT] Journal de consentement utilisateur (trace opt-in/opt-out, horodatage, version de la politique).
 
 ---
 
@@ -54,11 +54,9 @@
 # 3. UI / UX - STANDARD STARTUP PREMIUM
 
 ## Experience Utilisateur Cle
-- [ ] [CRITIQUE] Onboarding facilitateur : flow guide (creer session -> ajouter participants -> lancer challenge).
-- [ ] [CRITIQUE] Messages d erreur lisibles par un humain en prod (pas de stack trace, pas de Internal Server Error brut).
-- [ ] [CRITIQUE] Feedback toasts : confirmer chaque action utilisateur (sauvegarde, envoi, suppression).
-- [ ] [IMPORTANT] Page 404 personnalisee et utile.
-- [ ] [IMPORTANT] Page erreur 500 personnalisee.
+- [x] [CRITIQUE] Feedback toasts : confirmer chaque action utilisateur (sauvegarde, envoi, suppression).
+- [x] [IMPORTANT] Page 404 personnalisee et utile.
+- [x] [IMPORTANT] Page erreur 500 personnalisee.
 
 
 

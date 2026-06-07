@@ -133,3 +133,17 @@ Score
 
 
 Jeux de role
+
+rajouter le nombre de joeurs dans les différents challenges 
+
+Fait passer tout les challenges en revue et donne moi ton avis 
+
+10u3y4bw1ayzs.js:1 Uncaught Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at rX (10u3y4bw1ayzs.js:1:47213)
+    at o6 (10u3y4bw1ayzs.js:1:88921)
+    at iu (10u3y4bw1ayzs.js:1:98800)
+    at sd (10u3y4bw1ayzs.js:1:138944)
+    at 10u3y4bw1ayzs.js:1:133830
+    at se (10u3y4bw1ayzs.js:1:133931)
+    at s$ (10u3y4bw1ayzs.js:1:160495)
+    at MessagePort.O (10u3y4bw1ayzs.js:1:8660)

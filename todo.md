@@ -20,22 +20,11 @@
 - [ ] [BLOQUANT] JWT_SECRET - remplacer la valeur teamsparksecret par une chaine forte (>= 48 bytes, via openssl rand -base64 48) dans Railway dev ET prod. Invalide les sessions actives - coordonner une feneture de maintenance.
 - [ ] [BLOQUANT] Supprimer JWT_SECRET=teamsparksecret et SMTP_FROM_NAME=TEAMSPARK du .env local.
 - [ ] [BLOQUANT] Auditer toutes les variables Railway (dev / prod) - aucune valeur par defaut faible (Admin1234!, Teamspark@2026, etc.).
-- [ ] [CRITIQUE] Ajouter un script de validation au demarrage : variables critiques presentes et non-vides (JWT_SECRET, DATABASE_URL, SMTP_*), sinon process.exit(1).
-- [ ] [CRITIQUE] Rotation planifiee du JWT_SECRET tous les 90 jours - documenter la procedure dans docs/runbooks/.
-- [ ] [CRITIQUE] 0 secrets dans les commits - ajouter un scan pre-commit (ex : gitleaks).
-- [ ] [IMPORTANT] .env.example exhaustif et a jour pour backend et frontend-next.
 
 ## 1.2 Authentification & Sessions
-- [x] [CRITIQUE] Valider que l expiration JWT est <= 24h. ImplÃ©menter refresh token si necessaire.
-- [x] [CRITIQUE] Blacklister les tokens a la deconnexion explicite (table revoked_tokens ou Redis).
-- [x] [CRITIQUE] Rate-limit /api/auth/login : max 5 tentatives / 15min / IP.
-- [x] [IMPORTANT] Mecanisme de logout de toutes les sessions actives (cas de compromission).
 
 ## 1.3 Hardening API
-- [x] [CRITIQUE] Rate-limiting global routes publiques (100 req/min/IP - express-rate-limit).
 - [ ] [CRITIQUE] Validation stricte des inputs avec joi ou zod sur tous les endpoints.
-- [x] [CRITIQUE] helmet actif et correctement configure (CSP, HSTS, X-Frame-Options).
-- [ ] [CRITIQUE] CORS : liste blanche stricte en production (interdire *).
 - [ ] [IMPORTANT] Sanitisation des uploads fichiers (MIME, taille max, renommage, stockage hors webroot).
 - [ ] [IMPORTANT] Audit des requetes Sequelize raw - tous les parametres passent par :replacements.
 
@@ -131,7 +120,6 @@
 ### Verification
 - [ ] [CRITIQUE] GTM Preview : ouvrir le site avec le mode Preview actif, verifier que `gtm.js` est charge et que les tags se declenchent.
 - [ ] [CRITIQUE] GA4 DebugView (`analytcis.google.com` > Admin > DebugView) : verifier `page_view` et `cta_click` remontent en temps reel.
-- [x] [IMPORTANT] Etendre `cta_click` aux autres CTA cles : bouton "Creer une session", bouton "Lancer le challenge", bouton "Se connecter".
 - Statut courant: verification GTM Preview/GA4 DebugView encore manuelle (non validee dans cette passe), alerte malware GTM toujours presente sur les versions publiees.
 - Tentative du 06/06/2026 (agent): GTM accessible et conteneur publie visible, mais mode Preview non validable en session automatisee (interaction instable/bloquee).
 - Tentative du 06/06/2026 (agent): GA4 ouvert, proprieté TeamBlender affiche "Aucune donnée reçue de votre site Web pour l'instant" (ID mesure G-29ZC13R2CM), DebugView non validé.

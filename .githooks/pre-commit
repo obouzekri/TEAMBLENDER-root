@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+set -eu
+
+if command -v gitleaks >/dev/null 2>&1; then
+  gitleaks detect --source . --no-banner --redact --exit-code 1
+else
+  echo "gitleaks not found, running the built-in secret scan fallback."
+  node scripts/check-secrets-precommit.js
+fi

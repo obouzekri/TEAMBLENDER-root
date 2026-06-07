@@ -1,4 +1,10 @@
 {
+  "scripts": {
+    "prepare": "node scripts/setup-hooks.js",
+    "security:gitleaks": "gitleaks detect --source . --no-banner --redact --exit-code 1",
+    "security:secrets:scan": "node scripts/check-secrets-precommit.js",
+    "security:hooks:setup": "node scripts/setup-hooks.js"
+  },
   "dependencies": {
     "bcrypt": "^6.0.0",
     "cors": "^2.8.6",

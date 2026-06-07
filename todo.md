@@ -32,8 +32,6 @@
 - [x] [CRITIQUE] Droit a l effacement : DELETE /api/users/:id supprime toutes les donnees associees.
 - [ ] [CRITIQUE] Politique de retention : brancher le script de purge des sessions inactives > 12 mois au scheduler Railway (script pret, branchement Railway a faire).
 - [ ] [CRITIQUE] Completer et maintenir a jour les pages mentions legales et politique de confidentialite (infos editeur, hebergeur, contact RGPD).
-- [ ] [IMPORTANT] Banniere cookie conforme avant activation de tout analytics ou tracking en prod.
-- [ ] [IMPORTANT] Journal de consentement utilisateur (trace opt-in/opt-out, horodatage, version de la politique).
 
 ---
 
@@ -123,9 +121,7 @@
 - Tentative du 06/06/2026 (agent): GA4 ouvert, proprieté TeamBlender affiche "Aucune donnée reçue de votre site Web pour l'instant" (ID mesure G-29ZC13R2CM), DebugView non validé.
 
 ### RGPD / Consentement
-- [ ] [CRITIQUE] Banniere cookie conforme RGPD avant activation GTM/GA4 en prod (voir section 1.4).
 - [ ] [IMPORTANT] ImplÃ©menter GTM Consent Mode v2 : bloquer les tags analytics tant que le consentement n est pas donne.
-- [ ] [IMPORTANT] Journal de consentement utilisateur (voir section 1.4).
 
 ---
 

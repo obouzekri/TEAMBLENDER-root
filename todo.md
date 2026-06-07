@@ -15,21 +15,6 @@
 ---
 
 # 1. SECURITE
-
-## 1.1 Secrets & Variables d environnement
-- [ ] [BLOQUANT] JWT_SECRET - remplacer la valeur teamsparksecret par une chaine forte (>= 48 bytes, via openssl rand -base64 48) dans Railway dev ET prod. Invalide les sessions actives - coordonner une feneture de maintenance.
-- [ ] [BLOQUANT] Supprimer JWT_SECRET=teamsparksecret et SMTP_FROM_NAME=TEAMSPARK du .env local.
-- [ ] [BLOQUANT] Auditer toutes les variables Railway (dev / prod) - aucune valeur par defaut faible (Admin1234!, Teamspark@2026, etc.).
-
-## 1.2 Authentification & Sessions
-
-## 1.3 Hardening API
-- [ ] [CRITIQUE] Etendre la validation stricte des inputs avec Joi/Zod aux endpoints restants.
-- [ ] [IMPORTANT] Sanitisation des uploads fichiers (MIME, taille max, renommage, stockage hors webroot).
-- [ ] [IMPORTANT] Poursuivre l'audit des requetes Sequelize raw - tous les parametres restants doivent passer par `replacements`.
-
-## 1.4 Donnees & RGPD
-- [x] [CRITIQUE] Droit a l effacement : DELETE /api/users/:id supprime toutes les donnees associees.
 - [ ] [CRITIQUE] Politique de retention : brancher le script de purge des sessions inactives > 12 mois au scheduler Railway (script pret, branchement Railway a faire).
 - [ ] [CRITIQUE] Completer et maintenir a jour les pages mentions legales et politique de confidentialite (infos editeur, hebergeur, contact RGPD).
 
@@ -49,17 +34,6 @@
 
 ---
 
-# 3. UI / UX - STANDARD STARTUP PREMIUM
-
-## Experience Utilisateur Cle
-- [x] [CRITIQUE] Feedback toasts : confirmer chaque action utilisateur (sauvegarde, envoi, suppression).
-- [x] [IMPORTANT] Page 404 personnalisee et utile.
-- [x] [IMPORTANT] Page erreur 500 personnalisee.
-
-
-
----
-
 # 4. CHALLENGES
 ## 5.1 Mission Critique
 ## 5.2 Vrai ou Mensonge
@@ -75,10 +49,7 @@
 # 5. PAIEMENT & MONETISATION
 
 - [ ] [CRITIQUE] Definir les offres (Free / Pro / Enterprise) et leurs limites (sessions, participants, challenges).
-- [ ] [CRITIQUE] Integrer Stripe (Checkout ou Elements) pour paiement mensuel/annuel.
-- [ ] [CRITIQUE] Webhooks Stripe : activer/desactiver compte selon statut abonnement.
 - [ ] [IMPORTANT] Page pricing claire (comparatif offres, CTA fort).
-- [ ] [IMPORTANT] Portail client Stripe pour gestion autonome des abonnements.
 - [ ] [IMPORTANT] Factures automatiques envoyees par email.
 
 ---
@@ -110,9 +81,6 @@
 
 ### Variables env
 
-### Configuration GTM (interface tagmanager.google.com)
-	- Notes d'etat utiles et alerte migrees vers `docs/product/POST_MVP.md` (section "Tracking & Analytics (etat actuel migre)").
-
 ### Verification
 - [ ] [CRITIQUE] GTM Preview : ouvrir le site avec le mode Preview actif, verifier que `gtm.js` est charge et que les tags se declenchent.
 - [ ] [CRITIQUE] GA4 DebugView (`analytcis.google.com` > Admin > DebugView) : verifier `page_view` et `cta_click` remontent en temps reel.
@@ -136,14 +104,6 @@
 
 ---
 
-
-
-## Vision produit
-
-TeamBlender vise Ã  devenir la plateforme de rÃ©fÃ©rence de team-building digital pour Ã©quipes hybrides, en combinant gamification, analytics RH et collaboration temps rÃ©el.
-
-
-
 ## Vision produit
 
 TeamBlender vise Ã  devenir la plateforme de rÃ©fÃ©rence de team-building digital pour Ã©quipes hybrides, en combinant gamification, analytics RH et collaboration temps rÃ©el.
@@ -159,3 +119,17 @@ TeamBlender vise Ã  devenir la plateforme de rÃ©fÃ©rence de team-building 
 Challenge: Lab d'innovation 
 
 Multi-utlisateur ( 1 compte RH a plusieurs compte participant)
+
+
+PHASE 1 — Ice Breaker (5 min)
+Objectif : créer de la cohésion rapidement.
+Exemples :
+
+Trouver 3 points communs dans l’équipe
+Créer un cri d’équipe
+Définir un super pouvoir collectif
+Score
++50 points bonus participation
+
+
+Jeux de role

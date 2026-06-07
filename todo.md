@@ -26,15 +26,15 @@
 - [ ] [IMPORTANT] .env.example exhaustif et a jour pour backend et frontend-next.
 
 ## 1.2 Authentification & Sessions
-- [ ] [CRITIQUE] Valider que l expiration JWT est <= 24h. ImplÃ©menter refresh token si necessaire.
-- [ ] [CRITIQUE] Blacklister les tokens a la deconnexion explicite (table revoked_tokens ou Redis).
-- [ ] [CRITIQUE] Rate-limit /api/auth/login : max 5 tentatives / 15min / IP.
-- [ ] [IMPORTANT] Mecanisme de logout de toutes les sessions actives (cas de compromission).
+- [x] [CRITIQUE] Valider que l expiration JWT est <= 24h. ImplÃ©menter refresh token si necessaire.
+- [x] [CRITIQUE] Blacklister les tokens a la deconnexion explicite (table revoked_tokens ou Redis).
+- [x] [CRITIQUE] Rate-limit /api/auth/login : max 5 tentatives / 15min / IP.
+- [x] [IMPORTANT] Mecanisme de logout de toutes les sessions actives (cas de compromission).
 
 ## 1.3 Hardening API
-- [ ] [CRITIQUE] Rate-limiting global routes publiques (100 req/min/IP - express-rate-limit).
+- [x] [CRITIQUE] Rate-limiting global routes publiques (100 req/min/IP - express-rate-limit).
 - [ ] [CRITIQUE] Validation stricte des inputs avec joi ou zod sur tous les endpoints.
-- [ ] [CRITIQUE] helmet actif et correctement configure (CSP, HSTS, X-Frame-Options).
+- [x] [CRITIQUE] helmet actif et correctement configure (CSP, HSTS, X-Frame-Options).
 - [ ] [CRITIQUE] CORS : liste blanche stricte en production (interdire *).
 - [ ] [IMPORTANT] Sanitisation des uploads fichiers (MIME, taille max, renommage, stockage hors webroot).
 - [ ] [IMPORTANT] Audit des requetes Sequelize raw - tous les parametres passent par :replacements.
@@ -70,6 +70,8 @@
 - [ ] [CRITIQUE] Feedback toasts : confirmer chaque action utilisateur (sauvegarde, envoi, suppression).
 - [ ] [IMPORTANT] Page 404 personnalisee et utile.
 - [ ] [IMPORTANT] Page erreur 500 personnalisee.
+
+
 
 ---
 
@@ -171,10 +173,6 @@ TeamBlender vise Ã  devenir la plateforme de rÃ©fÃ©rence de team-building 
 - Etat runtime non persistant (risque restart)
 - Couverture tests limitÃ©e
 
-
-
-
-teamblender-backend-qxe5-production.up.railway.app/api/auth/login-participant:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
 
 Challenge: Lab d'innovation 
 

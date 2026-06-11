@@ -96,3 +96,17 @@ Dependencies backend/frontend:
 Risque principal:
 Critere de validation MVP:
 ```
+
+## A rajouter dans idées de challenge
+- Ice Breaker (5 min)
+Objectif : créer de la cohésion rapidement.
+Exemples :
+Trouver 3 points communs dans l’équipe
+Créer un cri d’équipe
+Définir un super pouvoir collectif
+Score
++50 points bonus participation
+
+- Jeux de role
+
+- Challenge: Lab d'innovation 

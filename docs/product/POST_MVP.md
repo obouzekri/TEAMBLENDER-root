@@ -97,3 +97,120 @@
 - Runbook operationnel: `docs/runbooks/GTM_GA4_SETUP_RUNBOOK.md` (noms exacts tags/declencheurs/variables + checks GTM Preview et GA4 DebugView).
 - Etat GTM (2026-06-06): configuration GA4 publiee (version 2) avec 5 balises, 4 declencheurs, 4 variables.
 - Alerte a traiter: GTM signale "logiciel malveillant" sur les balises GA4 publiees (balises mises en veille) ; lever ce blocage avant validation finale analytics.
+
+## Post MVP
+Le “Produit / Tarifs / Contact” paraît un peu vide
+À terme je verrais :
+Fonctionnalités
+Cas d’usage
+Entreprises
+Ressources
+Démo
+
+## Post MVP
+clarifier encore plus la proposition de valeur
+montrer des cas concrets
+rassurer sur le ROI et l’engagement des équipes
+
+## Post MVP amélioration navi bar liste déroulante
+Si tu veux, je peux aussi te proposer une petite amélioration pour l’animation de fermeture (fade out + scale down) pour que l’UX soit aussi fluide à la fermeture qu’à l’ouverture.
+
+
+## Post MVP amélioration pour la connexion
+Si vous voulez une finition supplémentaire, je peux faire une passe micro-UI dédiée mobile uniquement sur les espacements et la densité visuelle des cards pour les pages de connexion
+
+
+## Post MVP
+
+Utilisé sur le terrain par des managers, RH et facilitateurs pour structurer des décisions collectives en conditions réelles.
+
+🎯 Recommandations design prioritaires
+Créer un moment “wow” visuel (animation, illustration clé, interaction).
+Renforcer la hiérarchie visuelle (titres, CTA).
+Injecter plus de signaux de jeu (progression, tension, feedback visuel).
+Oser un peu plus d’émotion graphique, sans perdre le sérieux B2B.
+
+Si tu veux, je peux :
+
+proposer une direction artistique alternative plus ludique,
+faire un avant / après design sur une section précise,
+ou te dire comment renforcer le design sans toucher au code (quick wins).
+
+##
+#
+## PAIEMENT & MONETISATION
+
+- [ ] [CRITIQUE] Definir les offres (Free / Pro / Enterprise) et leurs limites (sessions, participants, challenges).
+- [ ] [IMPORTANT] Factures automatiques envoyees par email.
+
+## MARKETING & ACQUISITION
+
+
+- [ ] [CRITIQUE] SEO de base : title, meta description, og:image sur toutes les pages publiques.
+- [ ] [IMPORTANT] Section Ressources (guide du team building efficace, use cases).
+- [ ] [IMPORTANT] Temoignages / logos clients sur la landing page.
+- [ ] [IMPORTANT] Formulaire de demande de demo (CRM ou email).
+
+---
+
+## CONFORMITE & LEGAL
+
+- [ ] [CRITIQUE] Mentions legales completes (editeur, hebergeur, DPO).
+- [ ] [CRITIQUE] CGU adaptees au SaaS B2B.
+- [ ] [CRITIQUE] Politique de confidentialite RGPD conforme.
+- [ ] [IMPORTANT] DPA (Data Processing Agreement) pour les clients entreprise.
+- [ ] [IMPORTANT] Procedure de notification de breach RGPD (72h).
+- [ ] [IMPORTANT] Améliorer UI des pages
+
+---
+
+## TRACKING & ANALYTICS
+
+- [ ] [CRITIQUE] GTM Preview : ouvrir le site avec le mode Preview actif, verifier que `gtm.js` est charge et que les tags se declenchent.
+- [ ] [CRITIQUE] GA4 DebugView (`analytcis.google.com` > Admin > DebugView) : verifier `page_view` et `cta_click` remontent en temps reel.
+- Statut courant: verification GTM Preview/GA4 DebugView encore manuelle (non validee dans cette passe), alerte malware GTM toujours presente sur les versions publiees.
+- Tentative du 06/06/2026 (agent): GTM accessible et conteneur publie visible, mais mode Preview non validable en session automatisee (interaction instable/bloquee).
+- Tentative du 06/06/2026 (agent): GA4 ouvert, proprieté TeamBlender affiche "Aucune donnée reçue de votre site Web pour l'instant" (ID mesure G-29ZC13R2CM), DebugView non validé.
+
+## RGPD / Consentement
+- [ ] [IMPORTANT] ImplÃ©menter GTM Consent Mode v2 : bloquer les tags analytics tant que le consentement n est pas donne.
+
+---
+
+## AUTHENTIFICATION & SOCIAL LOGIN
+
+- [ ] [CRITIQUE] Tester le flow Google OAuth en local avec un compte de test reel.
+- [ ] [IMPORTANT] Verifier que les evenements PostHog `login_oauth` et `signup_oauth` remontent dans GA4 DebugView via GTM.
+
+---
+
+## Vision produit
+
+TeamBlender vise Ã  devenir la plateforme de rÃ©fÃ©rence de team-building digital pour Ã©quipes hybrides, en combinant gamification, analytics RH et collaboration temps rÃ©el.
+
+
+## Limitations actuelles
+
+- Realtime partiellement hybride (polling + socket)
+- Etat runtime non persistant (risque restart)
+- Couverture tests limitÃ©e
+
+## SECURITE
+- [ ] [CRITIQUE] Politique de retention : brancher le script de purge des sessions inactives > 12 mois au scheduler Railway (script pret, branchement Railway a faire).
+- [ ] [CRITIQUE] Completer et maintenir a jour les pages mentions legales et politique de confidentialite (infos editeur, hebergeur, contact RGPD).
+
+---
+
+## INFRASTRUCTURE & DEPLOIEMENT
+
+- [ ] [IMPORTANT] Coverage tests backend > 70% sur les services critiques (auth, sessions, challenges).
+	- Etat actuel (2026-06-05): coverage globale backend `Lines 44.52%`, `Functions 44.66%`, `Statements 43.27%`, `Branches 29.27%` (commande: `npm test -- --coverage`).
+	- Bloquants mesures: 6 suites en echec (auth/email/billing/realtime/qa), donc impossible d'atteindre >70% sans stabiliser ces tests d'abord.
+
+- [ ] [CRITIQUE] Backups automatiques Railway PostgreSQL (retention >= 7 jours).
+	- Verification technique: la CLI Railway ne fournit pas de commande native de preuve de retention backup (pas d'API backup exposee via `railway --help`).
+	- Action restante: validation manuelle dans Railway Dashboard (service Postgres > Backups) avec evidence retention >= 7 jours.
+
+---
+# Post MVP
+Multi-utlisateur ( 1 compte RH a plusieurs compte participant)

@@ -70,6 +70,9 @@
 - [ ] Refactoriser les appels API dans un client unique
 - [ ] Ajouter des tests d'intégration pour les flows critiques
 
+### Internationalisation (durcissement)
+- [ ] Ajouter la phase 2 du controle i18n: detection du texte JSX hardcode sur les ecrans admin, avec allowlist progressive pour eviter les faux positifs et bloquer les regressions FR/EN en CI
+
 ## Documentation technique
 
 - [ ] Documenter l'architecture interne backend (flows métier)
@@ -214,3 +217,24 @@ TeamBlender vise Ã  devenir la plateforme de rÃ©fÃ©rence de team-building 
 ---
 # Post MVP
 Multi-utlisateur ( 1 compte RH a plusieurs compte participant)
+
+TeamBlender est une plateforme SaaS conçue pour optimiser la collaboration, la productivité et la synergie des équipes modernes.
+Elle permet aux entreprises, startups et équipes distribuées de centraliser, organiser et fluidifier leur travail en combinant gestion d’équipe, communication et suivi de performance dans un seul espace intelligent.
+Cas d usage
+
+Des scenarios reels, une dynamique immediate
+De l onboarding a l alignement manager, TeamBlender transforme les reunions en moments de collaboration a forte energie.
+
+01
+Kick-off manager du lundi
+Une équipe leadership devenue hybride perd en alignement et en vitesse de décision.
+En 25 minutes guidées, les managers alignent les priorités et repartent avec un plan concret.
+02
+Onboarding première semaine
+Des nouveaux collaborateurs répartis sur plusieurs sites peinent à créer du lien rapidement.
+
+Des rituels interactifs renforcent la confiance dès le départ et rendent la participation visible.
+03
+Atelier d’exécution multi-sites
+Des équipes réparties doivent coordonner leurs objectifs et leurs actions dans des délais courts.
+Un format commun de session améliore la communication et la cohérence d’exécution.

@@ -7,41 +7,31 @@
 # paypall / Paddle / voir offre maroc / stripe 
 # rajouter deux challenges
 # traitement et corrections des CHALLENGES
-
 ## Mission Critique
-
 ## Vrai ou mensonge
-- si un joeur ne pose pas la question dans le temps impartit, il a 0 et directement on passe à l'autre participant
-- supprime (ex-aequo) dans le score
-- Assure toi que le score est bien calculé suivant les régles 
-- applique le même design des titres au niveau des régles pareil aux autre challenge notamment au challenge labyrtinthe 
-- design du block classement pareil au design du  block chrono et chat surotut pour le titre et pour le fond 
-- mettre des tirets pour les régles, 
-
 ## Phrase Mystere
-
 ## Labyrinthe
-au niveau du chrono, change le titre de "Timer" vers "Chrono"
-
 ## Escape Room
-
 ## Pixel Art
-
 ## Copuzzle
-
 ## Quiz
 # UX
-
 # UI
 # vérification des données analytiques de la plateforme
-# bug plateforme
-- Engine actif en session (escape_room_v1) different de l'URL (mission_critique_v1).
-# version anglaise
-- le texte "ouvrir le guide de démarrage" dans home du manager est toujours en français
-- le texte "Creer des participant" dans home du manager est toujours en français
-
+# when i'm on the english version of the platforme
 # Responsive mobile
-# Description
 
 
-"enigme_id" with value "e1" fails to match the required pattern: /^\d+$/
+
+- corrige au niveau des régles les apostrophes et les accents pour tous les challenges
+- remplace les tags "Minimum 2 joueurs ⭐ Recommande 4 joueurs Maximum 6 joueurs"metttre au niveau de tous les régles dans tous les challenge  en boulet point au niveau du facilitateur pareil aux autres boulet point 
+système de point pour le challenge mission secrete
+POUR LE CHALLENGE ENIGME SI LES R2PONSE NE SONT PAS COHERENTE OU BONNE DONNER LA MAIN POUR ENTRER UNE NOUVELLE REPONSE
+ou passer directement à l'énigme prochain
+problème image ne s'affiche pas
+depot impossible pour pixel architecte ecran vide
+mettre un block derier dans quiz
+enleve selection par défaut de reponse 
+une fois réponse soumise next question
+enfin donner la réponse aux différentes questions
+rajoute classement actuel sous le chat

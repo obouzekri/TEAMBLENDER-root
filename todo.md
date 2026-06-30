@@ -15,9 +15,12 @@
 ## P1 - Securite et Qualite (Semaines 2-3)
 
 - [ ] Remplacer lecture directe token depuis localStorage/sessionStorage
-- [ ] Centraliser la gestion d'auth frontend avec mecanisme unique
-- [ ] Ajouter tests frontend unitaires sur flux critiques (auth, builder, runtime)
-- [ ] Ajouter tests integration frontend pour parcours manager/participant
+- [x] Centraliser la gestion d'auth frontend avec mecanisme unique
+	- Preuve locale (2026-06-30): helpers uniques dans `frontend-next/lib/auth.js` (`getStoredAuthToken`, `getStoredCurrentUser`, `setStoredAuthSession`, `clearSessionAuth`, `getAuthHeaders`) utilises sur flux critiques (`app/login/LoginForm.js`, `app/session-builder/SessionBuilder.js`, `app/session-live/[sessionId]/SessionLiveClient.js`, `app/session-results/[sessionId]/SessionResultsClient.js`).
+- [x] Ajouter tests frontend unitaires sur flux critiques (auth, builder, runtime)
+	- Preuve locale (2026-06-30): `frontend-next npm run test:unit` -> `TEST_VOM_UTILS_OK`, `TEST_AUTH_OK`, `TEST_SESSION_BUILDER_UTILS_OK`, `TEST_RUNTIME_DISPATCHER_OK`.
+- [x] Ajouter tests integration frontend pour parcours manager/participant
+	- Preuve locale (2026-06-30): script ajoute `frontend-next/scripts/test-integration-manager-participant.mjs` + commande `npm run test:integration:manager-participant` (execution locale bloquee faute de backend joignable: `fetch failed`).
 - [ ] Mettre dashboard fiabilite (5xx, latence p95, erreurs socket, paiement)
 - [x] Standardiser tracking event produit (session/user/challenge)
 - [x] Corriger warning Next: migration `middleware` vers `proxy`

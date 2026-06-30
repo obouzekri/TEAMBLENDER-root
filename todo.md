@@ -2,13 +2,9 @@
 
 ## P0 - Blocants (Semaine 1)
 
-- [x] Stabiliser la CI backend (objectif: suite de tests verte)
-	- Preuve locale (2026-06-30): `backend npm test -- --runInBand` -> 24/24 suites vertes, 98/98 tests.
 - [ ] Corriger la validation env en contexte test (JWT_SECRET et variables critiques)
 - [ ] Corriger le test flaky realtime `phrase_realtime_events`
 - [ ] Activer un gate de merge bloque si tests backend rouges
-- [x] Durcir l'endpoint upload image (retirer exemption globale de rate limit)
-	- Preuve locale (2026-06-30): exemption globale retiree + limite dediee upload activee sur `POST /api/challenges/upload-image` ; `backend npm test -- --runInBand` -> 24/24 suites vertes, 98/98 tests.
 - [ ] Definir une limite dediee upload (taille, debit, auth)
 - [ ] Lancer migration auth vers cookie HttpOnly + SameSite + CSRF
 
@@ -16,15 +12,12 @@
 
 - [ ] Remplacer lecture directe token depuis localStorage/sessionStorage
 - [x] Centraliser la gestion d'auth frontend avec mecanisme unique
-	- Preuve locale (2026-06-30): helpers uniques dans `frontend-next/lib/auth.js` (`getStoredAuthToken`, `getStoredCurrentUser`, `setStoredAuthSession`, `clearSessionAuth`, `getAuthHeaders`) utilises sur flux critiques (`app/login/LoginForm.js`, `app/session-builder/SessionBuilder.js`, `app/session-live/[sessionId]/SessionLiveClient.js`, `app/session-results/[sessionId]/SessionResultsClient.js`).
+	- Preuve locale (2026-06-30): centralisation via `frontend-next/lib/auth-storage.js` + wiring dans `lib/auth.js`, `lib/api.js`, `lib/socket.js`, `lib/paddle.js`.
 - [x] Ajouter tests frontend unitaires sur flux critiques (auth, builder, runtime)
-	- Preuve locale (2026-06-30): `frontend-next npm run test:unit` -> `TEST_VOM_UTILS_OK`, `TEST_AUTH_OK`, `TEST_SESSION_BUILDER_UTILS_OK`, `TEST_RUNTIME_DISPATCHER_OK`.
-- [x] Ajouter tests integration frontend pour parcours manager/participant
-	- Preuve locale (2026-06-30): script ajoute `frontend-next/scripts/test-integration-manager-participant.mjs` + commande `npm run test:integration:manager-participant` (execution locale bloquee faute de backend joignable: `fetch failed`).
+	- Preuve locale (2026-06-30): `frontend-next npm run test:unit` -> OK (`TEST_VOM_UTILS_OK`, `TEST_AUTH_OK`, `TEST_SESSION_BUILDER_UTILS_OK`, `TEST_RUNTIME_DISPATCHER_OK`).
+- [ ] Ajouter tests integration frontend pour parcours manager/participant
+	- Etat local (2026-06-30): script present `frontend-next npm run test:integration:manager-participant`, execution KO sur dependance environnement (`SMOKE_FAIL fetch failed`).
 - [ ] Mettre dashboard fiabilite (5xx, latence p95, erreurs socket, paiement)
-- [x] Standardiser tracking event produit (session/user/challenge)
-- [x] Corriger warning Next: migration `middleware` vers `proxy`
-	- Preuve locale (2026-06-30): `frontend-next npm run build` sans warning deprecation middleware.
 
 ## P2 - Scalabilite et Robustesse (Mois 2)
 
@@ -36,7 +29,7 @@
 
 ## Produit / UX / Challenges (Parallele)
 
-- [ ] Corriger textes de regles (accents, apostrophes) sur tous les challenges
+- [x] Corriger textes de regles (accents, apostrophes) sur tous les challenges
 - [ ] Uniformiser format des blocs regles participants (bullet points)
 - [ ] Finaliser systeme de points Mission Secrete
 - [ ] Corriger logique Enigme (reponse incoherente: nouvelle tentative ou passage)

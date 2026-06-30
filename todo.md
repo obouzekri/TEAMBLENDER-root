@@ -113,10 +113,30 @@
 
 ### P2 parallele - Structure produit
 - [ ] Finaliser OAuth Microsoft en prod (secrets Railway + redirect URIs Azure AD)
+	- [ ] Verifier variables prod Railway (client_id, client_secret, callback_url)
+	- [ ] Aligner redirect URIs Azure AD (prod + fallback) et tester round-trip complet
+	- [ ] Ajouter tests smoke login Microsoft (succes, refus consentement, erreur provider)
+	- [ ] Definition of done: connexion Microsoft fonctionnelle en prod avec logs d'audit
 - [ ] Ajouter 2FA admin/facilitateur
+	- [ ] Choisir methode 2FA (TOTP prioritaire) + definir policy d'enforcement par role
+	- [ ] Implementer enrollement, verification, recovery codes et revoke appareil
+	- [ ] Ajouter garde-fous UX (grace period, backup flow en cas de perte device)
+	- [ ] Definition of done: 2FA obligatoire sur roles cibles + tests d'integration verts
 - [ ] Documenter procedure violation RGPD (72h) + test de simulation
+	- [ ] Ecrire playbook incident RGPD (detection, qualification, notification, communication)
+	- [ ] Definir RACI (DPO, tech lead, legal, support) et canaux de crise
+	- [ ] Executer exercice table-top 60 min et capturer ecarts
+	- [ ] Definition of done: procedure versionnee + compte-rendu simulation avec actions correctives
 - [ ] Ajouter facturation automatique par email
+	- [ ] Definir evenements facture (achat, renouvellement, echec paiement, remboursement)
+	- [ ] Generer email facture avec piece jointe/lien PDF et references legales minimales
+	- [ ] Journaliser envoi + relance automatique sur echec delivery
+	- [ ] Definition of done: facture envoyee automatiquement sur 3 cas de test consecutifs
 - [ ] Continuer durcissement i18n phase 2 (detection JSX hardcode + allowlist CI)
+	- [ ] Etendre detection hardcoded strings sur composants critiques restants
+	- [ ] Mettre a jour allowlist CI avec justification explicite par exception
+	- [ ] Ajouter verification PR: echec si nouvelle chaine hardcodee non justifiee
+	- [ ] Definition of done: 0 nouvelle chaine hardcodee non autorisee sur 2 sprints
 
 ## Gouvernance execution
 

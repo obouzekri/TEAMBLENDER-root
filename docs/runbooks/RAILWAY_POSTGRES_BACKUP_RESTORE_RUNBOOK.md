@@ -3,6 +3,11 @@
 Date: 2026-06-05
 Scope: Railway PostgreSQL backup retention and restoration procedure
 
+## 0) Latest verification snapshot
+- Last reviewed: 2026-06-30
+- Linked Railway context evidence: `backend/.railway-status.json`
+- Evidence log: `docs/history/RAILWAY_POSTGRES_BACKUP_RESTORE_EVIDENCE_2026-06-30.md`
+
 ## 1) Objective
 - Ensure Railway PostgreSQL backups are active with retention >= 7 days.
 - Provide a repeatable restoration process for production incidents.
@@ -57,3 +62,7 @@ npm run smoke:postdeploy:api
 - Start/end timestamps.
 - API health and smoke-check outputs.
 - Data-loss window acknowledged by stakeholders.
+
+## 9) Operational constraint
+- Railway CLI version available in this workspace does not expose backup snapshot listing/retention values directly.
+- Retention and restore trigger are validated through Railway dashboard (`Backups` tab), then archived with the evidence checklist above.

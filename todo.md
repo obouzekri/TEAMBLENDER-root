@@ -51,10 +51,10 @@
 	- [ ] Aligner pricing page + backend enforcement (flags plan + checks API)
 	- [ ] Definition of done: matrice des plans versionnee + test de non-regression des limites
 - [ ] Publier CGU SaaS B2B + finaliser pages legales (mentions, confidentialite, contact RGPD)
-	- [ ] Finaliser textes juridiques minimaux avec perimetre B2B clair (responsabilites, disponibilite, donnees)
-	- [ ] Publier pages publiques: /cgu, /mentions-legales, /confidentialite, /contact-rgpd
-	- [ ] Verifier coherence liens footer/header + accessibilite mobile
-	- [ ] Definition of done: pages accessibles en production + date de mise a jour visible
+	- [x] Finaliser textes juridiques minimaux avec perimetre B2B clair (responsabilites, disponibilite, donnees)
+	- [x] Publier pages publiques: /cgu, /mentions-legales, /confidentialite, /contact-rgpd
+	- [x] Verifier coherence liens footer/header + accessibilite mobile
+	- [x] Definition of done: pages accessibles en production + date de mise a jour visible
 - [ ] Activer sauvegardes PostgreSQL Railway avec retention >= 7 jours + preuve de restauration
 	- [ ] Activer politique de backup quotidienne et retention >= 7 jours sur environnement prod
 	- [x] Documenter procedure de restauration pas a pas (runbook)

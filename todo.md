@@ -7,7 +7,8 @@
 - [ ] Corriger la validation env en contexte test (JWT_SECRET et variables critiques)
 - [ ] Corriger le test flaky realtime `phrase_realtime_events`
 - [ ] Activer un gate de merge bloque si tests backend rouges
-- [ ] Durcir l'endpoint upload image (retirer exemption globale de rate limit)
+- [x] Durcir l'endpoint upload image (retirer exemption globale de rate limit)
+	- Preuve locale (2026-06-30): exemption globale retiree + limite dediee upload activee sur `POST /api/challenges/upload-image` ; `backend npm test -- --runInBand` -> 24/24 suites vertes, 98/98 tests.
 - [ ] Definir une limite dediee upload (taille, debit, auth)
 - [ ] Lancer migration auth vers cookie HttpOnly + SameSite + CSRF
 
@@ -18,8 +19,9 @@
 - [ ] Ajouter tests frontend unitaires sur flux critiques (auth, builder, runtime)
 - [ ] Ajouter tests integration frontend pour parcours manager/participant
 - [ ] Mettre dashboard fiabilite (5xx, latence p95, erreurs socket, paiement)
-- [ ] Standardiser tracking event produit (session/user/challenge)
-- [ ] Corriger warning Next: migration `middleware` vers `proxy`
+- [x] Standardiser tracking event produit (session/user/challenge)
+- [x] Corriger warning Next: migration `middleware` vers `proxy`
+	- Preuve locale (2026-06-30): `frontend-next npm run build` sans warning deprecation middleware.
 
 ## P2 - Scalabilite et Robustesse (Mois 2)
 

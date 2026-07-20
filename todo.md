@@ -68,9 +68,9 @@
 	- [ ] Ajouter CTA demo persistant (hero + mid-page + footer)
 	- [ ] Definition of done: parcours public complet avec au moins 3 points de preuve visibles sans scroll excessif
 - [ ] Ajouter essai gratuit 14 jours sans carte bancaire
-	- [ ] Adapter flow signup pour flag trial_start + trial_end
+	- [x] Adapter flow signup pour flag trial_start + trial_end
 	- [ ] Ajouter reminders email J+10/J+13 + CTA upgrade
-	- [ ] Definition of done: creation compte trial testee de bout en bout + conversion vers offre payante possible
+	- [x] Definition of done: creation compte trial testee de bout en bout + conversion vers offre payante possible
 
 ### P2 parallele - Structure produit
 - [ ] Finaliser OAuth Microsoft en prod (secrets Railway + redirect URIs Azure AD)
@@ -84,10 +84,10 @@
 	- [ ] Ajouter garde-fous UX (grace period, backup flow en cas de perte device)
 	- [ ] Definition of done: 2FA obligatoire sur roles cibles + tests d'integration verts
 - [ ] Documenter procedure violation RGPD (72h) + test de simulation
-	- [ ] Ecrire playbook incident RGPD (detection, qualification, notification, communication)
-	- [ ] Definir RACI (DPO, tech lead, legal, support) et canaux de crise
-	- [ ] Executer exercice table-top 60 min et capturer ecarts
-	- [ ] Definition of done: procedure versionnee + compte-rendu simulation avec actions correctives
+	- [x] Ecrire playbook incident RGPD (detection, qualification, notification, communication)
+	- [x] Definir RACI (DPO, tech lead, legal, support) et canaux de crise
+	- [x] Executer exercice table-top 60 min et capturer ecarts
+	- [x] Definition of done: procedure versionnee + compte-rendu simulation avec actions correctives
 - [ ] Ajouter facturation automatique par email
 	- [ ] Definir evenements facture (achat, renouvellement, echec paiement, remboursement)
 	- [ ] Generer email facture avec piece jointe/lien PDF et references legales minimales

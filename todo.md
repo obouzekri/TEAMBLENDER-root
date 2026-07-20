@@ -17,9 +17,9 @@
 
 - [ ] Externaliser etat realtime (rooms/socket) vers Redis adapter
 - [ ] Renforcer reprise sur incident (idempotence actions challenge)
-- [ ] Durcir gestion timeouts/reconnexion pendant challenges live
+- [x] Durcir gestion timeouts/reconnexion pendant challenges live
 - [ ] Ajouter tests de charge realtime (multi-sessions, multi-participants)
-- [ ] Ajouter runbook incident realtime (degradation + recovery)
+- [x] Ajouter runbook incident realtime (degradation + recovery)
 
 ## Produit / UX / Challenges (Parallele)
 

@@ -1,45 +1,14 @@
-﻿﻿﻿# TODO - Plan d'action priorise (Plateforme + Produit)
+﻿﻿# TODO - Plan d'action priorise (Plateforme + Produit)
 
 ## P0 - Blocants (Semaine 1)
 
-- [x] Corriger la validation env en contexte test (JWT_SECRET et variables critiques)
-	- [x] Aligner chargement env test (ordre .env.test, fallback securise, valeurs par defaut interdites)
-	- [x] Ajouter garde de demarrage: echec explicite si variable critique manquante en test
-	- [x] Ajouter test automatique de validation env en mode CI
-	- [x] Definition of done: backend tests lancent sans contournement manuel des variables
-	- Preuve locale (2026-07-20): `backend/tests/jest.setup.js`, `backend/tests/critical_env_validation.test.js`, `backend/src/config/env.js`, `backend/.github/workflows/ci.yml`.
-- [x] Corriger le test flaky realtime `phrase_realtime_events`
-	- [x] Isoler cause de flakiness (timing socket, race condition, ordre des events)
-	- [x] Stabiliser fixtures et timers (attentes deterministes, timeout explicite)
-	- [x] Ajouter rerun local x10 pour verifier stabilite
-	- [x] Definition of done: 10 runs consecutifs verts sans intermittence
-	- Preuve locale (2026-07-20): `backend/tests/phrase_realtime_events.test.js` execute 10x consecutifs -> `TOTAL_FAILS=0`.
-- [x] Activer un gate de merge bloque si tests backend rouges
-	- [x] Configurer workflow CI backend en statut requis sur branche main
-	- [x] Bloquer merge si job tests/lint/coverage echoue
-	- [x] Documenter la regle de protection dans le runbook engineering
-	- [x] Definition of done: impossible de merger une PR avec pipeline backend rouge
-	- Preuve locale (2026-07-20): job `backend-ci-required` dans `backend/.github/workflows/ci.yml` + doc `docs/process/MERGE_GATE_RULE.md`.
-- [x] Definir une limite dediee upload (taille, debit, auth)
-	- [x] Fixer limites techniques (taille max par fichier, debit, types acceptes)
-	- [x] Exiger auth + controles anti-abus (rate limit, quotas)
-	- [x] Retourner erreurs API standardisees (413/415/429) avec message utilisateur clair
-	- [x] Definition of done: limites appliquees et testees (cas valides + depassements)
-	- Preuve locale (2026-07-20): `backend/src/controllers/challenge.controller.js` + `backend/tests/challenge_upload_limits.test.js`.
 - [ ] Lancer migration auth vers cookie HttpOnly + SameSite + CSRF
-	- [x] Introduire cookie session HttpOnly/Secure/SameSite adapte au domaine
-	- [x] Ajouter protection CSRF sur endpoints sensibles (state-changing)
 	- [ ] Migrer frontend pour ne plus lire token depuis storage browser
 	- [ ] Definition of done: login/logout/refresh fonctionnels avec cookie + tests e2e auth verts
-	- Etat local (2026-07-20): backend pret en mode dual auth (Bearer + cookie) avec endpoints `/auth/csrf-token`, `/auth/refresh`, `/auth/logout` et middleware CSRF; migration frontend complete + e2e a finaliser.
 
 ## P1 - Securite et Qualite (Semaines 2-3)
 
 - [ ] Remplacer lecture directe token depuis localStorage/sessionStorage
-- [x] Centraliser la gestion d'auth frontend avec mecanisme unique
-	- Preuve locale (2026-06-30): centralisation via `frontend-next/lib/auth-storage.js` + wiring dans `lib/auth.js`, `lib/api.js`, `lib/socket.js`, `lib/paddle.js`.
-- [x] Ajouter tests frontend unitaires sur flux critiques (auth, builder, runtime)
-	- Preuve locale (2026-06-30): `frontend-next npm run test:unit` -> OK (`TEST_VOM_UTILS_OK`, `TEST_AUTH_OK`, `TEST_SESSION_BUILDER_UTILS_OK`, `TEST_RUNTIME_DISPATCHER_OK`).
 - [ ] Ajouter tests integration frontend pour parcours manager/participant
 	- Etat local (2026-06-30): script present `frontend-next npm run test:integration:manager-participant`, execution KO sur dependance environnement (`SMOKE_FAIL fetch failed`).
 - [ ] Mettre dashboard fiabilite (5xx, latence p95, erreurs socket, paiement)
@@ -54,17 +23,6 @@
 
 ## Produit / UX / Challenges (Parallele)
 
-- [x] Corriger textes de regles (accents, apostrophes) sur tous les challenges
-- [x] Uniformiser format des blocs regles participants (bullet points)
-- [x] Finaliser systeme de points Mission Secrete
-- [x] Corriger logique Enigme (reponse incoherente: nouvelle tentative ou passage)
-- [x] Corriger affichage image challenge quand non chargee
-- [x] Corriger ecran vide Pixel Architect (depot impossible)
-- [x] Quiz: retirer selection par defaut de reponse
-- [x] Quiz: passage automatique a la question suivante apres soumission
-- [x] Quiz: afficher reponse correcte en fin de question
-- [x] Ajouter classement actuel sous le chat
-- [x] Aligner design modal "lancement session" sur modal "prochain challenge"
 - [ ] Verifier responsive mobile complet sur parcours manager/participant
 
 ## Priorites paralleles Post-MVP (Business + Conformite + Adoption)
@@ -75,29 +33,11 @@
 	- [ ] Definir regles de depassement (hard cap, soft warning, upgrade prompt)
 	- [ ] Aligner pricing page + backend enforcement (flags plan + checks API)
 	- [ ] Definition of done: matrice des plans versionnee + test de non-regression des limites
-- [x] Publier CGU SaaS B2B + finaliser pages legales (mentions, confidentialite, contact RGPD)
-	- [x] Finaliser textes juridiques minimaux avec perimetre B2B clair (responsabilites, disponibilite, donnees)
-	- [x] Publier pages publiques: /cgu, /mentions-legales, /confidentialite, /contact-rgpd
-	- [x] Verifier coherence liens footer/header + accessibilite mobile
-	- [x] Definition of done: pages accessibles en production + date de mise a jour visible
 - [ ] Activer sauvegardes PostgreSQL Railway avec retention >= 7 jours + preuve de restauration
 	- [ ] Activer politique de backup quotidienne et retention >= 7 jours sur environnement prod
-	- [x] Documenter procedure de restauration pas a pas (runbook)
 	- [ ] Executer un test de restauration sur environnement de verification
 	- [ ] Definition of done: preuve horodatee backup + rapport restauration reussi
 	- Etat local (2026-06-30): runbook et trace de verification ajoutes dans `docs/runbooks/RAILWAY_POSTGRES_BACKUP_RESTORE_RUNBOOK.md` et `docs/history/RAILWAY_POSTGRES_BACKUP_RESTORE_EVIDENCE_2026-06-30.md`; validation backup retention + restore final a confirmer via dashboard Railway (Backups).
-- [x] Configurer retention donnees: purge automatique sessions inactives > 12 mois
-	- [ ] Definir politique retention (objet concerne, base legale, exceptions)
-	- [x] Implementer job planifie de purge/anonymisation des sessions inactives > 12 mois
-	- [x] Ajouter journal d'execution (nombre de lignes affectees + erreurs)
-	- [ ] Definition of done: run automatique valide sur 2 cycles sans erreur
-	- Preuve locale (2026-06-30): `backend/.github/workflows/session-retention-purge.yml` + `backend/scripts/purge_stale_sessions.js` (JSON summary + details par session).
-- [x] Completer validation Joi sur endpoints critiques encore non couverts
-	- [x] Cartographier endpoints critiques restants (auth, sessions, challenges, paiements/webhooks)
-	- [x] Ajouter schemas Joi sur payload, params et query pour chaque endpoint cible
-	- [ ] Ajouter tests integration sur cas invalides (400 attendus) + cas valides
-	- [ ] Definition of done: 0 endpoint critique sans validation + suite tests verte
-	- Preuve locale (2026-06-30): schemas ajoutes dans `backend/src/validators/api-input.validator.js` + wiring dans `backend/src/routes/challenge.route.js`, `backend/src/routes/session.route.js`, `backend/src/routes/quiz.route.js`, `backend/src/routes/challenge-result.routes.js`, `backend/src/routes/team.route.js`.
 
 ### P1 parallele - Croissance / preuve de valeur
 - [ ] Construire E2E Playwright parcours critiques facilitateur + participant

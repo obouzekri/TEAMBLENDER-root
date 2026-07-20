@@ -61,9 +61,9 @@
 	- [ ] Controler non-duplication des events sur navigation
 	- [ ] Definition of done: capture horodatee des 4 events dans DebugView
 - [ ] Lancer SEO de base pages publiques (title, meta description, og:image)
-	- [ ] Renseigner title + meta description uniques par page publique cle
-	- [ ] Ajouter OG tags minimaux (og:title, og:description, og:image, og:type)
-	- [ ] Ajouter sitemap.xml + robots.txt et soumettre dans Search Console
+	- [x] Renseigner title + meta description uniques par page publique cle
+	- [x] Ajouter OG tags minimaux (og:title, og:description, og:image, og:type)
+	- [x] Ajouter sitemap.xml + robots.txt et soumettre dans Search Console
 	- [ ] Definition of done: score technique SEO de base valide sur page d'accueil + page pricing
 - [ ] Ajouter preuve de valeur en front public: cas d'usage, temoignages, logos clients, CTA demo
 	- [ ] Ajouter section cas d'usage (manager, RH, equipe distribuee)
@@ -71,7 +71,7 @@
 	- [ ] Ajouter CTA demo persistant (hero + mid-page + footer)
 	- [ ] Definition of done: parcours public complet avec au moins 3 points de preuve visibles sans scroll excessif
 - [ ] Ajouter essai gratuit 14 jours sans carte bancaire
-	- [ ] Ajouter messaging pricing clair: "Essai gratuit 14 jours, sans carte bancaire"
+	- [x] Ajouter messaging pricing clair: "Essai gratuit 14 jours, sans carte bancaire"
 	- [ ] Adapter flow signup pour flag trial_start + trial_end
 	- [ ] Ajouter reminders email J+10/J+13 + CTA upgrade
 	- [ ] Definition of done: creation compte trial testee de bout en bout + conversion vers offre payante possible

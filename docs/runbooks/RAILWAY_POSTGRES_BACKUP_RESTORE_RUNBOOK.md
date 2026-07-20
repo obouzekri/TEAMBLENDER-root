@@ -4,9 +4,9 @@ Date: 2026-06-05
 Scope: Railway PostgreSQL backup retention and restoration procedure
 
 ## 0) Latest verification snapshot
-- Last reviewed: 2026-06-30
+- Last reviewed: 2026-07-20
 - Linked Railway context evidence: `backend/.railway-status.json`
-- Evidence log: `docs/history/RAILWAY_POSTGRES_BACKUP_RESTORE_EVIDENCE_2026-06-30.md`
+- Evidence log: `docs/history/RAILWAY_POSTGRES_BACKUP_RESTORE_EVIDENCE_2026-07-20.md`
 
 ## 1) Objective
 - Ensure Railway PostgreSQL backups are active with retention >= 7 days.

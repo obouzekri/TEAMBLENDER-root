@@ -3,10 +3,30 @@
 ## P0 - Blocants (Semaine 1)
 
 - [ ] Corriger la validation env en contexte test (JWT_SECRET et variables critiques)
+	- [ ] Aligner chargement env test (ordre .env.test, fallback securise, valeurs par defaut interdites)
+	- [ ] Ajouter garde de demarrage: echec explicite si variable critique manquante en test
+	- [ ] Ajouter test automatique de validation env en mode CI
+	- [ ] Definition of done: backend tests lancent sans contournement manuel des variables
 - [ ] Corriger le test flaky realtime `phrase_realtime_events`
+	- [ ] Isoler cause de flakiness (timing socket, race condition, ordre des events)
+	- [ ] Stabiliser fixtures et timers (attentes deterministes, timeout explicite)
+	- [ ] Ajouter rerun local x10 pour verifier stabilite
+	- [ ] Definition of done: 10 runs consecutifs verts sans intermittence
 - [ ] Activer un gate de merge bloque si tests backend rouges
+	- [ ] Configurer workflow CI backend en statut requis sur branche main
+	- [ ] Bloquer merge si job tests/lint/coverage echoue
+	- [ ] Documenter la regle de protection dans le runbook engineering
+	- [ ] Definition of done: impossible de merger une PR avec pipeline backend rouge
 - [ ] Definir une limite dediee upload (taille, debit, auth)
+	- [ ] Fixer limites techniques (taille max par fichier, debit, types acceptes)
+	- [ ] Exiger auth + controles anti-abus (rate limit, quotas)
+	- [ ] Retourner erreurs API standardisees (413/415/429) avec message utilisateur clair
+	- [ ] Definition of done: limites appliquees et testees (cas valides + depassements)
 - [ ] Lancer migration auth vers cookie HttpOnly + SameSite + CSRF
+	- [ ] Introduire cookie session HttpOnly/Secure/SameSite adapte au domaine
+	- [ ] Ajouter protection CSRF sur endpoints sensibles (state-changing)
+	- [ ] Migrer frontend pour ne plus lire token depuis storage browser
+	- [ ] Definition of done: login/logout/refresh fonctionnels avec cookie + tests e2e auth verts
 
 ## P1 - Securite et Qualite (Semaines 2-3)
 
@@ -50,7 +70,7 @@
 	- [ ] Definir regles de depassement (hard cap, soft warning, upgrade prompt)
 	- [ ] Aligner pricing page + backend enforcement (flags plan + checks API)
 	- [ ] Definition of done: matrice des plans versionnee + test de non-regression des limites
-- [ ] Publier CGU SaaS B2B + finaliser pages legales (mentions, confidentialite, contact RGPD)
+- [x] Publier CGU SaaS B2B + finaliser pages legales (mentions, confidentialite, contact RGPD)
 	- [x] Finaliser textes juridiques minimaux avec perimetre B2B clair (responsabilites, disponibilite, donnees)
 	- [x] Publier pages publiques: /cgu, /mentions-legales, /confidentialite, /contact-rgpd
 	- [x] Verifier coherence liens footer/header + accessibilite mobile

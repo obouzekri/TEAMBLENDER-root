@@ -16,7 +16,7 @@
 ## P2 - Scalabilite et Robustesse (Mois 2)
 
 - [ ] Externaliser etat realtime (rooms/socket) vers Redis adapter
-- [ ] Renforcer reprise sur incident (idempotence actions challenge)
+- [x] Renforcer reprise sur incident (idempotence actions challenge)
 - [x] Durcir gestion timeouts/reconnexion pendant challenges live
 - [ ] Ajouter tests de charge realtime (multi-sessions, multi-participants)
 - [x] Ajouter runbook incident realtime (degradation + recovery)

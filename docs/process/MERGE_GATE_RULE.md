@@ -17,6 +17,17 @@ Objectif: interdire le merge sans revue minimale et sans checklist process compl
   - branch protection sur `main`
   - minimum 1 approving review
   - interdiction du merge si checks requis en echec
+  - check requis: workflow backend `backend-ci-required` (tests + lint + coverage + validation env)
+
+## Gate backend requis
+
+- Workflow: `backend/.github/workflows/ci.yml`
+- Job requis: `backend-ci-required`
+- Verification executee avant merge:
+  - `npm test -- --runInBand`
+  - `npm run check:env`
+  - `npm test -- --runInBand --coverage`
+  - `npm run lint`
 
 ## Evidence PR
 

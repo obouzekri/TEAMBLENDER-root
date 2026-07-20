@@ -2,31 +2,36 @@
 
 ## P0 - Blocants (Semaine 1)
 
-- [ ] Corriger la validation env en contexte test (JWT_SECRET et variables critiques)
-	- [ ] Aligner chargement env test (ordre .env.test, fallback securise, valeurs par defaut interdites)
-	- [ ] Ajouter garde de demarrage: echec explicite si variable critique manquante en test
-	- [ ] Ajouter test automatique de validation env en mode CI
-	- [ ] Definition of done: backend tests lancent sans contournement manuel des variables
-- [ ] Corriger le test flaky realtime `phrase_realtime_events`
-	- [ ] Isoler cause de flakiness (timing socket, race condition, ordre des events)
-	- [ ] Stabiliser fixtures et timers (attentes deterministes, timeout explicite)
-	- [ ] Ajouter rerun local x10 pour verifier stabilite
-	- [ ] Definition of done: 10 runs consecutifs verts sans intermittence
-- [ ] Activer un gate de merge bloque si tests backend rouges
-	- [ ] Configurer workflow CI backend en statut requis sur branche main
-	- [ ] Bloquer merge si job tests/lint/coverage echoue
-	- [ ] Documenter la regle de protection dans le runbook engineering
-	- [ ] Definition of done: impossible de merger une PR avec pipeline backend rouge
-- [ ] Definir une limite dediee upload (taille, debit, auth)
-	- [ ] Fixer limites techniques (taille max par fichier, debit, types acceptes)
-	- [ ] Exiger auth + controles anti-abus (rate limit, quotas)
-	- [ ] Retourner erreurs API standardisees (413/415/429) avec message utilisateur clair
-	- [ ] Definition of done: limites appliquees et testees (cas valides + depassements)
+- [x] Corriger la validation env en contexte test (JWT_SECRET et variables critiques)
+	- [x] Aligner chargement env test (ordre .env.test, fallback securise, valeurs par defaut interdites)
+	- [x] Ajouter garde de demarrage: echec explicite si variable critique manquante en test
+	- [x] Ajouter test automatique de validation env en mode CI
+	- [x] Definition of done: backend tests lancent sans contournement manuel des variables
+	- Preuve locale (2026-07-20): `backend/tests/jest.setup.js`, `backend/tests/critical_env_validation.test.js`, `backend/src/config/env.js`, `backend/.github/workflows/ci.yml`.
+- [x] Corriger le test flaky realtime `phrase_realtime_events`
+	- [x] Isoler cause de flakiness (timing socket, race condition, ordre des events)
+	- [x] Stabiliser fixtures et timers (attentes deterministes, timeout explicite)
+	- [x] Ajouter rerun local x10 pour verifier stabilite
+	- [x] Definition of done: 10 runs consecutifs verts sans intermittence
+	- Preuve locale (2026-07-20): `backend/tests/phrase_realtime_events.test.js` execute 10x consecutifs -> `TOTAL_FAILS=0`.
+- [x] Activer un gate de merge bloque si tests backend rouges
+	- [x] Configurer workflow CI backend en statut requis sur branche main
+	- [x] Bloquer merge si job tests/lint/coverage echoue
+	- [x] Documenter la regle de protection dans le runbook engineering
+	- [x] Definition of done: impossible de merger une PR avec pipeline backend rouge
+	- Preuve locale (2026-07-20): job `backend-ci-required` dans `backend/.github/workflows/ci.yml` + doc `docs/process/MERGE_GATE_RULE.md`.
+- [x] Definir une limite dediee upload (taille, debit, auth)
+	- [x] Fixer limites techniques (taille max par fichier, debit, types acceptes)
+	- [x] Exiger auth + controles anti-abus (rate limit, quotas)
+	- [x] Retourner erreurs API standardisees (413/415/429) avec message utilisateur clair
+	- [x] Definition of done: limites appliquees et testees (cas valides + depassements)
+	- Preuve locale (2026-07-20): `backend/src/controllers/challenge.controller.js` + `backend/tests/challenge_upload_limits.test.js`.
 - [ ] Lancer migration auth vers cookie HttpOnly + SameSite + CSRF
-	- [ ] Introduire cookie session HttpOnly/Secure/SameSite adapte au domaine
-	- [ ] Ajouter protection CSRF sur endpoints sensibles (state-changing)
+	- [x] Introduire cookie session HttpOnly/Secure/SameSite adapte au domaine
+	- [x] Ajouter protection CSRF sur endpoints sensibles (state-changing)
 	- [ ] Migrer frontend pour ne plus lire token depuis storage browser
 	- [ ] Definition of done: login/logout/refresh fonctionnels avec cookie + tests e2e auth verts
+	- Etat local (2026-07-20): backend pret en mode dual auth (Bearer + cookie) avec endpoints `/auth/csrf-token`, `/auth/refresh`, `/auth/logout` et middleware CSRF; migration frontend complete + e2e a finaliser.
 
 ## P1 - Securite et Qualite (Semaines 2-3)
 

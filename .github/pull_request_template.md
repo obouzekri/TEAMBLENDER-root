@@ -1,11 +1,32 @@
 ## Summary
 - [ ] Scope is clear and limited
 - [ ] Behavior changes are documented
+- [ ] Single objective only (or explicit rationale if multi-objective)
+
+## Mandatory PR Context
+- Objective:
+- Primary risk:
+- Impacted surfaces (backend/frontend/db/infra):
 
 ## Local Tests Checklist (Mandatory)
 - [ ] Backend local checks executed (tests + critical env checks if impacted)
 - [ ] Frontend local checks executed (`npm run build` and relevant smoke/tests)
 - [ ] Test commands and results pasted in PR
+
+### Executed Commands And Results (Mandatory)
+```text
+backend:
+- command:
+- result:
+
+frontend:
+- command:
+- result:
+
+other:
+- command:
+- result:
+```
 
 ## Preview Vercel (Mandatory Before Merge)
 - [ ] Preview URL is provided in this PR
@@ -38,6 +59,19 @@
 - [ ] Risks documented
 - [ ] Rollback plan documented
 - [ ] Railway log excerpts or summary pasted for backend-critical changes
+
+### Risks And Rollback (Mandatory)
+```text
+Risks:
+-
+
+Rollback steps:
+1.
+2.
+
+Verification after rollback:
+-
+```
 
 ## Merge Gate (Mandatory)
 - [ ] At least 1 reviewer approval obtained

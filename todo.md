@@ -110,7 +110,7 @@
 	- [ ] Cible taille PR: <= 400 lignes modifiees (hors snapshots/lockfiles)
 	- [ ] Definition of done: backlog mappe en lots numerotes avec owner + ETA
 - [ ] Exiger preuves dans chaque PR (tests, build, smoke)
-	- [ ] Ajouter template PR obligatoire (tests executes, captures, risques, rollback)
+	- [x] Ajouter template PR obligatoire (tests executes, captures, risques, rollback)
 	- [ ] Bloquer merge si checklist preuves incomplete
 	- [ ] Definition of done: 100% des PR mergees avec preuves attachees
 - [ ] Ajouter retro hebdo fiabilite (incidents, causes, actions)

@@ -16,7 +16,7 @@
 ## P2 - Scalabilite et Robustesse (Mois 2)
 
 - [x] Externaliser etat realtime (rooms/socket) vers Redis adapter
-- [ ] Ajouter tests de charge realtime (multi-sessions, multi-participants)
+- [x] Ajouter tests de charge realtime (multi-sessions, multi-participants)
 
 
 ## Produit / UX / Challenges (Parallele)

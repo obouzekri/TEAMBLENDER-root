@@ -13,15 +13,12 @@
 	- Etat local (2026-06-30): script present `frontend-next npm run test:integration:manager-participant`, execution KO sur dependance environnement (`SMOKE_FAIL fetch failed`).
 - [ ] Mettre dashboard fiabilite (5xx, latence p95, erreurs socket, paiement)
 
-## P2 - Scalabilite et Robustesse (Mois 2)
 
-- [x] Externaliser etat realtime (rooms/socket) vers Redis adapter
-- [x] Ajouter tests de charge realtime (multi-sessions, multi-participants)
 
 
 ## Produit / UX / Challenges (Parallele)
 
-- [ ] Verifier responsive mobile complet sur parcours manager/participant
+- [x] Verifier responsive mobile complet sur parcours manager/participant
 
 ## Priorites paralleles Post-MVP (Business + Conformite + Adoption)
 

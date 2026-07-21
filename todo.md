@@ -15,11 +15,9 @@
 
 ## P2 - Scalabilite et Robustesse (Mois 2)
 
-- [ ] Externaliser etat realtime (rooms/socket) vers Redis adapter
-- [x] Renforcer reprise sur incident (idempotence actions challenge)
-- [x] Durcir gestion timeouts/reconnexion pendant challenges live
+- [x] Externaliser etat realtime (rooms/socket) vers Redis adapter
 - [ ] Ajouter tests de charge realtime (multi-sessions, multi-participants)
-- [x] Ajouter runbook incident realtime (degradation + recovery)
+
 
 ## Produit / UX / Challenges (Parallele)
 
@@ -28,11 +26,7 @@
 ## Priorites paralleles Post-MVP (Business + Conformite + Adoption)
 
 ### P0 parallele - Business continuity / legal
-- [x] Definir offres Free / Pro / Enterprise avec limites explicites (sessions, participants, challenges)
-	- [x] Fixer limites chiftrees par plan (sessions actives, participants/session, bibliotheque challenges, exports)
-	- [x] Definir regles de depassement (hard cap, soft warning, upgrade prompt)
-	- [x] Aligner pricing page + backend enforcement (flags plan + checks API)
-	- [x] Definition of done: matrice des plans versionnee + test de non-regression des limites
+
 - [ ] Activer sauvegardes PostgreSQL Railway avec retention >= 7 jours + preuve de restauration
 	- [ ] Activer politique de backup quotidienne et retention >= 7 jours sur environnement prod
 	- [ ] Executer un test de restauration sur environnement de verification

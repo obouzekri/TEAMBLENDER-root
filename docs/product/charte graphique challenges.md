@@ -67,9 +67,9 @@ background:
 
 ## 4) Typographie
 
-Conserver les polices produit:
-- UI: IBM Plex Sans
-- Display: Sora
+Conserver la regle produit basee sur tokens:
+- UI: `var(--font-ui)`
+- Display: `var(--font-display)` (uniquement pour titres et mise en avant)
 
 Echelle recommandee:
 - H1 challenge: 1.5rem a 1.9rem, weight 700/800
@@ -78,6 +78,7 @@ Echelle recommandee:
 - Meta/badges: 0.72rem a 0.8rem
 
 Regles:
+- Harmonisation challenge: toutes les feuilles CSS de `frontend-next/components/Challenges/` utilisent `var(--font-ui)` pour la typographie runtime.
 - Numeriques (timer, score): tabular-nums
 - Meta et labels: uppercase possible, tracking leger
 - Contraste eleve texte/fond en toute circonstance

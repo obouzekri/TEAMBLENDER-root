@@ -50,8 +50,9 @@ Cette charte decrit le systeme visuel actuellement implemente dans le frontend c
 
 ## 4) Typographie
 
-- Police UI principale: `IBM Plex Sans`, fallback `Segoe UI`, sans-serif.
-- Police display: `Sora`, fallback `IBM Plex Sans`, `Segoe UI`, sans-serif.
+- Contrat de typographie global: usage par tokens CSS, pas de hardcode local de famille.
+- Token UI principal: `var(--font-ui)` pour navigation, formulaires, contenus, cartes, boutons et experiences challenge.
+- Token display: `var(--font-display)` reserve aux titres et composants de mise en avant (hero, titres de section, accroches fortes).
 - Style typographique dominant:
   - Titres: poids fort (700-800), tracking legerement serre selon contexte hero.
   - Labels et meta: uppercase partiel + letter spacing pour clarte.

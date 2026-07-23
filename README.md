@@ -289,7 +289,8 @@ Fichiers:
 
 ## 9.1 Charte graphique et design global
 Socle visuel dans [frontend-next/app/globals.css](frontend-next/app/globals.css):
-- Typographies: `IBM Plex Sans` (UI), `Sora` (display)
+- Typographies: `var(--font-ui)` pour UI/contenu, `var(--font-display)` pour titres et mise en avant
+- Challenges harmonises sur le token UI (`frontend-next/components/Challenges/`)
 - Design tokens CSS variables (couleurs, rayons, ombres, motion)
 - Navigation sticky premium (top-nav, etat compact/live)
 - Style orientee SaaS moderne (surfaces, gradients, composants cartes)

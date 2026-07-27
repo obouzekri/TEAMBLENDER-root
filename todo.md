@@ -30,3 +30,10 @@ Click on a question to open quick answer.
 Partcipant 1 (poser)
 Participant 2
 The poser selects a statement from the catalog."
+
+
+
+
+Utiliser des badges colorés pour les statuts (En cours, Terminée, À venir).
+
+Transformer la section "Liste des participants" avec de vraies petites cartes avec avatars ou initiales colorées au lieu d'une simple liste textuelle.

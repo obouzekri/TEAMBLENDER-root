@@ -1,78 +1,82 @@
-﻿# Todo priorisé
+﻿# Todo produit priorise
 
-## 1. Page Mon compte
-- [ ] Finaliser la page Mon compte selon le wireframe / contenu attendu.
-- [ ] Vérifier la cohérence visuelle avec le reste de l’application.
+## P0 - A finaliser en premier
 
-## 2. Analytics et notifications
-- [ ] Travailler sur la logique d’analytics.
-- [ ] Ajouter la notification lorsqu’un utilisateur se connecte.
+### Mon compte et tarification
+- [ ] Finaliser la page Mon compte selon le wireframe et le contenu attendu.
+- [ ] Verifier la coherence visuelle avec le reste de l'application.
+- [ ] Ameliorer l'UI de l'Espace Manager (Profil, Securite, Tarification).
+- [ ] Clarifier le nom du plan actif dans Mon compte et proposer un chemin d'upgrade plus direct.
+- [ ] Supprimer l'option de paiement PayPal.
+- [ ] Dans Tarification, remplacer les coches par des croix rouges pour les fonctionnalites non incluses.
 
-## 3. Tests
-- [ ] Identifier les tests à couvrir prioritairement.
-- [ ] Ajouter ou corriger les tests existants.
-- [ ] Vérifier que les tests passent sur la branche en cours.
-
-## 4. Challenge « Pari sur moi »
-
-### A. Contenu et copy
-- [ ] Mettre à jour le texte de la configuration du challenge avec : « À tour de rôle, chaque participant partage des informations sur lui-même. Un défi ludique pour voir à quel point vous connaissez les autres ! ».
-- [ ] Mettre à jour le texte affiché dans la vue « Voir les règles » avec la même formulation.
-- [ ] Mettre à jour le texte affiché côté facilitateur lors du lancement de la session avec la même formulation.
-- [ ] Changer le titre du challenge de « SAUREZ-VOUS DISTINGUER LE VRAI DU FAUX ? » à « QUI ME CONNAIT LE MIEUX ? ».
-
-### B. Configuration et règles
-- [ ] Supprimer le texte « Les options de configuration dépendent du type d’activité. ».
-- [ ] Corriger l’affichage des bornes de joueurs au format « Min: 2 · Recommandé: 4 · Max: 6 joueurs ».
-- [ ] Vérifier que ce format est appliqué de façon cohérente pour les autres challenges.
-
-### C. UI / UX du challenge
-- [ ] Harmoniser les titres « Brief de la mission », « Facilitateur » et « Participant » avec la même couleur que « Chrono » et « Chat ».
-- [ ] Appliquer cette logique visuelle à l’ensemble des challenges.
-
-## 5. Mobile - session live
-
-### A. Structure et lisibilité
-- [ ] Afficher le brief de la mission au-dessus du chrono avant le lancement du challenge, côté participant et côté facilitateur.
-- [ ] Réorganiser la section « PARTICIPANTS » pour éviter le « mur de texte ».
-- [ ] Diviser les règles en deux blocs :
-  - [ ] Règles du jeu (3 à 4 puces maximum)
-  - [ ] Barème des points (version concise)
-- [ ] Appliquer ce format structuré à tous les challenges.
-
-### B. CTA mobile
-- [ ] Rendre le bouton « Démarrer le challenge » plein largeur sur mobile.
-
-### C. Header et sécurité
-- [ ] Éloigner ou isoler le bouton « Terminer » des autres actions d’information sur mobile.
-- [ ] Ajouter une confirmation avant « Terminer » et « Passer au challenge suivant » pour éviter les clics accidentels.
-
-### D. Responsive UI
-- [ ] Réduire la taille du titre principal sur mobile.
-- [ ] Réduire la taille du sous-titre et l’espacement vertical sur mobile.
-- [ ] Réduire les paddings internes du bloc titre sur mobile.
-- [ ] Conserver les textes généraux à 16 px pour éviter le zoom automatique.
+### Session live mobile
+- [ ] Afficher le brief de mission au-dessus du chrono avant le lancement, cote participant et facilitateur.
+- [ ] Reorganiser la section Participants pour eviter le mur de texte.
+- [ ] Decouper les regles en 2 blocs: Regles du jeu (3 a 4 puces max) et Bareme des points (version concise).
+- [ ] Appliquer cette structure a tous les challenges.
+- [ ] Rendre le bouton Demarrer le challenge en pleine largeur sur mobile.
+- [ ] Eloigner ou isoler le bouton Terminer des actions d'information sur mobile.
+- [ ] Ajouter une confirmation avant Terminer et Passer au challenge suivant.
+- [ ] Reduire la taille du titre principal, du sous-titre, des espacements verticaux et des paddings sur mobile.
+- [ ] Conserver les textes generaux a 16 px pour eviter le zoom automatique.
 - [ ] Ne pas modifier le composant Chrono dans cette passe.
+- [ ] Masquer le footer institutionnel sur la route /session-live/.
+- [ ] Appliquer ces ajustements de maniere modulaire et reutilisable.
 
-### E. Layout global
-- [ ] Masquer le footer institutionnel sur la route /session-live/ pour garder l’espace dédié au jeu.
-- [ ] Appliquer ces ajustements de façon modulaire et réutilisable.
+## P1 - Qualite fonctionnelle et coherence produit
 
-## 6. Bug / incident réseau
-- [x] Investiguer l’erreur CORS / 502 observée sur la connexion Socket.IO vers l’API Railway.
-- [x] Vérifier si le problème vient du backend, du domaine ou de la configuration d’origin.
+### Challenge Pari sur moi
+- [ ] Mettre a jour le texte de configuration avec: "A tour de role, chaque participant partage des informations sur lui-meme. Un defi ludique pour voir a quel point vous connaissez les autres !".
+- [ ] Mettre la meme formulation dans Voir les regles.
+- [ ] Mettre la meme formulation cote facilitateur lors du lancement de session.
+- [ ] Changer le titre du challenge de "SAUREZ-VOUS DISTINGUER LE VRAI DU FAUX ?" a "QUI ME CONNAIT LE MIEUX ?".
+- [ ] Supprimer le texte "Les options de configuration dependent du type d'activite.".
+- [ ] Corriger l'affichage des bornes de joueurs au format "Min: 2 · Recommande: 4 · Max: 6 joueurs".
+- [ ] Verifier que ce format est applique de facon coherente a tous les challenges.
+- [ ] Harmoniser les couleurs des titres Brief de la mission, Facilitateur et Participant avec Chrono et Chat.
+- [ ] Appliquer cette logique visuelle a l'ensemble des challenges.
+
+### Homepage
+- [ ] Aligner le design de Creer une session sur celui de Creer des participants.
+
+### Analytics et notifications
+- [ ] Definir et implementer la logique d'analytics prioritaire.
+- [ ] Ajouter la notification lorsqu'un utilisateur se connecte.
+
+### Tests
+- [ ] Identifier les tests a couvrir en priorite.
+- [ ] Ajouter ou corriger les tests existants.
+- [ ] Verifier que les tests passent sur la branche en cours.
+
+## P2 - Go-live production
+
+### Payoneer
+- [ ] Finaliser la verification du compte Payoneer.
+- [ ] Recuperer les identifiants et secrets de production necessaires.
+
+### Backend Railway
+- [ ] Connecter le repository backend a Railway.
+- [ ] Deployer l'API backend sur Railway.
+- [ ] Ajouter un service PostgreSQL si necessaire.
+- [ ] Configurer les variables d'environnement de production: NODE_ENV, DATABASE_URL, JWT_SECRET, FRONTEND_URL, CORS_ORIGINS et variables Payoneer.
+- [ ] Executer les migrations de base de donnees.
+- [ ] Verifier l'URL publique du backend et la sante de l'application.
+
+### Frontend Vercel
+- [ ] Connecter le repository frontend a Vercel.
+- [ ] Deployer le frontend sur Vercel.
+- [ ] Configurer les variables d'environnement cote Vercel: NEXT_PUBLIC_API_URL et NEXT_PUBLIC_APP_URL.
+- [ ] Verifier que le domaine Vercel est accessible.
+
+### Reseau et webhooks
+- [ ] Ajouter les domaines Vercel et Railway aux origines autorisees cote backend.
+- [ ] Configurer l'URL webhook Payoneer vers l'endpoint backend correspondant.
+- [ ] Verifier que le webhook est bien recu et traite.
+
+### Validation finale
+- [ ] Tester le parcours d'abonnement et de paiement en environnement reel.
+- [ ] Valider le flux complet de session live et d'authentification.
+- [ ] Corriger les bugs de production identifies.
 
 
-## 7. UX mobile - redesign des écrans de challenges
-- [x] Revoir la hiérarchie visuelle pour que l’action principale soit visible en moins de 2 secondes.
-- [x] Mettre en avant le joueur actif et la proposition ou la question sélectionnée.
-- [x] Réduire la charge cognitive sur l’écran mobile.
-- [x] Appliquer une direction visuelle moderne, proche d’une interface SaaS / facilitation de workshop.
-- [x] Conserver un ton ludique, mais professionnel.
-
-### Layout recommandé
-- [x] Afficher en haut une carte dédiée au joueur courant, par exemple : « 🎤 Participant 2 est en train de répondre ».
-- [x] Positionner le contenu principal juste en dessous de cette zone.
-- [x] Réduire l’importance visuelle du chrono, du chat et du classement.
-- [x] Traiter le chat et le leaderboard comme des éléments secondaires, visibles uniquement si nécessaire.
-- [x] Structurer l’écran pour mettre en avant l’action en cours et l’élément actif.

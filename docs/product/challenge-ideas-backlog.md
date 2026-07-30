@@ -56,7 +56,7 @@ References:
 | BI-034 | Anagrammes | todo parking lot | idee | Recomposition de mots |
 | BI-035 | Trouver l intrus | todo parking lot | idee | Classification |
 | BI-036 | Election | todo parking lot | idee | Decision collective |
-| BI-037 | Pixel Architect | Demande produit 2026-05-28 | a cadrer | Construction 3D collaborative sous contraintes |
+
 
 ## 3) Piste MVP candidate (a cadrer en premier)
 
@@ -75,8 +75,6 @@ Critere: mecanique simple, implementation digitale rapide, valeur equipe claire.
 
 ## 4) Risques a verifier avant cadrage
 
-- BI-003 Blind test musical: droits/licences contenus audio.
-- BI-006 Murder mystery: complexite narrative potentiellement elevee.
 - BI-013 Plateau type monopoly: scope potentiellement trop large pour MVP.
 - BI-020 Mots croises/recherche de mots: UX mobile a valider tres tot.
 
@@ -109,4 +107,4 @@ Score
 
 - Jeux de role
 
-- Challenge: Lab d'innovation 
+-

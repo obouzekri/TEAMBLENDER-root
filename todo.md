@@ -1,4 +1,4 @@
-ï»¿# Todo produit priorise
+# Todo produit priorise
 
 ## P0 - A finaliser en premier
 
@@ -26,13 +26,13 @@
 
 ## P1 - Qualite fonctionnelle et coherence produit
 
-### Challenge Pari sur moi
+### Challenge Pari sur Moi
 - [ ] Mettre a jour le texte de configuration avec: "A tour de role, chaque participant partage des informations sur lui-meme. Un defi ludique pour voir a quel point vous connaissez les autres !".
 - [ ] Mettre la meme formulation dans Voir les regles.
 - [ ] Mettre la meme formulation cote facilitateur lors du lancement de session.
 - [ ] Changer le titre du challenge de "SAUREZ-VOUS DISTINGUER LE VRAI DU FAUX ?" a "QUI ME CONNAIT LE MIEUX ?".
 - [ ] Supprimer le texte "Les options de configuration dependent du type d'activite.".
-- [ ] Corriger l'affichage des bornes de joueurs au format "Min: 2 Â· Recommande: 4 Â· Max: 6 joueurs".
+- [ ] Corriger l'affichage des bornes de joueurs au format "Min: 2 · Recommande: 4 · Max: 6 joueurs".
 - [ ] Verifier que ce format est applique de facon coherente a tous les challenges.
 - [ ] Harmoniser les couleurs des titres Brief de la mission, Facilitateur et Participant avec Chrono et Chat.
 - [ ] Appliquer cette logique visuelle a l'ensemble des challenges.

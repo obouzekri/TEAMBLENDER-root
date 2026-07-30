@@ -18,8 +18,8 @@ Ce document sert de modele rapide pour ajouter un nouveau challenge reutilisable
 ## 2) Nommage recommande
 
 - `engine_key`: `snake_case`, stable dans le temps (ex: `copuzzle_live_v1`).
-- `route`: chemin/slug d'acces direct UI (ex: `copuzzle_live_challenge.html`).
-- `name`: nom lisible metier (ex: `CoPuzzle Live`).
+- `route`: chemin/slug d'acces direct UI (ex: `CoPuzzle_live_challenge.html`).
+- `name`: nom lisible metier (ex: `CoPuzzle`).
 
 ## 3) Backend - structure minimale
 
@@ -103,19 +103,19 @@ Option recommandee pour l'ouverture directe:
 
 Exemple pret a copier:
 
-- `name`: `CoPuzzle Live`
+- `name`: `CoPuzzle`
 - `category`: `collaboration`
 - `type`: `equipe`
 - `source`: `local`
-- `route`: `copuzzle_live_challenge.html`
+- `route`: `CoPuzzle_live_challenge.html`
 - `engine_key`: `copuzzle_live_v1`
 - `engine_config`: `{"maxRounds":3}`
 - `status`: `active`
 
 Convention recommandee aujourd'hui:
 
-- page HTML: `archive/frontend/src/pages/challenges/copuzzle_live_challenge.html`
-- `route`: `copuzzle_live_challenge.html`
+- page HTML: `archive/frontend/src/pages/challenges/CoPuzzle_live_challenge.html`
+- `route`: `CoPuzzle_live_challenge.html`
 - `engine_key`: `copuzzle_live_v1`
 
 Exemple complet pret a brancher:

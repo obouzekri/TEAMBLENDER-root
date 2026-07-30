@@ -85,7 +85,7 @@ UX participant:
 - Feedback d'etat (attente, divergent, wrong, correct, escaped),
 - Synchronisation periodique de l'etat.
 
-## 5.3 Phrase Mystere (`phrase_collaborative_v1`)
+## 5.3 Phrase Mystère (`phrase_collaborative_v1`)
 - Frontend: [frontend-next/components/Challenges/PhraseCoop/PhraseChallenge.js](frontend-next/components/Challenges/PhraseCoop/PhraseChallenge.js)
 
 Description actuelle:
@@ -104,8 +104,8 @@ UX participant:
 - Demande d'indice,
 - Suivi timer/progression collective.
 
-## 5.4 CoPuzzle Live (`copuzzle_live_v1`)
-- Frontend: [frontend-next/components/Challenges/CopuzzleLive/CopuzzleChallenge.js](frontend-next/components/Challenges/CopuzzleLive/CopuzzleChallenge.js)
+## 5.4 CoPuzzle (`copuzzle_live_v1`)
+- Frontend: [frontend-next/components/Challenges/CoPuzzleLive/CoPuzzleChallenge.js](frontend-next/components/Challenges/CoPuzzleLive/CoPuzzleChallenge.js)
 
 Description actuelle:
 - Puzzle collaboratif sur grille configurable,

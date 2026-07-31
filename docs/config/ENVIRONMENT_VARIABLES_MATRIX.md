@@ -27,6 +27,8 @@ Objectif: centraliser les variables critiques backend, frontend et CI pour dev /
 | Variable | Criticite | Dev | Preview | Production | Notes |
 |---|---|---|---|---|---|
 | NEXT_PUBLIC_API_BASE | Haute | `http://localhost:3000/api` | A definir (URL backend preview) | A configurer avec URL backend prod | Variable front critique |
+| NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN | Moyenne | Optionnel | Optionnel | Recommande | Active la capture PostHog navigateur |
+| NEXT_PUBLIC_POSTHOG_HOST | Moyenne | `https://eu.i.posthog.com` (ou region projet) | Region projet | Region projet | Doit correspondre a la region PostHog (EU/US) pour aligner `/ingest` |
 
 ## 3) CI/CD GitHub Actions (backend)
 

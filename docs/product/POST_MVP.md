@@ -19,9 +19,6 @@ Utilise en conditions reelles par des managers, RH et facilitateurs pour structu
 - [ ] Completer et maintenir les pages legales (mentions legales, politique de confidentialite, contact RGPD).
 - [ ] Publier des CGU conformes au SaaS B2B.
 - [ ] Activer les sauvegardes PostgreSQL Railway avec retention >= 7 jours et conserver une preuve.
-- [ ] Configurer la retention: purge automatique des sessions inactives > 12 mois.
-- [ ] Ajouter du rate limiting sur l'API Express.
-- [ ] Valider les payloads entrants avec Joi sur les endpoints critiques.
 
 ### P1 - Important (croissance, fiabilite, adoption)
 - [ ] Construire des tests E2E Playwright sur les parcours critiques facilitateur + participant.
@@ -51,7 +48,6 @@ Utilise en conditions reelles par des managers, RH et facilitateurs pour structu
 - [ ] 2FA pour les comptes admin/facilitateur.
 - [ ] Audit logging pour les actions sensibles (creation/modification/suppression d'entites critiques).
 - [ ] Modele DPA (Data Processing Agreement) pour les clients entreprise.
-- [ ] Procedure de notification de violation RGPD (72h) documentee et testee.
 
 ## 2) Authentification et OAuth
 - [ ] Renseigner les liens politique de confidentialite et CGU dans Google OAuth Consent Screen.
@@ -186,11 +182,6 @@ Des equipes distribuees coordonnent objectifs et actions dans des delais courts 
 	- [ ] Implementer enrollement, verification, recovery codes et revoke appareil
 	- [ ] Ajouter garde-fous UX (grace period, backup flow en cas de perte device)
 	- [ ] Definition of done: 2FA obligatoire sur roles cibles + tests d'integration verts
-- [ ] Documenter procedure violation RGPD (72h) + test de simulation
-	- [x] Ecrire playbook incident RGPD (detection, qualification, notification, communication)
-	- [x] Definir RACI (DPO, tech lead, legal, support) et canaux de crise
-	- [x] Executer exercice table-top 60 min et capturer ecarts
-	- [x] Definition of done: procedure versionnee + compte-rendu simulation avec actions correctives
 - [ ] Ajouter facturation automatique par email
 	- [ ] Definir evenements facture (achat, renouvellement, echec paiement, remboursement)
 	- [ ] Generer email facture avec piece jointe/lien PDF et references legales minimales

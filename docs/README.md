@@ -21,7 +21,7 @@ L'etat courant du produit est reflechi ici via les liens vers `../todo.md` et `d
 - Rollback: `runbooks/ROLLBACK_FRONTEND_BACKEND_RUNBOOK.md`
 - Variables critiques: `config/CRITICAL_BLOCKING_VARIABLES.md`
 - Backlog post-MVP: `product/POST_MVP.md`
-- Checklist legacy off: `checklists/LEGACY_FRONTEND_OFF_CHECKLIST.md`
+- Charte graphique actuelle: `product/CHARTE_GRAPHIQUE_ACTUELLE.md`
 - README global: `../README.md`
 
 ## 1) Point d'entree

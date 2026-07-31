@@ -1,6 +1,7 @@
 # TeamBlender - Flow unique: feature -> PR -> preview -> merge -> prod
 
-Derniere mise a jour: 2026-05-10
+Derniere mise a jour: 2026-08-01
+Statut: actif et applicable en documentation
 
 Objectif: definir un seul chemin de livraison autorise pour eviter les regressions de deploiement.
 
@@ -21,12 +22,14 @@ Les pushes directs sur `main` sans PR validee sont interdits.
 - Creer une branche nommee par scope (ex: `feature/...`, `fix/...`, `chore/...`).
 - Developper et valider localement les tests minimaux.
 - Si changement deploiement/env: appliquer `COMMIT_MESSAGE_DEPLOY_ENV_STANDARD.md`.
+- Pour une mise a jour documentaire pure, la validation minimale consiste a verifier que le changement ne touche pas aux routes, aux services ni aux variables critiques.
 
 ## Etape 2 - Pull Request
 
 - Ouvrir une PR vers `main`.
 - Completer `.github/pull_request_template.md` en entier.
 - Fournir scope, impacts, risques, plan rollback et preuves de test.
+- En cas de modification documentaire pure, indiquer explicitement qu’aucun flux applicatif n’a ete modifie.
 
 ## Etape 3 - Validation preview (obligatoire)
 
@@ -36,6 +39,7 @@ Les pushes directs sur `main` sans PR validee sont interdits.
 - Appliquer les regles:
   - `PR_PREVIEW_VALIDATION_RULE.md`
   - `PR_RAILWAY_LOGS_VALIDATION_RULE.md`
+- Pour une modification documentaire pure, cette validation peut etre limitee a la verification de non-regression de la structure et du rendu de la documentation.
 
 ## Etape 4 - Merge sur main
 
@@ -54,3 +58,4 @@ Les pushes directs sur `main` sans PR validee sont interdits.
 - Feature livree en production sans erreur bloquante.
 - Preuves de validation presentes dans la PR.
 - Rollback possible et documente.
+- Pour un changement documentaire pur, le done est atteint lorsque la documentation est claire, coherente et non contradictoire avec l’etat produit actuel.

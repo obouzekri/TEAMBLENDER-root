@@ -1,6 +1,7 @@
 # TeamBlender - Checklist release obligatoire avant push sur main
 
-Derniere mise a jour: 2026-05-10
+Derniere mise a jour: 2026-08-01
+Statut: active pour toute modification de code ou de documentation de release
 
 Objectif: securiser tout changement impactant deploiement, configuration ou parcours critiques avant push sur `main`.
 
@@ -9,6 +10,7 @@ Objectif: securiser tout changement impactant deploiement, configuration ou parc
 - Cette checklist est obligatoire pour backend et frontend-next.
 - Un seul item bloqueur en echec => push sur `main` interdit.
 - Les preuves (logs, captures, commandes) doivent etre conservees dans la PR.
+- Pour une modification documentaire pure, les points techniques peuvent etre marques comme non applicables, mais la coherence du contenu et de l’etat produit doit rester verifiee.
 
 ## 1) Verification environnement (bloquant)
 

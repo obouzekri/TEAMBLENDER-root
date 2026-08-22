@@ -1,7 +1,4 @@
-﻿## Mode sombre
-
-- Rajouter dans les options de la plateforme le choix du mode: Dark, clair, système
-
+﻿
 ## Responsive
 
 ### 
@@ -21,17 +18,10 @@ Ajuste le padding et le dimensionnement de la carte pour que le bouton à 3 poin
 
 ## pour tous les challenges
 
-- [ ] Dans le composant du chrono (Timer), réduis légèrement la taille du texte affichant le décompte (20:00).
-Diminue la taille de police du timer (ex: passe de text-4xl à text-2xl ou text-3xl).
-Assure un centrage parfait et un bon espacement dans le cercle pour éviter tout débordement.
-
 - [ ] mettre "✅
 Challenge terminé · En attente du facilitateur pour lancer le prochain challenge après le débrief." intégrer au bloc du challenge 
 
 ### Régles
-- [ ] Dans les cartes d'activités, ajoute la mention "Voir les règles" à côté de l'icône 📜.
-    - Aligne l'icône et le texte (flex items-center gap-1.5). Style du texte : discret et cliquable (text-xs text-gray-500 hover:underline).
-Mobile : masque le texte sur petits écrans (hidden sm:inline) pour ne garder que l'icône si l'espace manque.
 
 - [ ] faire un pass sur les régles et la cohérence du score
 
@@ -85,7 +75,7 @@ Supprimer entièrement :
 
 ---
 
-## 3. Nettoyage technique
+### 3. Nettoyage technique
 
 Vérifier si des modèles, composants ou structures de données ont été ajoutés spécifiquement pour le challenge.
 
@@ -99,7 +89,7 @@ Fournir la liste des éléments supprimés.
 
 ---
 
-## 4. Refonte UX de l'écran de vote
+### 4. Refonte UX de l'écran de vote
 
 Conserver :
 - thème dark premium ;
@@ -112,7 +102,7 @@ Objectifs :
 - interface plus moderne ;
 - expérience de jeu plus fluide.
 
-### Hiérarchie
+#### Hiérarchie
 
 Afficher :
 
@@ -169,7 +159,7 @@ avec :
 
 ---
 
-## 5. Feedback après vote
+### 5. Feedback après vote
 
 Lorsque tous les participants ont voté :
 
@@ -192,7 +182,7 @@ Après 2 secondes :
 
 ---
 
-## 6. Généralisation
+### 6. Généralisation
 
 Appliquer ces améliorations à toutes les cartes de questions du jeu :
 
@@ -201,3 +191,19 @@ Appliquer ces améliorations à toutes les cartes de questions du jeu :
 - Talents
 - Compétences
 - Toutes les catégories futures
+
+# Session live
+"Dans le header de la session live (vue facilitateur), ajoute une icône d'information ℹ️ à côté du titre de la session.
+Au clic sur cette icône, affiche une popover contenant :
+Code de la session (avec un bouton pour le copier dans le presse-papier).
+Nombre de participants actuellement connectés / attendus.
+Liste des challenges dans l'ordre prévu, en mettant clairement en valeur le challenge en cours."
+"pour la vue participant rajouter le même header sans le bouton "passer au defi suivant"
+
+Sur écran fractionné: 
+- adapte le header de session live pour qu'ils ne forment qu'une seule ligne horizontale compacte.
+- Ajuste la taille de la barre de langue (FR ▾) dans le header supérieur : elle doit avoir une largeur fixe auto-ajustée à son contenu (width: fit-content) pour éviter qu'elle ne s'étire et prenne un espace disproportionné sur l'écran."
+
+# Mode sombre
+
+

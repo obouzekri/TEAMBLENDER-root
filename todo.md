@@ -10,9 +10,9 @@
 - [x] Clarifier les responsabilités entre API, realtime, monitoring et debug.
 
 ### Frontend / composition
-- [ ] Split landing page : découper [frontend-next/app/page.js](frontend-next/app/page.js) en sous-composants plus petits.
-- [ ] Extraire les contenus statiques de la page d’accueil dans un module de données/section dédié.
-- [ ] Réduire le couplage visuel et fonctionnel de la landing page pour faciliter les évolutions UI.
+- [x] Split landing page : découper [frontend-next/app/page.js](frontend-next/app/page.js) en sous-composants plus petits.
+- [x] Extraire les contenus statiques de la page d’accueil dans un module de données/section dédié.
+- [x] Réduire le couplage visuel et fonctionnel de la landing page pour faciliter les évolutions UI.
 
 ### Sécurité & opérations
 - [ ] Audit de sécurité sur CSP, CORS, gestion des authentifications et rate limiting.

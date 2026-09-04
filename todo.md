@@ -54,7 +54,7 @@
 
 ### Progression
 - [ ] Mettre en place un système multi-niveaux conçu pour ~20 minutes de jeu.
-- [ ] Passage automatique au niveau suivant après validation de la sortie.
+- [ ] Passage automatique au niveau suivant après validation de la sortie. (3 labyrtinhe)
 - [ ] Conserver les vies restantes entre les niveaux.
 - [ ] Générer des labyrinthes avec un unique chemin valide.
 

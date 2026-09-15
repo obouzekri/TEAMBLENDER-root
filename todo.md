@@ -20,3 +20,6 @@
     - blancs verdatres `#f8fbfa` / `#f5faf7` / `#f7fbfa` / `rgba(244, 251, 248, α)` -> `#f8fbfd` / `#f5f9fd` / `#f7fafd` / `rgba(243, 248, 255, α)`
   - approche recommandee : introduire `--legacy-accent-rgb: 53, 160, 255` et `--legacy-shadow-rgb: 15, 23, 42`, puis migrer page par page avec validation visuelle (ne pas faire de remplacement global a l'aveugle)
 
+- ~~challenge labyrtine mettre un seul chemin un seul start avec un unique chemin viable et d'autres chemin avec des une route bloqué ou une bombe~~ (fait 2026-09-15 : suppression du 3e start decoy, un seul start généré, chemin unique garanti, culs-de-sac/pièges normaux inchangés)
+
+- vérifie

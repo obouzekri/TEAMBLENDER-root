@@ -10,3 +10,8 @@
   - i18n : les textes du bandeau `CookieConsentBanner.js` sont encore en dur en francais, a passer dans les dictionnaires `fr.js` / `en.js`
 
 
+
+
+
+- vérifier pour les autres challenges pour avoir le backround vert/bleu à l'intérieur des panneaux Timeline et Backlog, du challenge mission critique 
+

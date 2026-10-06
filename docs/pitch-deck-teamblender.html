@@ -1,0 +1,1035 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Pitch deck de TeamBlender, plateforme de sessions de team building collaboratives en direct."
+    />
+    <meta name="theme-color" content="#f7f7fb" />
+    <title>TeamBlender — Pitch deck</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #18172b;
+        --muted: #66667a;
+        --paper: #f7f7fb;
+        --white: #fff;
+        --line: #e6e5ef;
+        --purple: #6254d9;
+        --purple-dark: #4438ae;
+        --lavender: #eceaff;
+        --mint: #c9f4e7;
+        --orange: #ffbc83;
+        --shadow: 0 24px 80px #28245418;
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        color: var(--ink);
+        background: #ecebf2;
+      }
+
+      button {
+        color: inherit;
+        font: inherit;
+      }
+
+      .deck {
+        position: relative;
+        display: grid;
+        min-height: 100svh;
+        place-items: center;
+        padding: 28px 24px 64px;
+      }
+
+      .slide {
+        position: relative;
+        display: none;
+        width: min(100%, 1280px);
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        padding: clamp(32px, 6vw, 86px);
+        background:
+          radial-gradient(ellipse at 96% 0%, #e9e7ff 0, transparent 34%),
+          var(--paper);
+        box-shadow: var(--shadow);
+        animation: arrive 360ms ease both;
+      }
+
+      .slide.active {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .slide.dark {
+        color: var(--white);
+        background:
+          radial-gradient(ellipse at 88% 10%, #6356d955 0, transparent 36%),
+          linear-gradient(135deg, #19172f, #242047 68%, #342b70);
+      }
+
+      .slide.dark .eyebrow,
+      .slide.dark .muted,
+      .slide.dark .footer {
+        color: #c4c0ee;
+      }
+
+      .slide.dark .footer {
+        border-color: #ffffff2a;
+      }
+
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 24px;
+        color: var(--purple-dark);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        width: 24px;
+        height: 2px;
+        background: var(--purple);
+        content: "";
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1,
+      h2,
+      h3 {
+        letter-spacing: -0.045em;
+      }
+
+      h1 {
+        max-width: 760px;
+        margin-bottom: 24px;
+        font-size: clamp(48px, 7.4vw, 96px);
+        line-height: 0.99;
+      }
+
+      h2 {
+        max-width: 920px;
+        margin-bottom: 18px;
+        font-size: clamp(36px, 5.2vw, 64px);
+        line-height: 1.04;
+      }
+
+      h3 {
+        margin-bottom: 10px;
+        font-size: clamp(18px, 2vw, 25px);
+        line-height: 1.15;
+      }
+
+      p {
+        line-height: 1.55;
+      }
+
+      .lead {
+        max-width: 690px;
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: clamp(18px, 2.1vw, 25px);
+        line-height: 1.45;
+      }
+
+      .dark .lead {
+        color: #d8d6ed;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 11px;
+        margin-bottom: auto;
+        font-size: 17px;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 36px;
+        height: 36px;
+        place-items: center;
+        border-radius: 12px;
+        background: var(--purple);
+      }
+
+      .cover-copy {
+        position: relative;
+        z-index: 1;
+        max-width: 790px;
+        margin-top: auto;
+      }
+
+      .cover-copy h1 span {
+        color: #aca5ff;
+      }
+
+      .cover-visual {
+        position: absolute;
+        top: 14%;
+        right: 7%;
+        width: 35%;
+        max-width: 390px;
+        opacity: 0.95;
+      }
+
+      .cover-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 28px;
+        padding: 10px 14px;
+        border: 1px solid #ffffff38;
+        border-radius: 999px;
+        color: #e3e1f8;
+        font-size: 13px;
+      }
+
+      .cover-tag span {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--mint);
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        margin-top: auto;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        color: #88879a;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .content {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .pain-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 32px;
+      }
+
+      .pain-card,
+      .plan,
+      .format-card,
+      .audience-card {
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: #ffffffbd;
+      }
+
+      .pain-card {
+        min-height: 175px;
+        padding: 22px;
+      }
+
+      .card-index {
+        display: block;
+        margin-bottom: 26px;
+        color: var(--purple);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+      }
+
+      .pain-card p,
+      .format-card p,
+      .audience-card p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .promise {
+        display: grid;
+        flex: 1;
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: center;
+        gap: 5%;
+      }
+
+      .promise h2 {
+        max-width: 640px;
+      }
+
+      .promise-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .promise-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 17px 19px;
+        border: 1px solid var(--line);
+        border-radius: 15px;
+        background: #ffffffc9;
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .promise-item b {
+        display: grid;
+        width: 30px;
+        height: 30px;
+        flex: 0 0 auto;
+        place-items: center;
+        border-radius: 10px;
+        background: var(--lavender);
+        color: var(--purple-dark);
+        font-size: 13px;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+        margin: 42px 0 22px;
+      }
+
+      .step {
+        position: relative;
+        padding: 0 20px 0 0;
+      }
+
+      .step:not(:last-child)::after {
+        position: absolute;
+        top: 22px;
+        right: 12px;
+        left: 58px;
+        height: 1px;
+        background: #d5d3e4;
+        content: "";
+      }
+
+      .step-number {
+        display: grid;
+        width: 44px;
+        height: 44px;
+        margin-bottom: 22px;
+        place-items: center;
+        border: 1px solid #d6d2ff;
+        border-radius: 14px;
+        background: var(--lavender);
+        color: var(--purple-dark);
+        font-size: 15px;
+        font-weight: 800;
+      }
+
+      .step p {
+        max-width: 190px;
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .formats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 13px;
+        margin-top: 30px;
+      }
+
+      .format-card {
+        display: flex;
+        min-height: 104px;
+        align-items: center;
+        gap: 13px;
+        padding: 17px;
+      }
+
+      .format-icon {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        flex: 0 0 auto;
+        place-items: center;
+        border-radius: 12px;
+        background: var(--lavender);
+        color: var(--purple-dark);
+        font-size: 17px;
+      }
+
+      .format-card h3 {
+        margin: 0;
+        font-size: 15px;
+        letter-spacing: -0.02em;
+      }
+
+      .format-note {
+        margin: 20px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .audiences {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .audience-card {
+        display: flex;
+        min-height: 120px;
+        gap: 16px;
+        padding: 21px;
+      }
+
+      .audience-card .format-icon {
+        width: 42px;
+        height: 42px;
+      }
+
+      .audience-card h3 {
+        margin-bottom: 6px;
+      }
+
+      .dark .audience-card {
+        border-color: #ffffff24;
+        background: #ffffff0b;
+      }
+
+      .dark .audience-card p {
+        color: #cbc8e3;
+      }
+
+      .dark .audience-card .format-icon {
+        background: #ffffff14;
+        color: #c6c0ff;
+      }
+
+      .plans {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 25px;
+      }
+
+      .plan {
+        display: flex;
+        min-height: 245px;
+        flex-direction: column;
+        padding: 22px;
+      }
+
+      .plan.featured {
+        border-color: #b5adff;
+        background: #f0eeff;
+        box-shadow: 0 12px 35px #6555d91a;
+      }
+
+      .plan-label {
+        margin-bottom: 12px;
+        color: var(--purple-dark);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .plan h3 {
+        margin-bottom: 14px;
+        font-size: 26px;
+      }
+
+      .plan ul {
+        display: grid;
+        gap: 9px;
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .plan-note {
+        margin: 13px 0 0;
+        color: #79778d;
+        font-size: 11px;
+      }
+
+      .next-step {
+        display: flex;
+        width: fit-content;
+        align-items: center;
+        gap: 10px;
+        margin-top: 30px;
+        padding: 13px 17px;
+        border-radius: 12px;
+        background: #ffffff17;
+        color: #f1efff;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .controls {
+        position: fixed;
+        z-index: 5;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        height: 56px;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        background: #ecebf2;
+      }
+
+      .nav-button {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border: 1px solid #d9d7e3;
+        border-radius: 50%;
+        background: #fff;
+        cursor: pointer;
+      }
+
+      .nav-button:hover,
+      .nav-button:focus-visible {
+        border-color: var(--purple);
+        outline: 2px solid #6254d933;
+      }
+
+      .counter {
+        min-width: 48px;
+        color: #656477;
+        font-size: 12px;
+        font-weight: 700;
+        text-align: center;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .progress {
+        position: fixed;
+        z-index: 6;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        background: #dcdbe5;
+      }
+
+      .progress span {
+        display: block;
+        width: 11.11%;
+        height: 100%;
+        background: var(--purple);
+        transition: width 240ms ease;
+      }
+
+      @keyframes arrive {
+        from {
+          opacity: 0.65;
+          transform: translateY(5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 700px) {
+        .deck {
+          padding: 0 0 56px;
+        }
+
+        .slide {
+          width: 100%;
+          min-height: calc(100svh - 56px);
+          aspect-ratio: auto;
+          padding: 32px 24px;
+        }
+
+        .cover-visual {
+          top: 12%;
+          right: 3%;
+          width: 35%;
+          opacity: 0.62;
+        }
+
+        .cover-copy {
+          margin-top: 80px;
+        }
+
+        .pain-grid,
+        .plans {
+          grid-template-columns: 1fr;
+        }
+
+        .pain-card {
+          min-height: auto;
+          padding: 16px;
+        }
+
+        .card-index {
+          margin-bottom: 12px;
+        }
+
+        .promise {
+          grid-template-columns: 1fr;
+          gap: 24px;
+          padding: 32px 0;
+        }
+
+        .steps {
+          grid-template-columns: 1fr 1fr;
+          gap: 24px 8px;
+        }
+
+        .step:not(:last-child)::after {
+          display: none;
+        }
+
+        .formats {
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+        }
+
+        .format-card {
+          min-height: 78px;
+          padding: 11px;
+        }
+
+        .format-icon {
+          width: 32px;
+          height: 32px;
+        }
+
+        .format-card h3 {
+          font-size: 13px;
+        }
+
+        .audiences {
+          grid-template-columns: 1fr;
+        }
+
+        .plan {
+          min-height: auto;
+          padding: 18px;
+        }
+
+        .footer {
+          margin-top: 24px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      @media print {
+        @page {
+          size: 13.333in 7.5in;
+          margin: 0;
+        }
+
+        html,
+        body,
+        .deck {
+          width: 100%;
+          height: auto;
+          min-height: 0;
+          padding: 0;
+          background: #fff;
+        }
+
+        .slide,
+        .slide.active {
+          display: flex !important;
+          width: 13.333in;
+          height: 7.5in;
+          min-height: 0;
+          aspect-ratio: 16 / 9;
+          page-break-after: always;
+          break-after: page;
+          box-shadow: none;
+          animation: none;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        .controls,
+        .progress {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="deck" aria-label="Pitch deck TeamBlender">
+      <section class="slide dark active" aria-label="1. TeamBlender">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M6 5.5h12M8 5.5l1.3 12a2 2 0 0 0 2 1.8h1.4a2 2 0 0 0 2-1.8L16 5.5M10 9l2 2 2-2m-2 2v4"
+                stroke="white"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          TeamBlender
+        </div>
+        <svg
+          class="cover-visual"
+          viewBox="0 0 400 400"
+          fill="none"
+          aria-hidden="true"
+        >
+          <circle cx="200" cy="200" r="144" stroke="#FFFFFF1F" stroke-width="1" />
+          <circle cx="200" cy="200" r="104" stroke="#FFFFFF2C" stroke-width="1" />
+          <path
+            d="M200 56c79.5 0 144 64.5 144 144s-64.5 144-144 144"
+            stroke="#A9A1FF"
+            stroke-width="2"
+          />
+          <circle cx="200" cy="56" r="12" fill="#C9F4E7" />
+          <circle cx="344" cy="200" r="10" fill="#FFBC83" />
+          <circle cx="200" cy="344" r="8" fill="#A9A1FF" />
+          <circle cx="200" cy="200" r="59" fill="#6254D9" />
+          <path
+            d="M173 178h54m-46 0 6 48a9 9 0 0 0 9 8h12a9 9 0 0 0 9-8l6-48m-38 17 15 14 15-14m-15 14v16"
+            stroke="white"
+            stroke-width="5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <circle cx="98" cy="302" r="5" fill="#C9F4E7" />
+          <circle cx="286" cy="89" r="5" fill="#FFBC83" />
+          <circle cx="72" cy="151" r="3" fill="white" />
+          <circle cx="306" cy="306" r="4" fill="white" />
+        </svg>
+        <div class="cover-copy">
+          <p class="eyebrow">Le team building, en direct</p>
+          <h1>Le collectif ne se décrète pas.<br /><span>Il se construit.</span></h1>
+          <p class="lead">
+            TeamBlender aide les managers et les RH à concevoir, animer et suivre
+            des expériences d’équipe qui font participer tout le monde.
+          </p>
+          <div class="cover-tag"><span></span> Préparer · Jouer · Se retrouver</div>
+        </div>
+        <div class="footer"><span>Pitch produit</span><span>01 / 09</span></div>
+      </section>
+
+      <section class="slide" aria-label="2. Le défi">
+        <div class="content">
+          <p class="eyebrow">Le défi</p>
+          <h2>Réunir une équipe est facile.<br />Créer un vrai moment collectif l’est moins.</h2>
+          <p class="lead">
+            Entre la préparation, l’animation et le suivi, faire participer tout
+            le groupe demande du temps et un fil conducteur.
+          </p>
+          <div class="pain-grid">
+            <article class="pain-card">
+              <span class="card-index">01 — AVANT</span>
+              <h3>Tout organiser</h3>
+              <p>Choisir une activité, préparer le groupe et cadrer la session.</p>
+            </article>
+            <article class="pain-card">
+              <span class="card-index">02 — PENDANT</span>
+              <h3>Garder le rythme</h3>
+              <p>Guider les participants sans perdre le fil de l’expérience.</p>
+            </article>
+            <article class="pain-card">
+              <span class="card-index">03 — APRÈS</span>
+              <h3>Faire le bilan</h3>
+              <p>Clore la session avec une progression et un résultat visibles.</p>
+            </article>
+          </div>
+        </div>
+        <div class="footer"><span>TeamBlender · Pitch produit</span><span>02 / 09</span></div>
+      </section>
+
+      <section class="slide" aria-label="3. La solution">
+        <div class="promise">
+          <div>
+            <p class="eyebrow">La solution</p>
+            <h2>Une session d’équipe.<br />Un espace pour la faire vivre.</h2>
+            <p class="lead">
+              De la préparation au résultat, TeamBlender rassemble le parcours
+              du facilitateur et l’expérience des participants.
+            </p>
+          </div>
+          <div class="promise-list">
+            <div class="promise-item"><b>01</b> Préparer une session structurée</div>
+            <div class="promise-item"><b>02</b> Choisir un challenge adapté</div>
+            <div class="promise-item"><b>03</b> Animer en direct, étape par étape</div>
+            <div class="promise-item"><b>04</b> Consulter progression et résultats</div>
+          </div>
+        </div>
+        <div class="footer"><span>TeamBlender · Pitch produit</span><span>03 / 09</span></div>
+      </section>
+
+      <section class="slide" aria-label="4. Comment ça marche">
+        <div class="content">
+          <p class="eyebrow">Une expérience guidée</p>
+          <h2>De l’idée au temps fort d’équipe.</h2>
+          <p class="lead">
+            Un parcours lisible pour la personne qui anime comme pour celles et
+            ceux qui participent.
+          </p>
+          <div class="steps">
+            <article class="step">
+              <span class="step-number">01</span>
+              <h3>Préparer</h3>
+              <p>Créer la session et configurer son déroulé.</p>
+            </article>
+            <article class="step">
+              <span class="step-number">02</span>
+              <h3>Rassembler</h3>
+              <p>Assigner les participants à l’expérience.</p>
+            </article>
+            <article class="step">
+              <span class="step-number">03</span>
+              <h3>Animer</h3>
+              <p>Lancer le challenge et piloter le live.</p>
+            </article>
+            <article class="step">
+              <span class="step-number">04</span>
+              <h3>Prolonger</h3>
+              <p>Consulter les résultats et conclure ensemble.</p>
+            </article>
+          </div>
+        </div>
+        <div class="footer"><span>TeamBlender · Pitch produit</span><span>04 / 09</span></div>
+      </section>
+
+      <section class="slide" aria-label="5. Les challenges">
+        <div class="content">
+          <p class="eyebrow">Des formats pour varier les sessions</p>
+          <h2>Le challenge donne le ton.<br />L’équipe fait le reste.</h2>
+          <div class="formats">
+            <article class="format-card"><span class="format-icon">⌘</span><h3>Escape Room</h3></article>
+            <article class="format-card"><span class="format-icon">✳</span><h3>Phrase Mystère</h3></article>
+            <article class="format-card"><span class="format-icon">▧</span><h3>CoPuzzle</h3></article>
+            <article class="format-card"><span class="format-icon">⌁</span><h3>Labyrinthe Live</h3></article>
+            <article class="format-card"><span class="format-icon">◈</span><h3>Mission Critique</h3></article>
+            <article class="format-card"><span class="format-icon">?</span><h3>Vrai ou Mensonge</h3></article>
+            <article class="format-card"><span class="format-icon">▦</span><h3>Pixel Architect</h3></article>
+            <article class="format-card"><span class="format-icon">7</span><h3>formats disponibles</h3></article>
+          </div>
+          <p class="format-note">
+            Des expériences interactives conçues pour faire participer le groupe
+            et progresser ensemble.
+          </p>
+        </div>
+        <div class="footer"><span>TeamBlender · Pitch produit</span><span>05 / 09</span></div>
+      </section>
+
+      <section class="slide dark" aria-label="6. Pour qui">
+        <div class="content">
+          <p class="eyebrow">Pour les équipes qui font avancer les équipes</p>
+          <h2>Un espace côté animation.<br />Une expérience côté participation.</h2>
+          <div class="audiences">
+            <article class="audience-card">
+              <span class="format-icon">◎</span>
+              <div>
+                <h3>Managers & facilitateurs</h3>
+                <p>Préparer, lancer et piloter une session sans perdre le fil.</p>
+              </div>
+            </article>
+            <article class="audience-card">
+              <span class="format-icon">✳</span>
+              <div>
+                <h3>Ressources humaines & formation</h3>
+                <p>Proposer des moments d’équipe structurés et interactifs.</p>
+              </div>
+            </article>
+            <article class="audience-card">
+              <span class="format-icon">↗</span>
+              <div>
+                <h3>Équipes en croissance</h3>
+                <p>Choisir une formule qui accompagne le nombre de sessions.</p>
+              </div>
+            </article>
+            <article class="audience-card">
+              <span class="format-icon">◉</span>
+              <div>
+                <h3>Participants</h3>
+                <p>Rejoindre le challenge et prendre part à l’expérience live.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="footer"><span>TeamBlender · Pitch produit</span><span>06 / 09</span></div>
+      </section>
+
+      <section class="slide" aria-label="7. Le modèle d’offre">
+        <div class="content">
+          <p class="eyebrow">Un modèle SaaS à trois niveaux</p>
+          <h2>Commencer léger.<br />Évoluer avec ses besoins.</h2>
+          <div class="plans">
+            <article class="plan">
+              <span class="plan-label">Découverte</span>
+              <h3>Free</h3>
+              <ul>
+                <li>Jusqu’à 3 sessions par mois</li>
+                <li>Jusqu’à 10 participants par session</li>
+                <li>Catalogue standard</li>
+              </ul>
+            </article>
+            <article class="plan featured">
+              <span class="plan-label">Équipes en croissance</span>
+              <h3>Pro</h3>
+              <ul>
+                <li>Jusqu’à 30 sessions par mois</li>
+                <li>Jusqu’à 100 participants par session</li>
+                <li>Catalogue complet · export CSV</li>
+              </ul>
+            </article>
+            <article class="plan">
+              <span class="plan-label">Organisations</span>
+              <h3>Enterprise</h3>
+              <ul>
+                <li>Sessions et participants illimités</li>
+                <li>Catalogue complet · sélecteurs personnalisés</li>
+                <li>Exports CSV et PDF</li>
+              </ul>
+            </article>
+          </div>
+          <p class="plan-note">
+            Limites fonctionnelles documentées. Prix non renseignés dans les
+            références produit. Essai de 14 jours pour Free et Pro.
+          </p>
+        </div>
+        <div class="footer"><span>TeamBlender · Pitch produit</span><span>07 / 09</span></div>
+      </section>
+
+      <section class="slide" aria-label="8. La proposition de valeur">
+        <div class="content">
+          <p class="eyebrow">Notre proposition de valeur</p>
+          <h2>Le team building passe du one-shot à une expérience pilotée.</h2>
+          <div class="promise-list" style="max-width: 790px; margin-top: 22px">
+            <div class="promise-item"><b>↗</b> Un parcours cohérent, de la préparation au bilan</div>
+            <div class="promise-item"><b>◎</b> Des challenges interactifs, prêts à animer</div>
+            <div class="promise-item"><b>⌁</b> Un déroulé live guidé et une progression visible</div>
+            <div class="promise-item"><b>＋</b> Une offre conçue pour différents volumes d’usage</div>
+          </div>
+          <p class="format-note">
+            Une plateforme professionnelle centrée sur l’animation et la
+            participation, pas seulement sur une bibliothèque d’activités.
+          </p>
+        </div>
+        <div class="footer"><span>TeamBlender · Pitch produit</span><span>08 / 09</span></div>
+      </section>
+
+      <section class="slide dark" aria-label="9. Prochaine étape">
+        <div class="content">
+          <p class="eyebrow">La prochaine étape</p>
+          <h2>Faisons de chaque session un vrai moment d’équipe.</h2>
+          <p class="lead">
+            Testons TeamBlender sur une session réelle : un groupe, un challenge,
+            un temps fort à vivre ensemble.
+          </p>
+          <div class="next-step"><span>→</span> Organiser un pilote avec une équipe</div>
+        </div>
+        <div class="footer"><span>TeamBlender · Pitch produit</span><span>09 / 09</span></div>
+      </section>
+    </main>
+
+    <nav class="controls" aria-label="Navigation de la présentation">
+      <button class="nav-button" type="button" id="previous" aria-label="Diapositive précédente">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="m10 3-5 5 5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+      <span class="counter" aria-live="polite">01 / 09</span>
+      <button class="nav-button" type="button" id="next" aria-label="Diapositive suivante">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </nav>
+    <div class="progress" role="progressbar" aria-label="Progression de la présentation" aria-valuemin="1" aria-valuemax="9" aria-valuenow="1">
+      <span></span>
+    </div>
+
+    <script>
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const counter = document.querySelector(".counter");
+      const progress = document.querySelector(".progress");
+      const progressFill = document.querySelector(".progress span");
+      let current = 0;
+
+      function showSlide(index) {
+        current = Math.max(0, Math.min(index, slides.length - 1));
+        slides.forEach((slide, slideIndex) => {
+          const active = slideIndex === current;
+          slide.classList.toggle("active", active);
+          slide.setAttribute("aria-hidden", String(!active));
+        });
+        counter.textContent = `${String(current + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`;
+        progress.setAttribute("aria-valuemax", String(slides.length));
+        progress.setAttribute("aria-valuenow", String(current + 1));
+        progressFill.style.width = `${((current + 1) / slides.length) * 100}%`;
+      }
+
+      document.querySelector("#previous").addEventListener("click", () => showSlide(current - 1));
+      document.querySelector("#next").addEventListener("click", () => showSlide(current + 1));
+      document.addEventListener("keydown", (event) => {
+        if (["ArrowRight", "PageDown", " "].includes(event.key)) {
+          event.preventDefault();
+          showSlide(current + 1);
+        } else if (["ArrowLeft", "PageUp"].includes(event.key)) {
+          event.preventDefault();
+          showSlide(current - 1);
+        } else if (event.key === "Home") {
+          showSlide(0);
+        } else if (event.key === "End") {
+          showSlide(slides.length - 1);
+        }
+      });
+
+      showSlide(0);
+    </script>
+  </body>
+</html>

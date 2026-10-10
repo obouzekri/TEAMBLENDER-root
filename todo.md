@@ -18,6 +18,8 @@ Au lieu d'avoir uniquement des bombes :
 ❓ Case indice : donne une information utile.
 ⭐ Bonus : récupération d'une vie ou révélation partielle du chemin.
 
-# [x] donner la main au facilitateur pour faire une pause au chrono
 
+Créer une session autmatique ( définir durée)
+
+Créer participant ne pas donner la main dans la création de session 
 # revoir le challenge mission critique pour améliorer les affirmations

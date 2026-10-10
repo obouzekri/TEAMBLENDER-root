@@ -74,6 +74,35 @@ Le produit couvre actuellement plusieurs formats de challenges, parmi lesquels :
 - Mission Critique
 - Vrai ou Mensonge
 - Pixel Architect
+- Mots croisés Live / Crossword Live
+
+### Mots croisés Live
+
+Une grille commune pour 2 à 5 participants, avec un chronomètre de 15 minutes
+par défaut (configurable de 5 à 30 minutes). Le facilitateur choisit une grille
+dans une bibliothèque de 30 grilles par langue. La langue sélectionnée par le
+facilitateur au lancement de la session s'applique aux challenges des participants.
+
+Le participant sélectionne un mot, lit sa définition hors de la grille et
+propose une réponse dans un champ unique. Le premier à valider correctement gagne
+un point ; chaque mot rapporte une seule fois. Les erreurs ne retirent aucun point.
+Les lettres trouvées aident les autres joueurs aux intersections.
+
+Les réponses ignorent casse, accents, espaces, apostrophes et tirets, mais pas les
+synonymes ou changements de nombre. Un délai de deux secondes entre les essais et
+une limite de cinq erreurs sur un mot en trente secondes limitent les tentatives
+en rafale. Les mots ne sont pas réservés pendant la saisie.
+
+La progression collective, les scores et les découvertes sont visibles en direct.
+Les nouveaux arrivants peuvent jouer ; une reconnexion restitue la partie.
+Le chronomètre serveur continue après déconnexion du facilitateur, sans pause.
+La grille complète, l'échéance serveur ou un arrêt manuel terminent la partie.
+Les scores, mots trouvés et mots non résolus sont conservés dans les résultats.
+Les scores identiques restent ex aequo.
+
+L'interface prend en charge le clavier, le mobile et les thèmes clair/sombre.
+La V1 ne propose ni éditeur, ni génération de grilles à la demande, ni mode équipes,
+ni lettres offertes ou indices supplémentaires.
 
 Chaque challenge a un objectif de participation, de collaboration et de progression claire.
 

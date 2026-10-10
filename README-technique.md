@@ -150,3 +150,26 @@ npm run dev
 ## 9. État actuel
 
 L’architecture actuelle est fonctionnelle pour un MVP SaaS orienté sessions live, challenges collaboratifs et gestion facilitateur/participant. La cible produit active reste le frontend Next.js, tandis que le frontend vanilla legacy est retiré du dépôt comme référence historique.
+# Crossword Live
+
+- Engine: `crossword_live_v1`, using the existing registry, runtime dispatcher,
+  session builder and Socket.IO challenge event envelope.
+- The server resolves authenticated identity and session access for crossword
+  joins/actions; client configuration and claimed role are not authoritative.
+- `CrosswordRuntimes` stores the private game state and absolute server deadline.
+  PostgreSQL row locks serialize word attribution across connections/processes.
+  Hidden answers are loaded from the server library and never included in public
+  grid/configuration payloads.
+- Terminal results are written transactionally to `ChallengeResult`, including
+  individual word scores, solved words and collective completion. Crossword result
+  mutation through participant REST endpoints is rejected.
+- Run migrations through the existing migration workflow before serving the new
+  engine; the catalog migration adds the challenge without replacing existing rows.
+- Validate all bilingual layouts with `cd backend` then `npm run crossword:validate`.
+  Run focused backend tests with `npm test -- --runInBand crossword`.
+- Frontend checks: `npm run test:ux:crossword` (real global theme tokens,
+  keyboard/input flows, light/dark contrast and mobile overflow) and
+  `npm run test:unit:session-locale`. The UX harness substitutes shared wrappers;
+  it is not a substitute for a real five-participant playtest.
+- Content is original project-authored material. Automated layout validation does
+  not substitute for human clue/difficulty review and a five-player playtest.

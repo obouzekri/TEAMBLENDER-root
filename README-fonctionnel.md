@@ -55,6 +55,40 @@ Le participant doit pouvoir rejoindre l’activité simplement, comprendre rapid
 ### Création de sessions
 Le manager peut préparer une session structurée avec des participants et des activités définies.
 
+Le nombre de participants prévu et l'objectif sont facultatifs et modifiables
+dans les informations de session. L'effectif prévu est une estimation, pas une
+limite d'accès ; il reste distinct des participants inscrits et connectés.
+
+Les profils participants peuvent être ajoutés à l'avance. Les autres personnes
+peuvent rejoindre grâce au code ou au lien disponibles après la création :
+un compte participant peut alors être créé automatiquement. Une adresse e-mail
+et un compte configuré facilitent le suivi individuel entre les sessions.
+
+### Propositions de programme
+Depuis le catalogue, « Me proposer un programme » génère une sélection variée
+selon l'objectif, l'effectif prévu et une durée cible (hors pauses et débriefs).
+Le facilitateur peut renouveler la proposition, remplacer un challenge puis
+accepter le programme pour le configurer et le réordonner. La proposition ne
+dépasse pas la durée cible ; si aucun challenge ne correspond, les critères
+doivent être ajustés. La sélection manuelle reste disponible.
+
+L'estimation du groupe ne remplace jamais les conditions réelles de lancement
+d'un challenge. Le mode de progression automatique concerne uniquement
+l'enchaînement des challenges, pas leur sélection.
+
+### Participants absents pendant un challenge
+Le panneau d'information de session affiche les participants et leur présence
+technique. Une déconnexion ne provoque pas d'exclusion automatique.
+Le facilitateur confirme explicitement un retrait, avec sa portée et ses effets.
+
+Pour CoPuzzle et Phrase Mystère, les éléments encore à réaliser peuvent être
+réattribués aux participants connectés ; les contributions terminées sont
+conservées. Pour les autres challenges, le retrait en cours n'est pas proposé
+lorsqu'il ne peut pas être effectué sans compromettre la partie. L'exclusion
+des prochains challenges reste distincte et ne modifie pas rétroactivement
+les résultats terminés. Un participant exclu ne peut pas reprendre ses actions
+dans le périmètre concerné sans être réintégré.
+
 ### Déroulé live
 La session peut être lancée et pilotée en direct, avec un suivi de l’avancement des challenges.
 

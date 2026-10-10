@@ -75,6 +75,21 @@ Challenges actuellement présents dans le parcours principal :
 - Système : PostgreSQL via Sequelize
 - Initialisation et connexion : [backend/src/models/index.js](backend/src/models/index.js)
 
+### Contexte et gestion des participants de session
+- La migration [20261010-add-session-planning-context.js](backend/migrations/20261010-add-session-planning-context.js)
+  ajoute `expected_participant_count` et `objective`, facultatifs et persistants.
+- La migration [20261010193000-session-participant-exclusions.js](backend/migrations/20261010193000-session-participant-exclusions.js)
+  persiste les exclusions. Les migrations doivent être appliquées avant
+  l'utilisation de ces fonctionnalités ; le script de démarrage backend
+  exécute `sequelize-cli db:migrate`.
+- Le générateur [sessionProgram.mjs](frontend-next/lib/sessionProgram.mjs)
+  propose uniquement des challenges actifs exécutables, selon l'objectif,
+  les plages de participants connues et la durée cible. Le serveur continue
+  de valider les challenges et les conditions réelles de lancement.
+- Les tests frontend ciblés sont `npm run test:unit:builder`,
+  `npm run test:ux:planning` et `npm run test:ux:builder`.
+  Les tests UX utilisent des réponses API simulées, sur le frontend local.
+
 ### Modèles métier principaux
 - [backend/src/models/user.model.js](backend/src/models/user.model.js)
 - [backend/src/models/participant.model.js](backend/src/models/participant.model.js)

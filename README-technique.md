@@ -107,7 +107,10 @@ Le frontend utilise encore localStorage et sessionStorage pour certains contexte
 - selectedChallenges
 
 ### Stockage runtime
-Les états de room challenge sont gérés en mémoire dans le process backend pour le realtime.
+Les états de room challenge sont majoritairement gérés en mémoire dans le process backend pour le realtime.
+Le challenge `crossword_live_v1` persiste son état serveur en base via `CrosswordRuntimes`
+pour fiabiliser la reprise et l'arbitrage multi-connexions. Les autres moteurs live
+restent dépendants du process temps réel en cours d'exécution.
 
 ## 6. Fonctionnalités techniques transverses
 

@@ -25,5 +25,5 @@ Créer participant ne pas donner la main dans la création de session
 # revoir le challenge mission critique pour améliorer les affirmations
 
 
-add ~N time dans les cartes de challenge pret du tag ideal~ 4 joeurs et supprime ideal
+- [x] add ~N time dans les cartes de challenge pret du tag (~N min et ~4 joueurs sans le préfixe "Ideal")
  

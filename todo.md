@@ -27,3 +27,5 @@ Au lieu d'avoir uniquement des bombes :
 ## P2 — Préférences esthétiques, à arbitrer ensuite
 
 - [ ] Définir un ou deux repères visuels propres à TeamBlender afin que l'interface ne repose pas uniquement sur le fond sombre et les accents bleu-violet. À traiter comme une option de direction artistique, pas comme un défaut bloquant.
+
+je pense qu'on peut avoir Session et participant de la page home par la même coleur du titre de la session

@@ -18,19 +18,10 @@ Au lieu d'avoir uniquement des bombes :
 ❓ Case indice : donne une information utile.
 ⭐ Bonus : récupération d'une vie ou révélation partielle du chemin.
 
-# revoir le challenge mission critique pour améliorer les affirmations
-
-
-
-## P0 — Problèmes bloquants à rechercher en premier
-
-
-- [ ] Tester sur mobile la navigation, les actions principales et les contenus des challenges ; corriger tout débordement ou blocage avéré avant le polissage visuel.
-
 
 ## P1 — Améliorations utiles, après levée des blocages
 
-- [ ] Harmoniser les couleurs, la typographie, les icônes, les boutons (dont leurs états hover/focus/disabled), les bordures et les espacements entre les écrans, uniquement si les écarts nuisent à la compréhension ou à la cohérence.
+
 - [ ] Garder les écrans de navigation, de gestion et de paramètres sobres et structurés, tout en permettant aux challenges d'être plus expressifs.
 
 ## P2 — Préférences esthétiques, à arbitrer ensuite

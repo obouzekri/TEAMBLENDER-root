@@ -191,6 +191,39 @@ The goal is not to add a richer “psychometric” layer; it is to standardize f
 
 ---
 
+## Frontend tracking alignment
+
+For product analytics, the frontend emits product events through a shared helper when consent is granted:
+
+- GTM keeps the existing `product_event` event and payload schema.
+- PostHog uses named events in the form `product_<scope>_<action>` (for example `product_session_launch_succeeded`) and attaches the same payload properties.
+
+Both stacks share the same payload properties, while challenge-level KPI logic remains based on the canonical event model described above. PostHog identifies authenticated users with their internal user ID and role only; names and email addresses are not used as identity traits.
+
+## Recommended PostHog funnels
+
+### Session activation funnel
+
+Create a funnel insight using these ordered events:
+
+1. `product_session_create_requested`
+2. `product_session_launch_requested`
+3. `product_session_launch_succeeded`
+4. `product_challenge_opened`
+5. `product_session_results_viewed`
+
+Use the person-level funnel for overall conversion. Add a breakdown by `challenge_engine_key` on the challenge-opened step to compare challenge types. Filter the final step by `session_status = terminee` when measuring visits to results for completed sessions. `results_viewed` means the results data loaded and the page was opened; it does not mean the session was completed. The frontend does not currently emit a reliable session-completion event.
+
+### Account conversion funnel
+
+Create a separate funnel for `product_user_signup_success` followed by `product_user_login_success`. For OAuth, use `product_user_oauth_signup_success` and `product_user_oauth_login_success` as alternate entry events or create separate insights by authentication method. Password signup can precede email verification and is therefore not equivalent to an activated account.
+
+### Event properties
+
+Use `scope`, `action`, `session_id`, `challenge_id`, `challenge_engine_key`, `challenge_count`, `provider`, `auth_method`, `surface`, `source`, `page_path`, and `session_status` to filter or break down the funnel. `session_status` is supplied on the results-view event when available.
+
+---
+
 ## Retention rules
 
 Recommended defaults:

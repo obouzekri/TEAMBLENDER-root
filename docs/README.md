@@ -16,6 +16,8 @@ L'etat courant du produit est reflechi ici via les liens vers `../todo.md` et `d
 
 ## Quick links
 
+- Dossier présentation, financement et go-to-market: `TEAMBLENDER_STRATEGIE_COMMERCIALE_FINANCEMENT.md`
+- Présentation HTML: `pitch-deck-teamblender.html`
 - Workflow principal: `process/FEATURE_TO_PROD_FLOW.md`
 - Checklist release: `checklists/RELEASE_CHECKLIST_PRE_MAIN.md`
 - Rollback: `runbooks/ROLLBACK_FRONTEND_BACKEND_RUNBOOK.md`

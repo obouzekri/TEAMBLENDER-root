@@ -16,4 +16,3 @@ Au lieu d'avoir uniquement des bombes :
 ❓ Case indice : donne une information utile.
 ⭐ Bonus : récupération d'une vie ou révélation partielle du chemin.
 
-figer le nombre de participant lors de la création de la session, cela permettera de ne pas biasé les calculs des chalenges

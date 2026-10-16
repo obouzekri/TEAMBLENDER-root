@@ -21,6 +21,20 @@ Objectif: centraliser les variables critiques backend, frontend et CI pour dev /
 | DB_SSL | Moyenne | Optionnel | Optionnel | Optionnel | SSL DB (`true`/`false`) |
 | DEBUG_SQL | Basse | Optionnel | Optionnel | Optionnel | Traces SQL debug |
 | ADMIN_RESET_PASSWORD | Moyenne | Optionnel | Optionnel | Optionnel | Utilise par scripts admin |
+| POSTHOG_API_HOST | Moyenne | `https://eu.posthog.com` | Region projet | Region projet | Hote API de lecture, distinct de l'hote d'ingestion |
+| POSTHOG_PROJECT_ID | Moyenne | Optionnel | Optionnel | Recommande | Projet consulte par les analytics admin |
+| POSTHOG_PERSONAL_API_KEY | Haute | Optionnel | Optionnel | Recommande | Secret backend uniquement, cle personnelle avec acces au projet et aux requetes ; jamais un jeton public |
+
+### Depannage des analytics admin PostHog
+
+- Une configuration presente ne garantit pas une connexion reussie. En cas d'echec de la requete principale, le panneau indique une indisponibilite et ne presente pas les valeurs de repli comme des mesures reelles.
+- `POSTHOG_AUTHENTICATION_FAILED` (HTTP 401) : remplacer `POSTHOG_PERSONAL_API_KEY` par une cle personnelle valide dans l'environnement du backend, puis redemarrer le backend. Ne jamais copier cette cle dans une variable `NEXT_PUBLIC_*`, dans le code ou dans une conversation.
+- `POSTHOG_ACCESS_DENIED` (HTTP 403) : verifier l'acces au projet `POSTHOG_PROJECT_ID` et les permissions de requete de la cle.
+- Verifier que `POSTHOG_API_HOST` correspond a la region du compte : `https://eu.posthog.com` ou `https://us.posthog.com`.
+- La cle de capture publique et la cle personnelle de lecture sont distinctes ; cet echec de lecture ne prouve pas un echec de capture.
+- `Query has hit the max execution time` : l'authentification n'est plus le blocage ; verifier la requete analytics. L'overview utilise une seule lecture bornee des evenements avec des agregations conditionnelles, au lieu de sous-requetes repetant la lecture pour chaque indicateur. Les noms d'evenements, unites et fenetres de 7 a 180 jours restent inchanges. Une reduction de fenetre peut aider au diagnostic, sans remplacer la correction de requete.
+
+Reference : [Cles API personnelles PostHog](https://posthog.com/docs/api/personal-api-keys).
 
 ## 2) Frontend Next.js (Vercel)
 

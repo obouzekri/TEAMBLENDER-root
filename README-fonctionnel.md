@@ -98,6 +98,14 @@ Le produit propose plusieurs formats de challenge collaboratifs ou compétitifs,
 ### Suivi et résultats
 Le facilitateur peut consulter l’évolution de la session et les résultats obtenus à la fin.
 
+### Publications LinkedIn (administration)
+
+La console admin permet de créer, prévisualiser, modifier, copier et supprimer
+des brouillons de publications LinkedIn. Les brouillons sont enregistrés dans
+la base de données et visibles par les administrateurs. Cette première version
+ne publie pas sur LinkedIn et ne programme pas de publication : l’administrateur
+copie le texte et le publie manuellement.
+
 ## 6. Challenges proposés
 
 Le produit couvre actuellement plusieurs formats de challenges, parmi lesquels :

@@ -34,6 +34,15 @@ Le produit est aujourd’hui orienté vers :
 
 ## Démarrage rapide
 
+Ce dépôt est l'espace de travail : le backend et le frontend sont deux dépôts
+GitHub séparés, clonés dans `backend/` et `frontend-next/` (ignorés par git).
+
+```bash
+npm run workspace:setup
+```
+
+Pour travailler avec Claude Code, voir [docs/process/TRAVAILLER_AVEC_CLAUDE.md](docs/process/TRAVAILLER_AVEC_CLAUDE.md).
+
 ### Backend
 ```bash
 cd backend

@@ -1,0 +1,52 @@
+name: Demande d'amélioration
+description: Bug, amélioration ou nouvelle fonctionnalité à confier à Claude Code
+labels: ["demande"]
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      options:
+        - Bug
+        - Amélioration
+        - Nouvelle fonctionnalité
+        - Audit / analyse
+    validations:
+      required: true
+  - type: dropdown
+    id: zone
+    attributes:
+      label: Zone
+      options:
+        - Frontend (Next.js)
+        - Backend (API / temps réel)
+        - Les deux
+        - Docs / process
+        - Je ne sais pas
+    validations:
+      required: true
+  - type: textarea
+    id: objectif
+    attributes:
+      label: Objectif
+      description: Ce que tu veux obtenir, du point de vue de l'utilisateur.
+    validations:
+      required: true
+  - type: input
+    id: ou
+    attributes:
+      label: Où
+      placeholder: "ex. Session Builder, live participant, landing FR"
+  - type: textarea
+    id: critere
+    attributes:
+      label: Critère de réussite
+      description: Comment savoir que c'est terminé.
+  - type: dropdown
+    id: priorite
+    attributes:
+      label: Priorité
+      options:
+        - Haute
+        - Moyenne
+        - Basse

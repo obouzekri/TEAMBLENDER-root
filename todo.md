@@ -21,10 +21,10 @@
 
 ## 🟠 Priorité 2 — Nettoyage technique
 
-- [ ] Supprimer les handlers socket legacy `joinSession` / `nextStage` (pas de contrôle d'appartenance à la session, rôle « manager » fourni par le client ; `stageChanged` n'est plus écouté côté front)
+- [x] Supprimer les handlers socket legacy `joinSession` / `nextStage` (pas de contrôle d'appartenance à la session, rôle « manager » fourni par le client ; `stageChanged` n'est plus écouté côté front)
   - backend/src/realtime/socket-runtime.js
-- [ ] Retirer les routes de debug `/api/test` et `/api/direct-test`, et `morgan('dev')` en prod (backend/app.js)
-- [ ] Retirer `backend/.railway-status.raw.txt` du repo (IDs d'infra, pas de secret)
+- [x] Retirer les routes de debug `/api/test` et `/api/direct-test`, et `morgan('dev')` en prod (backend/app.js)
+- [x] Retirer `backend/.railway-status.raw.txt` du repo (IDs d'infra, pas de secret)
 - [ ] Découper les fichiers géants : globals.css (~23k lignes), AdminClient.js (5,6k), socket-runtime.js (3,3k), account/page.js (2,7k), SessionBuilder.js (2,4k)
 - [ ] État des challenges live en mémoire (sauf Crossword) : un redéploiement en pleine session perd les parties, pas de scaling horizontal → persister l'état comme pour crossword_live_v1
 - [ ] Supprimer les fallbacks « colonne manquante » (findUserByPkSafe, etc.) une fois les migrations stabilisées

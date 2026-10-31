@@ -12,8 +12,8 @@
 - [ ] Ne plus stocker le JWT dans localStorage/sessionStorage, s'appuyer uniquement sur le cookie httpOnly
   - frontend-next/lib/auth-storage.js, frontend-next/app/admin/AdminClient.js
   - Avec la CSP `'unsafe-inline' 'unsafe-eval'`, une XSS = vol de compte (admin compris)
-- [ ] Dépendances : 2 vulnérabilités critiques par repo
-  - [x] frontend : corrigé le 2026-10-31 (PR frontend #26, à fusionner après vérification de la preview Vercel) — `next` 16.4.3, `postcss` 8.5.32, dompurify 3.4.17 ; 0 haute / 0 critique ; 4 modérées restantes (outillage eslint)
+- [x] Dépendances : 2 vulnérabilités critiques par repo
+  - [x] frontend : corrigé le 2026-10-31 (PR frontend #26, fusionnée le 2026-10-31) — `next` 16.4.3, `postcss` 8.5.32, dompurify 3.4.17 ; 0 haute / 0 critique ; 4 modérées restantes (outillage eslint)
   - [x] backend : corrigé le 2026-10-31 (PR backend #4) — 0 haute / 0 critique ; 28 modérées restantes
 - [ ] Après le déploiement de la PR backend #4 (nodemailer 8 → 10) :
   - Vérifier dans Railway que le backend tourne sur Node ≥ 20 (exigé par nodemailer 10) et fixer la version (`engines` dans backend/package.json)

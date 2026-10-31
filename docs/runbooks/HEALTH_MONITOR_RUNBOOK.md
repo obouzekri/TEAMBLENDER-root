@@ -12,8 +12,6 @@ Objectif: verifier rapidement que le backend expose bien les endpoints critiques
 
 ## Ce que verifie le monitor
 
-- `GET /api/direct-test`
-- `GET /api/test`
 - `GET /api/health`
 - `POST /api/auth/login`
 

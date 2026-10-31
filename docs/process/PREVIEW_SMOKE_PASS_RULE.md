@@ -32,7 +32,7 @@ npm run smoke:preview:api
 - Login manager: PASS
 - Home manager accessible apres login: PASS
 - Session builder (catalogue visible): PASS
-- Route API test (`/api/test`) + preflight login + login API: PASS
+- Route API test (`/api/health`) + preflight login + login API: PASS
 
 ## Preuves minimales PR
 

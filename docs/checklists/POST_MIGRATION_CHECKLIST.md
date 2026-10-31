@@ -3,7 +3,7 @@
 Date: 2026-05-10
 
 ## 1) Sante backend/API
-- [ ] `GET /api/test` OK
+- [ ] `GET /api/health` OK
 - [ ] `POST /api/auth/login` admin OK
 - [ ] `GET /api/users` (admin) OK
 - [ ] `GET /api/sessions` OK

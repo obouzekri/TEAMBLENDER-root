@@ -15,7 +15,7 @@ Restauration rapide d'un etat stable en cas de regression critique apres deploie
 1. Identifier le dernier deploiement stable dans Railway.
 2. Rediriger le service vers ce deploiement (redeploy/restart selon procedure Railway interne).
 3. Verifier:
-   - `GET /api/test`
+   - `GET /api/health`
    - `POST /api/auth/login`
    - `GET /api/challenges`
 4. Si incident data: appliquer procedure de restauration catalogue (`CATALOG_RESTORE_PROCEDURE.md`).

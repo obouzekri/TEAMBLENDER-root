@@ -51,7 +51,7 @@ Depuis [frontend-next/package.json](frontend-next/package.json):
 
 - [ ] Build Railway backend OK.
 - [ ] Runtime Railway backend OK (pas de crash boot, pas de boucle restart).
-- [ ] Endpoint sante/reponse API valides (`/api/test`, login, endpoints critiques sessions/challenges/users).
+- [ ] Endpoint sante/reponse API valides (`/api/health`, login, endpoints critiques sessions/challenges/users).
 - [ ] Pas de 5xx persistants apres verification monitor.
 
 ## 6) Decision Go / No-Go

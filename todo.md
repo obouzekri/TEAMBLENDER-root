@@ -53,7 +53,7 @@
 - [ ] Pari sur moi : 40 s pour choisir l'affirmation puis 40 s pour voter, un tour peut sembler long à ceux qui attendent → délais plus courts ou configurables
 - [ ] Valider ces retours en observant de vraies sessions avec des groupes, et auditer le vrai espace manager et le constructeur de session (non couverts par cette revue, la démo les imite)
 - [ ] CoPuzzle : la taille du plateau dépend de la largeur de l'écran et non du conteneur (peut déborder) ; libellé « Pièce visible » répété sur chaque case en vue facilitateur
-- [ ] Supprimer le code mort `frontend-next/components/Challenges/LabyrintheLive/ProceduralMazeBoard.js` (importé nulle part)
+- [x] Supprimer le code mort `frontend-next/components/Challenges/LabyrintheLive/ProceduralMazeBoard.js` (importé nulle part)
 
 ## 🟣 Démo /demo
 

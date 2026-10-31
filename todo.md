@@ -2,33 +2,20 @@
 
 ## 🔴 Priorité 1 — Sécurité / paiement
 
-- [x] Webhooks PayPal et Paddle : refuser la requête si le secret n'est pas configuré (aujourd'hui la vérification est ignorée → un faux webhook peut marquer une facture « paid »)
-  - backend/src/controllers/admin-billing.controller.js (paypalWebhook, paddleWebhook)
-  - Vérifier que PAYPAL_WEBHOOK_ID et PADDLE_WEBHOOK_SECRET sont définis en prod
-  - Paddle : rejeter les signatures dont le timestamp `ts` est trop ancien (anti-rejeu)
-- [x] Webhook Payoneer cassé : `Buffer.toString('sha256')` lève « Unknown encoding » → remplacer par un vrai HMAC + comparaison `timingSafeEqual`
+- [ ] Webhook Payoneer : confirmer avec la doc / le support Payoneer le format réel de la signature (en-tête, encodage hex, contenu signé) avant d'activer le webhook
   - backend/src/services/payoneer.service.js (verifyWebhookSignature)
-  - [ ] Confirmer avec la doc / le support Payoneer le format réel de la signature (en-tête, encodage hex, contenu signé) avant d'activer le webhook
 - [ ] Ne plus stocker le JWT dans localStorage/sessionStorage, s'appuyer uniquement sur le cookie httpOnly
   - frontend-next/lib/auth-storage.js, frontend-next/app/admin/AdminClient.js
   - Avec la CSP `'unsafe-inline' 'unsafe-eval'`, une XSS = vol de compte (admin compris)
-- [x] Dépendances : 2 vulnérabilités critiques par repo
-  - [x] frontend : corrigé le 2026-10-31 (PR frontend #26, fusionnée le 2026-10-31) — `next` 16.4.3, `postcss` 8.5.32, dompurify 3.4.17 ; 0 haute / 0 critique ; 4 modérées restantes (outillage eslint)
-  - [x] backend : corrigé le 2026-10-31 (PR backend #4) — 0 haute / 0 critique ; 28 modérées restantes
 - [ ] Après le déploiement de la PR backend #4 (nodemailer 8 → 10) :
   - Vérifier dans Railway que le backend tourne sur Node ≥ 20 (exigé par nodemailer 10) et fixer la version (`engines` dans backend/package.json)
   - Envoyer un vrai e-mail (formulaire de contact ou mot de passe oublié) : les tests CI simulent l'envoi
 
 ## 🟠 Priorité 2 — Nettoyage technique
 
-- [x] Supprimer les handlers socket legacy `joinSession` / `nextStage` (pas de contrôle d'appartenance à la session, rôle « manager » fourni par le client ; `stageChanged` n'est plus écouté côté front)
-  - backend/src/realtime/socket-runtime.js
-- [x] Retirer les routes de debug `/api/test` et `/api/direct-test`, et `morgan('dev')` en prod (backend/app.js)
-- [x] Retirer `backend/.railway-status.raw.txt` du repo (IDs d'infra, pas de secret)
 - [ ] Découper les fichiers géants : globals.css (~23k lignes), AdminClient.js (5,6k), socket-runtime.js (3,3k), account/page.js (2,7k), SessionBuilder.js (2,4k)
 - [ ] État des challenges live en mémoire (sauf Crossword) : un redéploiement en pleine session perd les parties, pas de scaling horizontal → persister l'état comme pour crossword_live_v1
 - [ ] Supprimer les fallbacks « colonne manquante » (findUserByPkSafe, etc.) une fois les migrations stabilisées
-- [x] CI backend : la base de test démarrait vide → schéma créé avec `initDb()` avant les tests (PR backend #5, fusionnée le 2026-10-31) : 63/64 suites passent
 - [ ] Réécrire `tests/phrase_realtime_events.test.js` : il rejoint le challenge sans authentification et sur une session fictive, ce que le serveur refuse depuis le durcissement temps réel (Crossword) → s'inspirer de `tests/crossword_realtime.test.js` (session réelle, utilisateurs authentifiés)
 - [ ] Démarrage sur une base neuve : `npm start` lance les migrations avant `initDb()`, or les migrations supposent que les tables existent → échec sur une base vide (nouvel environnement, restauration)
   - backend/package.json (script start), backend/server.js, backend/migrations

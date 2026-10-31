@@ -35,7 +35,7 @@
   - [ ] Vérifier que le sélecteur €/$ et la remise annuelle −20 % affichent bien les prix
   - [ ] Traduire les termes anglais (Insights, Live facilitation, Dashboard…)
 - [ ] Un seul CTA de contact principal (aujourd'hui : « Parler à un expert », « Demander une démo », « Contacter l'équipe »)
-- [ ] Un seul libellé pour la page prix (aujourd'hui : Tarifs / Offres / Tarification)
+- [x] Un seul libellé pour la page prix (aujourd'hui : Tarifs / Offres / Tarification)
 - [ ] « Voyez qui s'implique » : expliquer comment les données individuelles sont présentées et protégées (confiance salariés / RGPD)
 
 ## 🔵 Challenges — expérience facilitateur (revue de la démo, 2026-10-31)

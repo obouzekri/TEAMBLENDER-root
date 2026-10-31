@@ -13,7 +13,7 @@
   - frontend-next/lib/auth-storage.js, frontend-next/app/admin/AdminClient.js
   - Avec la CSP `'unsafe-inline' 'unsafe-eval'`, une XSS = vol de compte (admin compris)
 - [ ] Dépendances : 2 vulnérabilités critiques par repo
-  - frontend : `next` → 16.4.3 (+ dompurify)
+  - [x] frontend : corrigé le 2026-10-31 (PR frontend #26, à fusionner après vérification de la preview Vercel) — `next` 16.4.3, `postcss` 8.5.32, dompurify 3.4.17 ; 0 haute / 0 critique ; 4 modérées restantes (outillage eslint)
   - [x] backend : corrigé le 2026-10-31 (PR backend #4) — 0 haute / 0 critique ; 28 modérées restantes
 - [ ] Après le déploiement de la PR backend #4 (nodemailer 8 → 10) :
   - Vérifier dans Railway que le backend tourne sur Node ≥ 20 (exigé par nodemailer 10) et fixer la version (`engines` dans backend/package.json)
@@ -34,6 +34,9 @@
   - backend/package.json (script start), backend/server.js, backend/migrations
 - [ ] Workflow GitHub « Session Retention Purge » en échec chaque nuit (vu les 29, 30 et 31/10)
   - backend/.github/workflows/session-retention-purge.yml
+- [ ] Passer le frontend à React 19 : React 18 est déprécié dans Next.js 16 (avertissement au build) et ne sera plus supporté par Next.js 17
+  - frontend-next/package.json : `react` / `react-dom` 18.3.1 → 19 (`@types/react` est déjà en 19)
+  - Vérifier les dépendances qui dépendent de React (lucide-react, @vercel/analytics, posthog-js) et lancer les tests smoke/UX
 
 ## 🟡 Priorité 3 — Produit / site (teamblender.io)
 

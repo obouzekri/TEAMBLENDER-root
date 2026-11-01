@@ -15,15 +15,19 @@
 
 - [ ] Découper les fichiers géants : globals.css (~23k lignes), AdminClient.js (5,6k), socket-runtime.js (3,3k), account/page.js (2,7k), SessionBuilder.js (2,4k)
 - [ ] État des challenges live en mémoire (sauf Crossword) : un redéploiement en pleine session perd les parties, pas de scaling horizontal → persister l'état comme pour crossword_live_v1
-- [ ] Supprimer les fallbacks « colonne manquante » (findUserByPkSafe, etc.) une fois les migrations stabilisées
+- [x] Supprimer les fallbacks « colonne manquante » (findUserByPkSafe, etc.) une fois les migrations stabilisées
 - [ ] Réécrire `tests/phrase_realtime_events.test.js` : il rejoint le challenge sans authentification et sur une session fictive, ce que le serveur refuse depuis le durcissement temps réel (Crossword) → s'inspirer de `tests/crossword_realtime.test.js` (session réelle, utilisateurs authentifiés)
 - [ ] Démarrage sur une base neuve : `npm start` lance les migrations avant `initDb()`, or les migrations supposent que les tables existent → échec sur une base vide (nouvel environnement, restauration)
   - backend/package.json (script start), backend/server.js, backend/migrations
 - [ ] Workflow GitHub « Session Retention Purge » en échec chaque nuit (vu les 29, 30 et 31/10)
   - backend/.github/workflows/session-retention-purge.yml
-- [ ] Passer le frontend à React 19 : React 18 est déprécié dans Next.js 16 (avertissement au build) et ne sera plus supporté par Next.js 17
-  - frontend-next/package.json : `react` / `react-dom` 18.3.1 → 19 (`@types/react` est déjà en 19)
-  - Vérifier les dépendances qui dépendent de React (lucide-react, @vercel/analytics, posthog-js) et lancer les tests smoke/UX
+- [ ] Plantages sur ce poste : chaque coupure laisse des fichiers à moitié écrits, remplis d'octets NUL (vu dans frontend-next/.git/config, refs/remotes/origin/main, le reflog de feat/score-scale et .next) → vérifier le disque, l'antivirus et la veille / l'alimentation
+- [ ] Supprimer la sauvegarde frontend-next/.git/config.bak-20261101
+- [ ] Branche frontend-next `fix/pricing-display-amounts` (travail sur la page tarifs, partie de main, hors PR #32) :
+  - [ ] Lancer `npm run test:ux:pricing` (serveur `npm run dev` requis), puis pousser la branche et ouvrir la PR
+  - [ ] Valider le prix Pro+ du fallback : 690 → 696 DH/mois (aligné sur l'ancien calcul 64 € / 0,092)
+- [ ] Tests UX `test-participant-management-ux` et `test-session-live-layout` : ne passent qu'avec `npm run dev` (ils cherchent les noms de classes CSS modules de développement) → les rendre compatibles avec un build de production ou le préciser dans le README
+- [ ] Smoke participant : chaque exécution laisse un compte participant invité « Smoke Participant » en base → le supprimer à la fin du test (et nettoyer ceux déjà créés en local)
 
 ## 🟡 Priorité 3 — Produit / site (teamblender.io)
 
@@ -32,10 +36,7 @@
 - [ ] Page tarifs :
   - [ ] Clarifier « challenges optimisés pour 4–6 personnes » vs 30 / 150 participants (répartition en équipes ?)
   - [ ] Préciser l'essai gratuit (durée, CB requise), TVA, résiliation, validité d'une session à l'unité
-  - [ ] Vérifier que le sélecteur €/$ et la remise annuelle −20 % affichent bien les prix
-  - [ ] Traduire les termes anglais (Insights, Live facilitation, Dashboard…)
 - [ ] Un seul CTA de contact principal (aujourd'hui : « Parler à un expert », « Demander une démo », « Contacter l'équipe »)
-- [x] Un seul libellé pour la page prix (aujourd'hui : Tarifs / Offres / Tarification)
 - [ ] « Voyez qui s'implique » : expliquer comment les données individuelles sont présentées et protégées (confiance salariés / RGPD)
 
 ## 🔵 Challenges — expérience facilitateur (revue de la démo, 2026-10-31)
@@ -44,7 +45,6 @@
   - backend/src/realtime/socket-runtime.js (buildSummary)
 - [ ] Revoir les formules qui récompensent l'agitation : CoPuzzle +0,5 par action (même une pièce mal posée), Labyrinthe +8 par case parcourue
 - [ ] Ajouter des questions d'animation dans les débriefs du produit (aujourd'hui uniquement des chiffres ; la démo en propose dans son bilan)
-- [ ] Harmoniser les écrans facilitateur entre challenges : emplacement du minuteur, du bouton « Règles », du résumé de fin
 - [ ] Labyrinthe : la fenêtre « Victoire collective » couvre la page et bloque le bouton « Challenge suivant » tant qu'elle n'est pas fermée
 - [ ] Labyrinthe : règles trop longues (10 puces), le bouton « Démarrer » passe sous le pli sur mobile → résumé en 3 lignes + détail repliable
 - [ ] Labyrinthe : un cul-de-sac coûte une vie, en plus des pièges invisibles → tester l'équilibrage avec de vrais groupes
@@ -53,7 +53,6 @@
 - [ ] Pari sur moi : 40 s pour choisir l'affirmation puis 40 s pour voter, un tour peut sembler long à ceux qui attendent → délais plus courts ou configurables
 - [ ] Valider ces retours en observant de vraies sessions avec des groupes, et auditer le vrai espace manager et le constructeur de session (non couverts par cette revue, la démo les imite)
 - [ ] CoPuzzle : la taille du plateau dépend de la largeur de l'écran et non du conteneur (peut déborder) ; libellé « Pièce visible » répété sur chaque case en vue facilitateur
-- [x] Supprimer le code mort `frontend-next/components/Challenges/LabyrintheLive/ProceduralMazeBoard.js` (importé nulle part)
 
 ## 🟣 Démo /demo
 

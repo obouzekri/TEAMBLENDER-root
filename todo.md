@@ -4,7 +4,7 @@
 
 - [ ] Webhook Payoneer : confirmer avec la doc / le support Payoneer le format réel de la signature (en-tête, encodage hex, contenu signé) avant d'activer le webhook
   - backend/src/services/payoneer.service.js (verifyWebhookSignature)
-- [ ] Ne plus stocker le JWT dans localStorage/sessionStorage, s'appuyer uniquement sur le cookie httpOnly
+- [x] Ne plus stocker le JWT dans localStorage/sessionStorage, s'appuyer uniquement sur le cookie httpOnly
   - frontend-next/lib/auth-storage.js, frontend-next/app/admin/AdminClient.js
   - Avec la CSP `'unsafe-inline' 'unsafe-eval'`, une XSS = vol de compte (admin compris)
 - [ ] Après le déploiement de la PR backend #4 (nodemailer 8 → 10) :

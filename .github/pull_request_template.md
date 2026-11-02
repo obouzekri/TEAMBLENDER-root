@@ -50,7 +50,6 @@ other:
 - [ ] Desktop and mobile typography reviewed visually
 
 ## Validation
-- [ ] `npm run check:typography` executed in frontend
 - [ ] Manual smoke test on impacted pages
 
 ## Evidence

@@ -168,6 +168,20 @@ npm run dev
 ## 9. État actuel
 
 L’architecture actuelle est fonctionnelle pour un MVP SaaS orienté sessions live, challenges collaboratifs et gestion facilitateur/participant. La cible produit active reste le frontend Next.js, tandis que le frontend vanilla legacy est retiré du dépôt comme référence historique.
+# Live Challenge State
+
+- Live engines other than `crossword_live_v1` persist their runtime snapshots in
+  `SessionChallenges.runtime_state`. Socket actions, phase ticks and timers use
+  PostgreSQL row locks so concurrent backend instances reload and mutate the
+  same committed state.
+- Running timers persist an absolute deadline; a worker restart does not reset
+  the remaining duration. Crossword keeps using its dedicated `CrosswordRuntimes`
+  table and service.
+- Horizontal Socket.IO broadcasts require Redis. Set
+  `SOCKET_REDIS_ADAPTER_ENABLED=true`, `SOCKET_REDIS_ADAPTER_REQUIRED=true`, and
+  `SOCKET_REDIS_URL` (or the separate pub/sub URLs) on every backend instance.
+  Making the adapter required prevents an unnoticed in-memory fallback.
+
 # Crossword Live
 
 - Engine: `crossword_live_v1`, using the existing registry, runtime dispatcher,

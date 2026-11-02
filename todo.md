@@ -14,7 +14,7 @@
 ## 🟠 Priorité 2 — Nettoyage technique
 
 - [ ] Découper les fichiers géants : globals.css (~23k lignes), AdminClient.js (5,6k), socket-runtime.js (3,3k), account/page.js (2,7k), SessionBuilder.js (2,4k)
-- [ ] État des challenges live en mémoire (sauf Crossword) : un redéploiement en pleine session perd les parties, pas de scaling horizontal → persister l'état comme pour crossword_live_v1
+- [x] État des challenges live (sauf Crossword) persisté dans `SessionChallenges.runtime_state`, avec verrou PostgreSQL pour les actions et ticks ; pour le scaling horizontal, activer Redis Socket.IO (`SOCKET_REDIS_ADAPTER_ENABLED=true`, `SOCKET_REDIS_ADAPTER_REQUIRED=true`)
 - [x] Supprimer les fallbacks « colonne manquante » (findUserByPkSafe, etc.) une fois les migrations stabilisées
 - [ ] Réécrire `tests/phrase_realtime_events.test.js` : il rejoint le challenge sans authentification et sur une session fictive, ce que le serveur refuse depuis le durcissement temps réel (Crossword) → s'inspirer de `tests/crossword_realtime.test.js` (session réelle, utilisateurs authentifiés)
 - [ ] Démarrage sur une base neuve : `npm start` lance les migrations avant `initDb()`, or les migrations supposent que les tables existent → échec sur une base vide (nouvel environnement, restauration)
@@ -27,7 +27,7 @@
   - [ ] Lancer `npm run test:ux:pricing` (serveur `npm run dev` requis), puis pousser la branche et ouvrir la PR
   - [ ] Valider le prix Pro+ du fallback : 690 → 696 DH/mois (aligné sur l'ancien calcul 64 € / 0,092)
 - [ ] Tests UX `test-participant-management-ux` et `test-session-live-layout` : ne passent qu'avec `npm run dev` (ils cherchent les noms de classes CSS modules de développement) → les rendre compatibles avec un build de production ou le préciser dans le README
-- [ ] Smoke participant : chaque exécution laisse un compte participant invité « Smoke Participant » en base → le supprimer à la fin du test (et nettoyer ceux déjà créés en local)
+- [x] Smoke participant : chaque exécution laisse un compte participant invité « Smoke Participant » en base → le supprimer à la fin du test (et nettoyer ceux déjà créés en local)
 
 ## 🟡 Priorité 3 — Produit / site (teamblender.io)
 

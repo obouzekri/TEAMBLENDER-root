@@ -24,7 +24,36 @@
 - [ ] Labyrinthe : un cul-de-sac coûte une vie, en plus des pièges invisibles → tester l'équilibrage avec de vrais groupes
 - [ ] Pari sur moi : au départ, tous les joueurs ont une médaille à 0 point dans le classement
 
+## 🎨 Design — formulaire « Créer une session » (2026-11-03)
+
+- [x] Agrandir les textes : aide ≥ 13px, labels et chips ≥ 14px, texte du bouton « Créer la session » plus grand
+- [x] Différencier les titres de section des labels (16px semi-bold + séparateur ou espace en plus, ou étapes numérotées)
+- [x] Déroulement : remplacer les radios par des cartes cliquables (bordure, état sélectionné violet)
+- [x] Participants : rendre « Ajouter des participants à l'avance » plus visible (chevron ou bouton secondaire « + Ajouter des participants »)
+- [x] Participants : masquer « 0 sélectionné(s) » quand il vaut 0, ou l'afficher en badge à côté du libellé
+- [x] Nombre de participants : placeholder « ex. 12 », champ numérique avec un minimum de 1
+- [x] Date : aligner le style du champ natif sur les autres champs et bloquer les dates passées
+- [x] Objectifs : vérifier que l'état sélectionné des chips est bien visible (fond violet clair, bordure, coche)
+- [x] Réduire légèrement la largeur max de la carte (~720px)
+
+## 🎨 Design — espace manager / tableau de bord (2026-11-03)
+
+- [ ] Couleurs : garder une seule couleur d'accent (violet) et réserver les autres couleurs aux statuts
+  - [ ] Légendes des chiffres clés : même couleur pour les trois (aujourd'hui bleu / orange / bleu)
+  - [ ] « Vue rapide » : supprimer les mots colorés un par un
+  - [ ] Même style pour « Créer une session » et « Créer un participant » (aujourd'hui l'un violet, l'autre blanc)
+- [ ] Agrandir les petits textes (Recherche, Statut, Dates, « 3 session(s) affichée(s) », « Espace manager ») : ≥ 12–13px
+- [ ] Cartes de session :
+  - [ ] Ajouter les infos utiles : date (sur toutes les cartes), nombre de participants, type d'atelier
+  - [ ] Actions : icônes plus grandes avec libellé ou tooltip, icône du milieu cohérente d'une carte à l'autre
+  - [ ] Mettre « Supprimer » dans un menu « ⋯ » plutôt qu'un bouton à bordure rouge toujours visible
+  - [ ] Ajouter un bouton principal « Lancer / Rejoindre » visible sur les sessions en cours
+  - [ ] Afficher les sessions en cours en premier
+- [ ] Bloc « Vue rapide » : le supprimer ou y mettre du contenu utile (prochaine session, checklist de démarrage)
+- [ ] Chiffres clés cliquables pour filtrer la liste (ex. « À configurer »)
+- [ ] Filtre « Période + » : le remplacer par une icône calendrier, plus parlante
+- [ ] Vérifier la session « Test 1 » : « En cours » mais datée du 20 févr. 2022 (bug de données ?)
+
 ## 🟣 Démo /demo
 
-- [ ] Ajouter un lien vers /demo sur le site (menu, lien sous le bouton du hero, ou « Demander une démo » du pied de page)
 - [ ] Démo encore un peu longue (≈ 1 min 50 après la PR #25) : laisser le visiteur choisir 1 ou 2 challenges à voir, ou démarrer automatiquement chaque challenge

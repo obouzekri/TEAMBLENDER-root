@@ -16,11 +16,8 @@
 
 ## 🟡 Priorité 3 — Produit / site (teamblender.io)
 
-- [x] Section « Équipes qui utilisent TeamBlender » : remplacer les catégories par de vraies preuves (logos, témoignages, chiffres) ou la retirer
-- [x] Page tarifs :
-  - [x] Préciser que les plafonds de 30 / 150 participants correspondent à des équipes de 4 à 6 personnes
+- [ ] Page tarifs :
   - [ ] Préciser l'essai gratuit (durée, CB requise), TVA, résiliation, validité d'une session à l'unité
-- [x] « Voyez qui s'implique » : expliquer comment les données individuelles sont présentées et protégées (confiance salariés / RGPD)
 
 ## 🔵 Challenges — expérience facilitateur (revue de la démo, 2026-10-31)
 
@@ -31,4 +28,3 @@
 
 - [ ] Ajouter un lien vers /demo sur le site (menu, lien sous le bouton du hero, ou « Demander une démo » du pied de page)
 - [ ] Démo encore un peu longue (≈ 1 min 50 après la PR #25) : laisser le visiteur choisir 1 ou 2 challenges à voir, ou démarrer automatiquement chaque challenge
-- [x] Espace manager et préparation encore imités : utiliser les vrais écrans (comme pour les challenges)

@@ -16,8 +16,6 @@
 
 ## 🟡 Priorité 3 — Produit / site (teamblender.io)
 
-- [ ] Page tarifs :
-  - [ ] Préciser l'essai gratuit (durée, CB requise), TVA, résiliation, validité d'une session à l'unité
 
 ## 🔵 Challenges — expérience facilitateur (revue de la démo, 2026-10-31)
 

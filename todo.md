@@ -16,6 +16,11 @@
 
 ## 🟡 Priorité 3 — Produit / site (teamblender.io)
 
+- [x] Langue par défaut selon le visiteur (existant : cookie `tb_locale` > `Accept-Language` > FR, dans `frontend-next/proxy.js`) :
+  - [x] Bug : `acceptLanguage.includes('en')` passe en anglais un navigateur `fr-FR,fr;q=0.9,en;q=0.8` → prendre la 1re langue supportée par ordre de préférence
+  - [x] Les pages publiques SEO sans préfixe (`/`, tarifs…) sont toujours en FR : y appliquer aussi la détection (sans redirection pour les robots)
+  - [x] Ajouter le pays de l'IP en secours quand `Accept-Language` ne donne ni FR ni EN (header géo de l'hébergeur, ex. `cf-ipcountry`)
+  - [x] Garder le choix manuel prioritaire sur toute détection (déjà le cas via le cookie)
 
 ## 🔵 Challenges — expérience facilitateur (revue de la démo, 2026-10-31)
 

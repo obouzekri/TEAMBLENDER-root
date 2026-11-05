@@ -43,3 +43,4 @@ coverage/
 # Others
 *.swp
 *.swo
+.claude/settings.local.json

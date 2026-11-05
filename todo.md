@@ -13,6 +13,10 @@
 - [ ] Découper les fichiers géants : globals.css (~23k lignes), AdminClient.js (5,6k), socket-runtime.js (3,3k), account/page.js (2,7k), SessionBuilder.js (2,4k)
 - [ ] Workflow GitHub « Session Retention Purge » en échec chaque nuit (vu les 29, 30 et 31/10)
   - backend/.github/workflows/session-retention-purge.yml
+- [ ] Vercel « Function Storage » à 75 % du quota gratuit (10 Go) (2026-11-04) : les anciennes deployments (surtout les previews) s'accumulent, ~25 Mo de fonctions chacune
+  - [ ] Projet `teamblender-frontend-next` → Settings → Security → Deployment Retention Policy : previews et deployments en échec/annulées à 7–30 jours
+  - [ ] Supprimer les anciennes deployments (onglet Deployments, ou `vercel ls` / `vercel rm <url> --yes`)
+  - [ ] Optionnel : Ignored Build Step pour ne pas builder les commits `docs:`
 
 ## 🌍 Langue arabe (AR + RTL) (2026-11-04)
 
@@ -33,3 +37,8 @@ PR : phase 0 frontend #55 / backend #11, arabe (brouillons) frontend #59 / backe
 
 - [ ] Labyrinthe : un cul-de-sac coûte une vie, en plus des pièges invisibles → tester l'équilibrage avec de vrais groupes
 - [ ] Pari sur moi : au départ, tous les joueurs ont une médaille à 0 point dans le classement
+
+
+![alt text](image.png)
+
+![alt text](image-1.png)

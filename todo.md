@@ -27,13 +27,11 @@
 - [ ] Vercel « Function Storage » à 75 % du quota gratuit (10 Go) (2026-11-04) : les anciennes deployments (surtout les previews) s'accumulent, ~25 Mo de fonctions chacune
   - [x] Deployment Retention Policy de `teamblender-frontend-next` : previews / échec / annulées à 7 j, production à 14 j (les 10 dernières en prod restent conservées) (2026-11-07)
   - [ ] Vérifier vers le 2026-11-09 que la purge automatique a bien eu lieu (~150 des 284 deployments) et que Function Storage est retombé vers ~35 % ; sinon `vercel rm <url> --yes`
-  - [ ] Optionnel : Ignored Build Step pour ne pas builder les commits `docs:`
 
 ## 🌍 Langue arabe (AR + RTL) (2026-11-04)
 
 PR fusionnées : frontend #55, #59, #54 / backend #11, #12. L'arabe reste masqué tant que `NEXT_PUBLIC_ENABLED_BETA_LOCALES=ar` (Vercel) / `ENABLED_BETA_LOCALES=ar` (Railway) ne sont pas définis.
 
-- [ ] Supprimer `frontend-next/scripts/i18n-codemod.mjs` (les branches `chore/i18n-*` sont déjà supprimées)
 - [ ] Messages d'erreur encore en français en dur : `lib/socket.js` (reconnexion), `ChallengeWrapper.js` (non connecté)
 - [ ] Contenus encore en `{ fr, en }` : fiches du catalogue (`ChallengesCatalog`, `challengeCatalog`, `ChallengeConfigModal`), listes de fonctionnalités des tarifs, démo, `mockChallenges`, constantes admin
 - [ ] Guides team building détaillés (`teamBuildingGuides.js`) : 404 en arabe pour l'instant ; capture d'écran arabe du héros (`copuzzle-facilitator-live-ar.webp`)

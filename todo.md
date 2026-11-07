@@ -37,7 +37,7 @@ PR fusionnées : frontend #55, #59, #54 / backend #11, #12. L'arabe reste masqu�
 - [ ] Guides team building détaillés (`teamBuildingGuides.js`) : 404 en arabe pour l'instant ; capture d'écran arabe du héros (`copuzzle-facilitator-live-ar.webp`)
 - [ ] Relecture de toutes les traductions arabes par un arabophone natif (avant activation)
 - [ ] À décider : contenu arabe des challenges à texte (quiz, Pari sur moi, Mission Critique, escape room, Phrase mystère, grilles de mots croisés) → ensuite ajouter `ar` dans `challengeLocales` (frontend et backend)
-- [ ] À décider : pages légales et console admin en arabe → traduction complète, ou résumé avec « la version française fait foi » (aujourd'hui : français)
+- [x] Pages légales en arabe (CGU, mentions légales, politique de confidentialité, contact RGPD) : traduction complète, avec « la version française fait foi » → PR frontend #84 fusionnée. Console admin : reste en français (décidé le 2026-11-07)
 - [ ] Activer la langue : variables d'environnement Vercel + Railway
 
 ## 👥 Comptes participants et e-mails

@@ -44,9 +44,6 @@ PR fusionnées : frontend #55, #59, #54 / backend #11, #12. L'arabe reste masqu�
 
 - [ ] Permettre au participant de changer son adresse e-mail et son mot de passe
 - [ ] E-mail envoyé au participant ajouté par l'owner : à revoir ensemble. Il doit expliquer que l'owner l'a ajouté comme participant à des sessions de cohésion d'équipe, et qu'il peut accéder à son compte pour changer son mot de passe et voir les sessions qui lui sont assignées
-- [ ] Logo TeamBlender coupé dans l'en-tête des e-mails
-
-  ![alt text](image-3.png)
 
 ## 🧩 Session builder
 

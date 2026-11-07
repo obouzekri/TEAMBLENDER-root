@@ -125,8 +125,12 @@ par défaut (configurable de 5 à 30 minutes). Le facilitateur choisit une grill
 dans une bibliothèque de 30 grilles par langue. La langue sélectionnée par le
 facilitateur au lancement de la session s'applique aux challenges des participants.
 
-Le participant sélectionne un mot, lit sa définition hors de la grille et
-propose une réponse dans un champ unique. Le premier à valider correctement gagne
+Le participant sélectionne un mot : un panneau de réponse s'ouvre à côté de la
+grille (en bas de l'écran sur mobile) sans la masquer. Il tape directement dans
+les cases du mot ; les lettres déjà trouvées par les autres restent en place.
+Les boutons ‹ / › passent au mot non résolu précédent ou suivant, et quand le mot
+est trouvé (par soi ou par un autre joueur), le panneau l'indique puis passe au
+mot suivant. Le premier à valider correctement gagne
 un point ; chaque mot rapporte une seule fois. Les erreurs ne retirent aucun point.
 Les lettres trouvées aident les autres joueurs aux intersections.
 

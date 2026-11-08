@@ -50,9 +50,8 @@ PR fusionnées : frontend #55, #59, #54 / backend #11, #12. L'arabe reste masqu�
 ## 👥 Comptes participants et e-mails
 
 - [ ] Permettre au participant qui a été rajouté par un code de changer son adresse e-mail et son mot de passe pour les participants qui se sont connectés par le code
-- [ ] E-mail envoyé au participant ajouté par le facilitateur : il doit expliquer qu'il a été ajouté comme participant à des sessions de cohésion d'équipe, et qu'il peut accéder à son compte pour changer son mot de passe et voir les sessions qui lui sont assignées
-  - [x] E-mail dédié « Vous avez été ajouté(e) comme participant(e) », sans nom du manager ni de l'entreprise, bouton « Créer mon mot de passe » → PR backend #20 (2026-11-08)
-  - [ ] Relire et fusionner la PR backend #20
+- [x] E-mail envoyé au participant ajouté par le facilitateur : il doit expliquer qu'il a été ajouté comme participant à des sessions de cohésion d'équipe, et qu'il peut accéder à son compte pour changer son mot de passe et voir les sessions qui lui sont assignées
+  - [x] E-mail dédié « Vous avez été ajouté(e) comme participant(e) », sans nom du manager ni de l'entreprise, bouton « Créer mon mot de passe » → PR backend #20 fusionnée (2026-11-08)
 
 ## 🧩 Session builder
 

@@ -11,9 +11,16 @@
 ## 🐞 Bugs (2026-11-06)
 
 - [ ] Espace admin : supprimer un participant qui a rejoint par code supprime **tous** les participants
-- [ ] Préférences de notification : « Impossible de charger vos préférences de notification » (les interrupteurs restent inactifs) → trouver pourquoi
+- [ ] Préférences de notification : « Impossible de charger vos préférences de notification » (les interrupteurs restent inactifs)
 
   ![alt text](image-5.png)
+
+  - [x] Cause : la page est accessible aux participants, mais le backend ne sert `GET /users/me/notification-preferences` qu'aux rôles `admin` / `user` → 403. L'erreur bloquait aussi l'enregistrement des préférences d'affichage (2026-11-07)
+  - [x] Correctif : section Notifications masquée pour les participants, enregistrement de l'affichage débloqué, cas participant ajouté à `test:ux:preferences-results` → PR frontend #83 (2026-11-07)
+  - [ ] Relire et fusionner la PR frontend #83
+  - [ ] Si l'erreur apparaît aussi avec un compte organisateur (`user`) : regarder dans l'onglet Réseau le code renvoyé par l'appel (backend local arrêté ou pas à jour ?)
+  - [ ] Nettoyage local dans `frontend-next` (une fois la session du logo e-mail terminée) : `git reset --keep e3776fc` sur `fix/email-logo-cropped` (retire le commit d13ae8c ajouté par erreur), `git stash drop` du stash « WIP on fix/email-logo-cropped: e3776fc », puis `git worktree remove ..\.wt-prefs` après fusion
+  - [ ] Le compte de test `manager@test.com` (rôle `manager`) reçoit un 403 sur toutes les routes `/users/me` : à supprimer ou à passer en `user`
 
 - [ ] Workflow GitHub « Session Retention Purge » annulé chaque nuit après 6 h (depuis le 29/10) : le script termine en 2 s (`staleSessionCount: 0`) mais le process Node ne se ferme pas, la connexion Sequelize reste ouverte
   - [x] Correctif : fermeture de la connexion + `timeout-minutes: 15` → PR backend #19 fusionnée (2026-11-07)
@@ -42,8 +49,10 @@ PR fusionnées : frontend #55, #59, #54 / backend #11, #12. L'arabe reste masqu�
 
 ## 👥 Comptes participants et e-mails
 
-- [ ] Permettre au participant de changer son adresse e-mail et son mot de passe
-- [ ] E-mail envoyé au participant ajouté par l'owner : à revoir ensemble. Il doit expliquer que l'owner l'a ajouté comme participant à des sessions de cohésion d'équipe, et qu'il peut accéder à son compte pour changer son mot de passe et voir les sessions qui lui sont assignées
+- [ ] Permettre au participant qui a été rajouté par un code de changer son adresse e-mail et son mot de passe pour les participants qui se sont connectés par le code
+- [ ] E-mail envoyé au participant ajouté par le facilitateur : il doit expliquer qu'il a été ajouté comme participant à des sessions de cohésion d'équipe, et qu'il peut accéder à son compte pour changer son mot de passe et voir les sessions qui lui sont assignées
+  - [x] E-mail dédié « Vous avez été ajouté(e) comme participant(e) », sans nom du manager ni de l'entreprise, bouton « Créer mon mot de passe » → PR backend #20 (2026-11-08)
+  - [ ] Relire et fusionner la PR backend #20
 
 ## 🧩 Session builder
 

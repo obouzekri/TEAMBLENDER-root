@@ -65,6 +65,21 @@ PR fusionnées : frontend #55, #59, #54 / backend #11, #12. L'arabe reste masqu�
 
 Constat : Ahrefs donne une autorité de domaine de 0/100 (aucun lien entrant) et le site n'apparaît pas sur Google, même pour la requête « TeamBlender » (seuls des résultats sur Blender 3D). Les visites ne viennent que de la prospection : la priorité reste les relances et les démos, ces actions sont plafonnées à 2 h par semaine.
 
+### Site public : finir la PR frontend #116
+
+- [ ] Preview Vercel de la PR, en FR et EN, clair et sombre, mobile et desktop :
+  - [ ] `/fr` : section « Pour qui » avec 3 cartes (RH, manager, coach/formateur/Scrum Master), textes lisibles en thème sombre
+  - [ ] `/en/demo` : le compteur affiche « Showing 2 of 2 sessions », le filtre Période a une flèche (plus de « Period+ »)
+  - [ ] Pied de page : `contact@teamblender.io` cliquable, lien LinkedIn vers la page publique
+  - [ ] `/en/politique-confidentialite` redirige vers `/en/confidentialite`
+- [ ] Parcours manager (login → accueil → session builder) et participant (rejoindre → défi en cours) sur la preview, comme le demande le modèle de PR
+- [ ] Approuver et fusionner la PR, puis refaire un contrôle rapide en production
+- [ ] Démo : la bulle d'aide bleue (« Hide tips ») recouvre le filtre Dates sur desktop (vu le 2026-11-24)
+
+### Offre d'essai : aligner les documents
+
+- [ ] Décision confirmée le 2026-11-24 : l'essai donne jusqu'à 20 participants et 5 sessions au total, et une session est idéalement prévue pour 4 participants. La page Tarifs est juste. Le prompt « Business model » plus bas parle encore de sessions illimitées et de groupes d'environ 5 : le mettre à jour pour ne plus le signaler comme un écart
+
 ### Plausible (mesure d'audience sans cookie) : la connexion ne marche pas encore
 
 - [ ] Fusionner la PR frontend #116 (elle ajoute le script Plausible) : tant qu'elle n'est pas en production, Plausible ne peut rien détecter

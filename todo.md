@@ -30,6 +30,8 @@
 
 ## 🟠 Priorité 2 — Nettoyage technique
 
+- [ ] Tests frontend en échec sur `main` (constaté le 2026-11-24) : `test-home-session-filters` et `test-contact-ux` cherchent un bouton « Refuser les cookies de mesure » qui n'existe plus ; `test:smoke:seo` attend un ancien texte de FAQ. `npm run check:typography`, demandé par le modèle de PR, n'existe pas
+- [ ] Politique de confidentialité : la phrase « uniquement des cookies strictement nécessaires » contredit PostHog et GTM (déposés après consentement) : à reformuler
 - [ ] Découper les fichiers géants : globals.css (~23k lignes), AdminClient.js (5,6k), socket-runtime.js (3,3k), account/page.js (2,7k), SessionBuilder.js (2,4k)
 - [ ] Vercel « Function Storage » à 75 % du quota gratuit (10 Go) (2026-11-04) : les anciennes deployments (surtout les previews) s'accumulent, ~25 Mo de fonctions chacune
   - [ ] Vérifier vers le 2026-11-09 que la purge automatique a bien eu lieu (~150 des 284 deployments) et que Function Storage est retombé vers ~35 % ; sinon `vercel rm <url> --yes`
@@ -63,6 +65,65 @@ PR fusionnées : frontend #55, #59, #54 / backend #11, #12. L'arabe reste masqu�
 - [ ] Concevoir et tester un atelier d'accueil d'équipe court, sans préparation
 - [ ] Debrief final : ajouter des scores de cohésion, leadership…
 
+
+## 📈 Visibilité, indexation et mesure (2026-11-24)
+
+Constat : Ahrefs donne une autorité de domaine de 0/100 (aucun lien entrant) et le site n'apparaît pas sur Google, même pour la requête « TeamBlender » (seuls des résultats sur Blender 3D). Les visites ne viennent que de la prospection : la priorité reste les relances et les démos, ces actions sont plafonnées à 2 h par semaine.
+
+### Site public : finir la PR frontend #116
+
+- [ ] Preview Vercel de la PR, en FR et EN, clair et sombre, mobile et desktop :
+  - [ ] `/fr` : section « Pour qui » avec 3 cartes (RH, manager, coach/formateur/Scrum Master), textes lisibles en thème sombre
+  - [ ] `/en/demo` : le compteur affiche « Showing 2 of 2 sessions », le filtre Période a une flèche (plus de « Period+ »)
+  - [ ] Pied de page : `contact@teamblender.io` cliquable, lien LinkedIn vers la page publique
+  - [ ] `/en/politique-confidentialite` redirige vers `/en/confidentialite`
+- [ ] Parcours manager (login → accueil → session builder) et participant (rejoindre → défi en cours) sur la preview, comme le demande le modèle de PR
+- [ ] Approuver et fusionner la PR, puis refaire un contrôle rapide en production
+- [ ] Démo : la bulle d'aide bleue (« Hide tips ») recouvre le filtre Dates sur desktop (vu le 2026-11-24)
+
+### Offre d'essai : aligner les documents
+
+- [ ] Décision confirmée le 2026-11-24 : l'essai donne jusqu'à 20 participants et 5 sessions au total, et une session est idéalement prévue pour 4 participants. La page Tarifs est juste. Le prompt « Business model » plus bas parle encore de sessions illimitées et de groupes d'environ 5 : le mettre à jour pour ne plus le signaler comme un écart
+
+### Plausible (mesure d'audience sans cookie) : la connexion ne marche pas encore
+
+- [ ] Fusionner la PR frontend #116 (elle ajoute le script Plausible) : tant qu'elle n'est pas en production, Plausible ne peut rien détecter
+- [ ] Vercel → Settings → Environment Variables : `NEXT_PUBLIC_PLAUSIBLE_DOMAIN=teamblender.io` en Production, puis redéployer sans cache (la variable est lue au build)
+- [ ] Le domaine déclaré dans Plausible doit être exactement `teamblender.io` (sans `www`, sans `https://`)
+- Si ça ne marche toujours pas, dans cet ordre :
+  - [ ] Ouvrir https://teamblender.io/pa/script.js : du JavaScript (200) est attendu. 404 = la PR n'est pas déployée ; 500 = le relais vers plausible.io échoue (voir les logs Vercel)
+  - [ ] Afficher le code source de la page d'accueil et chercher `plausible-analytics` : absent = la variable n'a pas été prise au build (redéployer)
+  - [ ] Onglet Réseau du navigateur sur une page publique : `POST /pa/api/event` doit répondre 202
+  - [ ] Tester sur une page publique (`/fr`, `/fr/pricing`), pas sur `/home` ni les espaces participant ou admin (exclus volontairement), avec le bloqueur de publicités désactivé
+  - [ ] Le bouton « Verify installation » de Plausible peut échouer avec un script relayé : se fier au tableau de bord en temps réel
+  - [ ] Si le compte Plausible impose un script personnalisé (`pa-XXXX.js` avec `plausible.init()`), transmettre le snippet fourni pour adapter le relais `/pa/*`
+
+### Indexation Google (semaine 1, environ 1 h)
+
+- [ ] Google Search Console : créer une propriété de type « Domaine » (enregistrement TXT chez le registraire DNS), puis soumettre `https://teamblender.io/sitemap.xml`
+- [ ] Inspection d'URL → « Demander l'indexation » pour `/fr`, `/en`, `/fr/pricing`, `/fr/team-building` et les 3 guides (`a-distance`, `hybride`, `onboarding`)
+- [ ] Une semaine après : rapport « Pages » de Search Console, vérifier qu'aucune page publique n'est exclue par erreur (noindex, robots, redirection)
+- [ ] Bing Webmaster Tools : importer le site depuis Search Console (alimente aussi DuckDuckGo et la recherche de ChatGPT)
+- [ ] Vérifier que `www.teamblender.io` redirige vers `teamblender.io` (une seule version du site)
+- [ ] Après indexation : tester `site:teamblender.io`, puis « TeamBlender team building »
+
+### Requête de marque « TeamBlender » (se distinguer de Blender 3D)
+
+- [ ] Page LinkedIn entreprise : renseigner le site web `https://teamblender.io`, la description et le logo (elle est déjà déclarée dans les données structurées du site)
+- [ ] Écrire « TeamBlender » associé à « team building » ou « cohésion d'équipe » partout (signature e-mail, LinkedIn, annuaires)
+
+### Premiers liens entrants (gratuits, au nom de TeamBlender, contact@teamblender.io)
+
+- [ ] Fiches dans des annuaires SaaS : Capterra (couvre aussi GetApp et Software Advice), G2, SaaSworthy, AlternativeTo, SaaSHub, Crunchbase
+- [ ] Préparer un lancement Product Hunt (visuels, description, premier commentaire)
+- [ ] Demander aux coachs et formateurs partenaires un lien vers TeamBlender depuis leur site (page ressources ou outils)
+- [ ] Pages « Alternative à QuizBreaker » et « Alternative à Water Cooler Trivia », sur le modèle des guides team building existants (à développer)
+- [ ] Page LinkedIn TeamBlender : un post par semaine (extraits de sessions, idées de rituels)
+
+### Suivi
+
+- [ ] Ajouter des paramètres UTM aux liens des relances (`?utm_source=email&utm_campaign=relance-novembre`) pour voir dans Plausible quelles relances génèrent des visites
+- [ ] Chaque semaine : visites et sources dans Plausible. Chaque mois : pages indexées (Search Console) et autorité de domaine (Ahrefs, outil gratuit)
 
 ## Business model
 

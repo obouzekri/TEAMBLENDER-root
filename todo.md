@@ -8,6 +8,11 @@
   - [ ] Vérifier dans Railway que le backend tourne effectivement sur Node ≥ 20
   - [ ] Envoyer un vrai e-mail : test Brevo API en échec (`BREVO_API_SEND_FAILED`), puis SMTP rejeté (`535 EAUTH`)
 
+- [ ] Facturation en MAD à 0 (2026-11-24) : les trois formules de base (Essai, Essentiel, Organisation) ont `price_mad_cents = 0` (valeur par défaut, non renseignée par `npm run pricing:seed`). Or `getPlanCharge` (backend/src/services/billing-admin.service.js) et le lien de paiement (backend/src/controllers/billing.controller.js) lisent ce champ en priorité : un paiement manuel ou un lien de paiement pour Essentiel risque d'être calculé à 0 MAD au lieu de 39 €
+  - [ ] Vérifier `price_mad_cents` / `annual_price_mad_cents` des formules en production
+  - [ ] Décider de la devise qui fait foi (EUR ou MAD), puis soit renseigner les prix MAD, soit ne plus lire `price_mad_cents` quand il vaut 0
+  - [ ] Ajouter un test sur `getPlanCharge` avec une formule de base
+
 ## 🐞 Bugs (2026-11-06)
 
 - [ ] Espace admin : supprimer un participant qui a rejoint par code supprime **tous** les participants

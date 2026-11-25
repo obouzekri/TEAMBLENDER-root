@@ -33,8 +33,9 @@
 
 ## 🟠 Priorité 2 — Nettoyage technique
 
-- [ ] Tests frontend en échec sur `main` (constaté le 2026-11-24) : `test-home-session-filters` et `test-contact-ux` cherchent un bouton « Refuser les cookies de mesure » qui n'existe plus ; `test:smoke:seo` attend un ancien texte de FAQ. `npm run check:typography`, demandé par le modèle de PR, n'existe pas
-- [ ] Politique de confidentialité : la phrase « uniquement des cookies strictement nécessaires » contredit PostHog et GTM (déposés après consentement) : à reformuler
+- [x] Tests frontend en échec sur `main` (constaté le 2026-11-24) : `test-home-session-filters` et `test-contact-ux` cherchent un bouton « Refuser les cookies de mesure » qui n'existe plus ; `test:smoke:seo` attend un ancien texte de FAQ. `npm run check:typography`, demandé par le modèle de PR, n'existe pas
+  - Corrigé le 2026-11-25 (branche frontend `claude/peaceful-cray-vw09c4`) : bandeau cookies fermé seulement s'il s'affiche, tests contact et SEO à jour, script `check:typography` ajouté
+- [x] Politique de confidentialité : la phrase « uniquement des cookies strictement nécessaires » contredit PostHog et GTM (déposés après consentement) : à reformuler (texte FR/EN/AR réécrit le 2026-11-25 ; la version arabe est à faire relire avec les autres traductions)
 - [ ] Découper les fichiers géants : globals.css (~23k lignes), AdminClient.js (5,6k), socket-runtime.js (3,3k), account/page.js (2,7k), SessionBuilder.js (2,4k)
 - [ ] Vercel « Function Storage » à 75 % du quota gratuit (10 Go) (2026-11-04) : les anciennes deployments (surtout les previews) s'accumulent, ~25 Mo de fonctions chacune
   - [ ] Vérifier vers le 2026-11-09 que la purge automatique a bien eu lieu (~150 des 284 deployments) et que Function Storage est retombé vers ~35 % ; sinon `vercel rm <url> --yes`

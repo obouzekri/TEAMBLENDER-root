@@ -41,7 +41,7 @@
   - [x] account/page.js : 2 249 → 852 lignes, CSS dans account.css et onglets en composants (frontend #120)
   - [x] SessionBuilder.js : 2 092 → 1 668 lignes, écran de création et fenêtres en composants (frontend #121)
   - [x] socket-runtime.js : 3 338 → 2 505 lignes, six modules de helpers, après une trace de référence des événements temps réel (backend #46)
-  - [x] globals.css : déjà découpé en 23 tranches (app/styles/) ; CSS mort retiré (voir la PR frontend du 2026-11-25)
+  - [x] globals.css : déjà découpé en 23 tranches (app/styles/) ; 767 règles de CSS mort retirées, 23 769 → 18 751 lignes (frontend #122)
   - [ ] Suite possible : l'aiguillage handleChallengeEvent de socket-runtime.js (~1 500 lignes) et la logique de SessionBuilder.js (hooks)
   - [ ] Après déploiement du backend #46 : une session de test par jeu (rejoindre, quelques actions, fin du chrono) et contrôle des logs Railway
 - [ ] Vercel « Function Storage » à 75 % du quota gratuit (10 Go) (2026-11-04) : les anciennes deployments (surtout les previews) s'accumulent, ~25 Mo de fonctions chacune

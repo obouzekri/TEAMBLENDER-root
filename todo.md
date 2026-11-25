@@ -10,21 +10,24 @@
 
 - [ ] Facturation en MAD à 0 (2026-11-24) : les trois formules de base (Essai, Essentiel, Organisation) ont `price_mad_cents = 0` (valeur par défaut, non renseignée par `npm run pricing:seed`). Or `getPlanCharge` (backend/src/services/billing-admin.service.js) et le lien de paiement (backend/src/controllers/billing.controller.js) lisent ce champ en priorité : un paiement manuel ou un lien de paiement pour Essentiel risque d'être calculé à 0 MAD au lieu de 39 €
   - [ ] Vérifier `price_mad_cents` / `annual_price_mad_cents` des formules en production
-  - [ ] Décider de la devise qui fait foi (EUR ou MAD), puis soit renseigner les prix MAD, soit ne plus lire `price_mad_cents` quand il vaut 0
-  - [ ] Ajouter un test sur `getPlanCharge` avec une formule de base
+  - [ ] Décider de la devise qui fait foi (EUR ou MAD), puis renseigner les prix MAD si le MAD doit primer
+  - [x] Branche backend `claude/peaceful-cray-vw09c4` (2026-11-25) : `price_mad_cents` à 0 n'est plus lu, on reprend le prix EUR de la formule (annuel compris) ; le lien PayPal utilise le même calcul
+  - [x] Test sur `getPlanCharge` avec une formule de base
 
 ## 🐞 Bugs (2026-11-06)
 
 - [ ] Espace admin : supprimer un participant qui a rejoint par code supprime **tous** les participants
+  - Non reproduit le 2026-11-25 sur `main` : l'API ne supprime que le participant visé (test de non-régression ajouté côté backend). Si le problème réapparaît : noter le compte, la page (console admin ou accueil manager) et le participant concernés
 - [ ] Préférences de notification : « Impossible de charger vos préférences de notification » (les interrupteurs restent inactifs)
 
   ![alt text](image-5.png)
 
-  - [ ] Relire et fusionner la PR frontend #83
+  - [x] Relire et fusionner la PR frontend #83 (fusionnée)
   - [ ] Si l'erreur apparaît aussi avec un compte organisateur (`user`) : regarder dans l'onglet Réseau le code renvoyé par l'appel (backend local arrêté ou pas à jour ?)
-  - [ ] Le compte de test `manager@test.com` (rôle `manager`) reçoit un 403 sur toutes les routes `/users/me` : à supprimer ou à passer en `user`
+  - [ ] Le compte de test `manager@test.com` (rôle `manager`) reçoit un 403 sur toutes les routes `/users/me` : à supprimer ou à passer en `user` en base (le script `seed_users.js` le crée désormais en `user`)
 
 - [ ] Workflow GitHub « Session Retention Purge » annulé chaque nuit après 6 h (depuis le 29/10) : le script termine en 2 s (`staleSessionCount: 0`) mais le process Node ne se ferme pas, la connexion Sequelize reste ouverte
+  - [x] Correctif présent sur `main` : le script ferme la connexion et sort (moins d'une seconde en local, 2026-11-25)
   - [ ] Une fois GitHub Actions débloqué : lancer le workflow à la main (dry run) et vérifier qu'il finit en vert
 - [ ] GitHub Actions bloqué sur le backend depuis le 2026-11-07 : « recent account payments have failed or your spending limit needs to be increased » → GitHub Settings → Billing & plans. Les PR #17, #18 et #19 ont été fusionnées sans CI : relancer la CI sur `main` une fois débloqué
 

@@ -119,18 +119,33 @@ Constat : Ahrefs donne une autorité de domaine de 0/100 (aucun lien entrant) et
   - [ ] Le bouton « Verify installation » de Plausible peut échouer avec un script relayé : se fier au tableau de bord en temps réel
   - [ ] Si le compte Plausible impose un script personnalisé (`pa-XXXX.js` avec `plausible.init()`), transmettre le snippet fourni pour adapter le relais `/pa/*`
 
-### Indexation Google (semaine 1, environ 1 h)
+### Indexation Google et Bing (semaine 1, environ 1 h)
 
-- [ ] Google Search Console : créer une propriété de type « Domaine » (enregistrement TXT chez le registraire DNS), puis soumettre `https://teamblender.io/sitemap.xml`
-- [ ] Inspection d'URL → « Demander l'indexation » pour `/fr`, `/en`, `/fr/pricing`, `/fr/team-building` et les 3 guides (`a-distance`, `hybride`, `onboarding`)
-- [ ] Une semaine après : rapport « Pages » de Search Console, vérifier qu'aucune page publique n'est exclue par erreur (noindex, robots, redirection)
-- [ ] Bing Webmaster Tools : importer le site depuis Search Console (alimente aussi DuckDuckGo et la recherche de ChatGPT)
-- [ ] Vérifier que `www.teamblender.io` redirige vers `teamblender.io` (une seule version du site)
-- [ ] Après indexation : tester `site:teamblender.io`, puis « TeamBlender team building »
+Version canonique du site : `https://www.teamblender.io` (avec `www`). Depuis le 2026-11-25, `teamblender.io` redirige en 308 vers `www` dans Vercel (vérifié en production).
+
+- [ ] Google Search Console : créer une propriété de type « Domaine » `teamblender.io` (enregistrement TXT chez le registraire DNS ; elle couvre `www` et la version sans www), puis soumettre `https://www.teamblender.io/sitemap.xml` (38 URL : 19 pages en FR et en EN)
+- [ ] Inspection d'URL → « Demander l'indexation » pour les pages principales : `/fr`, `/en`, `/fr/pricing`, `/fr/defis`, `/en/team-challenges`, `/fr/team-building`, `/en/team-building/remote`, `/en/team-building/hybrid`
+- [ ] Bing Webmaster Tools : importer le site depuis Search Console (alimente aussi DuckDuckGo et la recherche de ChatGPT) et soumettre le même sitemap. Le fichier de vérification `BingSiteAuth.xml` est déjà servi par le frontend
+- [ ] Une semaine après : rapport « Pages » de Search Console, vérifier qu'aucune page publique n'est exclue par erreur (noindex, robots, redirection). Les anciennes URL `/en/team-building/a-distance` et `/en/team-building/hybride` redirigent en 308 vers `/remote` et `/hybrid` : c'est attendu
+- [ ] Après indexation : tester `site:teamblender.io`, puis « TeamBlender team building » et « escape game en ligne entreprise »
+- [x] Une seule version du site : `teamblender.io` → `www.teamblender.io` en 308 (2026-11-25)
+
+### SEO et référencement IA : suite de l'audit du 2026-11-25
+
+Fait le 2026-11-25 (frontend #123 et #124, en production) : offres balisées sur `/pricing`, URL anglaises traduites, image de partage par langue, `llms.txt` avec faits clés, offres et défis, un seul H1 sur `/demo`, catalogue public des 10 défis (`/fr/defis`, `/en/team-challenges`) relié au menu, au pied de page et à l'accueil.
+
+- [ ] Contrôle en production après #123 et #124 : parcours manager (login → accueil → session builder) et participant (rejoindre → défi en cours), en FR et EN, clair et sombre, mobile et desktop. Non fait sur la preview
+- [ ] Faire relire la version arabe du catalogue des défis (`lib/i18n/dictionaries/ar/challengeCatalog.js`) avec les autres traductions arabes
+- [ ] Une fois les fiches Capterra, G2, Product Hunt ou Crunchbase créées (voir « Premiers liens entrants ») : ajouter leurs URL au `sameAs` du bloc `Organization` (`lib/structuredData.js`) ; aujourd'hui seule la page LinkedIn y figure
+- [ ] Page « À propos » : qui est derrière TeamBlender, où, depuis quand, entité juridique. Les moteurs de réponse IA s'appuient sur ces faits pour citer une marque
+- [ ] Guides plus longs (plus de 1 200 mots, contre environ 520 aujourd'hui) avec une réponse directe sous le H1 : idées de team building à distance, brise-glace en réunion, team building gratuit, séminaire
+- [ ] Décider si le H1 de l'accueil doit contenir « team building » (aujourd'hui « Créez de la cohésion dans vos équipes hybrides ou distribuées », alors que le titre de la page cible « team building »)
+- [ ] Performance : les pages publiques ne sont jamais mises en cache (`cache-control: private, no-store`, le layout lit `headers()`), et l'accueil charge environ 1,4 Mo de JavaScript non compressé. Chantier : pages publiques statiques avec revalidation (ISR) via un segment `[locale]`, sections statiques de l'accueil en composants serveur
+- [ ] GitHub : supprimer les branches frontend `claude/blissful-wozniak-p0hpij`, `feature/seo-geo-quick-wins` et `feature/challenge-catalog` (PR fusionnées ; la session Claude n'a pas pu les supprimer)
 
 ### Requête de marque « TeamBlender » (se distinguer de Blender 3D)
 
-- [ ] Page LinkedIn entreprise : renseigner le site web `https://teamblender.io`, la description et le logo (elle est déjà déclarée dans les données structurées du site)
+- [ ] Page LinkedIn entreprise : renseigner le site web `https://www.teamblender.io`, la description et le logo (elle est déjà déclarée dans les données structurées du site)
 - [ ] Écrire « TeamBlender » associé à « team building » ou « cohésion d'équipe » partout (signature e-mail, LinkedIn, annuaires)
 
 ### Premiers liens entrants (gratuits, au nom de TeamBlender, contact@teamblender.io)

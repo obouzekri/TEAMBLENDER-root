@@ -1,4 +1,4 @@
-﻿# Revue plateforme (2026-10-30, mise à jour 2026-11-07)
+﻿# Revue plateforme (2026-10-30, mise à jour 2026-11-25)
 
 ## 🔴 Priorité 1 — Sécurité / paiement
 
@@ -12,7 +12,8 @@
   - [ ] Vérifier `price_mad_cents` / `annual_price_mad_cents` des formules en production
   - [ ] Décider de la devise qui fait foi (EUR ou MAD), puis renseigner les prix MAD si le MAD doit primer
   - [x] Branche backend `claude/peaceful-cray-vw09c4` (2026-11-25) : `price_mad_cents` à 0 n'est plus lu, on reprend le prix EUR de la formule (annuel compris) ; le lien PayPal utilise le même calcul
-  - [x] Test sur `getPlanCharge` avec une formule de base
+  - [x] Test sur `getPlanCharge` avec une formule de base (backend #45, fusionnée)
+  - [ ] Après déploiement du backend #45 : un lien de paiement ou un paiement manuel Essentiel doit afficher 39 € (374 € en annuel), plus 0 MAD
 
 ## 🐞 Bugs (2026-11-06)
 
@@ -29,7 +30,7 @@
 - [ ] Workflow GitHub « Session Retention Purge » annulé chaque nuit après 6 h (depuis le 29/10) : le script termine en 2 s (`staleSessionCount: 0`) mais le process Node ne se ferme pas, la connexion Sequelize reste ouverte
   - [x] Correctif présent sur `main` : le script ferme la connexion et sort (moins d'une seconde en local, 2026-11-25)
   - [ ] Une fois GitHub Actions débloqué : lancer le workflow à la main (dry run) et vérifier qu'il finit en vert
-- [ ] GitHub Actions bloqué sur le backend depuis le 2026-11-07 : « recent account payments have failed or your spending limit needs to be increased » → GitHub Settings → Billing & plans. Les PR #17, #18 et #19 ont été fusionnées sans CI : relancer la CI sur `main` une fois débloqué
+- [ ] GitHub Actions bloqué sur le backend depuis le 2026-11-07 : « recent account payments have failed or your spending limit needs to be increased » → GitHub Settings → Billing & plans. Les PR #17, #18, #19, #45 et #46 ont été fusionnées sans CI (tests passés en local) : relancer la CI sur `main` une fois débloqué
 
 ## 🟠 Priorité 2 — Nettoyage technique
 
@@ -44,6 +45,15 @@
   - [x] globals.css : déjà découpé en 23 tranches (app/styles/) ; 767 règles de CSS mort retirées, 23 769 → 18 751 lignes (frontend #122)
   - [ ] Suite possible : l'aiguillage handleChallengeEvent de socket-runtime.js (~1 500 lignes) et la logique de SessionBuilder.js (hooks)
   - [ ] Après déploiement du backend #46 : une session de test par jeu (rejoindre, quelques actions, fin du chrono) et contrôle des logs Railway
+  - [ ] Après déploiement du frontend #122 (CSS mort retiré) : tour rapide en thème sombre, sur mobile et desktop, surtout les jeux en direct (non couverts par la comparaison automatique, faite sans partie en cours)
+- [ ] Code mort repéré pendant le découpage (déjà inutilisé avant, laissé tel quel) : à supprimer dans une PR dédiée
+  - [ ] `app/admin/AdminClient.js` : `handleResetUserPassword` et `handleResetParticipantPassword` ne sont reliés à aucun bouton. Décider : ajouter le bouton « Réinitialiser le mot de passe » dans la console admin, ou supprimer
+  - [ ] `app/account/page.js` : `Download`, `historyCount`, `cycleLabel`, `renewalLabel`, `handleChangePlan`
+  - [ ] `app/session-builder/SessionBuilder.js` : `lastLocalDraftSaveAt`, `lastBackendSaveAt`, `loadedFromLocalDraft`, `selectedChallengesSnapshot`, `onboardingRedirectedRef`, `selectedChallengesJson`, `participantsError`, `token`
+- [ ] Tests et outillage
+  - [ ] Lancer une fois toute la suite `npm run test:ux:*` du frontend : seuls les scripts touchés le 2026-11-25 ont été relancés (plusieurs étaient cassés sur `main` depuis des changements de produit)
+  - [ ] Ajouter `npm run check:typography` à la CI frontend (`.github/workflows/ci.yml`), aujourd'hui lancé seulement à la main
+  - [ ] Étendre la trace de référence temps réel (`tests/realtime_event_trace.test.js`) au quiz et aux mots croisés, qui n'ont que leurs tests dédiés
 - [ ] Vercel « Function Storage » à 75 % du quota gratuit (10 Go) (2026-11-04) : les anciennes deployments (surtout les previews) s'accumulent, ~25 Mo de fonctions chacune
   - [ ] Vérifier vers le 2026-11-09 que la purge automatique a bien eu lieu (~150 des 284 deployments) et que Function Storage est retombé vers ~35 % ; sinon `vercel rm <url> --yes`
 

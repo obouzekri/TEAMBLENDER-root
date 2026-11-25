@@ -37,6 +37,13 @@
   - Corrigé le 2026-11-25 (branche frontend `claude/peaceful-cray-vw09c4`) : bandeau cookies fermé seulement s'il s'affiche, tests contact et SEO à jour, script `check:typography` ajouté
 - [x] Politique de confidentialité : la phrase « uniquement des cookies strictement nécessaires » contredit PostHog et GTM (déposés après consentement) : à reformuler (texte FR/EN/AR réécrit le 2026-11-25 ; la version arabe est à faire relire avec les autres traductions)
 - [ ] Découper les fichiers géants : globals.css (~23k lignes), AdminClient.js (5,6k), socket-runtime.js (3,3k), account/page.js (2,7k), SessionBuilder.js (2,4k)
+  - [x] AdminClient.js : 4 275 → 2 693 lignes, onglets dans app/admin/tabs/ (frontend #119)
+  - [x] account/page.js : 2 249 → 852 lignes, CSS dans account.css et onglets en composants (frontend #120)
+  - [x] SessionBuilder.js : 2 092 → 1 668 lignes, écran de création et fenêtres en composants (frontend #121)
+  - [x] socket-runtime.js : 3 338 → 2 505 lignes, six modules de helpers, après une trace de référence des événements temps réel (backend #46)
+  - [x] globals.css : déjà découpé en 23 tranches (app/styles/) ; 767 règles de CSS mort retirées, 23 769 → 18 751 lignes (frontend #122)
+  - [ ] Suite possible : l'aiguillage handleChallengeEvent de socket-runtime.js (~1 500 lignes) et la logique de SessionBuilder.js (hooks)
+  - [ ] Après déploiement du backend #46 : une session de test par jeu (rejoindre, quelques actions, fin du chrono) et contrôle des logs Railway
 - [ ] Vercel « Function Storage » à 75 % du quota gratuit (10 Go) (2026-11-04) : les anciennes deployments (surtout les previews) s'accumulent, ~25 Mo de fonctions chacune
   - [ ] Vérifier vers le 2026-11-09 que la purge automatique a bien eu lieu (~150 des 284 deployments) et que Function Storage est retombé vers ~35 % ; sinon `vercel rm <url> --yes`
 

@@ -86,6 +86,46 @@ PR fusionnées : frontend #55, #59, #54 / backend #11, #12. L'arabe reste masqu�
 - [ ] Concevoir et tester un atelier d'accueil d'équipe court, sans préparation
 - [ ] Debrief final : ajouter des scores de cohésion, leadership…
 
+## 🧭 Évolutions produit après le bilan du 21 décembre (ajout du 2026-11-26)
+
+Évolutions gelées jusqu'au bilan des pilotes (21 décembre), sauf si un pilote est bloqué. Elles seront priorisées au bilan à partir des retours des pilotes.
+
+### Fiche défi accessible depuis Mon compte (janvier → mars 2027)
+
+Objectif : le manager comprend un défi (règles, déroulé, options) **avant** de l'ajouter à une session, sans démo du fondateur. Point de départ : le catalogue public des 10 défis existe déjà (`/fr/defis`, `/en/team-challenges`, frontend #124). Version légère à avancer si, pendant les pilotes, les managers demandent souvent « c'est quoi ce défi ? » (noter ces demandes).
+
+- [ ] Accès : une page par défi (ex. `/challenges/[slug]`), depuis Mon compte → « Bibliothèque de défis » et depuis le catalogue du session builder (lien « Voir la fiche » sur chaque carte). Réutiliser le catalogue public plutôt que créer une deuxième source
+- [ ] Contenu : nom, visuel, accroche, objectifs travaillés ; durée, participants (min / recommandé / max), niveau d'énergie, difficulté, langues ; règles du jeu (déroulé, conditions de victoire, calcul des scores) ; rôle du facilitateur avant / pendant / après ; aperçu de la vue participant ; prérequis (écran partagé, téléphones, salle ou à distance)
+- [ ] Options de configuration affichées en lecture (durée, niveau, équipes, thème, langue…) avec valeur par défaut et effet
+- [ ] Bouton « Utiliser ce défi dans une session » : ouvre le session builder avec le défi sélectionné et les options pré-remplies ; bouton secondaire « Ajouter à une session existante »
+- [ ] Technique : règles et options lues dans le catalogue (`engine_config`), pas de texte en dur. Dépend du point admin « `engine_config.rules` retiré avant l'envoi » (à enregistrer ou rendre non modifiable)
+- [ ] Traductions FR / EN (AR quand la langue est activée) ; mesure du taux « fiche vue → défi ajouté à une session »
+
+### Mon compte : design des formules (à partir de février 2027)
+
+Objectif : voir en un coup d'œil sa formule, sa consommation et pourquoi passer à l'offre supérieure. Écran qui déclenche « Demander l'activation » : il touche la conversion. Prérequis : `PricingPlans` seule référence des offres (sinon travail à refaire).
+
+- [ ] Carte « Votre formule » en haut de l'onglet : offre, statut (essai / actif / expiré), date de fin d'accès, jours restants
+- [ ] Jauges de consommation (participants, sessions s'il y a encore une limite) avec alerte à 80 % et à 100 %
+- [ ] Comparatif des formules en cartes (Essai · Essentiel · Organisation), formule actuelle signalée, offre recommandée mise en avant, 4-5 avantages par carte maximum
+- [ ] Un seul bouton principal visible : « Demander l'activation » / « Passer à Essentiel » → `/contact?plan=…`
+- [ ] Libellés, prix et avantages identiques à `/pricing`, lus dans `PricingPlans`, rien en dur
+- [ ] Lien « Qu'est-ce qu'une session ? » et FAQ courte (facturation, résiliation, virement)
+- [ ] Mobile, clair et sombre, FR / EN / AR (RTL)
+
+### Avatars (à partir de février 2027)
+
+Objectif : des avatars qui donnent de la personnalité au jeu et restent lisibles partout (salle d'attente, jeu, classement, debrief).
+
+- [ ] État des lieux : où les avatars apparaissent (rejoindre par code, salle d'attente, jeu, classement, debrief, admin) et ce qui ne va pas (style, taille, doublons, lisibilité)
+- [ ] Style unique aligné sur la charte TeamBlender : une même famille d'illustrations, couleurs de la marque, SVG légers
+- [ ] Choix de l'avatar par le participant en rejoignant la session (galerie de 12 à 24), avatar attribué par défaut s'il ne choisit pas
+- [ ] Pas de doublon dans une même session (ou différenciation par couleur)
+- [ ] Repli : initiales sur fond coloré si l'image ne charge pas
+- [ ] Avatars d'équipe (couleur / emblème) pour les défis en équipes et le classement
+- [ ] Tailles cohérentes (petit / moyen / grand) entre salle d'attente, jeu, classement et debrief
+- [ ] Accessibilité : contraste suffisant, texte alternatif (prénom), pas d'information portée par la seule couleur
+- [ ] Mémoriser l'avatar choisi sur le compte participant pour les sessions suivantes
 
 ## 📈 Visibilité, indexation et mesure (2026-11-24)
 
@@ -160,6 +200,10 @@ Fait le 2026-11-25 (frontend #123 et #124, en production) : offres balisées sur
 
 - [ ] Ajouter des paramètres UTM aux liens des relances (`?utm_source=email&utm_campaign=relance-novembre`) pour voir dans Plausible quelles relances génèrent des visites
 - [ ] Chaque semaine : visites et sources dans Plausible. Chaque mois : pages indexées (Search Console) et autorité de domaine (Ahrefs, outil gratuit)
+- [ ] Audits SEO automatisés avec le plugin open source `claude-seo` (MIT, dépôt `AgriciDaniel/claude-seo`) dans Claude Code (ajout du 2026-11-26)
+  - [ ] Installer : `/plugin marketplace add AgriciDaniel/claude-seo` puis `/plugin install claude-seo@agricidaniel-claude-seo` puis `/seo setup` (`/plugin install claude-seo` seul ne suffit pas). Plugin tiers qui exécute du code en local : lire le dépôt avant d'installer, ne pas utiliser l'installation par `curl | bash`
+  - [ ] Premier audit : `/seo audit https://www.teamblender.io`, puis `/seo page` sur `/fr/pricing` et `/fr/defis`, et `/seo schema`. Comparer avec l'audit du 2026-11-25 et ne reporter ici que les nouveaux constats
+  - [ ] Rythme : le plugin tourne dans une session Claude Code, pas en continu. Un audit par mois, en même temps que le suivi Search Console / Ahrefs (tâche planifiée possible)
 
 ## Business model
 

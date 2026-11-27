@@ -19,6 +19,7 @@
 
 - [ ] Espace admin : supprimer un participant qui a rejoint par code supprime **tous** les participants
   - Non reproduit le 2026-11-25 sur `main` : l'API ne supprime que le participant visé (test de non-régression ajouté côté backend). Si le problème réapparaît : noter le compte, la page (console admin ou accueil manager) et le participant concernés
+- [ ] Quiz : après chaque action, `quiz.state` part à toute la salle avec les réponses de chacun (`live_answers_by_participant`, `includeAnswers: true` dans `src/realtime/socket-runtime.js`). Un joueur peut donc voir ce que les autres ont répondu pendant la question (repéré le 2026-11-27 en écrivant la trace du backend #48). Vérifier si l'interface participant l'affiche ; sinon, ne l'envoyer qu'à l'animateur
 - [ ] Préférences de notification : « Impossible de charger vos préférences de notification » (les interrupteurs restent inactifs)
 
   ![alt text](image-5.png)
@@ -37,13 +38,12 @@
 - [x] Tests frontend en échec sur `main` (constaté le 2026-11-24) : `test-home-session-filters` et `test-contact-ux` cherchent un bouton « Refuser les cookies de mesure » qui n'existe plus ; `test:smoke:seo` attend un ancien texte de FAQ. `npm run check:typography`, demandé par le modèle de PR, n'existe pas
   - Corrigé le 2026-11-25 (branche frontend `claude/peaceful-cray-vw09c4`) : bandeau cookies fermé seulement s'il s'affiche, tests contact et SEO à jour, script `check:typography` ajouté
 - [x] Politique de confidentialité : la phrase « uniquement des cookies strictement nécessaires » contredit PostHog et GTM (déposés après consentement) : à reformuler (texte FR/EN/AR réécrit le 2026-11-25 ; la version arabe est à faire relire avec les autres traductions)
-- [ ] Découper les fichiers géants : globals.css (~23k lignes), AdminClient.js (5,6k), socket-runtime.js (3,3k), account/page.js (2,7k), SessionBuilder.js (2,4k)
+- [x] Découper les fichiers géants : globals.css (~23k lignes), AdminClient.js (5,6k), socket-runtime.js (3,3k), account/page.js (2,7k), SessionBuilder.js (2,4k)
   - [x] AdminClient.js : 4 275 → 2 693 lignes, onglets dans app/admin/tabs/ (frontend #119)
   - [x] account/page.js : 2 249 → 852 lignes, CSS dans account.css et onglets en composants (frontend #120)
   - [x] SessionBuilder.js : 2 092 → 1 668 lignes, écran de création et fenêtres en composants (frontend #121)
   - [x] socket-runtime.js : 3 338 → 2 505 lignes, six modules de helpers, après une trace de référence des événements temps réel (backend #46)
   - [x] globals.css : déjà découpé en 23 tranches (app/styles/) ; 767 règles de CSS mort retirées, 23 769 → 18 751 lignes (frontend #122)
-  - [ ] Suite possible : l'aiguillage handleChallengeEvent de socket-runtime.js (~1 500 lignes) et la logique de SessionBuilder.js (hooks)
   - [ ] Après déploiement du backend #46 : une session de test par jeu (rejoindre, quelques actions, fin du chrono) et contrôle des logs Railway
   - [ ] Après déploiement du frontend #122 (CSS mort retiré) : tour rapide en thème sombre, sur mobile et desktop, surtout les jeux en direct (non couverts par la comparaison automatique, faite sans partie en cours)
 - [x] Code mort repéré pendant le découpage : retiré (frontend #126, 2026-11-27)
@@ -54,7 +54,8 @@
 - [ ] Tests et outillage
   - [ ] Lancer une fois toute la suite `npm run test:ux:*` du frontend : seuls les scripts touchés le 2026-11-25 ont été relancés (plusieurs étaient cassés sur `main` depuis des changements de produit)
   - [ ] Ajouter `npm run check:typography` à la CI frontend (`.github/workflows/ci.yml`), aujourd'hui lancé seulement à la main
-  - [ ] Étendre la trace de référence temps réel (`tests/realtime_event_trace.test.js`) au quiz et aux mots croisés, qui n'ont que leurs tests dédiés
+  - [x] Étendre la trace de référence temps réel (`tests/realtime_event_trace.test.js`) au quiz et aux mots croisés : les 9 moteurs sont couverts (backend #48)
+  - [x] Session Builder : test de sauvegarde sous API simulée (autosave, brouillon local, rechargement, lancement), lancé par `npm run test:ux:builder` (frontend #127)
 - [ ] Vercel « Function Storage » à 75 % du quota gratuit (10 Go) (2026-11-04) : les anciennes deployments (surtout les previews) s'accumulent, ~25 Mo de fonctions chacune
   - [ ] Vérifier vers le 2026-11-09 que la purge automatique a bien eu lieu (~150 des 284 deployments) et que Function Storage est retombé vers ~35 % ; sinon `vercel rm <url> --yes`
 

@@ -46,10 +46,11 @@
   - [ ] Suite possible : l'aiguillage handleChallengeEvent de socket-runtime.js (~1 500 lignes) et la logique de SessionBuilder.js (hooks)
   - [ ] Après déploiement du backend #46 : une session de test par jeu (rejoindre, quelques actions, fin du chrono) et contrôle des logs Railway
   - [ ] Après déploiement du frontend #122 (CSS mort retiré) : tour rapide en thème sombre, sur mobile et desktop, surtout les jeux en direct (non couverts par la comparaison automatique, faite sans partie en cours)
-- [ ] Code mort repéré pendant le découpage (déjà inutilisé avant, laissé tel quel) : à supprimer dans une PR dédiée
-  - [ ] `app/admin/AdminClient.js` : `handleResetUserPassword` et `handleResetParticipantPassword` ne sont reliés à aucun bouton. Décider : ajouter le bouton « Réinitialiser le mot de passe » dans la console admin, ou supprimer
-  - [ ] `app/account/page.js` : `Download`, `historyCount`, `cycleLabel`, `renewalLabel`, `handleChangePlan`
-  - [ ] `app/session-builder/SessionBuilder.js` : `lastLocalDraftSaveAt`, `lastBackendSaveAt`, `loadedFromLocalDraft`, `selectedChallengesSnapshot`, `onboardingRedirectedRef`, `selectedChallengesJson`, `participantsError`, `token`
+- [x] Code mort repéré pendant le découpage : retiré (frontend #126, 2026-11-27)
+  - [x] `app/admin/AdminClient.js` : bouton 🔑 « Réinitialiser le mot de passe » ajouté dans les onglets Utilisateurs et Participants
+  - [x] `app/account/page.js` : `handleChangePlan` et tout ce qui ne servait qu'à lui retirés, textes orphelins compris
+  - [x] `app/session-builder/SessionBuilder.js` : états et variables inutilisés retirés
+  - [ ] Après déploiement du frontend #126 : réinitialiser un mot de passe de test depuis la console admin (champ vide, puis mot de passe saisi)
 - [ ] Tests et outillage
   - [ ] Lancer une fois toute la suite `npm run test:ux:*` du frontend : seuls les scripts touchés le 2026-11-25 ont été relancés (plusieurs étaient cassés sur `main` depuis des changements de produit)
   - [ ] Ajouter `npm run check:typography` à la CI frontend (`.github/workflows/ci.yml`), aujourd'hui lancé seulement à la main
